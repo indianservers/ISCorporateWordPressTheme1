@@ -148,6 +148,168 @@ if ( ! function_exists( 'iscp_body_classes' ) ) {
 }
 add_filter( 'body_class', 'iscp_body_classes' );
 
+if ( ! function_exists( 'iscp_get_menu_icon_key' ) ) {
+	/**
+	 * Resolve a menu icon from manual CSS class, URL or title keywords.
+	 *
+	 * @param WP_Post|array|string $item Menu item, array or label.
+	 * @param string               $fallback Fallback icon key.
+	 * @return string
+	 */
+	function iscp_get_menu_icon_key( $item, $fallback = 'cube' ) {
+		$title   = '';
+		$url     = '';
+		$classes = array();
+
+		if ( is_object( $item ) ) {
+			$title   = isset( $item->title ) ? $item->title : '';
+			$url     = isset( $item->url ) ? $item->url : '';
+			$classes = isset( $item->classes ) && is_array( $item->classes ) ? $item->classes : array();
+		} elseif ( is_array( $item ) ) {
+			$title   = isset( $item['title'] ) ? $item['title'] : '';
+			$url     = isset( $item['url'] ) ? $item['url'] : '';
+			$classes = isset( $item['classes'] ) && is_array( $item['classes'] ) ? $item['classes'] : array();
+		} else {
+			$title = (string) $item;
+		}
+
+		foreach ( $classes as $class ) {
+			if ( 0 === strpos( $class, 'iscp-icon-' ) ) {
+				return sanitize_key( substr( $class, 10 ) );
+			}
+		}
+
+		$haystack = strtolower( wp_strip_all_tags( $title . ' ' . $url . ' ' . implode( ' ', $classes ) ) );
+		$matches  = array(
+			'home'       => array( 'home', 'index' ),
+			'about'      => array( 'about', 'company', 'profile', 'story' ),
+			'services'   => array( 'services', 'solutions', 'consulting' ),
+			'products'   => array( 'products', 'saas', 'software' ),
+			'contact'    => array( 'contact', 'enquiry', 'project' ),
+			'team'       => array( 'hrms', 'hr ', 'human resource', 'people', 'team', 'dedicated' ),
+			'education'  => array( 'school', 'education', 'learning', 'lms' ),
+			'crm'        => array( 'crm', 'customer', 'sales' ),
+			'inventory'  => array( 'inventory', 'stock', 'warehouse' ),
+			'restaurant' => array( 'restaurant', 'pos', 'billing' ),
+			'cloud'      => array( 'cloud', 'hosting', 'server', 'devops' ),
+			'shield'     => array( 'cyber', 'security', 'vapt', 'audit' ),
+			'ai'         => array( 'ai', 'automation', 'machine learning' ),
+			'ar'         => array( 'ar', 'vr', 'metaverse', '3d' ),
+			'mobile'     => array( 'mobile', 'android', 'ios', 'app' ),
+			'web'        => array( 'web', 'website', 'portal' ),
+			'code'       => array( '.net', 'php', 'python', 'custom', 'development' ),
+			'chart'      => array( 'analytics', 'reports', 'dashboard', 'growth' ),
+		);
+
+		foreach ( $matches as $icon => $needles ) {
+			foreach ( $needles as $needle ) {
+				if ( false !== strpos( $haystack, $needle ) ) {
+					return $icon;
+				}
+			}
+		}
+
+		return sanitize_key( $fallback );
+	}
+}
+
+if ( ! function_exists( 'iscp_get_menu_icon_path' ) ) {
+	/**
+	 * Return SVG path data for menu icons.
+	 *
+	 * @param string $icon Icon key.
+	 * @return string
+	 */
+	function iscp_get_menu_icon_path( $icon ) {
+		$icons = array(
+			'home'     => 'M3 11.2 12 4l9 7.2-1.3 1.5L18 11.4V20h-5v-5h-2v5H6v-8.6l-1.7 1.3L3 11.2Z',
+			'about'    => 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm-1 7h2v9h-2V9Zm0-4h2v2h-2V5Z',
+			'services' => 'M7 3h10l4 7-9 11L3 10l4-7Zm1.1 2L5.5 9h13L15.9 5H8.1ZM7 11l5 6.1 5-6.1H7Z',
+			'products' => 'M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3Zm0 2.3L6 8.7v6.6l6 3.4 6-3.4V8.7l-6-3.4Z',
+			'contact'  => 'M4 4h16v13H7.6L4 20V4Zm2 2v9.4l.8-.7H18V6H6Zm2.5 3h7v2h-7V9Zm0 3h5v2h-5v-2Z',
+		);
+
+		if ( isset( $icons[ $icon ] ) ) {
+			return $icons[ $icon ];
+		}
+
+		if ( function_exists( 'iscp_get_offering_icon_path' ) ) {
+			return iscp_get_offering_icon_path( $icon );
+		}
+
+		return $icons['products'];
+	}
+}
+
+if ( ! function_exists( 'iscp_get_menu_icon_markup' ) ) {
+	/**
+	 * Return menu icon SVG markup.
+	 *
+	 * @param string $icon Icon key.
+	 * @return string
+	 */
+	function iscp_get_menu_icon_markup( $icon ) {
+		return sprintf(
+			'<span class="iscp-menu-icon iscp-menu-icon-%1$s" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="%2$s"/></svg></span>',
+			esc_attr( sanitize_html_class( $icon ) ),
+			esc_attr( iscp_get_menu_icon_path( $icon ) )
+		);
+	}
+}
+
+if ( ! class_exists( 'ISCP_Icon_Menu_Walker' ) ) {
+	/**
+	 * Render WordPress navigation menu items with compact icons.
+	 */
+	class ISCP_Icon_Menu_Walker extends Walker_Nav_Menu {
+		/**
+		 * Start the element output.
+		 *
+		 * @param string   $output Used to append additional content.
+		 * @param WP_Post  $item   Menu item data object.
+		 * @param int      $depth  Depth of menu item.
+		 * @param stdClass $args   An object of wp_nav_menu() arguments.
+		 * @param int      $id     Current item ID.
+		 */
+		public function start_el( &$output, $item, $depth = 0, $args = null, $id = 0 ) {
+			$indent  = $depth ? str_repeat( "\t", $depth ) : '';
+			$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+			$classes[] = 'menu-item-' . $item->ID;
+			$class_names = implode( ' ', array_filter( $classes ) );
+			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+			$output .= $indent . '<li' . $class_names . '>';
+
+			$atts = array(
+				'title'  => ! empty( $item->attr_title ) ? $item->attr_title : '',
+				'target' => ! empty( $item->target ) ? $item->target : '',
+				'rel'    => ! empty( $item->xfn ) ? $item->xfn : '',
+				'href'   => ! empty( $item->url ) ? $item->url : '',
+			);
+
+			$attributes = '';
+			foreach ( $atts as $attr => $value ) {
+				if ( '' === $value ) {
+					continue;
+				}
+
+				$value = 'href' === $attr ? esc_url( $value ) : esc_attr( $value );
+				$attributes .= ' ' . $attr . '="' . $value . '"';
+			}
+
+			$title = apply_filters( 'the_title', $item->title, $item->ID );
+			$icon  = iscp_get_menu_icon_key( $item, $depth ? 'cube' : 'products' );
+			$item_output  = isset( $args->before ) ? $args->before : '';
+			$item_output .= '<a' . $attributes . '>';
+			$item_output .= iscp_get_menu_icon_markup( $icon );
+			$item_output .= '<span class="iscp-menu-text">' . ( isset( $args->link_before ) ? $args->link_before : '' ) . esc_html( $title ) . ( isset( $args->link_after ) ? $args->link_after : '' ) . '</span>';
+			$item_output .= '</a>';
+			$item_output .= isset( $args->after ) ? $args->after : '';
+
+			$output .= $item_output;
+		}
+	}
+}
+
 if ( ! function_exists( 'iscp_append_primary_navigation_items' ) ) {
 	/**
 	 * Keep core Indian Servers routes visible even when an older menu is active.
@@ -175,9 +337,11 @@ if ( ! function_exists( 'iscp_append_primary_navigation_items' ) ) {
 			$submenu = '<ul class="sub-menu">';
 
 			foreach ( array_slice( $groups[ $group ], 0, $limit, true ) as $slug => $offering ) {
+				$icon = isset( $offering['icon'] ) ? $offering['icon'] : iscp_get_menu_icon_key( $offering['title'] );
 				$submenu .= sprintf(
-					'<li class="menu-item"><a href="%1$s">%2$s</a></li>',
+					'<li class="menu-item"><a href="%1$s">%2$s<span class="iscp-menu-text">%3$s</span></a></li>',
 					esc_url( home_url( '/' . $group . '/' . $slug . '/' ) ),
+					iscp_get_menu_icon_markup( $icon ),
 					esc_html( $offering['title'] )
 				);
 			}
@@ -246,8 +410,9 @@ if ( ! function_exists( 'iscp_append_primary_navigation_items' ) ) {
 			$submenu = $build_submenu( $link['group'], 'services' === $link['group'] ? 8 : 10 );
 
 			$items .= sprintf(
-				'<li class="menu-item menu-item-has-children iscp-menu-item-auto"><a href="%1$s">%2$s</a>%3$s</li>',
+				'<li class="menu-item menu-item-has-children iscp-menu-item-auto"><a href="%1$s">%2$s<span class="iscp-menu-text">%3$s</span></a>%4$s</li>',
 				esc_url( $link['url'] ),
+				iscp_get_menu_icon_markup( iscp_get_menu_icon_key( $link['label'] ) ),
 				esc_html( $link['label'] ),
 				$submenu
 			);

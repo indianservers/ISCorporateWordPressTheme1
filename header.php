@@ -8,6 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $iscp_header_layout = iscp_get_theme_mod( 'iscp_header_layout', 'default' );
+$iscp_header_menu   = absint( iscp_get_theme_mod( 'iscp_primary_menu_override', '0' ) );
 $iscp_header_classes = array(
 	'iscp-site-header',
 	'iscp-header-layout-' . sanitize_html_class( $iscp_header_layout ),
@@ -90,7 +91,20 @@ if ( iscp_get_theme_mod( 'iscp_sticky_header_enabled', true ) ) {
 			</button>
 
 			<nav id="iscp-site-navigation" class="iscp-primary-navigation" aria-label="<?php esc_attr_e( 'Primary menu', 'iscp' ); ?>">
-				<?php if ( has_nav_menu( 'primary' ) ) : ?>
+				<?php if ( $iscp_header_menu ) : ?>
+					<?php
+					wp_nav_menu(
+						array(
+							'menu'        => $iscp_header_menu,
+							'menu_id'     => 'iscp-primary-menu',
+							'menu_class'  => 'iscp-primary-menu',
+							'container'   => false,
+							'fallback_cb' => false,
+							'walker'      => new ISCP_Icon_Menu_Walker(),
+						)
+					);
+					?>
+				<?php elseif ( has_nav_menu( 'primary' ) ) : ?>
 					<?php
 					wp_nav_menu(
 						array(
@@ -99,30 +113,31 @@ if ( iscp_get_theme_mod( 'iscp_sticky_header_enabled', true ) ) {
 							'menu_class'     => 'iscp-primary-menu',
 							'container'      => false,
 							'fallback_cb'    => false,
+							'walker'         => new ISCP_Icon_Menu_Walker(),
 						)
 					);
 					?>
 				<?php else : ?>
 					<ul id="iscp-primary-menu" class="iscp-primary-menu">
-						<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'iscp' ); ?></a></li>
-						<li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'About', 'iscp' ); ?></a></li>
+						<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( 'home' ); ?><span class="iscp-menu-text"><?php esc_html_e( 'Home', 'iscp' ); ?></span></a></li>
+						<li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( 'about' ); ?><span class="iscp-menu-text"><?php esc_html_e( 'About', 'iscp' ); ?></span></a></li>
 						<li class="menu-item-has-children">
-							<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php esc_html_e( 'Services', 'iscp' ); ?></a>
+							<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( 'services' ); ?><span class="iscp-menu-text"><?php esc_html_e( 'Services', 'iscp' ); ?></span></a>
 							<ul class="sub-menu">
 								<?php foreach ( array_slice( iscp_get_offering_navigation_groups()['services'], 0, 8, true ) as $iscp_slug => $iscp_item ) : ?>
-									<li><a href="<?php echo esc_url( home_url( '/services/' . $iscp_slug . '/' ) ); ?>"><?php echo esc_html( $iscp_item['title'] ); ?></a></li>
+									<li><a href="<?php echo esc_url( home_url( '/services/' . $iscp_slug . '/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( isset( $iscp_item['icon'] ) ? $iscp_item['icon'] : 'code' ); ?><span class="iscp-menu-text"><?php echo esc_html( $iscp_item['title'] ); ?></span></a></li>
 								<?php endforeach; ?>
 							</ul>
 						</li>
 						<li class="menu-item-has-children">
-							<a href="<?php echo esc_url( home_url( '/products/' ) ); ?>"><?php esc_html_e( 'Products', 'iscp' ); ?></a>
+							<a href="<?php echo esc_url( home_url( '/products/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( 'products' ); ?><span class="iscp-menu-text"><?php esc_html_e( 'Products', 'iscp' ); ?></span></a>
 							<ul class="sub-menu">
 								<?php foreach ( iscp_get_offering_navigation_groups()['products'] as $iscp_slug => $iscp_item ) : ?>
-									<li><a href="<?php echo esc_url( home_url( '/products/' . $iscp_slug . '/' ) ); ?>"><?php echo esc_html( $iscp_item['title'] ); ?></a></li>
+									<li><a href="<?php echo esc_url( home_url( '/products/' . $iscp_slug . '/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( isset( $iscp_item['icon'] ) ? $iscp_item['icon'] : 'cube' ); ?><span class="iscp-menu-text"><?php echo esc_html( $iscp_item['title'] ); ?></span></a></li>
 								<?php endforeach; ?>
 							</ul>
 						</li>
-						<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Contact', 'iscp' ); ?></a></li>
+						<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( 'contact' ); ?><span class="iscp-menu-text"><?php esc_html_e( 'Contact', 'iscp' ); ?></span></a></li>
 					</ul>
 				<?php endif; ?>
 			</nav>

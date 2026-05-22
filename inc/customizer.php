@@ -23,6 +23,7 @@ if ( ! function_exists( 'iscp_get_customizer_defaults' ) ) {
 			'iscp_footer_credit_text'           => __( 'Indian Servers Pvt. Ltd.', 'iscp' ),
 			'iscp_footer_credit_url'            => 'https://indianservers.com/',
 			'iscp_header_layout'                => 'default',
+			'iscp_primary_menu_override'        => '0',
 			'iscp_sticky_header_enabled'        => true,
 			'iscp_header_cta_1_text'            => __( 'Start a Project', 'iscp' ),
 			'iscp_header_cta_1_url'             => '/contact/',
@@ -413,13 +414,25 @@ if ( ! function_exists( 'iscp_get_customizer_select_choices' ) ) {
 	 */
 	function iscp_get_customizer_select_choices() {
 		$design_presets = array();
+		$header_menus   = array(
+			'0' => __( 'Use Primary Menu Location', 'iscp' ),
+		);
 
 		foreach ( iscp_get_design_presets() as $preset_key => $preset ) {
 			$design_presets[ $preset_key ] = $preset['label'];
 		}
 
+		$nav_menus = wp_get_nav_menus();
+
+		if ( ! is_wp_error( $nav_menus ) ) {
+			foreach ( $nav_menus as $menu ) {
+				$header_menus[ (string) $menu->term_id ] = $menu->name;
+			}
+		}
+
 		return array(
 			'iscp_design_preset'      => $design_presets,
+			'iscp_primary_menu_override' => $header_menus,
 			'iscp_layout_preset'      => array(
 				'classic-corporate'      => __( 'Classic Corporate', 'iscp' ),
 				'saas-landing'           => __( 'SaaS Landing', 'iscp' ),
@@ -621,6 +634,10 @@ if ( ! function_exists( 'iscp_customize_register' ) ) {
 		iscp_add_customizer_control( $wp_customize, 'iscp_footer_credit_url', 'iscp_branding', __( 'Footer Credit URL', 'iscp' ), 'url', $defaults['iscp_footer_credit_url'] );
 
 		iscp_add_customizer_control( $wp_customize, 'iscp_header_layout', 'iscp_header', __( 'Header Layout Style', 'iscp' ), 'select', $defaults['iscp_header_layout'], $choices['iscp_header_layout'] );
+		iscp_add_customizer_control( $wp_customize, 'iscp_primary_menu_override', 'iscp_header', __( 'Header Menu', 'iscp' ), 'select', $defaults['iscp_primary_menu_override'], $choices['iscp_primary_menu_override'] );
+		if ( $wp_customize->get_control( 'iscp_primary_menu_override' ) ) {
+			$wp_customize->get_control( 'iscp_primary_menu_override' )->description = __( 'Create menu structure in Appearance > Menus, then choose it here. Icons are detected from titles, URLs or CSS classes such as iscp-icon-cloud, iscp-icon-ai and iscp-icon-shield.', 'iscp' );
+		}
 		iscp_add_customizer_control( $wp_customize, 'iscp_sticky_header_enabled', 'iscp_header', __( 'Enable Sticky Header', 'iscp' ), 'checkbox', $defaults['iscp_sticky_header_enabled'] );
 		iscp_add_customizer_control( $wp_customize, 'iscp_header_cta_1_text', 'iscp_header', __( 'Header CTA 1 Text', 'iscp' ), 'text', $defaults['iscp_header_cta_1_text'] );
 		iscp_add_customizer_control( $wp_customize, 'iscp_header_cta_1_url', 'iscp_header', __( 'Header CTA 1 URL', 'iscp' ), 'url', $defaults['iscp_header_cta_1_url'] );
