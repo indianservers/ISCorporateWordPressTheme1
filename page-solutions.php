@@ -206,6 +206,8 @@ get_header();
 	);
 	?>
 
+	<?php get_template_part( 'template-parts/sections/solutions' ); ?>
+
 	<section class="iscp-section">
 		<div class="iscp-container iscp-template-split">
 			<div class="iscp-page-copy">
@@ -219,7 +221,6 @@ get_header();
 		</div>
 	</section>
 
-	<?php get_template_part( 'template-parts/sections/solutions' ); ?>
 	<?php get_template_part( 'template-parts/sections/cta' ); ?>
 	<?php endif; ?>
 </main>

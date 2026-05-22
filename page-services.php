@@ -35,6 +35,16 @@ get_header();
 	);
 	?>
 
+	<section class="iscp-section iscp-section-muted iscp-page-priority-grid">
+		<div class="iscp-container">
+			<div class="iscp-card-grid iscp-card-grid-4">
+				<?php foreach ( $iscp_services as $iscp_service ) : ?>
+					<?php get_template_part( 'template-parts/cards/card', 'service', $iscp_service + array( 'label' => __( 'Indian Servers', 'iscp' ) ) ); ?>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+
 	<section class="iscp-section">
 		<div class="iscp-container iscp-template-split">
 			<div class="iscp-page-copy">
@@ -45,16 +55,6 @@ get_header();
 			<figure class="iscp-page-image-card">
 				<img src="<?php echo esc_url( $iscp_server_image ); ?>" alt="<?php esc_attr_e( 'Indian Servers server and cloud hosting infrastructure', 'iscp' ); ?>" loading="lazy" decoding="async">
 			</figure>
-		</div>
-	</section>
-
-	<section class="iscp-section iscp-section-muted">
-		<div class="iscp-container">
-			<div class="iscp-card-grid iscp-card-grid-4">
-				<?php foreach ( $iscp_services as $iscp_service ) : ?>
-					<?php get_template_part( 'template-parts/cards/card', 'service', $iscp_service + array( 'label' => __( 'Indian Servers', 'iscp' ) ) ); ?>
-				<?php endforeach; ?>
-			</div>
 		</div>
 	</section>
 
