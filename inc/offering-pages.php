@@ -71,7 +71,7 @@ if ( ! function_exists( 'iscp_apply_offering_theme_mods' ) ) {
 			foreach ( $pages[ $group ]['items'] as $slug => $item ) {
 				$prefix = 'iscp_' . $group . '_' . str_replace( '-', '_', $slug );
 
-				foreach ( array( 'title', 'summary' ) as $field ) {
+				foreach ( array( 'title', 'summary', 'icon', 'url' ) as $field ) {
 					$value = get_theme_mod( $prefix . '_' . $field, isset( $item[ $field ] ) ? $item[ $field ] : '' );
 
 					if ( '' !== trim( (string) $value ) ) {
@@ -122,7 +122,7 @@ if ( ! function_exists( 'iscp_get_offering_page' ) ) {
 		$item          = $pages[ $group ]['items'][ $slug ];
 		$item['slug']  = $slug;
 		$item['group'] = $group;
-		$item['url']   = home_url( '/' . $pages[ $group ]['base'] . '/' . $slug . '/' );
+		$item['url']   = ! empty( $item['url'] ) ? $item['url'] : home_url( '/' . $pages[ $group ]['base'] . '/' . $slug . '/' );
 
 		return $item;
 	}

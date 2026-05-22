@@ -56,7 +56,7 @@ get_header();
 		<div class="iscp-container">
 			<div class="iscp-offering-card-grid">
 				<?php foreach ( $iscp_group_data['items'] as $iscp_slug => $iscp_item ) : ?>
-					<a class="iscp-offering-card" href="<?php echo esc_url( home_url( '/' . $iscp_group_data['base'] . '/' . $iscp_slug . '/' ) ); ?>">
+					<a class="iscp-offering-card" href="<?php echo esc_url( ! empty( $iscp_item['url'] ) ? $iscp_item['url'] : home_url( '/' . $iscp_group_data['base'] . '/' . $iscp_slug . '/' ) ); ?>">
 						<span aria-hidden="true">
 							<svg viewBox="0 0 24 24" focusable="false"><path d="<?php echo esc_attr( iscp_get_offering_icon_path( isset( $iscp_item['icon'] ) ? $iscp_item['icon'] : 'cube' ) ); ?>"/></svg>
 						</span>

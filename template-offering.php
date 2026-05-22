@@ -62,7 +62,7 @@ get_header();
 			</div>
 			<div class="iscp-offering-link-grid">
 				<?php foreach ( array_slice( $iscp_pages[ $iscp_group ]['items'], 0, 8, true ) as $iscp_related_slug => $iscp_related ) : ?>
-					<a href="<?php echo esc_url( home_url( '/' . $iscp_pages[ $iscp_group ]['base'] . '/' . $iscp_related_slug . '/' ) ); ?>">
+					<a href="<?php echo esc_url( ! empty( $iscp_related['url'] ) ? $iscp_related['url'] : home_url( '/' . $iscp_pages[ $iscp_group ]['base'] . '/' . $iscp_related_slug . '/' ) ); ?>">
 						<span><?php echo esc_html( $iscp_related['title'] ); ?></span>
 					</a>
 				<?php endforeach; ?>

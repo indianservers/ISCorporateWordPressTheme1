@@ -681,6 +681,23 @@ if ( ! function_exists( 'iscp_customize_register' ) ) {
 
 		if ( function_exists( 'iscp_get_offering_pages' ) ) {
 			$offering_pages = iscp_get_offering_pages();
+			$icon_choices   = array(
+				'team'      => __( 'Team / HR', 'iscp' ),
+				'education' => __( 'Education', 'iscp' ),
+				'crm'       => __( 'CRM', 'iscp' ),
+				'inventory' => __( 'Inventory', 'iscp' ),
+				'restaurant' => __( 'Restaurant', 'iscp' ),
+				'cube'      => __( 'ERP / Product', 'iscp' ),
+				'chart'     => __( 'Reports / Growth', 'iscp' ),
+				'ai'        => __( 'AI', 'iscp' ),
+				'cloud'     => __( 'Cloud', 'iscp' ),
+				'code'      => __( 'Code / Software', 'iscp' ),
+				'web'       => __( 'Web App', 'iscp' ),
+				'mobile'    => __( 'Mobile App', 'iscp' ),
+				'ar'        => __( 'AR / VR', 'iscp' ),
+				'shield'    => __( 'Security', 'iscp' ),
+				'design'    => __( 'Design', 'iscp' ),
+			);
 
 			foreach ( array( 'products' => 'iscp_products', 'services' => 'iscp_services_edit' ) as $group => $section ) {
 				if ( empty( $offering_pages[ $group ]['items'] ) ) {
@@ -715,6 +732,33 @@ if ( ! function_exists( 'iscp_customize_register' ) ) {
 						),
 						'textarea',
 						isset( $item['summary'] ) ? $item['summary'] : ''
+					);
+
+					iscp_add_customizer_control(
+						$wp_customize,
+						$prefix . '_icon',
+						$section,
+						sprintf(
+							/* translators: %s: product/service name. */
+							__( '%s - Icon', 'iscp' ),
+							$title
+						),
+						'select',
+						isset( $item['icon'] ) ? $item['icon'] : 'cube',
+						$icon_choices
+					);
+
+					iscp_add_customizer_control(
+						$wp_customize,
+						$prefix . '_url',
+						$section,
+						sprintf(
+							/* translators: %s: product/service name. */
+							__( '%s - Learn More Link', 'iscp' ),
+							$title
+						),
+						'url',
+						home_url( '/' . $offering_pages[ $group ]['base'] . '/' . $slug . '/' )
 					);
 
 					if ( ! empty( $item['features'] ) ) {
