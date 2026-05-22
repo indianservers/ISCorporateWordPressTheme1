@@ -2152,6 +2152,115 @@ input[type="submit"] {
 	margin-top: 1.5rem;
 }
 
+.iscp-entry-content .iscp-manual-hero {
+	padding: clamp(2rem, 5vw, 4rem);
+	margin-bottom: 1.5rem;
+	color: #ffffff;
+	background:
+		radial-gradient(circle at 82% 16%, rgba(255, 216, 77, 0.16), transparent 25%),
+		radial-gradient(circle at 16% 12%, rgba(56, 189, 248, 0.2), transparent 28%),
+		linear-gradient(135deg, rgba(4, 15, 33, 0.96), rgba(9, 29, 52, 0.92));
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: var(--iscp-radius-xl);
+	box-shadow: 0 24px 70px rgba(2, 6, 23, 0.22);
+}
+
+.iscp-entry-content .iscp-manual-hero h1,
+.iscp-entry-content .iscp-manual-hero p {
+	max-width: 860px;
+	color: inherit;
+}
+
+.iscp-entry-content .iscp-manual-metrics,
+.iscp-entry-content .iscp-manual-grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 1rem;
+	margin-block: 1.5rem;
+}
+
+.iscp-entry-content .iscp-manual-grid {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.iscp-entry-content .iscp-manual-metrics article,
+.iscp-entry-content .iscp-manual-grid article,
+.iscp-entry-content .iscp-manual-process,
+.iscp-entry-content .iscp-manual-cta {
+	padding: clamp(1.2rem, 3vw, 2rem);
+	background: rgba(255, 255, 255, 0.88);
+	border: 1px solid var(--iscp-border);
+	border-radius: var(--iscp-card-radius);
+	box-shadow: 0 14px 38px rgba(15, 23, 42, 0.08);
+}
+
+.iscp-entry-content .iscp-manual-metrics strong {
+	display: block;
+	color: var(--iscp-primary);
+	font-size: clamp(1.35rem, 2.5vw, 2.2rem);
+	line-height: 1;
+}
+
+.iscp-entry-content .iscp-manual-metrics span {
+	display: block;
+	margin-top: 0.45rem;
+	color: var(--iscp-muted);
+	font-weight: 750;
+}
+
+.iscp-entry-content .iscp-manual-process {
+	margin-block: 1.5rem;
+	background:
+		linear-gradient(135deg, rgba(15, 91, 214, 0.08), transparent 40%),
+		#ffffff;
+}
+
+.iscp-entry-content .iscp-manual-process ol {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 0.9rem;
+	padding: 0;
+	margin: 1rem 0 0;
+	list-style: none;
+	counter-reset: iscp-process;
+}
+
+.iscp-entry-content .iscp-manual-process li {
+	position: relative;
+	padding: 1rem;
+	background: var(--iscp-surface-2);
+	border: 1px solid var(--iscp-border);
+	border-radius: 12px;
+	counter-increment: iscp-process;
+}
+
+.iscp-entry-content .iscp-manual-process li::before {
+	display: inline-grid;
+	width: 28px;
+	height: 28px;
+	margin-right: 0.45rem;
+	place-items: center;
+	color: #241033;
+	background: linear-gradient(135deg, #ffd84d, #ffb627);
+	border-radius: 999px;
+	content: counter(iscp-process);
+	font-size: 0.82rem;
+	font-weight: 900;
+}
+
+.iscp-entry-content .iscp-manual-cta {
+	margin-top: 1.5rem;
+	color: #ffffff;
+	background:
+		radial-gradient(circle at 78% 20%, rgba(255, 216, 77, 0.18), transparent 26%),
+		linear-gradient(135deg, rgba(4, 15, 33, 0.96), rgba(18, 24, 42, 0.92));
+}
+
+.iscp-entry-content .iscp-manual-cta h2,
+.iscp-entry-content .iscp-manual-cta p {
+	color: inherit;
+}
+
 .iscp-section-photo {
 	position: relative;
 	margin: 0 0 1.5rem;
@@ -3049,6 +3158,9 @@ input[type="submit"] {
 	.iscp-offering-card-grid,
 	.iscp-offering-link-grid,
 	.iscp-recent-post-grid,
+	.iscp-entry-content .iscp-manual-metrics,
+	.iscp-entry-content .iscp-manual-grid,
+	.iscp-entry-content .iscp-manual-process ol,
 	.iscp-logo-strip {
 		grid-template-columns: 1fr;
 	}
