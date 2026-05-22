@@ -137,6 +137,9 @@ if ( iscp_get_theme_mod( 'iscp_sticky_header_enabled', true ) ) {
 			</nav>
 
 			<div class="iscp-header-actions">
+				<?php if ( function_exists( 'iscp_render_language_selector' ) ) : ?>
+					<?php iscp_render_language_selector(); ?>
+				<?php endif; ?>
 				<form class="iscp-global-search" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 					<label class="iscp-screen-reader-text" for="iscp-global-search-field"><?php esc_html_e( 'Search Indian Servers', 'iscp' ); ?></label>
 					<input id="iscp-global-search-field" type="search" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" placeholder="<?php esc_attr_e( 'Search services, products...', 'iscp' ); ?>">

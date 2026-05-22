@@ -29,7 +29,7 @@ $iscp_usa_contact   = array(
 	'team_email' => '',
 	'address'    => __( '752 Century Farm Ln, Naperville, IL 60563, United States', 'iscp' ),
 );
-$iscp_locations     = __( 'India | USA | Australia | Dubai', 'iscp' );
+$iscp_locations     = __( 'India | USA | Dubai | South Africa | Australia | Europe', 'iscp' );
 $iscp_hours         = __( '9 AM - 5 PM', 'iscp' );
 $iscp_whatsapp      = 'https://wa.me/919618222220?text=' . rawurlencode( __( 'Hello Indian Servers, I would like to discuss a project.', 'iscp' ) );
 $iscp_socials    = array(

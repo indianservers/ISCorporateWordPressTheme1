@@ -50,6 +50,144 @@ if ( ! function_exists( 'iscp_get_meta_description' ) ) {
 	}
 }
 
+if ( ! function_exists( 'iscp_get_international_regions' ) ) {
+	/**
+	 * Return priority international markets.
+	 *
+	 * @return array
+	 */
+	function iscp_get_international_regions() {
+		return array(
+			'IN' => __( 'India', 'iscp' ),
+			'US' => __( 'United States', 'iscp' ),
+			'AE' => __( 'United Arab Emirates / Dubai', 'iscp' ),
+			'ZA' => __( 'South Africa', 'iscp' ),
+			'AU' => __( 'Australia', 'iscp' ),
+			'GB' => __( 'United Kingdom', 'iscp' ),
+			'EU' => __( 'Europe', 'iscp' ),
+		);
+	}
+}
+
+if ( ! function_exists( 'iscp_get_language_options' ) ) {
+	/**
+	 * Return planned language options. English remains the default content language.
+	 *
+	 * @return array
+	 */
+	function iscp_get_language_options() {
+		return array(
+			'en' => array( 'label' => __( 'English', 'iscp' ), 'native' => 'English', 'hreflang' => 'en', 'default' => true ),
+			'ar' => array( 'label' => __( 'Arabic', 'iscp' ), 'native' => 'العربية', 'hreflang' => 'ar' ),
+			'fr' => array( 'label' => __( 'French', 'iscp' ), 'native' => 'Français', 'hreflang' => 'fr' ),
+			'de' => array( 'label' => __( 'German', 'iscp' ), 'native' => 'Deutsch', 'hreflang' => 'de' ),
+			'es' => array( 'label' => __( 'Spanish', 'iscp' ), 'native' => 'Español', 'hreflang' => 'es' ),
+			'af' => array( 'label' => __( 'Afrikaans', 'iscp' ), 'native' => 'Afrikaans', 'hreflang' => 'af' ),
+		);
+	}
+}
+
+if ( ! function_exists( 'iscp_get_current_url' ) ) {
+	/**
+	 * Return the current front-end URL.
+	 *
+	 * @return string
+	 */
+	function iscp_get_current_url() {
+		if ( is_front_page() ) {
+			return home_url( '/' );
+		}
+
+		if ( is_singular() ) {
+			return get_permalink();
+		}
+
+		$context = function_exists( 'iscp_get_seo_context' ) ? iscp_get_seo_context() : array();
+
+		if ( ! empty( $context['url'] ) ) {
+			return $context['url'];
+		}
+
+		global $wp;
+
+		$request = isset( $wp->request ) ? $wp->request : '';
+
+		return home_url( '/' . ltrim( $request, '/' ) . ( $request ? '/' : '' ) );
+	}
+}
+
+if ( ! function_exists( 'iscp_get_language_url' ) ) {
+	/**
+	 * Return a language URL for current page.
+	 *
+	 * @param string $language Language key.
+	 * @return string
+	 */
+	function iscp_get_language_url( $language ) {
+		$url = remove_query_arg( 'lang', iscp_get_current_url() );
+
+		if ( 'en' === $language ) {
+			return $url;
+		}
+
+		return add_query_arg( 'lang', sanitize_key( $language ), $url );
+	}
+}
+
+if ( ! function_exists( 'iscp_output_language_alternates' ) ) {
+	/**
+	 * Output hreflang alternates for international discovery.
+	 */
+	function iscp_output_language_alternates() {
+		if ( is_admin() || iscp_is_major_seo_plugin_active() ) {
+			return;
+		}
+
+		foreach ( iscp_get_language_options() as $key => $language ) {
+			printf(
+				'<link rel="alternate" hreflang="%1$s" href="%2$s">' . "\n",
+				esc_attr( $language['hreflang'] ),
+				esc_url( iscp_get_language_url( $key ) )
+			);
+		}
+
+		printf( '<link rel="alternate" hreflang="x-default" href="%s">' . "\n", esc_url( iscp_get_language_url( 'en' ) ) );
+	}
+}
+add_action( 'wp_head', 'iscp_output_language_alternates', 2 );
+
+if ( ! function_exists( 'iscp_render_language_selector' ) ) {
+	/**
+	 * Render a compact language selector. English is the current/default content.
+	 */
+	function iscp_render_language_selector() {
+		$languages = iscp_get_language_options();
+		$current   = isset( $_GET['lang'] ) ? sanitize_key( wp_unslash( $_GET['lang'] ) ) : 'en'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+
+		if ( ! isset( $languages[ $current ] ) ) {
+			$current = 'en';
+		}
+		?>
+		<div class="iscp-language-selector">
+			<button type="button" aria-haspopup="true" aria-expanded="false">
+				<span aria-hidden="true">EN</span>
+				<?php echo esc_html( strtoupper( $current ) ); ?>
+			</button>
+			<ul aria-label="<?php esc_attr_e( 'Select language', 'iscp' ); ?>">
+				<?php foreach ( $languages as $key => $language ) : ?>
+					<li>
+						<a href="<?php echo esc_url( iscp_get_language_url( $key ) ); ?>" lang="<?php echo esc_attr( $language['hreflang'] ); ?>" <?php echo $key === $current ? 'aria-current="true"' : ''; ?>>
+							<strong><?php echo esc_html( strtoupper( $key ) ); ?></strong>
+							<span><?php echo esc_html( $language['native'] ); ?></span>
+						</a>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+		<?php
+	}
+}
+
 if ( ! function_exists( 'iscp_trim_meta_description' ) ) {
 	/**
 	 * Trim text for search/social descriptions.
@@ -113,7 +251,7 @@ if ( ! function_exists( 'iscp_get_seo_context' ) ) {
 		if ( is_front_page() ) {
 			return array(
 				'title'       => __( 'Indian Servers | Software Development, SaaS Products, AI and Cloud Hosting', 'iscp' ),
-				'description' => __( 'Indian Servers builds SaaS products, custom software, AI systems, cloud hosting, VAPT and managed technology solutions for businesses in India, USA and global markets.', 'iscp' ),
+				'description' => __( 'Indian Servers builds SaaS products, custom software, AI systems, cloud hosting, VAPT and managed technology solutions for India, USA, Dubai, South Africa, Australia and Europe.', 'iscp' ),
 				'url'         => home_url( '/' ),
 			);
 		}
@@ -137,7 +275,7 @@ if ( ! function_exists( 'iscp_get_seo_context' ) ) {
 				),
 				'contact'  => array(
 					'title'       => __( 'Contact Indian Servers | India and USA Software Team', 'iscp' ),
-					'description' => __( 'Contact Indian Servers in India and the USA for software development, SaaS products, cloud hosting, AI, VAPT and managed IT services.', 'iscp' ),
+					'description' => __( 'Contact Indian Servers in India, USA, Dubai, South Africa, Australia and Europe for software development, cloud hosting, AI, VAPT and managed IT services.', 'iscp' ),
 				),
 				'products' => array(
 					'title'       => __( 'Indian Servers Products | HRMS, School ERP, CRM, Inventory and Cloud', 'iscp' ),
@@ -179,7 +317,7 @@ if ( ! function_exists( 'iscp_output_basic_seo_meta' ) ) {
 
 		$context     = iscp_get_seo_context();
 		$description = iscp_get_meta_description();
-		$url         = ! empty( $context['url'] ) ? $context['url'] : ( is_singular() ? get_permalink() : home_url( add_query_arg( array(), $GLOBALS['wp']->request ?? '' ) ) );
+		$url         = ! empty( $context['url'] ) ? $context['url'] : iscp_get_current_url();
 
 		if ( $description ) {
 			echo '<meta name="description" content="' . esc_attr( $description ) . '">' . "\n";
@@ -337,6 +475,7 @@ if ( ! function_exists( 'iscp_output_schema' ) ) {
 		$schema      = array();
 		$logo_url    = iscp_get_social_image();
 		$description = iscp_get_meta_description();
+		$regions     = array_keys( iscp_get_international_regions() );
 
 		$schema[] = array_filter(
 			array(
@@ -352,7 +491,7 @@ if ( ! function_exists( 'iscp_output_schema' ) ) {
 						'telephone'   => '+91-9618222220',
 						'email'       => 'info@indianservers.com',
 						'contactType' => 'sales',
-						'areaServed'  => array( 'IN', 'US', 'AU', 'AE' ),
+						'areaServed'  => $regions,
 					),
 					array(
 						'@type'       => 'ContactPoint',
@@ -390,6 +529,7 @@ if ( ! function_exists( 'iscp_output_schema' ) ) {
 				'name'        => get_bloginfo( 'name' ),
 				'url'         => $site_url,
 				'description' => $description,
+				'areaServed'  => $regions,
 			)
 		);
 

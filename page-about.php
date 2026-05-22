@@ -29,7 +29,7 @@ $iscp_industries = array(
 $iscp_strengths = array(
 	array( 'title' => __( 'End-to-End Outsourcing', 'iscp' ), 'copy' => __( 'From business requirement study to design, development, hosting, security, maintenance and support.', 'iscp' ) ),
 	array( 'title' => __( 'Software Development Centers in India', 'iscp' ), 'copy' => __( 'Delivery teams in India build and support business applications for domestic and international customers.', 'iscp' ) ),
-	array( 'title' => __( 'Global Marketing Presence', 'iscp' ), 'copy' => __( 'Indian Servers has business presence across India, USA and Dubai with a growing international customer base.', 'iscp' ) ),
+	array( 'title' => __( 'Global Marketing Presence', 'iscp' ), 'copy' => __( 'Indian Servers has business presence across India, USA, Dubai, South Africa, Australia and Europe with a growing international customer base.', 'iscp' ) ),
 );
 
 get_header();
@@ -50,8 +50,8 @@ get_header();
 			<div class="iscp-about-visual-card">
 				<img src="<?php echo esc_url( $iscp_team_image ); ?>" alt="<?php esc_attr_e( 'Indian Servers software development and cloud operations workspace', 'iscp' ); ?>" loading="lazy" decoding="async">
 				<div class="iscp-about-visual-panel">
-					<strong><?php esc_html_e( 'India | USA | Australia', 'iscp' ); ?></strong>
-					<span><?php esc_html_e( 'Customer base and operations across 3 countries with software development centers in India.', 'iscp' ); ?></span>
+					<strong><?php esc_html_e( 'India | USA | Australia | Dubai', 'iscp' ); ?></strong>
+					<span><?php esc_html_e( 'Customer base and operations across 3 countries with delivery reach into Dubai, South Africa and Europe.', 'iscp' ); ?></span>
 				</div>
 			</div>
 		</div>
@@ -111,13 +111,15 @@ get_header();
 			<img src="<?php echo esc_url( $iscp_cloud_image ); ?>" alt="<?php esc_attr_e( 'Indian Servers global cloud technology presence', 'iscp' ); ?>" loading="lazy" decoding="async">
 			<div>
 				<p class="iscp-eyebrow"><?php esc_html_e( 'Global Presence', 'iscp' ); ?></p>
-				<h2><?php esc_html_e( 'Marketing presence across India, USA and Dubai', 'iscp' ); ?></h2>
-				<p><?php esc_html_e( 'Indian Servers has operations and a customer base spanning across 3 countries, with software development centers in India and business reach across India, USA, Dubai and Australia.', 'iscp' ); ?></p>
+				<h2><?php esc_html_e( 'Marketing presence across India, USA, Dubai and global regions', 'iscp' ); ?></h2>
+				<p><?php esc_html_e( 'Indian Servers has operations and a customer base spanning across 3 countries, with software development centers in India and business reach across India, USA, Dubai, South Africa, Australia and Europe.', 'iscp' ); ?></p>
 				<div class="iscp-about-location-row">
 					<span><?php esc_html_e( 'India', 'iscp' ); ?></span>
 					<span><?php esc_html_e( 'USA', 'iscp' ); ?></span>
-					<span><?php esc_html_e( 'Australia', 'iscp' ); ?></span>
 					<span><?php esc_html_e( 'Dubai', 'iscp' ); ?></span>
+					<span><?php esc_html_e( 'South Africa', 'iscp' ); ?></span>
+					<span><?php esc_html_e( 'Australia', 'iscp' ); ?></span>
+					<span><?php esc_html_e( 'Europe', 'iscp' ); ?></span>
 				</div>
 			</div>
 		</div>
