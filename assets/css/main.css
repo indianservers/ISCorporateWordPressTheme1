@@ -2134,6 +2134,91 @@ input[type="submit"] {
 	font-size: clamp(1.25rem, 2vw, 1.7rem);
 }
 
+.iscp-contact-office-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--iscp-space-md);
+	margin-bottom: var(--iscp-space-md);
+}
+
+.iscp-contact-meta-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: var(--iscp-space-md);
+}
+
+.iscp-contact-office-card {
+	background:
+		radial-gradient(circle at 88% 12%, rgba(18, 194, 233, 0.16), transparent 28%),
+		#ffffff;
+	border: 1px solid var(--iscp-border);
+	border-radius: var(--iscp-radius-xl);
+	box-shadow: var(--iscp-shadow-sm);
+}
+
+.iscp-contact-person {
+	display: grid;
+	gap: 0.25rem;
+	margin: 1rem 0;
+	padding: 1rem;
+	background: color-mix(in srgb, var(--iscp-primary), transparent 94%);
+	border: 1px solid color-mix(in srgb, var(--iscp-primary), transparent 84%);
+	border-radius: var(--iscp-radius);
+}
+
+.iscp-contact-person strong {
+	color: var(--iscp-heading);
+	font-size: 1.1rem;
+}
+
+.iscp-contact-person span {
+	color: var(--iscp-muted);
+	font-weight: 750;
+}
+
+.iscp-contact-list {
+	display: grid;
+	gap: 0.85rem;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.iscp-contact-list li {
+	display: grid;
+	gap: 0.25rem;
+	padding-bottom: 0.85rem;
+	border-bottom: 1px solid var(--iscp-border);
+}
+
+.iscp-contact-list li:last-child {
+	padding-bottom: 0;
+	border-bottom: 0;
+}
+
+.iscp-contact-list span {
+	color: var(--iscp-muted);
+	font-size: 0.78rem;
+	font-weight: 900;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.iscp-contact-list a,
+.iscp-contact-list em {
+	color: var(--iscp-heading);
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: 800;
+	line-height: 1.45;
+	text-decoration: none;
+	overflow-wrap: anywhere;
+}
+
+.iscp-contact-list a:hover {
+	color: var(--iscp-primary);
+}
+
 .iscp-contact-card h2 a,
 .iscp-contact-card p a {
 	color: inherit;
@@ -3280,6 +3365,8 @@ input[type="submit"] {
 	.iscp-feature-list,
 	.iscp-industry-grid,
 	.iscp-capability-main-grid,
+	.iscp-contact-office-grid,
+	.iscp-contact-meta-grid,
 	.iscp-offering-card-grid,
 	.iscp-offering-link-grid,
 	.iscp-recent-post-grid {
@@ -3344,6 +3431,8 @@ input[type="submit"] {
 	.iscp-industry-grid,
 	.iscp-stats-grid,
 	.iscp-capability-main-grid,
+	.iscp-contact-office-grid,
+	.iscp-contact-meta-grid,
 	.iscp-offering-card-grid,
 	.iscp-offering-link-grid,
 	.iscp-recent-post-grid,

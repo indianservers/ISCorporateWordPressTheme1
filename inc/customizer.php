@@ -73,7 +73,7 @@ if ( ! function_exists( 'iscp_get_customizer_defaults' ) ) {
 			'iscp_phone_display'                => '+91 9618222220',
 			'iscp_phone_tel'                    => '+919618222220',
 			'iscp_email'                        => 'info@indianservers.com',
-			'iscp_address'                      => __( 'India | USA | Aus', 'iscp' ),
+			'iscp_address'                      => __( 'India | USA | Australia | Dubai', 'iscp' ),
 			'iscp_business_hours'               => __( '9 AM - 5 PM', 'iscp' ),
 			'iscp_whatsapp_number'              => '919618222220',
 			'iscp_google_maps_url'              => '',
