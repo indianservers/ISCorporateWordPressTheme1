@@ -1753,6 +1753,10 @@ input[type="submit"] {
 	gap: var(--iscp-space-md);
 }
 
+.iscp-offering-grid-section-compact {
+	padding-top: clamp(2rem, 4vw, 4rem);
+}
+
 .iscp-offering-card,
 .iscp-offering-link-grid a,
 .iscp-offering-feature-card {
