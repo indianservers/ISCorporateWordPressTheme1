@@ -426,7 +426,8 @@ input[type="submit"] {
 }
 
 .iscp-site-tagline {
-	margin: 0.2rem 0 0;
+	max-width: 250px;
+	margin: 0;
 	color: rgba(255, 255, 255, 0.68);
 	font-size: 0.78rem;
 	line-height: 1.2;
@@ -604,11 +605,15 @@ input[type="submit"] {
 	display: flex;
 	align-items: center;
 	gap: var(--iscp-space-lg);
-	min-height: 76px;
+	min-height: 68px;
 }
 
 .iscp-site-branding {
+	display: flex;
 	flex: 0 0 auto;
+	align-items: center;
+	gap: 0.75rem;
+	min-width: 168px;
 }
 
 .custom-logo-link,
@@ -623,11 +628,16 @@ input[type="submit"] {
 
 .custom-logo,
 .iscp-brand-logo {
-	max-width: 220px;
-	max-height: 62px;
+	max-width: 154px;
+	max-height: 42px;
 	width: auto;
 	height: auto;
 	display: block;
+}
+
+.iscp-brand-logo-link {
+	flex: 0 0 auto;
+	padding: 0.12rem 0;
 }
 
 .iscp-primary-navigation {
@@ -2073,6 +2083,52 @@ input[type="submit"] {
 	line-height: 1.6;
 }
 
+.iscp-index-proof-section {
+	padding-block: clamp(1.6rem, 3vw, 2.6rem);
+	background: #ffffff;
+}
+
+.iscp-index-proof-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.iscp-index-proof-card {
+	padding: clamp(1rem, 2vw, 1.35rem);
+	background:
+		linear-gradient(135deg, rgba(18, 214, 255, 0.08), rgba(255, 199, 52, 0.08)),
+		#ffffff;
+	border: 1px solid var(--iscp-border);
+	border-radius: 18px;
+	box-shadow: 0 15px 40px rgba(15, 23, 42, 0.06);
+}
+
+.iscp-index-proof-card span {
+	display: inline-grid;
+	width: 36px;
+	height: 36px;
+	margin-bottom: 0.85rem;
+	place-items: center;
+	color: #07101f;
+	background: linear-gradient(135deg, #ffd84a, #ffb229);
+	border-radius: 12px;
+	font-size: 0.82rem;
+	font-weight: 900;
+}
+
+.iscp-index-proof-card h2 {
+	margin-bottom: 0.55rem;
+	font-size: clamp(1.05rem, 1.7vw, 1.28rem);
+	line-height: 1.25;
+}
+
+.iscp-index-proof-card p {
+	margin: 0;
+	color: var(--iscp-muted);
+	line-height: 1.65;
+}
+
 .iscp-offering-card-actions {
 	display: flex;
 	flex-wrap: wrap;
@@ -2385,6 +2441,44 @@ input[type="submit"] {
 	color: rgba(255, 255, 255, 0.7);
 	font-size: 0.94rem;
 	line-height: 1.55;
+}
+
+.iscp-solution-global-section {
+	padding-top: clamp(2rem, 4vw, 3.4rem);
+}
+
+.iscp-solution-global-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+	gap: clamp(1.25rem, 3vw, 2rem);
+	align-items: start;
+}
+
+.iscp-solution-global-list {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1rem;
+}
+
+.iscp-solution-global-list div {
+	display: grid;
+	gap: 0.5rem;
+	padding: 1.1rem;
+	background:
+		linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(239, 246, 255, 0.94));
+	border: 1px solid var(--iscp-border);
+	border-radius: 18px;
+	box-shadow: 0 14px 36px rgba(15, 23, 42, 0.06);
+}
+
+.iscp-solution-global-list strong {
+	color: var(--iscp-heading);
+	font-size: 1rem;
+}
+
+.iscp-solution-global-list span {
+	color: var(--iscp-muted);
+	line-height: 1.6;
 }
 
 .iscp-home-card,
@@ -2750,7 +2844,7 @@ input[type="submit"] {
 	color: #ffffff;
 	background: linear-gradient(135deg, var(--iscp-primary), var(--iscp-secondary));
 	border-radius: 999px;
-	content: "✓";
+	content: "\\2713";
 	font-size: 0.78rem;
 }
 
@@ -3801,9 +3895,12 @@ input[type="submit"] {
 	.iscp-capability-main-grid,
 	.iscp-contact-office-grid,
 	.iscp-contact-meta-grid,
+	.iscp-solution-global-grid,
+	.iscp-solution-global-list,
 	.iscp-offering-card-grid,
 	.iscp-offering-link-grid,
 	.iscp-offering-rich-grid,
+	.iscp-index-proof-grid,
 	.iscp-solution-map-grid,
 	.iscp-solution-bundles,
 	.iscp-recent-post-grid {
@@ -3875,9 +3972,12 @@ input[type="submit"] {
 	.iscp-capability-main-grid,
 	.iscp-contact-office-grid,
 	.iscp-contact-meta-grid,
+	.iscp-solution-global-grid,
+	.iscp-solution-global-list,
 	.iscp-offering-card-grid,
 	.iscp-offering-link-grid,
 	.iscp-offering-rich-grid,
+	.iscp-index-proof-grid,
 	.iscp-recent-post-grid,
 	.iscp-entry-content .iscp-manual-metrics,
 	.iscp-entry-content .iscp-manual-grid,
@@ -5191,7 +5291,7 @@ body.admin-bar .iscp-scroll-progress {
 	height: 18px;
 	place-items: center;
 	color: #ffffff;
-	content: "✓";
+	content: "\\2713";
 	background: linear-gradient(135deg, var(--iscp-primary), var(--iscp-accent));
 	border-radius: 999px;
 	font-size: 0.72rem;

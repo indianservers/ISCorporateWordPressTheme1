@@ -132,18 +132,6 @@ $iscp_social_links['Instagram'] = $iscp_social_links['Instagram'] ? $iscp_social
 			</ul>
 		</section>
 
-		<?php if ( iscp_get_theme_mod( 'iscp_newsletter_enabled', true ) && 'simple' !== $iscp_footer_layout ) : ?>
-			<section class="iscp-footer-newsletter">
-				<h3><?php esc_html_e( 'Newsletter', 'iscp' ); ?></h3>
-				<p><?php esc_html_e( 'Newsletter integration placeholder for future phases or compatible plugins.', 'iscp' ); ?></p>
-				<form class="iscp-newsletter-form" action="#" method="post">
-					<label class="iscp-screen-reader-text" for="iscp-newsletter-email"><?php esc_html_e( 'Email address', 'iscp' ); ?></label>
-					<input id="iscp-newsletter-email" type="email" placeholder="<?php esc_attr_e( 'Email address', 'iscp' ); ?>" disabled>
-					<button class="iscp-btn iscp-btn-primary" type="button" disabled><?php esc_html_e( 'Notify Me', 'iscp' ); ?></button>
-				</form>
-			</section>
-		<?php endif; ?>
-
 		<?php for ( $iscp_widget_index = 1; $iscp_widget_index <= 4; $iscp_widget_index++ ) : ?>
 			<?php if ( is_active_sidebar( 'footer-' . $iscp_widget_index ) ) : ?>
 				<section class="iscp-footer-column iscp-footer-widget-column">
@@ -157,6 +145,9 @@ $iscp_social_links['Instagram'] = $iscp_social_links['Instagram'] ? $iscp_social
 		<p>
 			<?php
 			$iscp_copyright = str_replace( '{year}', gmdate( 'Y' ), iscp_get_theme_mod( 'iscp_copyright_text' ) );
+			if ( false === strpos( $iscp_copyright, '2009' ) ) {
+				$iscp_copyright = preg_replace( '/&copy;\s*/', '&copy; 2009 to ', $iscp_copyright, 1 );
+			}
 			echo wp_kses_post( $iscp_copyright );
 			?>
 		</p>

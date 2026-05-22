@@ -192,6 +192,22 @@ get_header();
 			</div>
 		</section>
 
+		<section class="iscp-section iscp-section-muted iscp-solution-global-section">
+			<div class="iscp-container iscp-solution-global-grid">
+				<div class="iscp-page-copy">
+					<p class="iscp-eyebrow"><?php esc_html_e( 'Global Solution Coverage', 'iscp' ); ?></p>
+					<h2><?php esc_html_e( 'One technology partner for products, services and managed delivery', 'iscp' ); ?></h2>
+					<p><?php esc_html_e( 'Indian Servers supports requirements across India, USA, Dubai, Australia, South Africa, Europe and international markets. Solutions can start with a SaaS product, expand through custom modules, add mobile apps, connect cloud hosting and include VAPT or long-term maintenance.', 'iscp' ); ?></p>
+				</div>
+				<div class="iscp-solution-global-list">
+					<div><strong><?php esc_html_e( 'Product + Customization', 'iscp' ); ?></strong><span><?php esc_html_e( 'Use HRMS, School ERP, CRM, Inventory, LMS or POS as a base and extend it for your workflow.', 'iscp' ); ?></span></div>
+					<div><strong><?php esc_html_e( 'Software + Cloud', 'iscp' ); ?></strong><span><?php esc_html_e( 'Build the application and host it with SSL, backups, monitoring and support from one team.', 'iscp' ); ?></span></div>
+					<div><strong><?php esc_html_e( 'AI + Automation', 'iscp' ); ?></strong><span><?php esc_html_e( 'Add AI assistants, document intelligence and workflow automation to existing business systems.', 'iscp' ); ?></span></div>
+					<div><strong><?php esc_html_e( 'Security + Maintenance', 'iscp' ); ?></strong><span><?php esc_html_e( 'Review, harden, monitor and improve your applications after launch.', 'iscp' ); ?></span></div>
+				</div>
+			</div>
+		</section>
+
 		<?php get_template_part( 'template-parts/sections/cta' ); ?>
 	<?php else : ?>
 	<?php

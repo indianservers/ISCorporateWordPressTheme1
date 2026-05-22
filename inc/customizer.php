@@ -87,8 +87,8 @@ if ( ! function_exists( 'iscp_get_customizer_defaults' ) ) {
 			'iscp_social_behance'               => '',
 			'iscp_footer_layout'                => 'columns',
 			'iscp_footer_description'           => __( 'Indian Servers | Bridging Innovation and Tradition in IT', 'iscp' ),
-			'iscp_newsletter_enabled'           => true,
-			'iscp_copyright_text'               => __( '&copy; {year} Indian Servers Pvt. Ltd. All rights reserved.', 'iscp' ),
+			'iscp_newsletter_enabled'           => false,
+			'iscp_copyright_text'               => __( '&copy; 2009 to {year} Indian Servers Pvt. Ltd. All rights reserved.', 'iscp' ),
 			'iscp_animations_enabled'           => true,
 			'iscp_respect_reduced_motion'       => true,
 			'iscp_schema_enabled'               => true,
@@ -812,7 +812,6 @@ if ( ! function_exists( 'iscp_customize_register' ) ) {
 
 		iscp_add_customizer_control( $wp_customize, 'iscp_footer_layout', 'iscp_footer', __( 'Footer Layout', 'iscp' ), 'select', $defaults['iscp_footer_layout'], $choices['iscp_footer_layout'] );
 		iscp_add_customizer_control( $wp_customize, 'iscp_footer_description', 'iscp_footer', __( 'Footer Description', 'iscp' ), 'textarea', $defaults['iscp_footer_description'] );
-		iscp_add_customizer_control( $wp_customize, 'iscp_newsletter_enabled', 'iscp_footer', __( 'Enable Newsletter', 'iscp' ), 'checkbox', $defaults['iscp_newsletter_enabled'] );
 		iscp_add_customizer_control( $wp_customize, 'iscp_copyright_text', 'iscp_footer', __( 'Copyright Text', 'iscp' ), 'text', $defaults['iscp_copyright_text'] );
 
 		iscp_add_customizer_control( $wp_customize, 'iscp_animations_enabled', 'iscp_performance', __( 'Enable Animations', 'iscp' ), 'checkbox', $defaults['iscp_animations_enabled'] );

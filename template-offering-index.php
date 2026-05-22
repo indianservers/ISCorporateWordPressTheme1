@@ -58,6 +58,26 @@ get_header();
 
 	<?php iscp_render_manual_page_content_by_path( $iscp_group_data['base'] ); ?>
 
+	<section class="iscp-section iscp-index-proof-section">
+		<div class="iscp-container iscp-index-proof-grid">
+			<div class="iscp-index-proof-card">
+				<span><?php esc_html_e( '01', 'iscp' ); ?></span>
+				<h2><?php echo esc_html( $iscp_is_product ? __( 'Product thinking with implementation support', 'iscp' ) : __( 'Discovery before development', 'iscp' ) ); ?></h2>
+				<p><?php echo esc_html( $iscp_is_product ? __( 'Indian Servers products are built around real business workflows, role-based access, practical reports and supportable cloud deployment.', 'iscp' ) : __( 'Every service starts with requirement clarity, architecture choices, delivery priorities and a realistic implementation plan.', 'iscp' ) ); ?></p>
+			</div>
+			<div class="iscp-index-proof-card">
+				<span><?php esc_html_e( '02', 'iscp' ); ?></span>
+				<h2><?php esc_html_e( 'India, USA and global delivery', 'iscp' ); ?></h2>
+				<p><?php esc_html_e( 'We support organizations across India, USA, Dubai, Australia, South Africa and Europe with software, cloud, AI, security and maintenance services.', 'iscp' ); ?></p>
+			</div>
+			<div class="iscp-index-proof-card">
+				<span><?php esc_html_e( '03', 'iscp' ); ?></span>
+				<h2><?php esc_html_e( 'Built for long-term ownership', 'iscp' ); ?></h2>
+				<p><?php esc_html_e( 'The goal is not just launch. Indian Servers plans for hosting, backups, monitoring, security, performance, documentation and ongoing improvements.', 'iscp' ); ?></p>
+			</div>
+		</div>
+	</section>
+
 	<section class="iscp-section iscp-offering-catalog <?php echo $iscp_manual_has_content ? 'iscp-offering-grid-section-compact' : ''; ?>">
 		<div class="iscp-container">
 			<div class="iscp-section-heading iscp-offering-catalog-heading">
