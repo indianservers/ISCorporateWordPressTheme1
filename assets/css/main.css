@@ -587,6 +587,7 @@ input[type="submit"] {
 }
 
 .custom-logo-link,
+.iscp-brand-logo-link,
 .iscp-site-title {
 	display: inline-flex;
 	align-items: center;
@@ -595,9 +596,13 @@ input[type="submit"] {
 	text-decoration: none;
 }
 
-.custom-logo {
+.custom-logo,
+.iscp-brand-logo {
 	max-width: 220px;
 	max-height: 62px;
+	width: auto;
+	height: auto;
+	display: block;
 }
 
 .iscp-primary-navigation {

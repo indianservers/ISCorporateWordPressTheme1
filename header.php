@@ -71,13 +71,7 @@ if ( iscp_get_theme_mod( 'iscp_sticky_header_enabled', true ) ) {
 	<div class="iscp-header-main">
 		<div class="iscp-container iscp-header-inner">
 			<div class="iscp-site-branding">
-				<?php if ( has_custom_logo() ) : ?>
-					<?php the_custom_logo(); ?>
-				<?php else : ?>
-					<a class="iscp-site-title" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-						<?php bloginfo( 'name' ); ?>
-					</a>
-				<?php endif; ?>
+				<?php iscp_render_brand_logo(); ?>
 				<?php if ( iscp_get_theme_mod( 'iscp_site_tagline_override' ) ) : ?>
 					<p class="iscp-site-tagline"><?php echo esc_html( iscp_get_theme_mod( 'iscp_site_tagline_override' ) ); ?></p>
 				<?php endif; ?>

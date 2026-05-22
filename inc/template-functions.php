@@ -92,6 +92,72 @@ if ( ! function_exists( 'iscp_get_footer_description' ) ) {
 	}
 }
 
+if ( ! function_exists( 'iscp_get_brand_logo_url' ) ) {
+	/**
+	 * Return the bundled Indian Servers logo URL.
+	 *
+	 * @return string
+	 */
+	function iscp_get_brand_logo_url() {
+		return get_template_directory_uri() . '/assets/images/indianservers-logo.svg';
+	}
+}
+
+if ( ! function_exists( 'iscp_get_site_icon_url' ) ) {
+	/**
+	 * Return the bundled Indian Servers site icon URL.
+	 *
+	 * @return string
+	 */
+	function iscp_get_site_icon_url() {
+		return get_template_directory_uri() . '/assets/images/indianservers-site-icon.svg';
+	}
+}
+
+if ( ! function_exists( 'iscp_get_site_icon_png_url' ) ) {
+	/**
+	 * Return the bundled Indian Servers PNG site icon URL.
+	 *
+	 * @return string
+	 */
+	function iscp_get_site_icon_png_url() {
+		return get_template_directory_uri() . '/assets/images/indianservers-site-icon.png';
+	}
+}
+
+if ( ! function_exists( 'iscp_render_brand_logo' ) ) {
+	/**
+	 * Render the bundled Indian Servers logo.
+	 */
+	function iscp_render_brand_logo() {
+		printf(
+			'<a class="iscp-brand-logo-link" href="%1$s" rel="home" aria-label="%2$s"><img class="iscp-brand-logo" src="%3$s" width="300" height="72" alt="%2$s"></a>',
+			esc_url( home_url( '/' ) ),
+			esc_attr( get_bloginfo( 'name' ) ? get_bloginfo( 'name' ) : __( 'Indian Servers', 'iscp' ) ),
+			esc_url( iscp_get_brand_logo_url() )
+		);
+	}
+}
+
+if ( ! function_exists( 'iscp_output_default_site_icon' ) ) {
+	/**
+	 * Output a theme site icon when WordPress Site Icon is not configured.
+	 */
+	function iscp_output_default_site_icon() {
+		if ( has_site_icon() ) {
+			return;
+		}
+
+		$icon_url     = iscp_get_site_icon_url();
+		$icon_png_url = iscp_get_site_icon_png_url();
+		printf( '<link rel="icon" href="%s" type="image/svg+xml">' . "\n", esc_url( $icon_url ) );
+		printf( '<link rel="icon" href="%s" sizes="512x512" type="image/png">' . "\n", esc_url( $icon_png_url ) );
+		printf( '<link rel="apple-touch-icon" href="%s">' . "\n", esc_url( $icon_png_url ) );
+	}
+}
+add_action( 'wp_head', 'iscp_output_default_site_icon', 5 );
+add_action( 'admin_head', 'iscp_output_default_site_icon', 5 );
+
 if ( ! function_exists( 'iscp_get_first_term_name' ) ) {
 	/**
 	 * Return the first term name for a post taxonomy.
