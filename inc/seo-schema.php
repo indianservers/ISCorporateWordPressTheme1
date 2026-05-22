@@ -281,6 +281,10 @@ if ( ! function_exists( 'iscp_get_seo_context' ) ) {
 					'title'       => __( 'Indian Servers Products | HRMS, School ERP, CRM, Inventory and Cloud', 'iscp' ),
 					'description' => __( 'Explore Indian Servers SaaS products for HRMS, school management, CRM, inventory, restaurant POS, ERP, LMS, AI and managed cloud hosting.', 'iscp' ),
 				),
+				'solutions' => array(
+					'title'       => __( 'Indian Servers Solutions | School ERP, HRMS, CRM, AI, Cloud and VAPT', 'iscp' ),
+					'description' => __( 'Find the right Indian Servers product or service for school software, HRMS, CRM, inventory, ERP, AI, mobile apps, cloud hosting, cyber security and dedicated teams.', 'iscp' ),
+				),
 				'services' => array(
 					'title'       => __( 'Indian Servers Services | Software, Cloud, AI, AR/VR and VAPT', 'iscp' ),
 					'description' => __( 'Explore Indian Servers services for custom software development, web apps, mobile apps, AI, AR/VR, cloud hosting, VAPT and dedicated teams.', 'iscp' ),
