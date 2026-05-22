@@ -1,0 +1,8 @@
+Indian Servers Corp Pro is licensed under the GNU General Public License version 2 or later.
+
+This theme is intended to be compatible with WordPress theme licensing requirements.
+You may use, modify, and redistribute this theme under the terms of the GPLv2 or any later version.
+
+Full GPLv2 license text:
+https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+

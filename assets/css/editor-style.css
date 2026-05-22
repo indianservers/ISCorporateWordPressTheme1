@@ -1,0 +1,184 @@
+:root {
+	--iscp-bg: #07101f;
+	--iscp-bg-alt: #f4f7fb;
+	--iscp-surface: #ffffff;
+	--iscp-surface-alt: #f4f7fb;
+	--iscp-surface-2: #f4f7fb;
+	--iscp-text: #101827;
+	--iscp-heading: #101827;
+	--iscp-muted: #5d6980;
+	--iscp-primary: #0a66ff;
+	--iscp-primary-dark: #07101f;
+	--iscp-primary-light: #eef6ff;
+	--iscp-secondary: #00b7c7;
+	--iscp-accent: #7c4dff;
+	--iscp-accent-soft: #eefbff;
+	--iscp-border: #dce4ef;
+	--iscp-border-strong: #b9c6d8;
+	--iscp-radius-sm: 6px;
+	--iscp-radius-md: 10px;
+	--iscp-radius-lg: 14px;
+	--iscp-radius-xl: 22px;
+	--iscp-button-radius: 8px;
+	--iscp-card-radius: 14px;
+	--iscp-shadow-sm: 0 8px 22px rgba(7, 16, 31, 0.06);
+	--iscp-shadow-md: 0 20px 56px rgba(7, 16, 31, 0.13);
+	--iscp-shadow-lg: 0 30px 80px rgba(7, 16, 31, 0.18);
+	--iscp-section-spacing: 72px;
+	--iscp-container: 1180px;
+	--iscp-gradient-primary: linear-gradient(135deg, var(--iscp-primary), var(--iscp-accent));
+	--iscp-gradient-dark: linear-gradient(135deg, var(--iscp-bg), var(--iscp-primary-dark));
+	--iscp-focus-ring: 0 0 0 3px rgba(0, 183, 199, 0.42);
+}
+
+body {
+	color: var(--iscp-text);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-size: 16px;
+	line-height: 1.7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--iscp-heading);
+	font-weight: 850;
+	letter-spacing: 0;
+	line-height: 1.08;
+}
+
+a {
+	color: var(--iscp-primary);
+}
+
+.iscp-container,
+.wp-block-group.iscp-container {
+	max-width: var(--iscp-container);
+	margin-inline: auto;
+}
+
+.wp-block {
+	max-width: 780px;
+}
+
+.wp-block[data-align="wide"] {
+	max-width: 1080px;
+}
+
+.wp-block[data-align="full"] {
+	max-width: none;
+}
+
+.iscp-pattern {
+	padding: 48px;
+	background: #ffffff;
+	border: 1px solid #dce4ef;
+	border-radius: var(--iscp-card-radius);
+	box-shadow: var(--iscp-shadow-sm);
+}
+
+.iscp-pattern-dark {
+	background: #07101f;
+	color: rgba(255, 255, 255, 0.78);
+}
+
+.iscp-pattern-dark h2,
+.iscp-pattern-dark h3 {
+	color: #ffffff;
+}
+
+.iscp-pattern-eyebrow {
+	color: #12d6ff;
+	font-size: 12px;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.iscp-pattern-grid {
+	display: grid;
+	gap: 20px;
+	margin-top: 24px;
+}
+
+.iscp-grid {
+	display: grid;
+	gap: 20px;
+}
+
+.iscp-pattern-grid-2 {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.iscp-pattern-grid-3,
+.iscp-pattern-grid-4 {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.iscp-pattern-card {
+	padding: 20px;
+	background: #ffffff;
+	border: 1px solid #dce4ef;
+	border-radius: var(--iscp-card-radius);
+	box-shadow: var(--iscp-shadow-sm);
+}
+
+.iscp-pattern-dark .iscp-pattern-card {
+	background: rgba(255, 255, 255, 0.08);
+	border-color: rgba(255, 255, 255, 0.14);
+}
+
+.iscp-pattern .wp-block-button.iscp-btn .wp-block-button__link {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 44px;
+	padding: 12px 18px;
+	background: var(--iscp-gradient-primary);
+	border-radius: var(--iscp-button-radius);
+	color: #ffffff;
+	font-weight: 750;
+	text-decoration: none;
+}
+
+.iscp-section,
+.wp-block-group.iscp-section {
+	padding-block: var(--iscp-section-spacing);
+}
+
+.iscp-section-dark,
+.wp-block-group.iscp-section-dark {
+	background: var(--iscp-gradient-dark);
+	color: rgba(255, 255, 255, 0.78);
+}
+
+.iscp-card,
+.wp-block-group.iscp-card {
+	padding: 24px;
+	background: var(--iscp-surface);
+	border: 1px solid var(--iscp-border);
+	border-radius: var(--iscp-card-radius);
+	box-shadow: var(--iscp-shadow-sm);
+}
+
+.iscp-eyebrow {
+	color: var(--iscp-accent);
+	font-size: 12px;
+	font-weight: 850;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+.iscp-muted {
+	color: var(--iscp-muted);
+}
+
+.iscp-pattern-visual {
+	min-height: 260px;
+	padding: 20px;
+	background: #07101f;
+	border-radius: 18px;
+}

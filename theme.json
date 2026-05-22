@@ -1,0 +1,177 @@
+{
+	"$schema": "https://schemas.wp.org/wp/6.5/theme.json",
+	"version": 2,
+	"settings": {
+		"appearanceTools": true,
+		"color": {
+			"custom": true,
+			"customGradient": true,
+			"defaultPalette": false,
+			"palette": [
+				{
+					"name": "ISCP Primary",
+					"slug": "iscp-primary",
+					"color": "#2563eb"
+				},
+				{
+					"name": "ISCP Accent",
+					"slug": "iscp-accent",
+					"color": "#12d6ff"
+				},
+				{
+					"name": "ISCP Dark",
+					"slug": "iscp-dark",
+					"color": "#07111f"
+				},
+				{
+					"name": "ISCP Surface",
+					"slug": "iscp-surface",
+					"color": "#f8fafc"
+				},
+				{
+					"name": "ISCP Text",
+					"slug": "iscp-text",
+					"color": "#0f172a"
+				}
+			],
+			"gradients": [
+				{
+					"name": "ISCP Primary Gradient",
+					"slug": "iscp-primary-gradient",
+					"gradient": "linear-gradient(135deg, #2563eb, #12d6ff)"
+				},
+				{
+					"name": "ISCP Dark Gradient",
+					"slug": "iscp-dark-gradient",
+					"gradient": "linear-gradient(135deg, #07111f, #2563eb)"
+				}
+			]
+		},
+		"layout": {
+			"contentSize": "780px",
+			"wideSize": "1180px"
+		},
+		"spacing": {
+			"padding": true,
+			"margin": true,
+			"blockGap": true,
+			"spacingScale": {
+				"steps": 0
+			},
+			"spacingSizes": [
+				{
+					"name": "XS",
+					"slug": "xs",
+					"size": "0.5rem"
+				},
+				{
+					"name": "SM",
+					"slug": "sm",
+					"size": "0.75rem"
+				},
+				{
+					"name": "MD",
+					"slug": "md",
+					"size": "1rem"
+				},
+				{
+					"name": "LG",
+					"slug": "lg",
+					"size": "1.5rem"
+				},
+				{
+					"name": "XL",
+					"slug": "xl",
+					"size": "2rem"
+				},
+				{
+					"name": "2XL",
+					"slug": "2xl",
+					"size": "3rem"
+				},
+				{
+					"name": "3XL",
+					"slug": "3xl",
+					"size": "5rem"
+				}
+			]
+		},
+		"typography": {
+			"customFontSize": true,
+			"dropCap": false,
+			"fontFamilies": [
+				{
+					"name": "System Sans",
+					"slug": "system-sans",
+					"fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \"Helvetica Neue\", sans-serif"
+				},
+				{
+					"name": "System Serif",
+					"slug": "system-serif",
+					"fontFamily": "Georgia, \"Times New Roman\", Times, serif"
+				}
+			],
+			"fontSizes": [
+				{
+					"name": "Small",
+					"slug": "small",
+					"size": "0.875rem"
+				},
+				{
+					"name": "Base",
+					"slug": "base",
+					"size": "1rem"
+				},
+				{
+					"name": "Large",
+					"slug": "large",
+					"size": "1.25rem"
+				},
+				{
+					"name": "XL",
+					"slug": "xl",
+					"size": "1.75rem"
+				},
+				{
+					"name": "2XL",
+					"slug": "2xl",
+					"size": "2.5rem"
+				}
+			]
+		}
+	},
+	"styles": {
+		"blocks": {
+			"core/button": {
+				"border": {
+					"radius": "var(--iscp-button-radius)"
+				},
+				"typography": {
+					"fontWeight": "750"
+				}
+			},
+			"core/group": {
+				"spacing": {
+					"blockGap": "1.5rem"
+				}
+			}
+		},
+		"elements": {
+			"button": {
+				"border": {
+					"radius": "var(--iscp-button-radius)"
+				},
+				"color": {
+					"background": "var(--iscp-primary)",
+					"text": "#ffffff"
+				}
+			}
+		},
+		"spacing": {
+			"blockGap": "1.5rem"
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--system-sans)"
+		}
+	}
+}

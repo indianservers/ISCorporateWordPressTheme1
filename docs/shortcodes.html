@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ISCP Shortcodes</title>
+	<style>body{max-width:880px;margin:40px auto;padding:0 20px;font-family:system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.7;color:#0f172a}code{background:#f1f5f9;padding:2px 6px;border-radius:6px}pre{overflow:auto;background:#0f172a;color:#e2e8f0;padding:18px;border-radius:12px}</style>
+</head>
+<body>
+	<h1>ISCP Shortcodes</h1>
+	<p>ISCP includes lightweight shortcodes for common business website elements. They are optional, safe to use in the block editor Shortcode block, widgets and classic content areas.</p>
+	<h2>Available Shortcodes</h2>
+	<pre>[iscp_button text="Start a Project" url="/contact/" style="primary" size="normal" target="_self"]
+[iscp_cta title="Ready to grow?" subtitle="Launch a professional page quickly." button_text="Contact Us" button_url="/contact/" style="gradient"]
+[iscp_icon_box icon="AI" title="AI Integration" description="Connect intelligent workflows to your business website." url="/services/"]
+[iscp_stat number="100%" label="Responsive" description="Designed for modern devices."]
+[iscp_testimonials limit="3" columns="3"]
+[iscp_solutions limit="6" columns="3" category="software"]
+[iscp_services limit="6" columns="3" category="consulting"]
+[iscp_case_studies limit="3" columns="3" category="saas"]
+[iscp_faqs limit="6" category="general"]
+[iscp_pricing limit="3" columns="3"]</pre>
+	<h2>Notes</h2>
+	<p>Dynamic shortcodes use native WordPress queries and ISCP custom post types. If no matching content exists, publish the relevant items from the WordPress admin first.</p>
+	<p>Shortcodes do not load external scripts and do not depend on a page builder.</p>
+</body>
+</html>
