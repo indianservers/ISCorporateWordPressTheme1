@@ -36,6 +36,8 @@ get_header();
 		</div>
 	</section>
 
+	<?php iscp_render_manual_page_content_by_path( $iscp_pages[ $iscp_group ]['base'] . '/' . $iscp_slug ); ?>
+
 	<section class="iscp-section">
 		<div class="iscp-container iscp-offering-detail-grid">
 			<div class="iscp-page-copy">

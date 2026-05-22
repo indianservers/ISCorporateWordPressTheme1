@@ -630,6 +630,59 @@ if ( ! function_exists( 'iscp_render_page_content_area' ) ) {
 	}
 }
 
+if ( ! function_exists( 'iscp_get_manual_page_by_path' ) ) {
+	/**
+	 * Return a published WordPress page by path when manual content exists.
+	 *
+	 * @param string $path Page path.
+	 * @return WP_Post|null
+	 */
+	function iscp_get_manual_page_by_path( $path ) {
+		$path = trim( $path, '/' );
+
+		if ( '' === $path ) {
+			return null;
+		}
+
+		$page = get_page_by_path( $path, OBJECT, 'page' );
+
+		if ( ! $page || 'publish' !== get_post_status( $page ) || '' === trim( $page->post_content ) ) {
+			return null;
+		}
+
+		return $page;
+	}
+}
+
+if ( ! function_exists( 'iscp_render_manual_page_content_by_path' ) ) {
+	/**
+	 * Render content from a manually created WordPress page inside theme-owned routes.
+	 *
+	 * @param string $path Page path.
+	 * @return bool
+	 */
+	function iscp_render_manual_page_content_by_path( $path ) {
+		$page = iscp_get_manual_page_by_path( $path );
+
+		if ( ! $page ) {
+			return false;
+		}
+
+		$GLOBALS['post'] = $page;
+		setup_postdata( $page );
+		?>
+		<section class="iscp-section iscp-template-content iscp-manual-page-content">
+			<div class="iscp-container iscp-entry-content">
+				<?php echo apply_filters( 'the_content', $page->post_content ); ?>
+			</div>
+		</section>
+		<?php
+		wp_reset_postdata();
+
+		return true;
+	}
+}
+
 if ( ! function_exists( 'iscp_render_mockup_component' ) ) {
 	/**
 	 * Render a CSS-only screenshot/browser placeholder.

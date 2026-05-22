@@ -52,6 +52,8 @@ get_header();
 		</div>
 	</section>
 
+	<?php iscp_render_manual_page_content_by_path( $iscp_group_data['base'] ); ?>
+
 	<section class="iscp-section">
 		<div class="iscp-container">
 			<div class="iscp-offering-card-grid">
