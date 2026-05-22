@@ -358,6 +358,149 @@
 		}
 	};
 
+	ISCP.initHeroGlobe = function () {
+		var globeWrap = document.querySelector('[data-iscp-globe]');
+
+		if (!globeWrap || window.matchMedia('(max-width: 1020px)').matches) {
+			return;
+		}
+
+		var canvas = globeWrap.querySelector('canvas');
+		var progressText = globeWrap.querySelector('[data-iscp-globe-progress]');
+		var progressBarElement = globeWrap.querySelector('[data-iscp-globe-bar]');
+
+		if (!canvas || !canvas.getContext) {
+			return;
+		}
+
+		var context = canvas.getContext('2d');
+		var size = 180;
+		var center = size / 2;
+		var radius = 72;
+		var rotation = 0;
+		var loadProgress = 0;
+		var canAnimate = !body.classList.contains('iscp-animations-disabled') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		function setProgress(value) {
+			loadProgress = Math.min(100, Math.max(0, value));
+
+			if (progressText) {
+				progressText.textContent = Math.round(loadProgress) + '%';
+			}
+
+			if (progressBarElement) {
+				progressBarElement.style.width = loadProgress + '%';
+			}
+
+			if (loadProgress >= 100) {
+				globeWrap.classList.add('iscp-globe-loaded');
+			}
+		}
+
+		function drawLandBlob(offset, verticalOffset, width, height, color) {
+			var x = center + Math.sin(rotation + offset) * radius * 0.52;
+			var z = Math.cos(rotation + offset);
+			var scale = 0.52 + (z + 1) * 0.24;
+
+			if (z < -0.82) {
+				return;
+			}
+
+			context.save();
+			context.globalAlpha = Math.max(0.18, (z + 1.05) / 2);
+			context.fillStyle = color;
+			context.beginPath();
+			context.ellipse(x, center + verticalOffset * scale, width * scale, height * scale, 0.35 * z, 0, Math.PI * 2);
+			context.fill();
+			context.restore();
+		}
+
+		function drawGlobe() {
+			context.clearRect(0, 0, size, size);
+
+			var gradient = context.createRadialGradient(center - 26, center - 30, 12, center, center, radius + 8);
+			gradient.addColorStop(0, '#a9f4ff');
+			gradient.addColorStop(0.22, '#35c6f4');
+			gradient.addColorStop(0.58, '#0b66b6');
+			gradient.addColorStop(1, '#031a3a');
+
+			context.save();
+			context.beginPath();
+			context.arc(center, center, radius, 0, Math.PI * 2);
+			context.clip();
+			context.fillStyle = gradient;
+			context.fillRect(0, 0, size, size);
+
+			context.strokeStyle = 'rgba(255,255,255,0.22)';
+			context.lineWidth = 1;
+
+			for (var meridian = -3; meridian <= 3; meridian += 1) {
+				context.beginPath();
+				context.ellipse(center + Math.sin(rotation + meridian) * 7, center, radius * Math.abs(Math.cos(meridian * 0.38)), radius, 0, 0, Math.PI * 2);
+				context.stroke();
+			}
+
+			for (var parallel = -2; parallel <= 2; parallel += 1) {
+				context.beginPath();
+				context.ellipse(center, center + parallel * 20, radius * Math.cos(parallel * 0.3), 10, 0, 0, Math.PI * 2);
+				context.stroke();
+			}
+
+			drawLandBlob(0.2, -20, 24, 15, 'rgba(204,255,221,0.82)');
+			drawLandBlob(1.2, 8, 28, 18, 'rgba(140,238,191,0.74)');
+			drawLandBlob(2.3, -4, 20, 14, 'rgba(242,255,205,0.72)');
+			drawLandBlob(3.2, 22, 18, 10, 'rgba(117,218,177,0.68)');
+			drawLandBlob(4.2, -26, 22, 13, 'rgba(224,255,238,0.76)');
+
+			context.restore();
+
+			context.beginPath();
+			context.arc(center, center, radius, 0, Math.PI * 2);
+			context.strokeStyle = 'rgba(115,221,255,0.58)';
+			context.lineWidth = 2;
+			context.stroke();
+
+			context.beginPath();
+			context.arc(center - 22, center - 28, 12, 0, Math.PI * 2);
+			context.fillStyle = 'rgba(255,255,255,0.42)';
+			context.fill();
+
+			context.save();
+			context.translate(center, center);
+			context.rotate(-0.32);
+			context.beginPath();
+			context.ellipse(0, 0, radius + 13, 22, 0, 0, Math.PI * 2);
+			context.strokeStyle = 'rgba(101,217,255,0.34)';
+			context.lineWidth = 1.4;
+			context.stroke();
+			context.restore();
+		}
+
+		function animate() {
+			rotation += canAnimate ? 0.009 : 0;
+			drawGlobe();
+
+			if (canAnimate) {
+				window.requestAnimationFrame(animate);
+			}
+		}
+
+		var progressTimer = window.setInterval(function () {
+			setProgress(loadProgress + 8 + Math.random() * 13);
+
+			if (loadProgress >= 100) {
+				window.clearInterval(progressTimer);
+			}
+		}, 90);
+
+		setProgress(4);
+		drawGlobe();
+
+		if (canAnimate) {
+			window.requestAnimationFrame(animate);
+		}
+	};
+
 	document.addEventListener('keydown', function (event) {
 		if (event.key === 'Escape') {
 			var wasMenuOpen = ISCP.isMenuOpen();
@@ -384,5 +527,6 @@
 	ISCP.initSliders();
 	ISCP.initStickyCta();
 	ISCP.initExitModal();
+	ISCP.initHeroGlobe();
 	ISCP.updateScrollProgress();
 }());

@@ -56,6 +56,14 @@ $iscp_suite_links = array(
 			<div class="iscp-hero-visual iscp-reveal" aria-hidden="true">
 				<img class="iscp-hero-photo" src="<?php echo esc_url( $iscp_hero_image ); ?>" alt="" loading="eager" decoding="async">
 				<div class="iscp-hero-photo-shade"></div>
+				<div class="iscp-hero-globe" data-iscp-globe>
+					<canvas width="180" height="180"></canvas>
+					<div class="iscp-hero-globe-fallback"></div>
+					<div class="iscp-hero-globe-loader">
+						<span><?php esc_html_e( 'Loading', 'iscp' ); ?> <strong data-iscp-globe-progress>0%</strong></span>
+						<i><b data-iscp-globe-bar></b></i>
+					</div>
+				</div>
 				<div class="iscp-dashboard-card iscp-dashboard-card-main">
 					<span class="iscp-dashboard-label"><?php esc_html_e( 'Delivery Health', 'iscp' ); ?></span>
 					<strong>96%</strong>

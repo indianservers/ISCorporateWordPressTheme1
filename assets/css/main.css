@@ -1630,8 +1630,113 @@ input[type="submit"] {
 	backdrop-filter: blur(16px);
 }
 
+.iscp-hero-globe {
+	position: absolute;
+	top: 18px;
+	left: 74px;
+	z-index: 3;
+	display: none;
+	width: 180px;
+	height: 180px;
+	padding: 0.35rem;
+	background:
+		radial-gradient(circle at 50% 42%, rgba(0, 170, 255, 0.16), transparent 45%),
+		radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.08), transparent 28%),
+		rgba(7, 16, 31, 0.34);
+	border: 1px solid rgba(125, 211, 252, 0.22);
+	border-radius: 999px;
+	box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3), 0 0 42px rgba(18, 214, 255, 0.18);
+	backdrop-filter: blur(10px);
+	overflow: hidden;
+}
+
+.iscp-hero-globe canvas,
+.iscp-hero-globe-fallback {
+	position: absolute;
+	inset: 0;
+	width: 180px;
+	height: 180px;
+}
+
+.iscp-hero-globe canvas {
+	z-index: 2;
+}
+
+.iscp-hero-globe-fallback {
+	z-index: 1;
+	border-radius: 999px;
+	background:
+		radial-gradient(circle at 34% 24%, rgba(255, 255, 255, 0.68), transparent 8%),
+		radial-gradient(circle at 31% 28%, rgba(255, 255, 255, 0.24), transparent 22%),
+		radial-gradient(circle at 52% 52%, rgba(0, 174, 255, 0.46), transparent 44%),
+		linear-gradient(90deg, #0b3e78, #0f8cc8, #06315d, #0b3e78);
+	background-size: 220% 100%;
+	box-shadow: inset -24px -18px 38px rgba(0, 0, 0, 0.5), inset 16px 12px 28px rgba(255, 255, 255, 0.12);
+	animation: iscpGlobeFallbackSpin 18s linear infinite;
+}
+
+.iscp-hero-globe-loader {
+	position: absolute;
+	left: 1.25rem;
+	right: 1.25rem;
+	bottom: 1rem;
+	z-index: 5;
+	display: grid;
+	gap: 0.35rem;
+	color: rgba(255, 255, 255, 0.9);
+	font-size: 0.68rem;
+	font-weight: 850;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+}
+
+.iscp-hero-globe-loader span {
+	display: flex;
+	justify-content: space-between;
+}
+
+.iscp-hero-globe-loader i {
+	display: block;
+	height: 4px;
+	background: rgba(255, 255, 255, 0.18);
+	border-radius: 999px;
+	overflow: hidden;
+}
+
+.iscp-hero-globe-loader b {
+	display: block;
+	width: 0;
+	height: 100%;
+	background: linear-gradient(90deg, #ffd84a, #12d6ff);
+	border-radius: inherit;
+	transition: width 180ms ease;
+}
+
+.iscp-hero-globe.iscp-globe-loaded .iscp-hero-globe-loader {
+	opacity: 0;
+	transform: translateY(4px);
+	transition: opacity 260ms ease, transform 260ms ease;
+	pointer-events: none;
+}
+
+@keyframes iscpGlobeFallbackSpin {
+	from {
+		background-position: 0% center;
+	}
+
+	to {
+		background-position: 220% center;
+	}
+}
+
+@media (min-width: 1021px) {
+	.iscp-hero-globe {
+		display: block;
+	}
+}
+
 .iscp-dashboard-card-main {
-	top: 80px;
+	top: 174px;
 	left: 54px;
 	right: 54px;
 	padding: 1.35rem;
