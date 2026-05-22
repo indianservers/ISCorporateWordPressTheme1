@@ -30,9 +30,10 @@ $iscp_icons = array(
 );
 ?>
 
-<section class="iscp-trust-strip">
+<section class="iscp-trust-strip iscp-glass-product-strip">
 	<div class="iscp-container">
-		<h2><?php esc_html_e( 'Indian Servers builds SaaS products, custom software, AI systems and managed cloud solutions.', 'iscp' ); ?></h2>
+		<p class="iscp-eyebrow"><?php esc_html_e( 'Indian Servers Suite', 'iscp' ); ?></p>
+		<h2><?php esc_html_e( 'SaaS products, custom software, AI systems and managed cloud solutions.', 'iscp' ); ?></h2>
 		<div class="iscp-logo-strip" aria-label="<?php esc_attr_e( 'Indian Servers capability areas', 'iscp' ); ?>">
 			<?php foreach ( $iscp_logos as $iscp_index => $iscp_logo ) : ?>
 				<span class="iscp-product-pill iscp-product-pill-<?php echo esc_attr( (string) ( $iscp_index + 1 ) ); ?>">
