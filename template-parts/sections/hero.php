@@ -18,10 +18,10 @@ $iscp_badges      = array_filter(
 	)
 );
 $iscp_suite_links = array(
-	array( 'label' => __( 'Business Apps', 'iscp' ), 'text' => __( 'HRMS, CRM, ERP, Inventory', 'iscp' ), 'url' => home_url( '/products/' ) ),
-	array( 'label' => __( 'Development', 'iscp' ), 'text' => __( '.NET, PHP, Python, Mobile', 'iscp' ), 'url' => home_url( '/services/custom-software-development/' ) ),
-	array( 'label' => __( 'Cloud', 'iscp' ), 'text' => __( 'Hosting, VPS, monitoring', 'iscp' ), 'url' => home_url( '/services/cloud-hosting/' ) ),
-	array( 'label' => __( 'Security & AI', 'iscp' ), 'text' => __( 'VAPT, automation, assistants', 'iscp' ), 'url' => home_url( '/services/cyber-security-vapt/' ) ),
+	array( 'label' => __( 'Business Apps', 'iscp' ), 'text' => __( 'HRMS, CRM, ERP, Inventory', 'iscp' ), 'url' => home_url( '/products/' ), 'icon' => 'products' ),
+	array( 'label' => __( 'Development', 'iscp' ), 'text' => __( '.NET, PHP, Python, Mobile', 'iscp' ), 'url' => home_url( '/services/custom-software-development/' ), 'icon' => 'code' ),
+	array( 'label' => __( 'Cloud', 'iscp' ), 'text' => __( 'Hosting, VPS, monitoring', 'iscp' ), 'url' => home_url( '/services/cloud-hosting/' ), 'icon' => 'cloud' ),
+	array( 'label' => __( 'Security & AI', 'iscp' ), 'text' => __( 'VAPT, automation, assistants', 'iscp' ), 'url' => home_url( '/services/cyber-security-vapt/' ), 'icon' => 'shield' ),
 );
 ?>
 
@@ -45,8 +45,11 @@ $iscp_suite_links = array(
 			<nav class="iscp-hero-suite-nav" aria-label="<?php esc_attr_e( 'Indian Servers solution areas', 'iscp' ); ?>">
 				<?php foreach ( $iscp_suite_links as $iscp_suite_link ) : ?>
 					<a href="<?php echo esc_url( $iscp_suite_link['url'] ); ?>">
-						<strong><?php echo esc_html( $iscp_suite_link['label'] ); ?></strong>
-						<span><?php echo esc_html( $iscp_suite_link['text'] ); ?></span>
+						<span class="iscp-suite-icon" aria-hidden="true"><?php echo iscp_get_menu_icon_markup( $iscp_suite_link['icon'] ); ?></span>
+						<span class="iscp-suite-copy">
+							<strong><?php echo esc_html( $iscp_suite_link['label'] ); ?></strong>
+							<small><?php echo esc_html( $iscp_suite_link['text'] ); ?></small>
+						</span>
 					</a>
 				<?php endforeach; ?>
 			</nav>

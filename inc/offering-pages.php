@@ -124,7 +124,126 @@ if ( ! function_exists( 'iscp_get_offering_page' ) ) {
 		$item['group'] = $group;
 		$item['url']   = ! empty( $item['url'] ) ? $item['url'] : home_url( '/' . $pages[ $group ]['base'] . '/' . $slug . '/' );
 
+		if ( function_exists( 'iscp_get_offering_content_profile' ) ) {
+			$item = array_merge( $item, iscp_get_offering_content_profile( $group, $slug, $item ) );
+		}
+
 		return $item;
+	}
+}
+
+if ( ! function_exists( 'iscp_get_offering_content_profile' ) ) {
+	/**
+	 * Return SEO-focused detail content for virtual product and service pages.
+	 *
+	 * @param string $group Offering group.
+	 * @param string $slug Offering slug.
+	 * @param array  $item Base offering item.
+	 * @return array
+	 */
+	function iscp_get_offering_content_profile( $group, $slug, $item ) {
+		$product_profiles = array(
+			'school-management-software' => array(
+				'kicker'     => __( 'School ERP for modern institutions', 'iscp' ),
+				'intro'      => __( 'Indian Servers School Management Software helps schools, colleges and training institutions manage admissions, fees, attendance, exams, transport, communication and administration from one secure digital platform.', 'iscp' ),
+				'best_for'   => __( 'Schools, colleges, coaching centers, residential institutions and multi-branch education groups.', 'iscp' ),
+				'outcomes'   => array( __( 'Reduce manual office work and fee follow-up delays.', 'iscp' ), __( 'Improve parent, student and staff communication.', 'iscp' ), __( 'Give management clear reports across academics, finance and operations.', 'iscp' ) ),
+				'modules'    => array( __( 'Admissions and student records', 'iscp' ), __( 'Fees, receipts and dues', 'iscp' ), __( 'Attendance and timetable', 'iscp' ), __( 'Exams and report cards', 'iscp' ), __( 'Transport and notifications', 'iscp' ), __( 'Parent and staff portals', 'iscp' ) ),
+				'seo_terms'  => __( 'school ERP, school management software, student information system, fees management software, education ERP India', 'iscp' ),
+				'cta_title'  => __( 'Looking for school software?', 'iscp' ),
+				'cta_text'   => __( 'Use Indian Servers School ERP to organize your institution with secure workflows and practical reports.', 'iscp' ),
+			),
+			'hrms' => array(
+				'kicker'     => __( 'HRMS for growing teams', 'iscp' ),
+				'intro'      => __( 'Indian Servers HRMS Software brings employee data, attendance, leave, payroll support, onboarding, approvals and HR reporting into a clean, role-based system for Indian and global teams.', 'iscp' ),
+				'best_for'   => __( 'SMEs, startups, enterprises, branches, factories, schools and service companies.', 'iscp' ),
+				'outcomes'   => array( __( 'Centralize employee records and compliance-ready documents.', 'iscp' ), __( 'Speed up leave, attendance and approval workflows.', 'iscp' ), __( 'Give HR and leadership accurate workforce visibility.', 'iscp' ) ),
+				'modules'    => array( __( 'Employee profiles', 'iscp' ), __( 'Attendance and shifts', 'iscp' ), __( 'Leave approvals', 'iscp' ), __( 'Payroll-ready reports', 'iscp' ), __( 'Onboarding checklists', 'iscp' ), __( 'HR dashboards', 'iscp' ) ),
+				'seo_terms'  => __( 'HRMS software, HR software India, employee management system, payroll support software, attendance management system', 'iscp' ),
+				'cta_title'  => __( 'Looking for HR software?', 'iscp' ),
+				'cta_text'   => __( 'Use Indian Servers HRMS to manage teams, approvals and workforce records with confidence.', 'iscp' ),
+			),
+			'crm' => array(
+				'kicker'     => __( 'CRM for sales and service control', 'iscp' ),
+				'intro'      => __( 'Indian Servers CRM Software helps teams capture leads, track customer conversations, assign follow-ups, manage service tickets and convert business opportunities with better visibility.', 'iscp' ),
+				'best_for'   => __( 'Sales teams, service companies, support desks, consultants, real estate, education and B2B operations.', 'iscp' ),
+				'outcomes'   => array( __( 'Never lose a lead or customer follow-up.', 'iscp' ), __( 'Improve team ownership and response discipline.', 'iscp' ), __( 'Track pipeline, tickets and communication history in one place.', 'iscp' ) ),
+				'modules'    => array( __( 'Lead pipeline', 'iscp' ), __( 'Customer history', 'iscp' ), __( 'Follow-up reminders', 'iscp' ), __( 'Tickets and tasks', 'iscp' ), __( 'Quotations', 'iscp' ), __( 'Sales reports', 'iscp' ) ),
+				'seo_terms'  => __( 'CRM software, lead management software, sales CRM India, customer management system, service CRM', 'iscp' ),
+				'cta_title'  => __( 'Looking for CRM software?', 'iscp' ),
+				'cta_text'   => __( 'Use Indian Servers CRM to manage leads, customers, sales teams and service follow-ups.', 'iscp' ),
+			),
+			'project-management-software' => array(
+				'kicker'     => __( 'Project delivery with accountability', 'iscp' ),
+				'intro'      => __( 'Indian Servers Project Management Software gives teams a structured way to plan work, assign responsibilities, track milestones, manage approvals and report delivery health across departments.', 'iscp' ),
+				'best_for'   => __( 'Software teams, agencies, implementation teams, operations departments and client-facing delivery teams.', 'iscp' ),
+				'outcomes'   => array( __( 'Improve task ownership and milestone clarity.', 'iscp' ), __( 'Track delays, approvals and delivery risks earlier.', 'iscp' ), __( 'Give clients and managers a cleaner project view.', 'iscp' ) ),
+				'modules'    => array( __( 'Projects and milestones', 'iscp' ), __( 'Tasks and owners', 'iscp' ), __( 'Sprint or phase views', 'iscp' ), __( 'Client approvals', 'iscp' ), __( 'Time and status reports', 'iscp' ), __( 'Delivery dashboards', 'iscp' ) ),
+				'seo_terms'  => __( 'project management software, task management system, team collaboration software, software project tracking, milestone management', 'iscp' ),
+				'cta_title'  => __( 'Need project control?', 'iscp' ),
+				'cta_text'   => __( 'Use Indian Servers Project Management Software to keep work visible, accountable and measurable.', 'iscp' ),
+			),
+			'learning-management-system' => array(
+				'kicker'     => __( 'LMS for digital learning delivery', 'iscp' ),
+				'intro'      => __( 'Indian Servers Learning Management System supports online courses, batches, assignments, assessments, certificates and learner progress tracking for education and training organizations.', 'iscp' ),
+				'best_for'   => __( 'Training companies, colleges, coaching centers, corporate academies and certification programs.', 'iscp' ),
+				'outcomes'   => array( __( 'Deliver courses and assessments through one platform.', 'iscp' ), __( 'Track learner progress, completion and certification.', 'iscp' ), __( 'Support trainers, admins and learners with role-based dashboards.', 'iscp' ) ),
+				'modules'    => array( __( 'Course builder', 'iscp' ), __( 'Batch management', 'iscp' ), __( 'Assignments and tests', 'iscp' ), __( 'Certificates', 'iscp' ), __( 'Learner analytics', 'iscp' ), __( 'Trainer dashboards', 'iscp' ) ),
+				'seo_terms'  => __( 'learning management system, LMS software, online course platform, training management software, education technology platform', 'iscp' ),
+				'cta_title'  => __( 'Launching online learning?', 'iscp' ),
+				'cta_text'   => __( 'Use Indian Servers LMS to deliver courses, tests and certifications professionally.', 'iscp' ),
+			),
+			'vyapara-erp' => array(
+				'kicker'     => __( 'ERP for practical business operations', 'iscp' ),
+				'intro'      => __( 'Vyapara ERP by Indian Servers connects purchase, sales, billing, stock, staff, approvals and reports so SMEs can run daily operations with fewer spreadsheets and better control.', 'iscp' ),
+				'best_for'   => __( 'SMEs, distributors, trading companies, service businesses, warehouses and branch operations.', 'iscp' ),
+				'outcomes'   => array( __( 'Bring sales, stock, purchase and billing into one workflow.', 'iscp' ), __( 'Improve branch, vendor and customer visibility.', 'iscp' ), __( 'Build reports that support faster business decisions.', 'iscp' ) ),
+				'modules'    => array( __( 'Sales and billing', 'iscp' ), __( 'Purchase and vendors', 'iscp' ), __( 'Stock and warehouse', 'iscp' ), __( 'Accounts-ready reports', 'iscp' ), __( 'Branch operations', 'iscp' ), __( 'Approval workflows', 'iscp' ) ),
+				'seo_terms'  => __( 'ERP software for SMEs, business management software, purchase sales inventory software, Vyapara ERP, Indian ERP software', 'iscp' ),
+				'cta_title'  => __( 'Need a business ERP?', 'iscp' ),
+				'cta_text'   => __( 'Use Vyapara ERP to connect business operations with practical dashboards and reports.', 'iscp' ),
+			),
+			'restaurant-pos-software' => array(
+				'kicker'     => __( 'Restaurant POS for faster operations', 'iscp' ),
+				'intro'      => __( 'Indian Servers Restaurant POS Software supports billing, KOT, table ordering, takeaway, delivery, menu control, inventory and branch reporting for restaurants and hospitality businesses.', 'iscp' ),
+				'best_for'   => __( 'Restaurants, cafes, food courts, bakeries, cloud kitchens, hotels and multi-branch outlets.', 'iscp' ),
+				'outcomes'   => array( __( 'Speed up billing and kitchen communication.', 'iscp' ), __( 'Improve menu, stock and wastage control.', 'iscp' ), __( 'Track daily sales and branch performance clearly.', 'iscp' ) ),
+				'modules'    => array( __( 'POS billing', 'iscp' ), __( 'KOT and kitchen display', 'iscp' ), __( 'Table and takeaway', 'iscp' ), __( 'Menu management', 'iscp' ), __( 'Inventory control', 'iscp' ), __( 'Branch reports', 'iscp' ) ),
+				'seo_terms'  => __( 'restaurant POS software, KOT billing software, restaurant management system, cafe POS, cloud kitchen billing software', 'iscp' ),
+				'cta_title'  => __( 'Looking for restaurant POS?', 'iscp' ),
+				'cta_text'   => __( 'Use Indian Servers Restaurant POS to improve billing, kitchen coordination and sales visibility.', 'iscp' ),
+			),
+			'inventory-management-software' => array(
+				'kicker'     => __( 'Inventory software for stock clarity', 'iscp' ),
+				'intro'      => __( 'Indian Servers Inventory Management Software helps businesses manage stock, purchase, sales, vendors, warehouses, reorders and reports with practical controls for daily operations.', 'iscp' ),
+				'best_for'   => __( 'Retailers, distributors, warehouses, manufacturers, service businesses and branch networks.', 'iscp' ),
+				'outcomes'   => array( __( 'Know available stock, movement and reorder needs.', 'iscp' ), __( 'Connect purchase, sales, vendor and warehouse workflows.', 'iscp' ), __( 'Reduce manual stock errors and reporting delays.', 'iscp' ) ),
+				'modules'    => array( __( 'Stock ledger', 'iscp' ), __( 'Purchase and sales', 'iscp' ), __( 'Vendor records', 'iscp' ), __( 'Warehouse movement', 'iscp' ), __( 'Reorder alerts', 'iscp' ), __( 'Inventory reports', 'iscp' ) ),
+				'seo_terms'  => __( 'inventory management software, stock management system, warehouse software, purchase sales inventory software, vendor management software', 'iscp' ),
+				'cta_title'  => __( 'Need inventory control?', 'iscp' ),
+				'cta_text'   => __( 'Use Indian Servers Inventory Management Software to control stock, vendors and warehouse workflows.', 'iscp' ),
+			),
+		);
+
+		if ( 'products' === $group && isset( $product_profiles[ $slug ] ) ) {
+			return $product_profiles[ $slug ];
+		}
+
+		return array(
+			'kicker'    => 'products' === $group ? __( 'Business platform by Indian Servers', 'iscp' ) : __( 'Professional service by Indian Servers', 'iscp' ),
+			'intro'     => sprintf(
+				/* translators: 1: offering title, 2: offering summary. */
+				__( '%1$s from Indian Servers is designed for organizations that need practical technology, secure delivery and dependable support. %2$s', 'iscp' ),
+				$item['title'],
+				$item['summary']
+			),
+			'best_for'  => __( 'Growing organizations in India, USA, Dubai, Australia, South Africa, Europe and global delivery markets.', 'iscp' ),
+			'outcomes'  => array( __( 'Clear discovery, planning and implementation roadmap.', 'iscp' ), __( 'Secure architecture with scalable delivery practices.', 'iscp' ), __( 'Ongoing support, monitoring and improvement after launch.', 'iscp' ) ),
+			'modules'   => array( __( 'Requirement study', 'iscp' ), __( 'Architecture', 'iscp' ), __( 'Development', 'iscp' ), __( 'Testing', 'iscp' ), __( 'Deployment', 'iscp' ), __( 'Support', 'iscp' ) ),
+			'seo_terms' => __( 'Indian Servers software development, cloud hosting, AI solutions, VAPT, business software India', 'iscp' ),
+			'cta_title' => __( 'Planning a technology project?', 'iscp' ),
+			'cta_text'  => __( 'Talk to Indian Servers for a practical solution roadmap, clean implementation and long-term support.', 'iscp' ),
+		);
 	}
 }
 

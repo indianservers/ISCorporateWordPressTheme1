@@ -14,6 +14,8 @@ $iscp_pages    = iscp_get_editable_offering_pages();
 $iscp_features = ! empty( $iscp_offering['features'] ) ? $iscp_offering['features'] : iscp_get_offering_default_features( $iscp_group );
 $iscp_is_product = 'products' === $iscp_group;
 $iscp_image    = get_template_directory_uri() . ( $iscp_is_product ? '/assets/images/indianservers-software-team.png' : '/assets/images/indianservers-data-center.png' );
+$iscp_modules  = ! empty( $iscp_offering['modules'] ) ? $iscp_offering['modules'] : array();
+$iscp_outcomes = ! empty( $iscp_offering['outcomes'] ) ? $iscp_offering['outcomes'] : array();
 
 get_header();
 ?>
@@ -38,12 +40,18 @@ get_header();
 
 	<?php iscp_render_manual_page_content_by_path( $iscp_pages[ $iscp_group ]['base'] . '/' . $iscp_slug ); ?>
 
-	<section class="iscp-section">
+	<section class="iscp-section iscp-offering-intelligence-section">
 		<div class="iscp-container iscp-offering-detail-grid">
 			<div class="iscp-page-copy">
-				<p class="iscp-eyebrow"><?php esc_html_e( 'Indian Servers Approach', 'iscp' ); ?></p>
-				<h2><?php esc_html_e( 'Built for practical business adoption', 'iscp' ); ?></h2>
-				<p><?php esc_html_e( 'Indian Servers focuses on real workflows, secure deployment, useful reporting and supportable architecture. Every engagement can be adapted for Andhra Pradesh, Telangana, Dehradun, Dubai, USA and broader global delivery needs.', 'iscp' ); ?></p>
+				<p class="iscp-eyebrow"><?php echo esc_html( isset( $iscp_offering['kicker'] ) ? $iscp_offering['kicker'] : __( 'Indian Servers Approach', 'iscp' ) ); ?></p>
+				<h2><?php echo esc_html( sprintf( __( '%s built for measurable adoption', 'iscp' ), $iscp_offering['title'] ) ); ?></h2>
+				<p><?php echo esc_html( isset( $iscp_offering['intro'] ) ? $iscp_offering['intro'] : __( 'Indian Servers focuses on real workflows, secure deployment, useful reporting and supportable architecture.', 'iscp' ) ); ?></p>
+				<?php if ( ! empty( $iscp_offering['best_for'] ) ) : ?>
+					<div class="iscp-offering-fit">
+						<strong><?php esc_html_e( 'Best for', 'iscp' ); ?></strong>
+						<span><?php echo esc_html( $iscp_offering['best_for'] ); ?></span>
+					</div>
+				<?php endif; ?>
 			</div>
 			<div class="iscp-offering-feature-card">
 				<h2><?php esc_html_e( 'Key Coverage', 'iscp' ); ?></h2>
@@ -53,6 +61,57 @@ get_header();
 					<?php endforeach; ?>
 				</ul>
 			</div>
+		</div>
+	</section>
+
+	<section class="iscp-section iscp-section-muted iscp-offering-rich-section">
+		<div class="iscp-container">
+			<div class="iscp-section-heading">
+				<p class="iscp-eyebrow"><?php echo esc_html( $iscp_is_product ? __( 'What you get', 'iscp' ) : __( 'Delivery focus', 'iscp' ) ); ?></p>
+				<h2><?php echo esc_html( $iscp_is_product ? __( 'Business-ready components and outcomes', 'iscp' ) : __( 'Structured delivery from discovery to support', 'iscp' ) ); ?></h2>
+			</div>
+			<div class="iscp-offering-rich-grid">
+				<?php if ( $iscp_modules ) : ?>
+					<div class="iscp-offering-panel iscp-offering-panel-dark">
+						<div class="iscp-offering-panel-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" focusable="false"><path d="<?php echo esc_attr( iscp_get_offering_icon_path( isset( $iscp_offering['icon'] ) ? $iscp_offering['icon'] : 'cube' ) ); ?>"/></svg>
+						</div>
+						<h3><?php esc_html_e( 'Core Modules', 'iscp' ); ?></h3>
+						<div class="iscp-offering-chip-grid">
+							<?php foreach ( $iscp_modules as $iscp_module ) : ?>
+								<span><?php echo esc_html( $iscp_module ); ?></span>
+							<?php endforeach; ?>
+						</div>
+					</div>
+				<?php endif; ?>
+
+				<?php if ( $iscp_outcomes ) : ?>
+					<div class="iscp-offering-panel">
+						<h3><?php esc_html_e( 'Expected Outcomes', 'iscp' ); ?></h3>
+						<ul class="iscp-check-list">
+							<?php foreach ( $iscp_outcomes as $iscp_outcome ) : ?>
+								<li><?php echo esc_html( $iscp_outcome ); ?></li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
+				<?php endif; ?>
+
+				<div class="iscp-offering-panel iscp-offering-panel-seo">
+					<h3><?php esc_html_e( 'Search Focus', 'iscp' ); ?></h3>
+					<p><?php echo esc_html( ! empty( $iscp_offering['seo_terms'] ) ? $iscp_offering['seo_terms'] : __( 'software development, cloud hosting, AI automation, cyber security and business software', 'iscp' ) ); ?></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="iscp-section iscp-offering-cta-band">
+		<div class="iscp-container iscp-offering-cta-card">
+			<div>
+				<p class="iscp-eyebrow"><?php esc_html_e( 'Request a Quote', 'iscp' ); ?></p>
+				<h2><?php echo esc_html( ! empty( $iscp_offering['cta_title'] ) ? $iscp_offering['cta_title'] : __( 'Ready to discuss this requirement?', 'iscp' ) ); ?></h2>
+				<p><?php echo esc_html( ! empty( $iscp_offering['cta_text'] ) ? $iscp_offering['cta_text'] : __( 'Indian Servers can help you plan, build and support the right solution.', 'iscp' ) ); ?></p>
+			</div>
+			<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Request a Quote', 'iscp' ); ?></a>
 		</div>
 	</section>
 

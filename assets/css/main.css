@@ -1573,7 +1573,9 @@ input[type="submit"] {
 
 .iscp-hero-suite-nav a {
 	display: grid;
-	gap: 0.25rem;
+	grid-template-columns: auto minmax(0, 1fr);
+	align-items: center;
+	gap: 0.75rem;
 	padding: 0.85rem 1rem;
 	color: #ffffff;
 	text-decoration: none;
@@ -1589,11 +1591,35 @@ input[type="submit"] {
 	transform: translateY(-2px);
 }
 
+.iscp-suite-icon {
+	display: grid;
+	width: 38px;
+	height: 38px;
+	place-items: center;
+	color: #6ee7ff;
+	background: rgba(18, 214, 255, 0.13);
+	border: 1px solid rgba(18, 214, 255, 0.28);
+	border-radius: 11px;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.iscp-suite-icon svg {
+	width: 19px;
+	height: 19px;
+	fill: currentColor;
+}
+
+.iscp-suite-copy {
+	display: grid;
+	gap: 0.18rem;
+	min-width: 0;
+}
+
 .iscp-hero-suite-nav strong {
 	font-size: 0.98rem;
 }
 
-.iscp-hero-suite-nav span {
+.iscp-hero-suite-nav small {
 	color: rgba(255, 255, 255, 0.72);
 	font-size: 0.86rem;
 }
@@ -1674,7 +1700,7 @@ input[type="submit"] {
 }
 
 .iscp-dashboard-card-main {
-	top: 174px;
+	top: 214px;
 	left: 54px;
 	right: 54px;
 	padding: 1.35rem;
@@ -1717,7 +1743,7 @@ input[type="submit"] {
 
 .iscp-dashboard-card svg {
 	width: 100%;
-	height: 92px;
+	height: 72px;
 }
 
 .iscp-visual-line {
@@ -1739,8 +1765,8 @@ input[type="submit"] {
 }
 
 .iscp-dashboard-card-small {
-	width: 150px;
-	padding: 1rem;
+	width: 142px;
+	padding: 0.82rem;
 }
 
 .iscp-dashboard-card-small strong {
@@ -1751,13 +1777,13 @@ input[type="submit"] {
 }
 
 .iscp-dashboard-card-a {
-	bottom: 74px;
-	left: 52px;
+	top: 86px;
+	left: 38px;
 }
 
 .iscp-dashboard-card-b {
-	right: 48px;
-	bottom: 52px;
+	top: 104px;
+	right: 38px;
 }
 
 .iscp-dashboard-node {
@@ -3777,6 +3803,7 @@ input[type="submit"] {
 	.iscp-contact-meta-grid,
 	.iscp-offering-card-grid,
 	.iscp-offering-link-grid,
+	.iscp-offering-rich-grid,
 	.iscp-solution-map-grid,
 	.iscp-solution-bundles,
 	.iscp-recent-post-grid {
@@ -3785,6 +3812,11 @@ input[type="submit"] {
 
 	.iscp-offering-detail-grid {
 		grid-template-columns: 1fr;
+	}
+
+	.iscp-offering-cta-card {
+		align-items: flex-start;
+		flex-direction: column;
 	}
 
 	.iscp-capability-visual-strip {
@@ -3845,6 +3877,7 @@ input[type="submit"] {
 	.iscp-contact-meta-grid,
 	.iscp-offering-card-grid,
 	.iscp-offering-link-grid,
+	.iscp-offering-rich-grid,
 	.iscp-recent-post-grid,
 	.iscp-entry-content .iscp-manual-metrics,
 	.iscp-entry-content .iscp-manual-grid,
@@ -3873,18 +3906,20 @@ input[type="submit"] {
 	}
 
 	.iscp-dashboard-card-main {
-		top: 52px;
+		top: 54px;
 		left: 20px;
 		right: 20px;
 	}
 
 	.iscp-dashboard-card-a {
 		left: 20px;
+		top: auto;
 		bottom: 44px;
 	}
 
 	.iscp-dashboard-card-b {
 		right: 20px;
+		top: auto;
 		bottom: 28px;
 	}
 }
@@ -5032,6 +5067,173 @@ body.admin-bar .iscp-scroll-progress {
 
 .iscp-offering-feature-card li + li {
 	margin-top: 0.65rem;
+}
+
+.iscp-offering-fit {
+	display: grid;
+	gap: 0.35rem;
+	margin-top: 1.25rem;
+	padding: 1rem;
+	background: rgba(15, 91, 214, 0.06);
+	border: 1px solid color-mix(in srgb, var(--iscp-primary), transparent 82%);
+	border-radius: 16px;
+}
+
+.iscp-offering-fit strong {
+	color: var(--iscp-primary);
+	font-size: 0.82rem;
+	text-transform: uppercase;
+	letter-spacing: 0.08em;
+}
+
+.iscp-offering-fit span {
+	color: var(--iscp-text);
+	line-height: 1.65;
+}
+
+.iscp-offering-rich-section {
+	padding-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.iscp-offering-rich-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.8fr) minmax(240px, 0.7fr);
+	gap: clamp(1rem, 2vw, 1.35rem);
+}
+
+.iscp-offering-panel {
+	padding: clamp(1.2rem, 2.5vw, 1.55rem);
+	background: rgba(255, 255, 255, 0.86);
+	border: 1px solid var(--iscp-border);
+	border-radius: 20px;
+	box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+.iscp-offering-panel-dark {
+	color: #ffffff;
+	background:
+		radial-gradient(circle at 82% 10%, rgba(18, 214, 255, 0.22), transparent 28%),
+		linear-gradient(135deg, #061733, #0a2a4b);
+	border-color: rgba(255, 255, 255, 0.13);
+}
+
+.iscp-offering-panel h3 {
+	margin-bottom: 1rem;
+	font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+}
+
+.iscp-offering-panel p {
+	margin: 0;
+	color: var(--iscp-muted);
+	line-height: 1.7;
+}
+
+.iscp-offering-panel-dark h3,
+.iscp-offering-panel-dark p {
+	color: #ffffff;
+}
+
+.iscp-offering-panel-icon {
+	display: grid;
+	width: 48px;
+	height: 48px;
+	margin-bottom: 1rem;
+	place-items: center;
+	color: #7deaff;
+	background: rgba(18, 214, 255, 0.13);
+	border: 1px solid rgba(18, 214, 255, 0.32);
+	border-radius: 14px;
+}
+
+.iscp-offering-panel-icon svg {
+	width: 24px;
+	height: 24px;
+	fill: currentColor;
+}
+
+.iscp-offering-chip-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.55rem;
+}
+
+.iscp-offering-chip-grid span {
+	padding: 0.5rem 0.7rem;
+	color: rgba(255, 255, 255, 0.92);
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.13);
+	border-radius: 999px;
+	font-size: 0.88rem;
+	font-weight: 750;
+}
+
+.iscp-check-list {
+	display: grid;
+	gap: 0.75rem;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.iscp-check-list li {
+	position: relative;
+	padding-left: 1.7rem;
+	color: var(--iscp-muted);
+	line-height: 1.6;
+}
+
+.iscp-check-list li::before {
+	position: absolute;
+	top: 0.26rem;
+	left: 0;
+	display: grid;
+	width: 18px;
+	height: 18px;
+	place-items: center;
+	color: #ffffff;
+	content: "✓";
+	background: linear-gradient(135deg, var(--iscp-primary), var(--iscp-accent));
+	border-radius: 999px;
+	font-size: 0.72rem;
+	font-weight: 900;
+}
+
+.iscp-offering-panel-seo {
+	background:
+		linear-gradient(135deg, rgba(255, 199, 52, 0.13), rgba(18, 214, 255, 0.08)),
+		#ffffff;
+}
+
+.iscp-offering-cta-band {
+	padding-block: clamp(2rem, 4vw, 3.75rem);
+	background: #ffffff;
+}
+
+.iscp-offering-cta-card {
+	display: flex;
+	gap: 1.5rem;
+	align-items: center;
+	justify-content: space-between;
+	padding: clamp(1.25rem, 3vw, 2rem);
+	color: #ffffff;
+	background:
+		radial-gradient(circle at 14% 18%, rgba(18, 214, 255, 0.2), transparent 30%),
+		linear-gradient(135deg, #061733, #092747 58%, #111827);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 22px;
+	box-shadow: 0 22px 58px rgba(7, 17, 31, 0.2);
+}
+
+.iscp-offering-cta-card h2 {
+	margin-bottom: 0.45rem;
+	color: #ffffff;
+	font-size: clamp(1.45rem, 2.5vw, 2.1rem);
+}
+
+.iscp-offering-cta-card p {
+	max-width: 760px;
+	margin: 0;
+	color: rgba(255, 255, 255, 0.76);
 }
 
 .iscp-offering-link-grid a {
