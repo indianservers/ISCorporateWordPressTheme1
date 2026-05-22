@@ -844,9 +844,8 @@ input[type="submit"] {
 	position: relative;
 	padding-block: clamp(3rem, 6vw, 5rem);
 	background:
-		radial-gradient(circle at 8% 28%, rgba(0, 164, 239, 0.24), transparent 28%),
-		radial-gradient(circle at 96% 72%, rgba(255, 169, 45, 0.18), transparent 26%),
-		linear-gradient(135deg, rgba(4, 15, 33, 0.97), rgba(9, 29, 52, 0.94));
+		radial-gradient(circle at 92% 35%, rgba(255, 169, 45, 0.2), transparent 24%),
+		linear-gradient(135deg, #0f5bd6 0%, #2468ef 46%, #13b6d6 100%);
 	color: #ffffff;
 	text-align: left;
 	overflow: hidden;
@@ -863,17 +862,14 @@ input[type="submit"] {
 }
 
 .iscp-trust-strip::before {
-	left: -96px;
-	bottom: -112px;
-	background: rgba(0, 164, 239, 0.35);
-	filter: blur(12px);
+	display: none;
 }
 
 .iscp-trust-strip::after {
-	right: -94px;
-	top: -90px;
-	border: 26px solid rgba(255, 169, 45, 0.28);
-	box-shadow: 0 0 70px rgba(255, 169, 45, 0.32);
+	right: -86px;
+	top: -74px;
+	border: 22px solid rgba(255, 169, 45, 0.3);
+	box-shadow: 0 0 64px rgba(255, 169, 45, 0.24);
 }
 
 .iscp-trust-strip .iscp-container {
@@ -1659,7 +1655,7 @@ input[type="submit"] {
 	gap: 0.7rem;
 	min-height: 78px;
 	padding: 1rem 1.1rem;
-	color: rgba(255, 255, 255, 0.94);
+	color: #ffffff;
 	background:
 		linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.055));
 	border: 1px solid rgba(255, 255, 255, 0.18);
@@ -1688,17 +1684,26 @@ input[type="submit"] {
 .iscp-logo-strip .iscp-product-pill-3,
 .iscp-logo-strip .iscp-product-pill-6,
 .iscp-logo-strip .iscp-product-pill-8 {
-	color: #76dfff;
+	background: linear-gradient(135deg, #2f80ed, #35c6f4);
 }
 
 .iscp-logo-strip .iscp-product-pill-2,
 .iscp-logo-strip .iscp-product-pill-4 {
-	color: #a7f3d0;
+	background: linear-gradient(135deg, #7c3aed, #a78bfa);
 }
 
 .iscp-logo-strip .iscp-product-pill-5,
 .iscp-logo-strip .iscp-product-pill-7 {
-	color: #ffbd62;
+	background: linear-gradient(135deg, #f97316, #facc15);
+}
+
+.iscp-logo-strip .iscp-product-pill-4,
+.iscp-logo-strip .iscp-product-pill-8 {
+	background: linear-gradient(135deg, #0f766e, #2dd4bf);
+}
+
+.iscp-logo-strip .iscp-product-pill-7 {
+	background: linear-gradient(135deg, #dc2626, #fb7185);
 }
 
 .iscp-card-grid {
@@ -1822,6 +1827,75 @@ input[type="submit"] {
 .iscp-solution-card .iscp-card-kicker,
 .iscp-service-card .iscp-card-kicker {
 	color: var(--iscp-primary);
+}
+
+.iscp-home-solutions .iscp-solution-card {
+	position: relative;
+	color: #ffffff;
+	background: linear-gradient(135deg, rgba(47, 128, 237, 0.94), rgba(53, 198, 244, 0.9));
+	border-color: rgba(255, 255, 255, 0.22);
+	box-shadow: 0 22px 60px rgba(15, 91, 214, 0.22);
+	overflow: hidden;
+}
+
+.iscp-home-solutions .iscp-solution-card:nth-child(2) {
+	background: linear-gradient(135deg, rgba(124, 58, 237, 0.94), rgba(167, 139, 250, 0.9));
+}
+
+.iscp-home-solutions .iscp-solution-card:nth-child(3) {
+	background: linear-gradient(135deg, rgba(8, 145, 178, 0.94), rgba(34, 211, 238, 0.9));
+}
+
+.iscp-home-solutions .iscp-solution-card:nth-child(4) {
+	background: linear-gradient(135deg, rgba(15, 118, 110, 0.94), rgba(45, 212, 191, 0.9));
+}
+
+.iscp-home-solutions .iscp-solution-card:nth-child(5) {
+	background: linear-gradient(135deg, rgba(249, 115, 22, 0.95), rgba(250, 204, 21, 0.9));
+}
+
+.iscp-home-solutions .iscp-solution-card:nth-child(6) {
+	background: linear-gradient(135deg, rgba(99, 102, 241, 0.94), rgba(14, 165, 233, 0.9));
+}
+
+.iscp-home-solutions .iscp-solution-card:nth-child(7) {
+	background: linear-gradient(135deg, rgba(220, 38, 38, 0.94), rgba(251, 113, 133, 0.9));
+}
+
+.iscp-home-solutions .iscp-solution-card:nth-child(8) {
+	background: linear-gradient(135deg, rgba(37, 99, 235, 0.94), rgba(20, 184, 166, 0.9));
+}
+
+.iscp-home-solutions .iscp-solution-card::before {
+	position: absolute;
+	inset: 1px;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 52%);
+	border-radius: inherit;
+	content: "";
+	pointer-events: none;
+}
+
+.iscp-home-solutions .iscp-solution-card .iscp-card-body {
+	position: relative;
+	z-index: 1;
+}
+
+.iscp-home-solutions .iscp-solution-card .iscp-card-icon {
+	color: #ffffff;
+	background: rgba(255, 255, 255, 0.16);
+	border: 1px solid rgba(255, 255, 255, 0.24);
+}
+
+.iscp-home-solutions .iscp-solution-card .iscp-card-kicker,
+.iscp-home-solutions .iscp-solution-card h3,
+.iscp-home-solutions .iscp-solution-card h3 a,
+.iscp-home-solutions .iscp-solution-card p,
+.iscp-home-solutions .iscp-solution-card .iscp-card-link {
+	color: #ffffff;
+}
+
+.iscp-home-solutions .iscp-solution-card p {
+	color: rgba(255, 255, 255, 0.9);
 }
 
 .iscp-service-mark svg {
