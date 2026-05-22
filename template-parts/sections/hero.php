@@ -32,7 +32,7 @@ $iscp_suite_links = array(
 			<h1><?php echo esc_html( iscp_get_theme_mod( 'iscp_hero_headline' ) ); ?></h1>
 			<p class="iscp-hero-subtitle"><?php echo esc_html( iscp_get_theme_mod( 'iscp_hero_subtitle' ) ); ?></p>
 			<div class="iscp-action-row">
-				<a class="iscp-btn iscp-btn-primary" href="<?php echo esc_url( iscp_get_theme_mod( 'iscp_hero_primary_cta_url' ) ); ?>"><?php echo esc_html( iscp_get_theme_mod( 'iscp_hero_primary_cta_text' ) ); ?></a>
+				<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( iscp_get_theme_mod( 'iscp_hero_primary_cta_url' ) ); ?>"><?php echo esc_html( iscp_get_theme_mod( 'iscp_hero_primary_cta_text' ) ); ?></a>
 				<a class="iscp-btn iscp-btn-light" href="<?php echo esc_url( iscp_get_theme_mod( 'iscp_hero_secondary_cta_url' ) ); ?>"><?php echo esc_html( iscp_get_theme_mod( 'iscp_hero_secondary_cta_text' ) ); ?></a>
 			</div>
 			<?php if ( $iscp_badges ) : ?>

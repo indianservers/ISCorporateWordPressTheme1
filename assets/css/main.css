@@ -237,6 +237,31 @@ input[type="submit"] {
 	color: var(--iscp-primary);
 }
 
+.iscp-btn-gold {
+	background: linear-gradient(135deg, #ffd84d 0%, #ffb627 100%);
+	border-color: rgba(255, 216, 77, 0.72);
+	color: #241033;
+	box-shadow: 0 12px 28px rgba(255, 182, 39, 0.24);
+}
+
+.iscp-btn-gold:hover {
+	background: linear-gradient(135deg, #ffe985 0%, #ffc233 100%);
+	color: #241033;
+	box-shadow: 0 16px 34px rgba(255, 182, 39, 0.32);
+}
+
+.iscp-btn-gold.iscp-btn-ghost {
+	background: rgba(255, 216, 77, 0.08);
+	border-color: rgba(255, 216, 77, 0.42);
+	color: #ffd84d;
+	box-shadow: none;
+}
+
+.iscp-btn-gold.iscp-btn-ghost:hover {
+	background: rgba(255, 216, 77, 0.16);
+	color: #ffe985;
+}
+
 .iscp-action-row {
 	display: flex;
 	flex-wrap: wrap;

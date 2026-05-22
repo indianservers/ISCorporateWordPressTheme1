@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 			<p><?php esc_html_e( 'Talk to Indian Servers Pvt. Ltd. for SaaS products, custom software development and managed digital infrastructure across India and global branch regions.', 'iscp' ); ?></p>
 		</div>
 		<div class="iscp-action-row">
-			<a class="iscp-btn iscp-btn-primary" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Start a Project', 'iscp' ); ?></a>
+			<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Start a Project', 'iscp' ); ?></a>
 			<a class="iscp-btn iscp-btn-light" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Contact Us', 'iscp' ); ?></a>
 		</div>
 	</div>

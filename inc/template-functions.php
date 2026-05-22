@@ -585,7 +585,7 @@ if ( ! function_exists( 'iscp_render_template_hero' ) ) {
 					<?php if ( ! empty( $args['primary']['label'] ) || ! empty( $args['secondary']['label'] ) ) : ?>
 						<div class="iscp-action-row">
 							<?php if ( ! empty( $args['primary']['label'] ) ) : ?>
-								<a class="iscp-btn iscp-btn-primary" href="<?php echo esc_url( isset( $args['primary']['url'] ) ? $args['primary']['url'] : '#' ); ?>"><?php echo esc_html( $args['primary']['label'] ); ?></a>
+								<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( isset( $args['primary']['url'] ) ? $args['primary']['url'] : '#' ); ?>"><?php echo esc_html( $args['primary']['label'] ); ?></a>
 							<?php endif; ?>
 							<?php if ( ! empty( $args['secondary']['label'] ) ) : ?>
 								<a class="iscp-btn iscp-btn-ghost" href="<?php echo esc_url( isset( $args['secondary']['url'] ) ? $args['secondary']['url'] : '#' ); ?>"><?php echo esc_html( $args['secondary']['label'] ); ?></a>
@@ -708,7 +708,7 @@ if ( ! function_exists( 'iscp_render_template_cta' ) ) {
 					<p class="iscp-eyebrow"><?php esc_html_e( 'Next Step', 'iscp' ); ?></p>
 					<h2><?php echo esc_html( $title ); ?></h2>
 					<p><?php echo esc_html( $text ); ?></p>
-					<a class="iscp-btn iscp-btn-light" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $button ); ?></a>
+					<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $button ); ?></a>
 				</div>
 			</div>
 		</section>

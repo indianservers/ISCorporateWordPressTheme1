@@ -147,7 +147,7 @@ if ( iscp_get_theme_mod( 'iscp_sticky_header_enabled', true ) ) {
 				<a class="iscp-btn iscp-btn-ghost" href="<?php echo esc_url( iscp_get_theme_mod( 'iscp_header_cta_2_url', '/contact/' ) ); ?>">
 					<?php echo esc_html( iscp_get_theme_mod( 'iscp_header_cta_2_text', __( 'Contact Us', 'iscp' ) ) ); ?>
 				</a>
-				<a class="iscp-btn iscp-btn-primary" href="<?php echo esc_url( iscp_get_theme_mod( 'iscp_header_cta_1_url', '/contact/' ) ); ?>">
+				<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( iscp_get_theme_mod( 'iscp_header_cta_1_url', '/contact/' ) ); ?>">
 					<?php echo esc_html( iscp_get_theme_mod( 'iscp_header_cta_1_text', __( 'Start a Project', 'iscp' ) ) ); ?>
 				</a>
 			</div>
