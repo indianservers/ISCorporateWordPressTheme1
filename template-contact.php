@@ -88,7 +88,10 @@ get_header();
 			</div>
 			<div class="iscp-contact-socials" aria-label="<?php esc_attr_e( 'Indian Servers social media handles', 'iscp' ); ?>">
 				<?php foreach ( $iscp_socials as $iscp_label => $iscp_url ) : ?>
-					<a href="<?php echo esc_url( $iscp_url ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( $iscp_label ); ?></a>
+					<a href="<?php echo esc_url( $iscp_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( $iscp_label ); ?>">
+						<?php iscp_render_social_icon( $iscp_label ); ?>
+						<span class="iscp-screen-reader-text"><?php echo esc_html( $iscp_label ); ?></span>
+					</a>
 				<?php endforeach; ?>
 			</div>
 		</div>

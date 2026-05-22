@@ -117,7 +117,12 @@ $iscp_social_links['Instagram'] = $iscp_social_links['Instagram'] ? $iscp_social
 			<ul class="iscp-social-menu" aria-label="<?php esc_attr_e( 'Social links', 'iscp' ); ?>">
 				<?php foreach ( $iscp_social_links as $iscp_label => $iscp_url ) : ?>
 					<?php if ( $iscp_url ) : ?>
-						<li><a href="<?php echo esc_url( $iscp_url ); ?>"><?php echo esc_html( $iscp_label ); ?></a></li>
+						<li>
+							<a href="<?php echo esc_url( $iscp_url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( $iscp_label ); ?>">
+								<?php iscp_render_social_icon( $iscp_label ); ?>
+								<span class="iscp-screen-reader-text"><?php echo esc_html( $iscp_label ); ?></span>
+							</a>
+						</li>
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</ul>

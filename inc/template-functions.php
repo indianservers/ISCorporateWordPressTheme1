@@ -258,6 +258,40 @@ if ( ! function_exists( 'iscp_append_primary_navigation_items' ) ) {
 }
 add_filter( 'wp_nav_menu_items', 'iscp_append_primary_navigation_items', 10, 2 );
 
+if ( ! function_exists( 'iscp_get_social_icon_path' ) ) {
+	/**
+	 * Return SVG path data for social icons.
+	 *
+	 * @param string $network Social network label.
+	 * @return string
+	 */
+	function iscp_get_social_icon_path( $network ) {
+		$network = strtolower( $network );
+		$icons   = array(
+			'facebook'  => 'M14 8h2V5h-2c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.5l.5-3h-3V9c0-.6.4-1 1-1Z',
+			'linkedin'  => 'M5 8.8h3.2V19H5V8.8ZM6.6 4a1.9 1.9 0 1 1 0 3.8A1.9 1.9 0 0 1 6.6 4Zm4 4.8h3v1.4h.1c.4-.8 1.5-1.7 3.1-1.7 3.3 0 3.9 2.2 3.9 5V19h-3.2v-5c0-1.2 0-2.7-1.7-2.7s-1.9 1.3-1.9 2.6V19h-3.2V8.8Z',
+			'instagram' => 'M7.5 3h9A4.5 4.5 0 0 1 21 7.5v9a4.5 4.5 0 0 1-4.5 4.5h-9A4.5 4.5 0 0 1 3 16.5v-9A4.5 4.5 0 0 1 7.5 3Zm0 2A2.5 2.5 0 0 0 5 7.5v9A2.5 2.5 0 0 0 7.5 19h9a2.5 2.5 0 0 0 2.5-2.5v-9A2.5 2.5 0 0 0 16.5 5h-9ZM12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm4.8-3.1a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z',
+			'whatsapp'  => 'M12 2.2A9.7 9.7 0 0 0 3.8 17L3 21l4.1-1A9.7 9.7 0 1 0 12 2.2Zm0 17.4a7.7 7.7 0 0 1-3.9-1l-.3-.2-2.4.6.5-2.3-.2-.4A7.6 7.6 0 1 1 12 19.6Zm4.3-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.2.2-.3.2-.6.1a6.3 6.3 0 0 1-1.8-1.1 6.8 6.8 0 0 1-1.3-1.6c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5a.5.5 0 0 0 0-.5c-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.8 3 .7.5-.1 1.4-.6 1.6-1.1.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z',
+		);
+
+		return isset( $icons[ $network ] ) ? $icons[ $network ] : 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 5v4h4v2h-4v4h-2v-4H7v-2h4V7h2Z';
+	}
+}
+
+if ( ! function_exists( 'iscp_render_social_icon' ) ) {
+	/**
+	 * Print a social SVG icon.
+	 *
+	 * @param string $network Social network label.
+	 */
+	function iscp_render_social_icon( $network ) {
+		printf(
+			'<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="%s"/></svg>',
+			esc_attr( iscp_get_social_icon_path( $network ) )
+		);
+	}
+}
+
 if ( ! function_exists( 'iscp_render_template_hero' ) ) {
 	/**
 	 * Render a reusable template hero.
@@ -590,12 +624,12 @@ if ( ! function_exists( 'iscp_render_conversion_tools' ) ) {
 		?>
 		<div class="iscp-floating-socials" aria-label="<?php esc_attr_e( 'Indian Servers quick contact links', 'iscp' ); ?>">
 			<a class="iscp-floating-whatsapp" href="<?php echo esc_url( 'https://wa.me/' . $whatsapp_number . '?text=' . rawurlencode( __( 'Hello Indian Servers, I would like to discuss a project.', 'iscp' ) ) ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php esc_attr_e( 'Send WhatsApp message to Indian Servers', 'iscp' ); ?>">
-				<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M12 2.2A9.7 9.7 0 0 0 3.8 17L3 21l4.1-1A9.7 9.7 0 1 0 12 2.2Zm0 17.4a7.7 7.7 0 0 1-3.9-1l-.3-.2-2.4.6.5-2.3-.2-.4A7.6 7.6 0 1 1 12 19.6Zm4.3-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.2.2-.3.2-.6.1a6.3 6.3 0 0 1-1.8-1.1 6.8 6.8 0 0 1-1.3-1.6c-.1-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5a.5.5 0 0 0 0-.5c-.1-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.8 3 .7.5-.1 1.4-.6 1.6-1.1.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.4-.3Z"/></svg>
+				<?php iscp_render_social_icon( 'WhatsApp' ); ?>
 				<span><?php esc_html_e( 'Send', 'iscp' ); ?></span>
 			</a>
 			<?php foreach ( $social_links as $label => $url ) : ?>
 				<?php if ( $url ) : ?>
-					<a href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( $label ); ?>"><?php echo esc_html( substr( $label, 0, 1 ) ); ?></a>
+					<a href="<?php echo esc_url( $url ); ?>" target="_blank" rel="noopener noreferrer" aria-label="<?php echo esc_attr( $label ); ?>"><?php iscp_render_social_icon( $label ); ?></a>
 				<?php endif; ?>
 			<?php endforeach; ?>
 		</div>
