@@ -46,6 +46,26 @@ if ( ! function_exists( 'iscp_enqueue_assets' ) ) {
 			iscp_asset_version( 'assets/js/main.js' ),
 			true
 		);
+
+		if ( is_front_page() ) {
+			wp_enqueue_style(
+				'iscp-globe-thumbnail',
+				get_template_directory_uri() . '/assets/css/is-globe-thumbnail.css',
+				array( 'iscp-main' ),
+				iscp_asset_version( 'assets/css/is-globe-thumbnail.css' )
+			);
+
+			$globe_script_url = add_query_arg(
+				'ver',
+				iscp_asset_version( 'assets/js/is-globe-thumbnail.js' ),
+				get_template_directory_uri() . '/assets/js/is-globe-thumbnail.js'
+			);
+
+			wp_add_inline_script(
+				'iscp-main',
+				'window.addEventListener("DOMContentLoaded",function(){if(!window.matchMedia("(min-width: 1024px)").matches){return;}var script=document.createElement("script");script.src=' . wp_json_encode( $globe_script_url ) . ';script.async=true;document.body.appendChild(script);});'
+			);
+		}
 	}
 }
 add_action( 'wp_enqueue_scripts', 'iscp_enqueue_assets' );
