@@ -13,12 +13,12 @@ $iscp_sections = array(
 	'hero'         => 'hero',
 	'trust_strip'  => 'trust-strip',
 	'solutions'    => 'solutions',
+	'blog'         => 'blog',
 	'capabilities' => 'capabilities',
 	'features'     => 'features',
 	'industries'   => 'industries',
 	'stats'        => 'stats',
 	'process'      => 'process',
-	'blog'         => 'blog',
 	'cta'          => 'cta',
 );
 

@@ -225,10 +225,10 @@ if ( ! function_exists( 'iscp_offering_document_title' ) ) {
 
 		if ( $slug ) {
 			$page = iscp_get_offering_page( $group, $slug );
-			return ! empty( $page['title'] ) ? $page['title'] . ' - Indian Servers' : $title;
+			return ! empty( $page['title'] ) ? $page['title'] . ' | Indian Servers' : $title;
 		}
 
-		return 'products' === $group ? __( 'Indian Servers Products', 'iscp' ) : __( 'Indian Servers Services', 'iscp' );
+		return 'products' === $group ? __( 'SaaS Products and Business Software | Indian Servers', 'iscp' ) : __( 'Software Development, Cloud and Cyber Security Services | Indian Servers', 'iscp' );
 	}
 }
 add_filter( 'pre_get_document_title', 'iscp_offering_document_title' );
