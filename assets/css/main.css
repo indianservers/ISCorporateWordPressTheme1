@@ -1209,6 +1209,33 @@ input[type="submit"] {
 	color: #ffffff;
 }
 
+.iscp-footer .iscp-contact-list li {
+	border-bottom-color: rgba(255, 255, 255, 0.28);
+}
+
+.iscp-footer .iscp-contact-list a,
+.iscp-footer .iscp-contact-list em,
+.iscp-footer .iscp-contact-list li {
+	color: rgba(255, 255, 255, 0.84);
+}
+
+.iscp-footer .iscp-contact-list a {
+	font-weight: 850;
+}
+
+.iscp-footer .iscp-contact-list a:hover {
+	color: #ffffff;
+}
+
+.iscp-footer .iscp-contact-list a[href^="mailto:"],
+.iscp-footer .iscp-contact-list a[href^="tel:"] {
+	color: #ffffff;
+}
+
+.iscp-footer .iscp-contact-list a[href*="wa.me"] {
+	color: #ffd84a;
+}
+
 .iscp-footer-newsletter {
 	grid-column: 1 / -1;
 	max-width: 560px;
