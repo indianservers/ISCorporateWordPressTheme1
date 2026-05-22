@@ -25,7 +25,7 @@ $iscp_usa_contact   = array(
 	'company'    => __( 'Indian Servers INC', 'iscp' ),
 	'phone'      => '+1 3312299656',
 	'tel'        => '+13312299656',
-	'email'      => 'Raj@IndianServers.com',
+	'email'      => 'raj.potluri@indianservers.com',
 	'team_email' => '',
 	'address'    => __( '752 Century Farm Ln, Naperville, IL 60563, United States', 'iscp' ),
 );

@@ -496,7 +496,7 @@ if ( ! function_exists( 'iscp_output_schema' ) ) {
 					array(
 						'@type'       => 'ContactPoint',
 						'telephone'   => '+1-331-229-9656',
-						'email'       => 'Raj@IndianServers.com',
+						'email'       => 'raj.potluri@indianservers.com',
 						'contactType' => 'sales',
 						'areaServed'  => 'US',
 					),
