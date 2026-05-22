@@ -668,6 +668,10 @@ if ( ! function_exists( 'iscp_render_manual_page_content_by_path' ) ) {
 			return false;
 		}
 
+		if ( '' === trim( wp_strip_all_tags( $page->post_content ) ) ) {
+			return false;
+		}
+
 		$GLOBALS['post'] = $page;
 		setup_postdata( $page );
 		?>

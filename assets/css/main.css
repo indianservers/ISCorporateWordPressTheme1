@@ -1767,13 +1767,14 @@ input[type="submit"] {
 }
 
 .iscp-offering-card {
-	display: grid;
-	gap: 0.75rem;
-	min-height: 220px;
-	padding: 1.25rem;
+	display: flex;
+	flex-direction: column;
+	min-height: 360px;
+	padding: 0.85rem;
 	color: var(--iscp-text);
 	text-decoration: none;
 	transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+	overflow: hidden;
 }
 
 .iscp-offering-card:hover {
@@ -1782,14 +1783,53 @@ input[type="submit"] {
 	transform: translateY(-3px);
 }
 
-.iscp-offering-card span {
+.iscp-offering-catalog-heading {
+	max-width: 820px;
+	margin: 0 0 clamp(1.4rem, 3vw, 2.4rem);
+	text-align: left;
+}
+
+.iscp-offering-catalog-heading p:not(.iscp-eyebrow) {
+	color: var(--iscp-muted);
+	font-size: 1rem;
+	line-height: 1.7;
+}
+
+.iscp-offering-card-media {
+	position: relative;
+	display: block;
+	min-height: 118px;
+	padding: 1rem;
+	color: #ffffff;
+	background:
+		radial-gradient(circle at 82% 22%, rgba(255, 255, 255, 0.34), transparent 25%),
+		linear-gradient(135deg, rgba(10, 102, 255, 0.98), rgba(18, 194, 233, 0.92));
+	border-radius: 16px;
+	text-decoration: none;
+	overflow: hidden;
+}
+
+.iscp-offering-card-media::before {
+	position: absolute;
+	inset: auto -22px -44px auto;
+	width: 132px;
+	height: 132px;
+	border: 18px solid rgba(255, 255, 255, 0.18);
+	border-radius: 999px;
+	content: "";
+}
+
+.iscp-offering-card-icon {
+	position: relative;
+	z-index: 1;
 	display: inline-grid;
 	width: 48px;
 	height: 48px;
 	place-items: center;
-	color: #ffffff;
-	background: linear-gradient(135deg, var(--iscp-primary), var(--iscp-accent));
+	background: rgba(255, 255, 255, 0.18);
+	border: 1px solid rgba(255, 255, 255, 0.3);
 	border-radius: 14px;
+	box-shadow: 0 14px 38px rgba(4, 18, 39, 0.2);
 }
 
 .iscp-offering-card svg {
@@ -1798,14 +1838,136 @@ input[type="submit"] {
 	fill: currentColor;
 }
 
-.iscp-offering-card strong {
-	font-size: 1.08rem;
+.iscp-offering-card-art {
+	position: absolute;
+	right: 1rem;
+	bottom: 0.9rem;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: repeat(3, 18px);
+	align-items: end;
+	gap: 0.35rem;
 }
 
-.iscp-offering-card small {
+.iscp-offering-card-art span {
+	display: block;
+	width: 18px;
+	background: rgba(255, 255, 255, 0.76);
+	border-radius: 999px 999px 4px 4px;
+	box-shadow: 0 8px 22px rgba(1, 12, 28, 0.18);
+}
+
+.iscp-offering-card-art span:nth-child(1) {
+	height: 28px;
+}
+
+.iscp-offering-card-art span:nth-child(2) {
+	height: 46px;
+}
+
+.iscp-offering-card-art span:nth-child(3) {
+	height: 36px;
+}
+
+.iscp-offering-card-body {
+	display: grid;
+	gap: 0.85rem;
+	padding: 1.1rem 0.5rem 0.75rem;
+}
+
+.iscp-offering-card h3 {
+	margin: 0;
+	font-size: 1.08rem;
+	line-height: 1.35;
+	letter-spacing: 0;
+}
+
+.iscp-offering-card h3 a {
+	color: var(--iscp-heading);
+	text-decoration: none;
+}
+
+.iscp-offering-card h3 a:hover {
+	color: var(--iscp-primary);
+}
+
+.iscp-offering-card p {
+	margin: 0;
 	color: var(--iscp-muted);
 	font-size: 0.94rem;
 	line-height: 1.6;
+}
+
+.iscp-offering-card-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.65rem;
+	align-items: center;
+	margin-top: auto;
+	padding: 0.25rem 0.5rem 0.4rem;
+}
+
+.iscp-card-link,
+.iscp-card-quote {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 38px;
+	padding: 0.55rem 0.85rem;
+	border-radius: 999px;
+	font-size: 0.88rem;
+	font-weight: 850;
+	line-height: 1;
+	text-decoration: none;
+}
+
+.iscp-card-link {
+	color: var(--iscp-primary);
+	background: color-mix(in srgb, var(--iscp-primary), transparent 92%);
+}
+
+.iscp-card-quote {
+	color: #07101f;
+	background: linear-gradient(135deg, #ffd84a, #ffb229);
+	box-shadow: 0 14px 34px rgba(255, 178, 41, 0.22);
+}
+
+.iscp-card-quote:hover,
+.iscp-card-link:hover {
+	transform: translateY(-1px);
+}
+
+.iscp-offering-card-education .iscp-offering-card-media,
+.iscp-offering-card-ar .iscp-offering-card-media {
+	background: linear-gradient(135deg, #7c3aed, #35c6f4);
+}
+
+.iscp-offering-card-inventory .iscp-offering-card-media,
+.iscp-offering-card-cloud .iscp-offering-card-media {
+	background: linear-gradient(135deg, #0f766e, #2dd4bf);
+}
+
+.iscp-offering-card-restaurant .iscp-offering-card-media {
+	background: linear-gradient(135deg, #f97316, #facc15);
+}
+
+.iscp-offering-card-shield .iscp-offering-card-media {
+	background: linear-gradient(135deg, #dc2626, #fb7185);
+}
+
+.iscp-offering-card-code .iscp-offering-card-media,
+.iscp-offering-card-web .iscp-offering-card-media,
+.iscp-offering-card-mobile .iscp-offering-card-media {
+	background: linear-gradient(135deg, #0f4fbd, #06b6d4);
+}
+
+.iscp-offering-card-ai .iscp-offering-card-media {
+	background: linear-gradient(135deg, #312e81, #06b6d4);
+}
+
+.iscp-offering-card-design .iscp-offering-card-media,
+.iscp-offering-card-chart .iscp-offering-card-media {
+	background: linear-gradient(135deg, #1d4ed8, #8b5cf6);
 }
 
 .iscp-home-card,

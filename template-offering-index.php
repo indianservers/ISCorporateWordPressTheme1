@@ -13,12 +13,13 @@ $iscp_group_data = isset( $iscp_pages[ $iscp_group ] ) ? $iscp_pages[ $iscp_grou
 $iscp_is_product = 'products' === $iscp_group;
 $iscp_image      = get_template_directory_uri() . ( $iscp_is_product ? '/assets/images/indianservers-software-team.png' : '/assets/images/indianservers-data-center.png' );
 $iscp_manual_page = iscp_get_manual_page_by_path( $iscp_group_data['base'] );
+$iscp_manual_has_content = $iscp_manual_page && '' !== trim( wp_strip_all_tags( $iscp_manual_page->post_content ) );
 
 get_header();
 ?>
 
 <main id="iscp-primary" class="iscp-main iscp-offering-index iscp-offering-index-<?php echo esc_attr( sanitize_html_class( $iscp_group ) ); ?>">
-	<?php if ( ! $iscp_manual_page ) : ?>
+	<?php if ( ! $iscp_manual_has_content ) : ?>
 		<section class="iscp-template-hero iscp-template-hero-offering">
 			<div class="iscp-container iscp-template-hero-grid">
 				<div class="iscp-template-hero-copy">
@@ -37,7 +38,7 @@ get_header();
 						echo esc_html(
 							$iscp_is_product
 								? __( 'Explore SaaS products and business platforms for HRMS, schools, CRM, inventory, restaurant POS, ERP, AI and cloud operations.', 'iscp' )
-								: __( 'Explore software development, AI, cloud, cybersecurity, VAPT, mobile apps, WordPress and dedicated team services.', 'iscp' )
+								: __( 'Explore custom software, web and mobile applications, AI, AR/VR, cloud hosting, cybersecurity, VAPT and dedicated engineering teams.', 'iscp' )
 						);
 						?>
 					</p>
@@ -57,17 +58,55 @@ get_header();
 
 	<?php iscp_render_manual_page_content_by_path( $iscp_group_data['base'] ); ?>
 
-	<section class="iscp-section <?php echo $iscp_manual_page ? 'iscp-offering-grid-section-compact' : ''; ?>">
+	<section class="iscp-section iscp-offering-catalog <?php echo $iscp_manual_has_content ? 'iscp-offering-grid-section-compact' : ''; ?>">
 		<div class="iscp-container">
+			<div class="iscp-section-heading iscp-offering-catalog-heading">
+				<p class="iscp-eyebrow"><?php echo esc_html( $iscp_is_product ? __( 'Our Products', 'iscp' ) : __( 'Our Services', 'iscp' ) ); ?></p>
+				<h2>
+					<?php
+					echo esc_html(
+						$iscp_is_product
+							? __( 'Business-ready software products', 'iscp' )
+							: __( 'Technology services for serious delivery', 'iscp' )
+					);
+					?>
+				</h2>
+				<p>
+					<?php
+					echo esc_html(
+						$iscp_is_product
+							? __( 'Choose from Indian Servers platforms for HR, education, sales, inventory, hospitality, ERP, AI and managed cloud operations.', 'iscp' )
+							: __( 'Plan, build, secure and operate digital systems with Indian Servers teams across software, cloud, AI, security and support.', 'iscp' )
+					);
+					?>
+				</p>
+			</div>
 			<div class="iscp-offering-card-grid">
 				<?php foreach ( $iscp_group_data['items'] as $iscp_slug => $iscp_item ) : ?>
-					<a class="iscp-offering-card" href="<?php echo esc_url( ! empty( $iscp_item['url'] ) ? $iscp_item['url'] : home_url( '/' . $iscp_group_data['base'] . '/' . $iscp_slug . '/' ) ); ?>">
-						<span aria-hidden="true">
-							<svg viewBox="0 0 24 24" focusable="false"><path d="<?php echo esc_attr( iscp_get_offering_icon_path( isset( $iscp_item['icon'] ) ? $iscp_item['icon'] : 'cube' ) ); ?>"/></svg>
-						</span>
-						<strong><?php echo esc_html( $iscp_item['title'] ); ?></strong>
-						<small><?php echo esc_html( wp_trim_words( $iscp_item['summary'], 18 ) ); ?></small>
-					</a>
+					<?php
+					$iscp_item_url = ! empty( $iscp_item['url'] ) ? $iscp_item['url'] : home_url( '/' . $iscp_group_data['base'] . '/' . $iscp_slug . '/' );
+					$iscp_icon     = isset( $iscp_item['icon'] ) ? $iscp_item['icon'] : 'cube';
+					?>
+					<article class="iscp-offering-card iscp-offering-card-<?php echo esc_attr( sanitize_html_class( $iscp_icon ) ); ?>">
+						<a class="iscp-offering-card-media" href="<?php echo esc_url( $iscp_item_url ); ?>" aria-label="<?php echo esc_attr( $iscp_item['title'] ); ?>">
+							<span class="iscp-offering-card-icon" aria-hidden="true">
+								<svg viewBox="0 0 24 24" focusable="false"><path d="<?php echo esc_attr( iscp_get_offering_icon_path( $iscp_icon ) ); ?>"/></svg>
+							</span>
+							<span class="iscp-offering-card-art" aria-hidden="true">
+								<span></span><span></span><span></span>
+							</span>
+						</a>
+						<div class="iscp-offering-card-body">
+							<h3><a href="<?php echo esc_url( $iscp_item_url ); ?>"><?php echo esc_html( $iscp_item['title'] ); ?></a></h3>
+							<p><?php echo esc_html( wp_trim_words( $iscp_item['summary'], 22 ) ); ?></p>
+						</div>
+						<div class="iscp-offering-card-actions">
+							<a class="iscp-card-link" href="<?php echo esc_url( $iscp_item_url ); ?>"><?php esc_html_e( 'Learn More', 'iscp' ); ?></a>
+							<a class="iscp-card-quote" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">
+								<?php echo esc_html( $iscp_is_product ? __( 'Buy Now', 'iscp' ) : __( 'Request Quote', 'iscp' ) ); ?>
+							</a>
+						</div>
+					</article>
 				<?php endforeach; ?>
 			</div>
 		</div>
