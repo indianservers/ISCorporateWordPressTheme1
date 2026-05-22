@@ -17,6 +17,12 @@ $iscp_badges      = array_filter(
 		iscp_get_theme_mod( 'iscp_hero_badge_4' ),
 	)
 );
+$iscp_suite_links = array(
+	array( 'label' => __( 'Business Apps', 'iscp' ), 'text' => __( 'HRMS, CRM, ERP, Inventory', 'iscp' ), 'url' => home_url( '/products/' ) ),
+	array( 'label' => __( 'Development', 'iscp' ), 'text' => __( '.NET, PHP, Python, Mobile', 'iscp' ), 'url' => home_url( '/services/custom-software-development/' ) ),
+	array( 'label' => __( 'Cloud', 'iscp' ), 'text' => __( 'Hosting, VPS, monitoring', 'iscp' ), 'url' => home_url( '/services/cloud-hosting/' ) ),
+	array( 'label' => __( 'Security & AI', 'iscp' ), 'text' => __( 'VAPT, automation, assistants', 'iscp' ), 'url' => home_url( '/services/cyber-security-vapt/' ) ),
+);
 ?>
 
 <section id="iscp-hero" class="iscp-section iscp-hero-section iscp-hero-layout-<?php echo esc_attr( $iscp_hero_layout ); ?>">
@@ -36,6 +42,14 @@ $iscp_badges      = array_filter(
 					<?php endforeach; ?>
 				</ul>
 			<?php endif; ?>
+			<nav class="iscp-hero-suite-nav" aria-label="<?php esc_attr_e( 'Indian Servers solution areas', 'iscp' ); ?>">
+				<?php foreach ( $iscp_suite_links as $iscp_suite_link ) : ?>
+					<a href="<?php echo esc_url( $iscp_suite_link['url'] ); ?>">
+						<strong><?php echo esc_html( $iscp_suite_link['label'] ); ?></strong>
+						<span><?php echo esc_html( $iscp_suite_link['text'] ); ?></span>
+					</a>
+				<?php endforeach; ?>
+			</nav>
 		</div>
 
 		<?php if ( iscp_get_theme_mod( 'iscp_hero_visual_enabled', true ) && 'minimal' !== $iscp_hero_layout && 'centered' !== $iscp_hero_layout ) : ?>
