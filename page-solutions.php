@@ -123,6 +123,18 @@ $iscp_solution_cards = array(
 		'type'        => __( 'Teams', 'iscp' ),
 	),
 );
+$iscp_product_metrics = array(
+	array( 'value' => '8+', 'label' => __( 'Core SaaS and business platforms', 'iscp' ) ),
+	array( 'value' => '2200+', 'label' => __( 'Client relationships and service history', 'iscp' ) ),
+	array( 'value' => '4', 'label' => __( 'India, USA, Dubai and Australia focus regions', 'iscp' ) ),
+	array( 'value' => '360', 'label' => __( 'Software, cloud, security and support coverage', 'iscp' ) ),
+);
+$iscp_product_layers = array(
+	array( 'title' => __( 'SaaS Product Foundation', 'iscp' ), 'text' => __( 'Start with HRMS, School ERP, CRM, Inventory, POS, LMS, Project Management or Vyapara ERP.', 'iscp' ) ),
+	array( 'title' => __( 'Customization Layer', 'iscp' ), 'text' => __( 'Add fields, roles, reports, approvals, workflows, dashboards and integrations based on your operations.', 'iscp' ) ),
+	array( 'title' => __( 'Cloud Operations', 'iscp' ), 'text' => __( 'Deploy with managed hosting, SSL, backups, monitoring, migrations and performance support.', 'iscp' ) ),
+	array( 'title' => __( 'Security and Support', 'iscp' ), 'text' => __( 'Extend products with VAPT, hardening, user training, maintenance and improvement roadmap.', 'iscp' ) ),
+);
 
 get_header();
 ?>
@@ -224,6 +236,19 @@ get_header();
 
 	<?php get_template_part( 'template-parts/sections/solutions' ); ?>
 
+	<section class="iscp-section iscp-section-muted iscp-product-metrics-section">
+		<div class="iscp-container">
+			<div class="iscp-product-metric-grid">
+				<?php foreach ( $iscp_product_metrics as $iscp_metric ) : ?>
+					<div class="iscp-product-metric-card">
+						<strong><?php echo esc_html( $iscp_metric['value'] ); ?></strong>
+						<span><?php echo esc_html( $iscp_metric['label'] ); ?></span>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+
 	<section class="iscp-section">
 		<div class="iscp-container iscp-template-split">
 			<div class="iscp-page-copy">
@@ -234,6 +259,24 @@ get_header();
 			<figure class="iscp-page-image-card">
 				<img src="<?php echo esc_url( $iscp_product_image ); ?>" alt="<?php esc_attr_e( 'Indian Servers product engineering dashboard and software team', 'iscp' ); ?>" loading="lazy" decoding="async">
 			</figure>
+		</div>
+	</section>
+
+	<section class="iscp-section iscp-product-layers-section">
+		<div class="iscp-container">
+			<div class="iscp-section-heading">
+				<p class="iscp-eyebrow"><?php esc_html_e( 'Product Architecture', 'iscp' ); ?></p>
+				<h2><?php esc_html_e( 'Choose a product, then shape it around your business process', 'iscp' ); ?></h2>
+				<p><?php esc_html_e( 'Indian Servers products are not isolated brochures. They can be implemented with custom modules, cloud deployment, training, security review and support.', 'iscp' ); ?></p>
+			</div>
+			<div class="iscp-product-layer-grid">
+				<?php foreach ( $iscp_product_layers as $iscp_layer ) : ?>
+					<article class="iscp-product-layer-card">
+						<h3><?php echo esc_html( $iscp_layer['title'] ); ?></h3>
+						<p><?php echo esc_html( $iscp_layer['text'] ); ?></p>
+					</article>
+				<?php endforeach; ?>
+			</div>
 		</div>
 	</section>
 

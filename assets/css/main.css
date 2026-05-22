@@ -2481,6 +2481,185 @@ input[type="submit"] {
 	line-height: 1.6;
 }
 
+.iscp-service-stage-grid,
+.iscp-product-layer-grid,
+.iscp-contact-route-grid,
+.iscp-product-metric-grid {
+	display: grid;
+	gap: 1rem;
+}
+
+.iscp-service-stage-grid,
+.iscp-contact-route-grid {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.iscp-product-layer-grid,
+.iscp-product-metric-grid {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.iscp-service-stage-card,
+.iscp-product-layer-card,
+.iscp-contact-route-card,
+.iscp-product-metric-card {
+	position: relative;
+	padding: clamp(1rem, 2vw, 1.3rem);
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.94), rgba(248, 250, 252, 0.86)),
+		#ffffff;
+	border: 1px solid var(--iscp-border);
+	border-radius: 18px;
+	box-shadow: 0 16px 42px rgba(15, 23, 42, 0.07);
+	overflow: hidden;
+}
+
+.iscp-service-stage-card::before,
+.iscp-product-layer-card::before,
+.iscp-contact-route-card::before {
+	position: absolute;
+	inset: auto -42px -56px auto;
+	width: 120px;
+	height: 120px;
+	border: 20px solid rgba(18, 214, 255, 0.08);
+	border-radius: 50%;
+	content: "";
+}
+
+.iscp-service-stage-card span {
+	display: inline-grid;
+	width: 42px;
+	height: 42px;
+	margin-bottom: 0.9rem;
+	place-items: center;
+	color: #07101f;
+	background: linear-gradient(135deg, #ffd84a, #ffb229);
+	border-radius: 14px;
+	font-weight: 950;
+}
+
+.iscp-service-stage-card h3,
+.iscp-product-layer-card h3,
+.iscp-contact-route-card h3 {
+	position: relative;
+	z-index: 1;
+	margin-bottom: 0.55rem;
+	font-size: clamp(1.02rem, 1.5vw, 1.18rem);
+	line-height: 1.3;
+}
+
+.iscp-service-stage-card p,
+.iscp-product-layer-card p,
+.iscp-contact-route-card p {
+	position: relative;
+	z-index: 1;
+	margin: 0;
+	color: var(--iscp-muted);
+	line-height: 1.62;
+}
+
+.iscp-service-stack-section,
+.iscp-product-layers-section,
+.iscp-contact-routing-section,
+.iscp-contact-confidence-section {
+	padding-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.iscp-service-stack-panel,
+.iscp-contact-confidence-panel {
+	display: grid;
+	grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+	gap: clamp(1.25rem, 3vw, 2rem);
+	align-items: center;
+	padding: clamp(1.25rem, 3vw, 2rem);
+	background:
+		radial-gradient(circle at 12% 16%, rgba(18, 214, 255, 0.13), transparent 30%),
+		linear-gradient(135deg, #061733, #092747 62%, #07101f);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 24px;
+	box-shadow: 0 24px 70px rgba(7, 17, 31, 0.22);
+}
+
+.iscp-service-stack-panel h2,
+.iscp-contact-confidence-panel h2 {
+	color: #ffffff;
+}
+
+.iscp-service-stack-panel p:not(.iscp-eyebrow),
+.iscp-contact-confidence-panel p:not(.iscp-eyebrow) {
+	color: rgba(255, 255, 255, 0.74);
+}
+
+.iscp-service-stack-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.7rem;
+}
+
+.iscp-service-stack-list span {
+	padding: 0.58rem 0.8rem;
+	color: rgba(255, 255, 255, 0.92);
+	background: rgba(255, 255, 255, 0.09);
+	border: 1px solid rgba(255, 255, 255, 0.13);
+	border-radius: 999px;
+	font-size: 0.92rem;
+	font-weight: 800;
+}
+
+.iscp-product-metrics-section {
+	padding-block: clamp(1.6rem, 3vw, 2.6rem);
+}
+
+.iscp-product-metric-card {
+	min-height: 132px;
+	background:
+		linear-gradient(145deg, rgba(7, 16, 31, 0.94), rgba(8, 41, 75, 0.92));
+	border-color: rgba(255, 255, 255, 0.12);
+}
+
+.iscp-product-metric-card strong {
+	display: block;
+	margin-bottom: 0.45rem;
+	color: #ffffff;
+	font-size: clamp(2rem, 4vw, 3rem);
+	line-height: 1;
+}
+
+.iscp-product-metric-card span {
+	color: rgba(255, 255, 255, 0.72);
+	line-height: 1.45;
+}
+
+.iscp-contact-route-card > span {
+	position: relative;
+	z-index: 1;
+	display: inline-grid;
+	width: 46px;
+	height: 46px;
+	margin-bottom: 1rem;
+	place-items: center;
+	color: #ffffff;
+	background: linear-gradient(135deg, var(--iscp-primary), var(--iscp-accent));
+	border-radius: 14px;
+}
+
+.iscp-contact-route-card .iscp-menu-icon {
+	width: 24px;
+	height: 24px;
+	background: transparent;
+	border: 0;
+}
+
+.iscp-contact-route-card svg {
+	width: 22px;
+	height: 22px;
+	fill: currentColor;
+}
+
+.iscp-contact-confidence-panel .iscp-check-list li {
+	color: rgba(255, 255, 255, 0.86);
+}
+
 .iscp-home-card,
 .iscp-service-tile,
 .iscp-case-card,
@@ -3897,6 +4076,10 @@ input[type="submit"] {
 	.iscp-contact-meta-grid,
 	.iscp-solution-global-grid,
 	.iscp-solution-global-list,
+	.iscp-service-stage-grid,
+	.iscp-product-layer-grid,
+	.iscp-contact-route-grid,
+	.iscp-product-metric-grid,
 	.iscp-offering-card-grid,
 	.iscp-offering-link-grid,
 	.iscp-offering-rich-grid,
@@ -3914,6 +4097,11 @@ input[type="submit"] {
 	.iscp-offering-cta-card {
 		align-items: flex-start;
 		flex-direction: column;
+	}
+
+	.iscp-service-stack-panel,
+	.iscp-contact-confidence-panel {
+		grid-template-columns: 1fr;
 	}
 
 	.iscp-capability-visual-strip {
@@ -3974,6 +4162,10 @@ input[type="submit"] {
 	.iscp-contact-meta-grid,
 	.iscp-solution-global-grid,
 	.iscp-solution-global-list,
+	.iscp-service-stage-grid,
+	.iscp-product-layer-grid,
+	.iscp-contact-route-grid,
+	.iscp-product-metric-grid,
 	.iscp-offering-card-grid,
 	.iscp-offering-link-grid,
 	.iscp-offering-rich-grid,

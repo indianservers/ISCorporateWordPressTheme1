@@ -18,6 +18,22 @@ $iscp_services     = array(
 	array( 'title' => __( 'Cyber Security', 'iscp' ), 'icon' => 'shield', 'description' => __( 'VAPT, hardening, audits, secure deployment and cyber awareness systems.', 'iscp' ), 'url' => home_url( '/services/cyber-security-vapt/' ) ),
 	array( 'title' => __( 'Dedicated Teams', 'iscp' ), 'icon' => 'team', 'description' => __( 'Dedicated developers and support teams for ongoing product development.', 'iscp' ), 'url' => home_url( '/services/dedicated-development-teams/' ) ),
 );
+$iscp_service_stages = array(
+	array( 'title' => __( 'Discovery', 'iscp' ), 'text' => __( 'We clarify goals, users, workflows, risks, hosting needs and integration points before development starts.', 'iscp' ) ),
+	array( 'title' => __( 'Architecture', 'iscp' ), 'text' => __( 'We define database structure, application layers, access roles, APIs, cloud setup and security expectations.', 'iscp' ) ),
+	array( 'title' => __( 'Build & Test', 'iscp' ), 'text' => __( 'Our team develops modules in planned releases with testing, review, performance checks and stakeholder feedback.', 'iscp' ) ),
+	array( 'title' => __( 'Launch & Support', 'iscp' ), 'text' => __( 'We assist with deployment, monitoring, backups, documentation, improvements and long-term maintenance.', 'iscp' ) ),
+);
+$iscp_service_stack = array(
+	__( '.NET and ASP.NET Core', 'iscp' ),
+	__( 'PHP, Laravel and WordPress', 'iscp' ),
+	__( 'Python and AI workflows', 'iscp' ),
+	__( 'React, JavaScript and dashboards', 'iscp' ),
+	__( 'Android and cross-platform apps', 'iscp' ),
+	__( 'MySQL, SQL Server and APIs', 'iscp' ),
+	__( 'Cloud, VPS, SSL and monitoring', 'iscp' ),
+	__( 'VAPT, hardening and secure delivery', 'iscp' ),
+);
 
 get_header();
 ?>
@@ -55,6 +71,40 @@ get_header();
 			<figure class="iscp-page-image-card">
 				<img src="<?php echo esc_url( $iscp_server_image ); ?>" alt="<?php esc_attr_e( 'Indian Servers server and cloud hosting infrastructure', 'iscp' ); ?>" loading="lazy" decoding="async">
 			</figure>
+		</div>
+	</section>
+
+	<section class="iscp-section iscp-section-muted iscp-service-delivery-section">
+		<div class="iscp-container">
+			<div class="iscp-section-heading">
+				<p class="iscp-eyebrow"><?php esc_html_e( 'Delivery Model', 'iscp' ); ?></p>
+				<h2><?php esc_html_e( 'A structured service workflow for serious technology projects', 'iscp' ); ?></h2>
+				<p><?php esc_html_e( 'Indian Servers combines consulting, engineering, hosting, security and support so businesses do not have to coordinate multiple disconnected vendors.', 'iscp' ); ?></p>
+			</div>
+			<div class="iscp-service-stage-grid">
+				<?php foreach ( $iscp_service_stages as $iscp_index => $iscp_stage ) : ?>
+					<article class="iscp-service-stage-card">
+						<span><?php echo esc_html( '0' . ( $iscp_index + 1 ) ); ?></span>
+						<h3><?php echo esc_html( $iscp_stage['title'] ); ?></h3>
+						<p><?php echo esc_html( $iscp_stage['text'] ); ?></p>
+					</article>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+
+	<section class="iscp-section iscp-service-stack-section">
+		<div class="iscp-container iscp-service-stack-panel">
+			<div>
+				<p class="iscp-eyebrow"><?php esc_html_e( 'Technology Coverage', 'iscp' ); ?></p>
+				<h2><?php esc_html_e( 'From code to cloud, our services cover the complete application lifecycle', 'iscp' ); ?></h2>
+				<p><?php esc_html_e( 'Use Indian Servers for new software, legacy improvements, hosting migrations, security reviews, AI integrations and dedicated development capacity.', 'iscp' ); ?></p>
+			</div>
+			<div class="iscp-service-stack-list">
+				<?php foreach ( $iscp_service_stack as $iscp_stack_item ) : ?>
+					<span><?php echo esc_html( $iscp_stack_item ); ?></span>
+				<?php endforeach; ?>
+			</div>
 		</div>
 	</section>
 

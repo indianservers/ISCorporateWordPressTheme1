@@ -37,6 +37,17 @@ $iscp_socials    = array(
 	'LinkedIn'  => 'https://www.linkedin.com/in/indianservers/',
 	'Instagram' => 'https://www.instagram.com/indianserversltd',
 );
+$iscp_contact_paths = array(
+	array( 'title' => __( 'New Software Project', 'iscp' ), 'text' => __( 'Share your workflow, users, reports, integrations and expected launch timeline.', 'iscp' ), 'icon' => 'code' ),
+	array( 'title' => __( 'SaaS Product Requirement', 'iscp' ), 'text' => __( 'Ask about HRMS, School ERP, CRM, Inventory, LMS, POS, ERP or project management platforms.', 'iscp' ), 'icon' => 'products' ),
+	array( 'title' => __( 'Cloud or Hosting Support', 'iscp' ), 'text' => __( 'Discuss VPS, cloud migration, SSL, backups, monitoring, hardening or WordPress hosting.', 'iscp' ), 'icon' => 'cloud' ),
+	array( 'title' => __( 'Security, AI or Dedicated Team', 'iscp' ), 'text' => __( 'Contact us for VAPT, AI automation, AR/VR or long-term engineering team support.', 'iscp' ), 'icon' => 'shield' ),
+);
+$iscp_contact_promises = array(
+	__( 'Direct leadership contact for serious project discussions.', 'iscp' ),
+	__( 'India and USA coordination for global customer requirements.', 'iscp' ),
+	__( 'Clear next steps for discovery, quotation and implementation planning.', 'iscp' ),
+);
 
 get_header();
 ?>
@@ -149,6 +160,42 @@ get_header();
 					</a>
 				<?php endforeach; ?>
 			</div>
+		</div>
+	</section>
+
+	<section class="iscp-section iscp-contact-routing-section">
+		<div class="iscp-container">
+			<div class="iscp-section-heading">
+				<p class="iscp-eyebrow"><?php esc_html_e( 'How to Reach Us', 'iscp' ); ?></p>
+				<h2><?php esc_html_e( 'Route your inquiry to the right Indian Servers team', 'iscp' ); ?></h2>
+				<p><?php esc_html_e( 'Whether you are evaluating a product, building custom software, moving to cloud or planning security review, send a short note and we will guide the next step.', 'iscp' ); ?></p>
+			</div>
+			<div class="iscp-contact-route-grid">
+				<?php foreach ( $iscp_contact_paths as $iscp_path ) : ?>
+					<article class="iscp-contact-route-card">
+						<span aria-hidden="true">
+							<?php echo iscp_get_menu_icon_markup( $iscp_path['icon'] ); ?>
+						</span>
+						<h3><?php echo esc_html( $iscp_path['title'] ); ?></h3>
+						<p><?php echo esc_html( $iscp_path['text'] ); ?></p>
+					</article>
+				<?php endforeach; ?>
+			</div>
+		</div>
+	</section>
+
+	<section class="iscp-section iscp-section-muted iscp-contact-confidence-section">
+		<div class="iscp-container iscp-contact-confidence-panel">
+			<div>
+				<p class="iscp-eyebrow"><?php esc_html_e( 'Before You Contact', 'iscp' ); ?></p>
+				<h2><?php esc_html_e( 'A useful first message gets you a faster response', 'iscp' ); ?></h2>
+				<p><?php esc_html_e( 'Mention the service or product you need, current system if any, approximate users, must-have integrations, preferred timeline and location. Our team can then respond with a practical path forward.', 'iscp' ); ?></p>
+			</div>
+			<ul class="iscp-check-list">
+				<?php foreach ( $iscp_contact_promises as $iscp_promise ) : ?>
+					<li><?php echo esc_html( $iscp_promise ); ?></li>
+				<?php endforeach; ?>
+			</ul>
 		</div>
 	</section>
 </main>
