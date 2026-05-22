@@ -97,11 +97,11 @@ if ( ! function_exists( 'iscp_get_demo_configs' ) ) {
 				'description' => __( 'Official Indian Servers demo content. Import only when building that demo site.', 'iscp' ),
 				'option'      => 'iscp_demo_imported_indian_servers',
 				'data'        => array(
-					'company'        => 'Indian Servers Pvt. Ltd.',
+					'company'        => 'Indian Servers | Bridging Innovation and Tradition in IT',
 					'website'        => 'https://indianservers.com/',
 					'hero_headline'  => 'Enterprise Software, AI & Digital Transformation Solutions Since 2009',
 					'hero_subtitle'  => 'Indian Servers builds business software, AI-enabled platforms, cybersecurity learning systems, web applications, mobile apps and scalable digital solutions for schools, SMEs, enterprises and institutions.',
-					'footer'         => 'Indian Servers Pvt. Ltd. builds business software, AI-enabled platforms, cybersecurity learning systems, web applications, mobile apps and scalable digital solutions.',
+					'footer'         => 'Indian Servers | Bridging Innovation and Tradition in IT',
 					'primary_color'  => '#0b2f6b',
 					'accent_color'   => '#12d6ff',
 					'solutions'      => array( 'School Management Software', 'Fee Management Software', 'Vyapara ERP', 'Inventory & POS', 'CRM / PMS / HRMS Business Suite', 'AI Agents for Business', 'Cyber Security Labs', 'Custom Software Development' ),
@@ -111,10 +111,11 @@ if ( ! function_exists( 'iscp_get_demo_configs' ) ) {
 					'testimonials'   => array( 'School Administration Team', 'Business Owner', 'Training Participant' ),
 					'faqs'           => array( 'Can we request a product demo?', 'Do you build custom software?', 'Do you provide cybersecurity training?' ),
 					'pricing'        => array( 'Starter', 'Professional', 'Enterprise' ),
-					'phone_display'  => 'Sai Satish: +91 9618222220',
+					'phone_display'  => '+91 9618222220',
 					'phone_tel'      => '+919618222220',
-					'email'          => 'hello@indianservers.com',
-					'address'        => 'India',
+					'email'          => 'info@indianservers.com',
+					'address'        => 'India | USA | Aus',
+					'business_hours' => '9 AM - 5 PM',
 					'whatsapp'       => '919618222220',
 					'linkedin'       => 'https://www.linkedin.com/in/indianservers/',
 					'facebook'       => 'https://www.facebook.com/IndianServersPage',
@@ -463,6 +464,7 @@ if ( ! function_exists( 'iscp_import_demo_theme_mods' ) ) {
 		set_theme_mod( 'iscp_phone_tel', $data['phone_tel'] );
 		set_theme_mod( 'iscp_email', $data['email'] );
 		set_theme_mod( 'iscp_address', $data['address'] );
+		set_theme_mod( 'iscp_business_hours', isset( $data['business_hours'] ) ? $data['business_hours'] : '9 AM - 5 PM' );
 		set_theme_mod( 'iscp_whatsapp_number', isset( $data['whatsapp'] ) ? $data['whatsapp'] : '919618222220' );
 		set_theme_mod( 'iscp_social_linkedin', isset( $data['linkedin'] ) ? $data['linkedin'] : 'https://www.linkedin.com/in/indianservers/' );
 		set_theme_mod( 'iscp_social_facebook', isset( $data['facebook'] ) ? $data['facebook'] : 'https://www.facebook.com/IndianServersPage' );

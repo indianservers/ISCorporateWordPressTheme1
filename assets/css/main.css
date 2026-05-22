@@ -2146,6 +2146,12 @@ input[type="submit"] {
 	text-decoration: none;
 }
 
+.iscp-news-actions {
+	display: flex;
+	justify-content: center;
+	margin-top: 1.5rem;
+}
+
 .iscp-section-photo {
 	position: relative;
 	margin: 0 0 1.5rem;

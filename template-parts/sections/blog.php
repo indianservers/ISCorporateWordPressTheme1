@@ -10,10 +10,12 @@ defined( 'ABSPATH' ) || exit;
 $iscp_posts = new WP_Query(
 	array(
 		'post_type'           => 'post',
-		'posts_per_page'      => 8,
+		'posts_per_page'      => 6,
 		'ignore_sticky_posts' => true,
 	)
 );
+$iscp_posts_page_id = get_option( 'page_for_posts' );
+$iscp_posts_url     = $iscp_posts_page_id ? get_permalink( $iscp_posts_page_id ) : home_url( '/blog/' );
 
 $iscp_placeholders = array(
 	'AI Automation for Indian Businesses',
@@ -30,8 +32,8 @@ $iscp_placeholders = array(
 <section class="iscp-section iscp-home-blog">
 	<div class="iscp-container">
 		<div class="iscp-section-heading iscp-reveal">
-			<p class="iscp-eyebrow"><?php esc_html_e( 'Recent Posts', 'iscp' ); ?></p>
-			<h2><?php esc_html_e( 'Latest Updates and Technology Notes', 'iscp' ); ?></h2>
+			<p class="iscp-eyebrow"><?php esc_html_e( 'Posts', 'iscp' ); ?></p>
+			<h2><?php esc_html_e( 'Recent News', 'iscp' ); ?></h2>
 		</div>
 		<div class="iscp-recent-post-grid">
 			<?php if ( $iscp_posts->have_posts() ) : ?>
@@ -64,6 +66,9 @@ $iscp_placeholders = array(
 					</article>
 				<?php endforeach; ?>
 			<?php endif; ?>
+		</div>
+		<div class="iscp-news-actions iscp-reveal">
+			<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( $iscp_posts_url ); ?>"><?php esc_html_e( 'Load More News', 'iscp' ); ?></a>
 		</div>
 	</div>
 </section>

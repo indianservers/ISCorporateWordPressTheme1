@@ -13,6 +13,7 @@ $iscp_phone_display      = iscp_get_theme_mod( 'iscp_phone_display' );
 $iscp_phone_tel          = iscp_get_theme_mod( 'iscp_phone_tel' );
 $iscp_email              = iscp_get_theme_mod( 'iscp_email' );
 $iscp_address            = iscp_get_theme_mod( 'iscp_address' );
+$iscp_business_hours     = iscp_get_theme_mod( 'iscp_business_hours', __( '9 AM - 5 PM', 'iscp' ) );
 $iscp_google_maps_url    = iscp_get_theme_mod( 'iscp_google_maps_url' );
 $iscp_whatsapp_number    = iscp_get_theme_mod( 'iscp_whatsapp_number' );
 $iscp_social_links       = array(
@@ -108,6 +109,9 @@ $iscp_social_links['Instagram'] = $iscp_social_links['Instagram'] ? $iscp_social
 				<?php endif; ?>
 				<?php if ( $iscp_phone_display && $iscp_phone_tel ) : ?>
 					<li><a href="<?php echo esc_url( 'tel:' . preg_replace( '/[^0-9+]/', '', $iscp_phone_tel ) ); ?>"><?php echo esc_html( $iscp_phone_display ); ?></a></li>
+				<?php endif; ?>
+				<?php if ( $iscp_business_hours ) : ?>
+					<li><?php echo esc_html( $iscp_business_hours ); ?></li>
 				<?php endif; ?>
 				<?php if ( $iscp_whatsapp_number ) : ?>
 					<li><a href="<?php echo esc_url( 'https://wa.me/' . preg_replace( '/[^0-9]/', '', $iscp_whatsapp_number ) . '?text=' . rawurlencode( __( 'Hello Indian Servers, I would like to discuss a project.', 'iscp' ) ) ); ?>"><?php esc_html_e( 'WhatsApp Sai Satish', 'iscp' ); ?></a></li>

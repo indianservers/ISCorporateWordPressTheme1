@@ -13,6 +13,8 @@ $iscp_phone      = '+91 9618222220';
 $iscp_tel        = '+919618222220';
 $iscp_ceo_email  = 'saisatish@indianservers.com';
 $iscp_team_email = 'info@indianservers.com';
+$iscp_locations  = __( 'India | USA | Aus', 'iscp' );
+$iscp_hours      = __( '9 AM - 5 PM', 'iscp' );
 $iscp_whatsapp   = 'https://wa.me/919618222220?text=' . rawurlencode( __( 'Hello Indian Servers, I would like to discuss a project.', 'iscp' ) );
 $iscp_socials    = array(
 	'Facebook'  => 'https://www.facebook.com/IndianServersPage',
@@ -69,6 +71,26 @@ get_header();
 					<p class="iscp-card-kicker"><?php esc_html_e( 'Email', 'iscp' ); ?></p>
 					<h2><a href="<?php echo esc_url( 'mailto:' . $iscp_ceo_email ); ?>"><?php echo esc_html( $iscp_ceo_email ); ?></a></h2>
 					<p><a href="<?php echo esc_url( 'mailto:' . $iscp_team_email ); ?>"><?php echo esc_html( $iscp_team_email ); ?></a></p>
+				</div>
+			</article>
+
+			<article class="iscp-card iscp-contact-card">
+				<div class="iscp-card-body">
+					<span class="iscp-contact-icon" aria-hidden="true">
+						<svg viewBox="0 0 24 24" focusable="false"><path d="M12 2a8 8 0 0 1 8 8c0 5.5-8 12-8 12S4 15.5 4 10a8 8 0 0 1 8-8Zm0 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+					</span>
+					<p class="iscp-card-kicker"><?php esc_html_e( 'Locations', 'iscp' ); ?></p>
+					<h2><?php echo esc_html( $iscp_locations ); ?></h2>
+				</div>
+			</article>
+
+			<article class="iscp-card iscp-contact-card">
+				<div class="iscp-card-body">
+					<span class="iscp-contact-icon" aria-hidden="true">
+						<svg viewBox="0 0 24 24" focusable="false"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm1 5h-2v6l5 3 1-1.7-4-2.3V7Z"/></svg>
+					</span>
+					<p class="iscp-card-kicker"><?php esc_html_e( 'Business Hours', 'iscp' ); ?></p>
+					<h2><?php echo esc_html( $iscp_hours ); ?></h2>
 				</div>
 			</article>
 		</div>

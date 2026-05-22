@@ -16,7 +16,7 @@ if ( ! function_exists( 'iscp_get_customizer_defaults' ) ) {
 	function iscp_get_customizer_defaults() {
 		return array(
 			'iscp_footer_logo'                  => '',
-			'iscp_site_tagline_override'        => '',
+			'iscp_site_tagline_override'        => __( 'Indian Servers | Bridging Innovation and Tradition in IT', 'iscp' ),
 			'iscp_preloader_enabled'            => false,
 			'iscp_back_to_top_enabled'          => true,
 			'iscp_frontend_credit_enabled'      => true,
@@ -68,12 +68,13 @@ if ( ! function_exists( 'iscp_get_customizer_defaults' ) ) {
 			'iscp_section_testimonials_enabled' => false,
 			'iscp_section_pricing_enabled'      => false,
 			'iscp_section_faq_enabled'          => false,
-			'iscp_section_blog_enabled'         => false,
+			'iscp_section_blog_enabled'         => true,
 			'iscp_section_cta_enabled'          => true,
-			'iscp_phone_display'                => 'Sai Satish: +91 9618222220',
+			'iscp_phone_display'                => '+91 9618222220',
 			'iscp_phone_tel'                    => '+919618222220',
 			'iscp_email'                        => 'info@indianservers.com',
-			'iscp_address'                      => __( 'Indian Servers Pvt. Ltd., India', 'iscp' ),
+			'iscp_address'                      => __( 'India | USA | Aus', 'iscp' ),
+			'iscp_business_hours'               => __( '9 AM - 5 PM', 'iscp' ),
 			'iscp_whatsapp_number'              => '919618222220',
 			'iscp_google_maps_url'              => '',
 			'iscp_social_linkedin'              => 'https://www.linkedin.com/in/indianservers/',
@@ -85,7 +86,7 @@ if ( ! function_exists( 'iscp_get_customizer_defaults' ) ) {
 			'iscp_social_dribbble'              => '',
 			'iscp_social_behance'               => '',
 			'iscp_footer_layout'                => 'columns',
-			'iscp_footer_description'           => __( 'Indian Servers Pvt. Ltd. designs, develops and maintains professional software products, business applications, cloud systems and AI-enabled digital platforms.', 'iscp' ),
+			'iscp_footer_description'           => __( 'Indian Servers | Bridging Innovation and Tradition in IT', 'iscp' ),
 			'iscp_newsletter_enabled'           => true,
 			'iscp_copyright_text'               => __( '&copy; {year} Indian Servers Pvt. Ltd. All rights reserved.', 'iscp' ),
 			'iscp_animations_enabled'           => true,
@@ -800,6 +801,7 @@ if ( ! function_exists( 'iscp_customize_register' ) ) {
 		iscp_add_customizer_control( $wp_customize, 'iscp_phone_tel', 'iscp_contact', __( 'Phone Tel Link', 'iscp' ), 'text', $defaults['iscp_phone_tel'] );
 		iscp_add_customizer_control( $wp_customize, 'iscp_email', 'iscp_contact', __( 'Email', 'iscp' ), 'email', $defaults['iscp_email'] );
 		iscp_add_customizer_control( $wp_customize, 'iscp_address', 'iscp_contact', __( 'Address', 'iscp' ), 'textarea', $defaults['iscp_address'] );
+		iscp_add_customizer_control( $wp_customize, 'iscp_business_hours', 'iscp_contact', __( 'Business Hours', 'iscp' ), 'text', $defaults['iscp_business_hours'] );
 		iscp_add_customizer_control( $wp_customize, 'iscp_whatsapp_number', 'iscp_contact', __( 'WhatsApp Number', 'iscp' ), 'text', $defaults['iscp_whatsapp_number'] );
 		iscp_add_customizer_control( $wp_customize, 'iscp_google_maps_url', 'iscp_contact', __( 'Google Maps URL', 'iscp' ), 'url', $defaults['iscp_google_maps_url'] );
 
