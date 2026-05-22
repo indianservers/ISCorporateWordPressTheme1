@@ -869,11 +869,13 @@ input[type="submit"] {
 	position: relative;
 	padding-block: clamp(3rem, 6vw, 5rem);
 	background:
-		radial-gradient(circle at 92% 35%, rgba(255, 169, 45, 0.2), transparent 24%),
-		linear-gradient(135deg, #0f5bd6 0%, #2468ef 46%, #13b6d6 100%);
+		radial-gradient(circle at 92% 35%, rgba(255, 216, 77, 0.12), transparent 24%),
+		radial-gradient(circle at 20% 18%, rgba(56, 189, 248, 0.16), transparent 28%),
+		linear-gradient(135deg, rgba(4, 15, 33, 0.9), rgba(8, 26, 46, 0.84));
 	color: #ffffff;
 	text-align: left;
 	overflow: hidden;
+	backdrop-filter: blur(18px);
 }
 
 .iscp-trust-strip::before,
@@ -893,8 +895,8 @@ input[type="submit"] {
 .iscp-trust-strip::after {
 	right: -86px;
 	top: -74px;
-	border: 22px solid rgba(255, 169, 45, 0.3);
-	box-shadow: 0 0 64px rgba(255, 169, 45, 0.24);
+	border: 22px solid rgba(255, 216, 77, 0.18);
+	box-shadow: 0 0 64px rgba(255, 216, 77, 0.12);
 }
 
 .iscp-trust-strip .iscp-container {
@@ -1709,26 +1711,26 @@ input[type="submit"] {
 .iscp-logo-strip .iscp-product-pill-3,
 .iscp-logo-strip .iscp-product-pill-6,
 .iscp-logo-strip .iscp-product-pill-8 {
-	background: linear-gradient(135deg, #2f80ed, #35c6f4);
+	background: linear-gradient(135deg, rgba(47, 128, 237, 0.58), rgba(53, 198, 244, 0.42));
 }
 
 .iscp-logo-strip .iscp-product-pill-2,
 .iscp-logo-strip .iscp-product-pill-4 {
-	background: linear-gradient(135deg, #7c3aed, #a78bfa);
+	background: linear-gradient(135deg, rgba(124, 58, 237, 0.58), rgba(167, 139, 250, 0.42));
 }
 
 .iscp-logo-strip .iscp-product-pill-5,
 .iscp-logo-strip .iscp-product-pill-7 {
-	background: linear-gradient(135deg, #f97316, #facc15);
+	background: linear-gradient(135deg, rgba(249, 115, 22, 0.64), rgba(250, 204, 21, 0.46));
 }
 
 .iscp-logo-strip .iscp-product-pill-4,
 .iscp-logo-strip .iscp-product-pill-8 {
-	background: linear-gradient(135deg, #0f766e, #2dd4bf);
+	background: linear-gradient(135deg, rgba(15, 118, 110, 0.6), rgba(45, 212, 191, 0.42));
 }
 
 .iscp-logo-strip .iscp-product-pill-7 {
-	background: linear-gradient(135deg, #dc2626, #fb7185);
+	background: linear-gradient(135deg, rgba(220, 38, 38, 0.6), rgba(251, 113, 133, 0.44));
 }
 
 .iscp-card-grid {
