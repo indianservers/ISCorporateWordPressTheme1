@@ -15,16 +15,8 @@ $iscp_query = new WP_Query(
 	)
 );
 
-$iscp_fallback = array(
-	array( 'title' => __( 'Custom Software Development', 'iscp' ), 'icon' => 'code', 'description' => __( '.NET, PHP, Python, JavaScript, WordPress, APIs, integrations and enterprise-grade business applications.', 'iscp' ) ),
-	array( 'title' => __( 'AI & Automation', 'iscp' ), 'icon' => 'ai', 'description' => __( 'AI assistants, workflow automation, document intelligence, analytics and smart business process tools.', 'iscp' ) ),
-	array( 'title' => __( 'AR / VR Experiences', 'iscp' ), 'icon' => 'design', 'description' => __( 'Interactive AR demos, training simulations, visualization tools and immersive product experiences.', 'iscp' ) ),
-	array( 'title' => __( 'VAPT & Security', 'iscp' ), 'icon' => 'shield', 'description' => __( 'Vulnerability assessment, penetration testing, hardening, audit support and secure deployment practices.', 'iscp' ) ),
-	array( 'title' => __( 'Hosting & Cloud Hosting', 'iscp' ), 'icon' => 'cloud', 'description' => __( 'Shared hosting, VPS, cloud servers, managed hosting, SSL, backup, migration and performance tuning.', 'iscp' ) ),
-	array( 'title' => __( 'Mobile App Development', 'iscp' ), 'icon' => 'mobile', 'description' => __( 'Android, cross-platform apps, customer portals, staff apps and mobile interfaces connected to business systems.', 'iscp' ) ),
-	array( 'title' => __( 'UI/UX & Product Design', 'iscp' ), 'icon' => 'design', 'description' => __( 'Clean interfaces for SaaS dashboards, admin panels, portals, mobile apps and high-usage internal tools.', 'iscp' ) ),
-	array( 'title' => __( 'Maintenance & Support', 'iscp' ), 'icon' => 'team', 'description' => __( 'Ongoing improvements, bug fixes, upgrades, server monitoring and long-term product support.', 'iscp' ) ),
-);
+$iscp_offering_pages = function_exists( 'iscp_get_offering_pages' ) ? iscp_get_offering_pages() : array();
+$iscp_fallback       = ! empty( $iscp_offering_pages['services']['items'] ) ? array_slice( $iscp_offering_pages['services']['items'], 0, 8, true ) : array();
 ?>
 
 <section class="iscp-section iscp-section-alt iscp-home-services">
@@ -43,8 +35,8 @@ $iscp_fallback = array(
 				wp_reset_postdata();
 				?>
 			<?php else : ?>
-				<?php foreach ( $iscp_fallback as $iscp_item ) : ?>
-					<?php get_template_part( 'template-parts/cards/card', 'service', $iscp_item + array( 'label' => __( 'Indian Servers', 'iscp' ), 'url' => home_url( '/services/' ) ) ); ?>
+				<?php foreach ( $iscp_fallback as $iscp_slug => $iscp_item ) : ?>
+					<?php get_template_part( 'template-parts/cards/card', 'service', array( 'label' => __( 'Indian Servers', 'iscp' ), 'title' => $iscp_item['title'], 'icon' => isset( $iscp_item['icon'] ) ? $iscp_item['icon'] : 'code', 'description' => $iscp_item['summary'], 'url' => home_url( '/services/' . $iscp_slug . '/' ) ) ); ?>
 				<?php endforeach; ?>
 			<?php endif; ?>
 		</div>

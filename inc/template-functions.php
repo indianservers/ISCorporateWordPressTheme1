@@ -161,16 +161,80 @@ if ( ! function_exists( 'iscp_append_primary_navigation_items' ) ) {
 			return $items;
 		}
 
+		$build_submenu = function( $group, $limit ) {
+			if ( ! function_exists( 'iscp_get_offering_navigation_groups' ) ) {
+				return '';
+			}
+
+			$groups = iscp_get_offering_navigation_groups();
+
+			if ( empty( $groups[ $group ] ) ) {
+				return '';
+			}
+
+			$submenu = '<ul class="sub-menu">';
+
+			foreach ( array_slice( $groups[ $group ], 0, $limit, true ) as $slug => $offering ) {
+				$submenu .= sprintf(
+					'<li class="menu-item"><a href="%1$s">%2$s</a></li>',
+					esc_url( home_url( '/' . $group . '/' . $slug . '/' ) ),
+					esc_html( $offering['title'] )
+				);
+			}
+
+			$submenu .= '</ul>';
+
+			return $submenu;
+		};
+
+		$submenu_targets = array(
+			'services' => array(
+				'needle' => '/services/',
+				'marker' => '/services/custom-software-development/',
+				'limit'  => 8,
+			),
+			'products' => array(
+				'needle' => '/products/',
+				'marker' => '/products/hrms/',
+				'limit'  => 10,
+			),
+			'solutions' => array(
+				'needle' => '/solutions/',
+				'marker' => '/products/hrms/',
+				'limit'  => 10,
+				'group'  => 'products',
+			),
+		);
+
+		foreach ( $submenu_targets as $target_group => $target ) {
+			$group = isset( $target['group'] ) ? $target['group'] : $target_group;
+
+			if ( false === strpos( $items, $target['needle'] ) || false !== strpos( $items, $target['marker'] ) ) {
+				continue;
+			}
+
+			$submenu = $build_submenu( $group, $target['limit'] );
+
+			if ( ! $submenu ) {
+				continue;
+			}
+
+			$pattern = '#(<li[^>]*>\s*<a[^>]+href=["\'][^"\']*' . preg_quote( $target['needle'], '#' ) . '["\'][^>]*>.*?</a>)(\s*</li>)#i';
+			$items   = preg_replace( $pattern, '$1' . $submenu . '$2', $items, 1 );
+		}
+
 		$required_links = array(
 			array(
 				'label' => __( 'Services', 'iscp' ),
 				'url'   => home_url( '/services/' ),
 				'needle' => '/services/',
+				'group' => 'services',
 			),
 			array(
 				'label' => __( 'Products', 'iscp' ),
-				'url'   => home_url( '/solutions/' ),
-				'needle' => '/solutions/',
+				'url'   => home_url( '/products/' ),
+				'needle' => '/products/',
+				'group' => 'products',
 			),
 		);
 
@@ -179,10 +243,13 @@ if ( ! function_exists( 'iscp_append_primary_navigation_items' ) ) {
 				continue;
 			}
 
+			$submenu = $build_submenu( $link['group'], 'services' === $link['group'] ? 8 : 10 );
+
 			$items .= sprintf(
-				'<li class="menu-item iscp-menu-item-auto"><a href="%1$s">%2$s</a></li>',
+				'<li class="menu-item menu-item-has-children iscp-menu-item-auto"><a href="%1$s">%2$s</a>%3$s</li>',
 				esc_url( $link['url'] ),
-				esc_html( $link['label'] )
+				esc_html( $link['label'] ),
+				$submenu
 			);
 		}
 

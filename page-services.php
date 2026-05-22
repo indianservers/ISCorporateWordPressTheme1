@@ -9,14 +9,14 @@ defined( 'ABSPATH' ) || exit;
 
 $iscp_server_image = get_template_directory_uri() . '/assets/images/indianservers-data-center.png';
 $iscp_services     = array(
-	array( 'title' => __( 'Custom Software', 'iscp' ), 'icon' => 'code', 'description' => __( '.NET, PHP, Python, APIs, databases and business applications built around real workflows.', 'iscp' ) ),
-	array( 'title' => __( 'Web Apps', 'iscp' ), 'icon' => 'design', 'description' => __( 'Portals, dashboards, WordPress, Laravel, React and business-facing web platforms.', 'iscp' ) ),
-	array( 'title' => __( 'Mobile Apps', 'iscp' ), 'icon' => 'mobile', 'description' => __( 'Android and cross-platform apps for staff, customers, students and field teams.', 'iscp' ) ),
-	array( 'title' => __( 'AI Solutions', 'iscp' ), 'icon' => 'ai', 'description' => __( 'AI assistants, workflow automation, document intelligence and smart analytics.', 'iscp' ) ),
-	array( 'title' => __( 'AR/VR Experiences', 'iscp' ), 'icon' => 'design', 'description' => __( 'Training simulations, product visualization and immersive learning experiences.', 'iscp' ) ),
-	array( 'title' => __( 'Cloud Hosting', 'iscp' ), 'icon' => 'cloud', 'description' => __( 'Hosting, VPS, cloud servers, SSL, backups, monitoring and migration services.', 'iscp' ) ),
-	array( 'title' => __( 'Cyber Security', 'iscp' ), 'icon' => 'shield', 'description' => __( 'VAPT, hardening, audits, secure deployment and cyber awareness systems.', 'iscp' ) ),
-	array( 'title' => __( 'Dedicated Teams', 'iscp' ), 'icon' => 'team', 'description' => __( 'Dedicated developers and support teams for ongoing product development.', 'iscp' ) ),
+	array( 'title' => __( 'Custom Software', 'iscp' ), 'icon' => 'code', 'description' => __( '.NET, PHP, Python, APIs, databases and business applications built around real workflows.', 'iscp' ), 'url' => home_url( '/services/custom-software-development/' ) ),
+	array( 'title' => __( 'Web Apps', 'iscp' ), 'icon' => 'design', 'description' => __( 'Portals, dashboards, WordPress, Laravel, React and business-facing web platforms.', 'iscp' ), 'url' => home_url( '/services/web-application-development/' ) ),
+	array( 'title' => __( 'Mobile Apps', 'iscp' ), 'icon' => 'mobile', 'description' => __( 'Android and cross-platform apps for staff, customers, students and field teams.', 'iscp' ), 'url' => home_url( '/services/mobile-app-development/' ) ),
+	array( 'title' => __( 'AI Solutions', 'iscp' ), 'icon' => 'ai', 'description' => __( 'AI assistants, workflow automation, document intelligence and smart analytics.', 'iscp' ), 'url' => home_url( '/services/ai-development/' ) ),
+	array( 'title' => __( 'AR/VR Experiences', 'iscp' ), 'icon' => 'design', 'description' => __( 'Training simulations, product visualization and immersive learning experiences.', 'iscp' ), 'url' => home_url( '/services/ar-vr-development/' ) ),
+	array( 'title' => __( 'Cloud Hosting', 'iscp' ), 'icon' => 'cloud', 'description' => __( 'Hosting, VPS, cloud servers, SSL, backups, monitoring and migration services.', 'iscp' ), 'url' => home_url( '/services/cloud-hosting/' ) ),
+	array( 'title' => __( 'Cyber Security', 'iscp' ), 'icon' => 'shield', 'description' => __( 'VAPT, hardening, audits, secure deployment and cyber awareness systems.', 'iscp' ), 'url' => home_url( '/services/cyber-security-vapt/' ) ),
+	array( 'title' => __( 'Dedicated Teams', 'iscp' ), 'icon' => 'team', 'description' => __( 'Dedicated developers and support teams for ongoing product development.', 'iscp' ), 'url' => home_url( '/services/dedicated-development-teams/' ) ),
 );
 
 get_header();
@@ -52,7 +52,7 @@ get_header();
 		<div class="iscp-container">
 			<div class="iscp-card-grid iscp-card-grid-4">
 				<?php foreach ( $iscp_services as $iscp_service ) : ?>
-					<?php get_template_part( 'template-parts/cards/card', 'service', $iscp_service + array( 'label' => __( 'Indian Servers', 'iscp' ), 'url' => home_url( '/contact/' ) ) ); ?>
+					<?php get_template_part( 'template-parts/cards/card', 'service', $iscp_service + array( 'label' => __( 'Indian Servers', 'iscp' ) ) ); ?>
 				<?php endforeach; ?>
 			</div>
 		</div>

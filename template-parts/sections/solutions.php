@@ -17,16 +17,8 @@ $iscp_query = new WP_Query(
 	)
 );
 
-$iscp_fallback = array(
-	array( 'label' => __( 'SaaS Product', 'iscp' ), 'icon' => 'team', 'title' => __( 'HRMS Platform', 'iscp' ), 'description' => __( 'Employee records, attendance, payroll support, leave workflows, onboarding, roles and HR reports.', 'iscp' ) ),
-	array( 'label' => __( 'Education SaaS', 'iscp' ), 'icon' => 'education', 'title' => __( 'School Management Software', 'iscp' ), 'description' => __( 'Admissions, fees, attendance, exams, parent communication, transport and institution administration.', 'iscp' ) ),
-	array( 'label' => __( 'Sales SaaS', 'iscp' ), 'icon' => 'crm', 'title' => __( 'CRM & Lead Management', 'iscp' ), 'description' => __( 'Inquiry tracking, customer pipelines, reminders, service workflows and business follow-up automation.', 'iscp' ) ),
-	array( 'label' => __( 'Operations SaaS', 'iscp' ), 'icon' => 'inventory', 'title' => __( 'Inventory Management Software', 'iscp' ), 'description' => __( 'Stock, purchase, sales, vendors, billing, warehouse control and real-time operational reports.', 'iscp' ) ),
-	array( 'label' => __( 'Hospitality SaaS', 'iscp' ), 'icon' => 'restaurant', 'title' => __( 'Restaurant Software', 'iscp' ), 'description' => __( 'Table orders, KOT, billing, menu management, kitchen workflows, inventory and branch reports.', 'iscp' ) ),
-	array( 'label' => __( 'Custom Build', 'iscp' ), 'icon' => 'code', 'title' => __( 'Custom Software Development', 'iscp' ), 'description' => __( 'Tailor-made web, mobile, ERP, CRM, AI and integration projects using modern engineering stacks.', 'iscp' ) ),
-	array( 'label' => __( 'Cloud', 'iscp' ), 'icon' => 'cloud', 'title' => __( 'Hosting & Cloud Hosting', 'iscp' ), 'description' => __( 'Web hosting, VPS, cloud servers, managed deployments, SSL, backups, monitoring and migration.', 'iscp' ) ),
-	array( 'label' => __( 'Security', 'iscp' ), 'icon' => 'shield', 'title' => __( 'VAPT & Cyber Security', 'iscp' ), 'description' => __( 'Vulnerability assessment, penetration testing, security hardening, audits and awareness systems.', 'iscp' ) ),
-);
+$iscp_offering_pages = function_exists( 'iscp_get_offering_pages' ) ? iscp_get_offering_pages() : array();
+$iscp_fallback       = ! empty( $iscp_offering_pages['products']['items'] ) ? array_slice( $iscp_offering_pages['products']['items'], 0, 8, true ) : array();
 ?>
 
 <section id="solutions" class="iscp-section iscp-home-solutions">
@@ -48,8 +40,8 @@ $iscp_fallback = array(
 				wp_reset_postdata();
 				?>
 			<?php else : ?>
-				<?php foreach ( $iscp_fallback as $iscp_item ) : ?>
-					<?php get_template_part( 'template-parts/cards/card', 'solution', $iscp_item + array( 'url' => home_url( '/solutions/' ) ) ); ?>
+				<?php foreach ( $iscp_fallback as $iscp_slug => $iscp_item ) : ?>
+					<?php get_template_part( 'template-parts/cards/card', 'solution', array( 'label' => __( 'SaaS Product', 'iscp' ), 'title' => $iscp_item['title'], 'icon' => isset( $iscp_item['icon'] ) ? $iscp_item['icon'] : 'cube', 'description' => $iscp_item['summary'], 'url' => home_url( '/products/' . $iscp_slug . '/' ) ) ); ?>
 				<?php endforeach; ?>
 			<?php endif; ?>
 		</div>

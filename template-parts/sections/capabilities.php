@@ -10,14 +10,14 @@ defined( 'ABSPATH' ) || exit;
 $iscp_server_image    = get_template_directory_uri() . '/assets/images/indianservers-data-center.png';
 $iscp_software_image  = get_template_directory_uri() . '/assets/images/indianservers-software-team.png';
 $iscp_capability_cards = array(
-	array( 'title' => __( 'Software', 'iscp' ), 'icon' => 'code', 'url' => '/services/' ),
-	array( 'title' => __( 'Web Apps', 'iscp' ), 'icon' => 'web', 'url' => '/services/' ),
-	array( 'title' => __( 'Mobile Apps', 'iscp' ), 'icon' => 'mobile', 'url' => '/services/' ),
-	array( 'title' => __( 'AI', 'iscp' ), 'icon' => 'ai', 'url' => '/services/' ),
-	array( 'title' => __( 'AR/VR', 'iscp' ), 'icon' => 'ar', 'url' => '/services/' ),
-	array( 'title' => __( 'Cloud', 'iscp' ), 'icon' => 'cloud', 'url' => '/services/' ),
-	array( 'title' => __( 'Cyber Security', 'iscp' ), 'icon' => 'shield', 'url' => '/services/' ),
-	array( 'title' => __( 'Dedicated Teams', 'iscp' ), 'icon' => 'team', 'url' => '/services/' ),
+	array( 'title' => __( 'Software', 'iscp' ), 'icon' => 'code', 'url' => '/services/custom-software-development/' ),
+	array( 'title' => __( 'Web Apps', 'iscp' ), 'icon' => 'web', 'url' => '/services/web-application-development/' ),
+	array( 'title' => __( 'Mobile Apps', 'iscp' ), 'icon' => 'mobile', 'url' => '/services/mobile-app-development/' ),
+	array( 'title' => __( 'AI', 'iscp' ), 'icon' => 'ai', 'url' => '/services/ai-development/' ),
+	array( 'title' => __( 'AR/VR', 'iscp' ), 'icon' => 'ar', 'url' => '/services/ar-vr-development/' ),
+	array( 'title' => __( 'Cloud', 'iscp' ), 'icon' => 'cloud', 'url' => '/services/cloud-hosting/' ),
+	array( 'title' => __( 'Cyber Security', 'iscp' ), 'icon' => 'shield', 'url' => '/services/cyber-security-vapt/' ),
+	array( 'title' => __( 'Dedicated Teams', 'iscp' ), 'icon' => 'team', 'url' => '/services/dedicated-development-teams/' ),
 );
 
 $iscp_icons = array(

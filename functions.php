@@ -15,6 +15,7 @@ $iscp_includes = array(
 	'inc/taxonomies.php',
 	'inc/seo-schema.php',
 	'inc/template-functions.php',
+	'inc/offering-pages.php',
 	'inc/shortcodes.php',
 	'inc/block-patterns.php',
 	'inc/demo-importer.php',

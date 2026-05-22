@@ -106,8 +106,22 @@ if ( iscp_get_theme_mod( 'iscp_sticky_header_enabled', true ) ) {
 					<ul id="iscp-primary-menu" class="iscp-primary-menu">
 						<li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'iscp' ); ?></a></li>
 						<li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'About', 'iscp' ); ?></a></li>
-						<li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php esc_html_e( 'Services', 'iscp' ); ?></a></li>
-						<li><a href="<?php echo esc_url( home_url( '/solutions/' ) ); ?>"><?php esc_html_e( 'Products', 'iscp' ); ?></a></li>
+						<li class="menu-item-has-children">
+							<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php esc_html_e( 'Services', 'iscp' ); ?></a>
+							<ul class="sub-menu">
+								<?php foreach ( array_slice( iscp_get_offering_navigation_groups()['services'], 0, 8, true ) as $iscp_slug => $iscp_item ) : ?>
+									<li><a href="<?php echo esc_url( home_url( '/services/' . $iscp_slug . '/' ) ); ?>"><?php echo esc_html( $iscp_item['title'] ); ?></a></li>
+								<?php endforeach; ?>
+							</ul>
+						</li>
+						<li class="menu-item-has-children">
+							<a href="<?php echo esc_url( home_url( '/products/' ) ); ?>"><?php esc_html_e( 'Products', 'iscp' ); ?></a>
+							<ul class="sub-menu">
+								<?php foreach ( iscp_get_offering_navigation_groups()['products'] as $iscp_slug => $iscp_item ) : ?>
+									<li><a href="<?php echo esc_url( home_url( '/products/' . $iscp_slug . '/' ) ); ?>"><?php echo esc_html( $iscp_item['title'] ); ?></a></li>
+								<?php endforeach; ?>
+							</ul>
+						</li>
 						<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Contact', 'iscp' ); ?></a></li>
 					</ul>
 				<?php endif; ?>
