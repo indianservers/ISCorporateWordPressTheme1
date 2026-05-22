@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
 $iscp_group    = get_query_var( 'iscp_offering_group' );
 $iscp_slug     = get_query_var( 'iscp_offering_slug' );
 $iscp_offering = iscp_get_offering_page( $iscp_group, $iscp_slug );
-$iscp_pages    = iscp_get_offering_pages();
+$iscp_pages    = iscp_get_editable_offering_pages();
 $iscp_features = ! empty( $iscp_offering['features'] ) ? $iscp_offering['features'] : iscp_get_offering_default_features( $iscp_group );
 $iscp_is_product = 'products' === $iscp_group;
 $iscp_image    = get_template_directory_uri() . ( $iscp_is_product ? '/assets/images/indianservers-software-team.png' : '/assets/images/indianservers-data-center.png' );

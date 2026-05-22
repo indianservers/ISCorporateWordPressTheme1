@@ -55,12 +55,65 @@ if ( ! function_exists( 'iscp_get_offering_pages' ) ) {
 	}
 }
 
+if ( ! function_exists( 'iscp_apply_offering_theme_mods' ) ) {
+	/**
+	 * Apply Customizer overrides to product/service definitions.
+	 *
+	 * @param array $pages Offering page definitions.
+	 * @return array
+	 */
+	function iscp_apply_offering_theme_mods( $pages ) {
+		foreach ( array( 'products', 'services' ) as $group ) {
+			if ( empty( $pages[ $group ]['items'] ) ) {
+				continue;
+			}
+
+			foreach ( $pages[ $group ]['items'] as $slug => $item ) {
+				$prefix = 'iscp_' . $group . '_' . str_replace( '-', '_', $slug );
+
+				foreach ( array( 'title', 'summary' ) as $field ) {
+					$value = get_theme_mod( $prefix . '_' . $field, isset( $item[ $field ] ) ? $item[ $field ] : '' );
+
+					if ( '' !== trim( (string) $value ) ) {
+						$pages[ $group ]['items'][ $slug ][ $field ] = $value;
+					}
+				}
+
+				if ( ! empty( $item['features'] ) ) {
+					$features = get_theme_mod( $prefix . '_features', implode( "\n", $item['features'] ) );
+
+					if ( '' !== trim( (string) $features ) ) {
+						$pages[ $group ]['items'][ $slug ]['features'] = array_values(
+							array_filter(
+								array_map( 'trim', preg_split( '/\r\n|\r|\n/', $features ) )
+							)
+						);
+					}
+				}
+			}
+		}
+
+		return $pages;
+	}
+}
+
+if ( ! function_exists( 'iscp_get_editable_offering_pages' ) ) {
+	/**
+	 * Return offering pages with saved Theme Options applied.
+	 *
+	 * @return array
+	 */
+	function iscp_get_editable_offering_pages() {
+		return iscp_apply_offering_theme_mods( iscp_get_offering_pages() );
+	}
+}
+
 if ( ! function_exists( 'iscp_get_offering_page' ) ) {
 	/**
 	 * Return one offering page by group and slug.
 	 */
 	function iscp_get_offering_page( $group, $slug ) {
-		$pages = iscp_get_offering_pages();
+		$pages = iscp_get_editable_offering_pages();
 
 		if ( ! isset( $pages[ $group ]['items'][ $slug ] ) ) {
 			return array();
@@ -235,7 +288,7 @@ if ( ! function_exists( 'iscp_get_offering_navigation_groups' ) ) {
 	 * Return compact nav groups for menus and pages.
 	 */
 	function iscp_get_offering_navigation_groups() {
-		$pages = iscp_get_offering_pages();
+		$pages = iscp_get_editable_offering_pages();
 
 		return array(
 			'products' => array_slice( $pages['products']['items'], 0, 10, true ),

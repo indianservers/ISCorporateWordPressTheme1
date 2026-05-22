@@ -8,7 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $iscp_group      = get_query_var( 'iscp_offering_group' );
-$iscp_pages      = iscp_get_offering_pages();
+$iscp_pages      = iscp_get_editable_offering_pages();
 $iscp_group_data = isset( $iscp_pages[ $iscp_group ] ) ? $iscp_pages[ $iscp_group ] : $iscp_pages['products'];
 $iscp_is_product = 'products' === $iscp_group;
 $iscp_image      = get_template_directory_uri() . ( $iscp_is_product ? '/assets/images/indianservers-software-team.png' : '/assets/images/indianservers-data-center.png' );

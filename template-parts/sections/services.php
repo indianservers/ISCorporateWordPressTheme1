@@ -15,7 +15,7 @@ $iscp_query = new WP_Query(
 	)
 );
 
-$iscp_offering_pages = function_exists( 'iscp_get_offering_pages' ) ? iscp_get_offering_pages() : array();
+$iscp_offering_pages = function_exists( 'iscp_get_editable_offering_pages' ) ? iscp_get_editable_offering_pages() : array();
 $iscp_fallback       = ! empty( $iscp_offering_pages['services']['items'] ) ? array_slice( $iscp_offering_pages['services']['items'], 0, 8, true ) : array();
 ?>
 

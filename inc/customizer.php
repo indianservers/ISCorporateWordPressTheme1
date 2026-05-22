@@ -566,6 +566,8 @@ if ( ! function_exists( 'iscp_customize_register' ) ) {
 			'iscp_colors'        => __( 'Colors', 'iscp' ),
 			'iscp_typography'    => __( 'Typography', 'iscp' ),
 			'iscp_home_sections' => __( 'Homepage Sections', 'iscp' ),
+			'iscp_products'      => __( 'Products', 'iscp' ),
+			'iscp_services_edit' => __( 'Services Content', 'iscp' ),
 			'iscp_contact'       => __( 'Contact Details', 'iscp' ),
 			'iscp_social'        => __( 'Social Links', 'iscp' ),
 			'iscp_footer'        => __( 'Footer', 'iscp' ),
@@ -675,6 +677,62 @@ if ( ! function_exists( 'iscp_customize_register' ) ) {
 		foreach ( $home_sections as $slug => $label ) {
 			$key = 'iscp_section_' . $slug . '_enabled';
 			iscp_add_customizer_control( $wp_customize, $key, 'iscp_home_sections', $label, 'checkbox', $defaults[ $key ] );
+		}
+
+		if ( function_exists( 'iscp_get_offering_pages' ) ) {
+			$offering_pages = iscp_get_offering_pages();
+
+			foreach ( array( 'products' => 'iscp_products', 'services' => 'iscp_services_edit' ) as $group => $section ) {
+				if ( empty( $offering_pages[ $group ]['items'] ) ) {
+					continue;
+				}
+
+				foreach ( $offering_pages[ $group ]['items'] as $slug => $item ) {
+					$prefix = 'iscp_' . $group . '_' . str_replace( '-', '_', $slug );
+					$title  = isset( $item['title'] ) ? $item['title'] : ucwords( str_replace( '-', ' ', $slug ) );
+
+					iscp_add_customizer_control(
+						$wp_customize,
+						$prefix . '_title',
+						$section,
+						sprintf(
+							/* translators: %s: product/service name. */
+							__( '%s - Title', 'iscp' ),
+							$title
+						),
+						'text',
+						$title
+					);
+
+					iscp_add_customizer_control(
+						$wp_customize,
+						$prefix . '_summary',
+						$section,
+						sprintf(
+							/* translators: %s: product/service name. */
+							__( '%s - Card Summary', 'iscp' ),
+							$title
+						),
+						'textarea',
+						isset( $item['summary'] ) ? $item['summary'] : ''
+					);
+
+					if ( ! empty( $item['features'] ) ) {
+						iscp_add_customizer_control(
+							$wp_customize,
+							$prefix . '_features',
+							$section,
+							sprintf(
+								/* translators: %s: product name. */
+								__( '%s - Page Features', 'iscp' ),
+								$title
+							),
+							'textarea',
+							implode( "\n", $item['features'] )
+						);
+					}
+				}
+			}
 		}
 
 		iscp_add_customizer_control( $wp_customize, 'iscp_phone_display', 'iscp_contact', __( 'Phone Display', 'iscp' ), 'text', $defaults['iscp_phone_display'] );
