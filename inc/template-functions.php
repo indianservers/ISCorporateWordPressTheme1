@@ -307,6 +307,25 @@ if ( ! function_exists( 'iscp_get_menu_icon_path' ) ) {
 	}
 }
 
+if ( ! function_exists( 'iscp_get_menu_icon_file' ) ) {
+	/**
+	 * Return a local professional icon file path for menu icons.
+	 *
+	 * @param string $icon Icon key.
+	 * @return string
+	 */
+	function iscp_get_menu_icon_file( $icon ) {
+		$icon = sanitize_file_name( sanitize_key( $icon ) );
+		$path = get_template_directory() . '/assets/icons/menu/' . $icon . '.svg';
+
+		if ( file_exists( $path ) ) {
+			return $path;
+		}
+
+		return get_template_directory() . '/assets/icons/menu/products.svg';
+	}
+}
+
 if ( ! function_exists( 'iscp_get_menu_icon_markup' ) ) {
 	/**
 	 * Return menu icon SVG markup.
@@ -315,6 +334,20 @@ if ( ! function_exists( 'iscp_get_menu_icon_markup' ) ) {
 	 * @return string
 	 */
 	function iscp_get_menu_icon_markup( $icon ) {
+		$icon      = sanitize_key( $icon );
+		$icon_file = iscp_get_menu_icon_file( $icon );
+		$svg       = file_exists( $icon_file ) ? file_get_contents( $icon_file ) : '';
+
+		if ( $svg ) {
+			$svg = preg_replace( '/<svg\\s/i', '<svg class="iscp-menu-icon-svg" ', $svg, 1 );
+
+			return sprintf(
+				'<span class="iscp-menu-icon iscp-menu-icon-%1$s" aria-hidden="true">%2$s</span>',
+				esc_attr( sanitize_html_class( $icon ) ),
+				$svg
+			);
+		}
+
 		return sprintf(
 			'<span class="iscp-menu-icon iscp-menu-icon-%1$s" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="%2$s"/></svg></span>',
 			esc_attr( sanitize_html_class( $icon ) ),

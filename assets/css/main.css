@@ -645,7 +645,15 @@ input[type="submit"] {
 .iscp-menu-icon svg {
 	width: 14px;
 	height: 14px;
-	fill: currentColor;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.iscp-menu-icon svg * {
+	vector-effect: non-scaling-stroke;
 }
 
 .iscp-menu-text {
