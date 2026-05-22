@@ -645,7 +645,14 @@ if ( ! function_exists( 'iscp_render_mockup_component' ) ) {
 				<div class="iscp-dashboard-preview">
 					<span></span><span></span><span></span><span></span>
 				</div>
-				<div class="iscp-mobile-preview"></div>
+				<div class="iscp-mobile-preview" aria-hidden="true">
+					<span class="iscp-mobile-notch"></span>
+					<span class="iscp-mobile-stat">96%</span>
+					<span class="iscp-mobile-hero-tile"></span>
+					<span class="iscp-mobile-row iscp-mobile-row-one"></span>
+					<span class="iscp-mobile-row iscp-mobile-row-two"></span>
+					<span class="iscp-mobile-row iscp-mobile-row-three"></span>
+				</div>
 			</div>
 		</div>
 		<?php
