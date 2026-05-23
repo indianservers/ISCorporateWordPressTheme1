@@ -3067,19 +3067,17 @@ input[type="submit"] {
 	object-fit: cover;
 }
 
-.iscp-recent-post-card span {
-	display: block;
-	margin-bottom: 0.28rem;
-	color: var(--iscp-primary);
-	font-size: 0.78rem;
-	font-weight: 800;
-	text-transform: uppercase;
-}
-
 .iscp-recent-post-card h3 {
 	margin: 0;
 	font-size: 0.98rem;
 	line-height: 1.25;
+}
+
+.iscp-recent-post-card p {
+	margin: 0.55rem 0 0;
+	color: var(--iscp-muted);
+	font-size: 0.9rem;
+	line-height: 1.5;
 }
 
 .iscp-recent-post-card a {

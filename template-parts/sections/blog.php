@@ -18,14 +18,30 @@ $iscp_posts_page_id = get_option( 'page_for_posts' );
 $iscp_posts_url     = $iscp_posts_page_id ? get_permalink( $iscp_posts_page_id ) : home_url( '/blog/' );
 
 $iscp_placeholders = array(
-	'AI Automation for Indian Businesses',
-	'Choosing the Right Cloud Hosting Plan',
-	'Why VAPT Matters Before Launch',
-	'How CRM Improves Follow-Ups',
-	'School ERP Modules That Save Time',
-	'Modern Inventory Software Basics',
-	'Restaurant POS and KOT Workflows',
-	'When to Hire Dedicated Developers',
+	array(
+		'title'       => __( 'AI Automation for Indian Businesses', 'iscp' ),
+		'description' => __( 'Practical automation ideas for support, reporting, sales follow-ups and internal operations.', 'iscp' ),
+	),
+	array(
+		'title'       => __( 'Choosing the Right Cloud Hosting Plan', 'iscp' ),
+		'description' => __( 'How growing teams can balance performance, security, backups and managed monitoring.', 'iscp' ),
+	),
+	array(
+		'title'       => __( 'Why VAPT Matters Before Launch', 'iscp' ),
+		'description' => __( 'A clear view of how security testing reduces risk before applications go live.', 'iscp' ),
+	),
+	array(
+		'title'       => __( 'How CRM Improves Follow-Ups', 'iscp' ),
+		'description' => __( 'Better lead tracking, reminders and customer communication for sales and service teams.', 'iscp' ),
+	),
+	array(
+		'title'       => __( 'School ERP Modules That Save Time', 'iscp' ),
+		'description' => __( 'Admissions, fees, attendance and communication workflows built for institution operations.', 'iscp' ),
+	),
+	array(
+		'title'       => __( 'Modern Inventory Software Basics', 'iscp' ),
+		'description' => __( 'Stock control, purchase visibility and warehouse reporting for practical business decisions.', 'iscp' ),
+	),
 );
 ?>
 
@@ -48,8 +64,8 @@ $iscp_placeholders = array(
 							</a>
 						<?php endif; ?>
 						<div>
-							<span><?php echo esc_html( get_the_date( 'M j' ) ); ?></span>
 							<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+							<p><?php echo esc_html( wp_trim_words( get_the_excerpt(), 18 ) ); ?></p>
 						</div>
 					</article>
 					<?php
@@ -57,11 +73,11 @@ $iscp_placeholders = array(
 				wp_reset_postdata();
 				?>
 			<?php else : ?>
-				<?php foreach ( $iscp_placeholders as $iscp_title ) : ?>
+				<?php foreach ( $iscp_placeholders as $iscp_placeholder ) : ?>
 					<article class="iscp-recent-post-card iscp-reveal">
 						<div>
-							<span><?php esc_html_e( 'Insight', 'iscp' ); ?></span>
-							<h3><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>"><?php echo esc_html( $iscp_title ); ?></a></h3>
+							<h3><a href="<?php echo esc_url( home_url( '/blog/' ) ); ?>"><?php echo esc_html( $iscp_placeholder['title'] ); ?></a></h3>
+							<p><?php echo esc_html( $iscp_placeholder['description'] ); ?></p>
 						</div>
 					</article>
 				<?php endforeach; ?>

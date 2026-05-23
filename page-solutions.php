@@ -8,7 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 
 $iscp_product_image = get_template_directory_uri() . '/assets/images/indianservers-software-team.png';
-$iscp_is_solutions_page = is_page( 'solutions' );
+$iscp_is_solutions_page = is_page( 'solutions' ) || is_post_type_archive( 'iscp_solution' );
 $iscp_solution_cards = array(
 	array(
 		'need'        => __( 'Are you looking for school software?', 'iscp' ),
