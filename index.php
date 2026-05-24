@@ -44,7 +44,6 @@ $iscp_slider = new WP_Query(
 								<?php endif; ?>
 							</a>
 							<div class="iscp-index-slide-content">
-								<p class="iscp-card-kicker"><?php echo esc_html( get_the_date() ); ?></p>
 								<h2><a href="<?php echo esc_url( get_permalink() ); ?>"><?php echo esc_html( get_the_title() ); ?></a></h2>
 								<p><?php echo esc_html( wp_trim_words( get_the_excerpt(), 22 ) ); ?></p>
 							</div>

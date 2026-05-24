@@ -27,6 +27,11 @@ if ( is_page( 'contact' ) ) {
 	return;
 }
 
+if ( is_page( 'careers' ) ) {
+	require get_template_directory() . '/page-careers.php';
+	return;
+}
+
 get_header();
 
 iscp_breadcrumbs();

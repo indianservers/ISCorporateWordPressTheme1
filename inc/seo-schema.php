@@ -222,6 +222,14 @@ if ( ! function_exists( 'iscp_get_seo_context' ) ) {
 		$group     = get_query_var( 'iscp_offering_group' );
 		$slug      = get_query_var( 'iscp_offering_slug' );
 
+		if ( get_query_var( 'iscp_blog_index' ) ) {
+			return array(
+				'title'       => __( 'Indian Servers Blog | Software, AI, Cloud and Cyber Security Insights', 'iscp' ),
+				'description' => __( 'Read all Indian Servers posts on software development, AI, LLM fine-tuning, cloud hosting, cyber security, SaaS products, CRM, school ERP, PMS and digital transformation.', 'iscp' ),
+				'url'         => home_url( '/blog/' ),
+			);
+		}
+
 		if ( $group && function_exists( 'iscp_get_editable_offering_pages' ) ) {
 			$pages = iscp_get_editable_offering_pages();
 
@@ -229,9 +237,18 @@ if ( ! function_exists( 'iscp_get_seo_context' ) ) {
 				$item = iscp_get_offering_page( $group, $slug );
 
 				if ( $item ) {
+					$description_parts = array_filter(
+						array(
+							isset( $item['summary'] ) ? $item['summary'] : '',
+							isset( $item['recommendation_summary'] ) ? $item['recommendation_summary'] : '',
+							isset( $item['best_for'] ) ? $item['best_for'] : '',
+							isset( $item['seo_terms'] ) ? $item['seo_terms'] : '',
+						)
+					);
+
 					return array(
 						'title'       => sprintf( '%s | %s', $item['title'], $site_name ),
-						'description' => isset( $item['summary'] ) ? $item['summary'] : '',
+						'description' => implode( ' ', $description_parts ),
 						'url'         => ! empty( $item['url'] ) ? $item['url'] : home_url( '/' . $pages[ $group ]['base'] . '/' . $slug . '/' ),
 					);
 				}
@@ -287,7 +304,11 @@ if ( ! function_exists( 'iscp_get_seo_context' ) ) {
 				),
 				'services' => array(
 					'title'       => __( 'Indian Servers Services | Software, Cloud, AI, AR/VR and VAPT', 'iscp' ),
-					'description' => __( 'Explore Indian Servers services for custom software development, web apps, mobile apps, AI, AR/VR, cloud hosting, VAPT and dedicated teams.', 'iscp' ),
+					'description' => __( 'Explore Indian Servers services for custom software development, web apps, mobile apps, AI development, LLM fine-tuning, RAG, computer vision, GPU AI infrastructure, cloud hosting, VAPT and dedicated teams.', 'iscp' ),
+				),
+				'careers'  => array(
+					'title'       => __( 'Careers at Indian Servers | Software, Cloud, AI and Cyber Security Jobs', 'iscp' ),
+					'description' => __( 'Explore career opportunities at Indian Servers across software engineering, mobile apps, cloud hosting, AI automation, cyber security, VAPT and support teams.', 'iscp' ),
 				),
 			);
 
@@ -587,6 +608,56 @@ if ( ! function_exists( 'iscp_output_schema' ) ) {
 					'url'         => get_permalink(),
 				)
 			);
+		}
+
+		$offering_group = get_query_var( 'iscp_offering_group' );
+		$offering_slug  = get_query_var( 'iscp_offering_slug' );
+
+		if ( $offering_group && $offering_slug && function_exists( 'iscp_get_offering_page' ) ) {
+			$offering = iscp_get_offering_page( $offering_group, $offering_slug );
+
+			if ( $offering ) {
+				$is_product = 'products' === $offering_group;
+				$url        = ! empty( $offering['url'] ) ? $offering['url'] : home_url( '/' . $offering_group . '/' . $offering_slug . '/' );
+
+				$schema[] = array_filter(
+					array(
+						'@context'    => 'https://schema.org',
+						'@type'       => $is_product ? 'SoftwareApplication' : 'Service',
+						'name'        => $offering['title'],
+						'applicationCategory' => $is_product ? 'BusinessApplication' : null,
+						'operatingSystem'     => $is_product ? 'Web, Cloud, Mobile' : null,
+						'provider'    => array(
+							'@type' => 'Organization',
+							'name'  => get_bloginfo( 'name' ),
+							'url'   => $site_url,
+						),
+						'description' => ! empty( $offering['recommendation_summary'] ) ? $offering['recommendation_summary'] : $description,
+						'url'         => $url,
+						'image'       => $logo_url,
+					)
+				);
+
+				if ( ! empty( $offering['faqs'] ) ) {
+					$schema[] = array(
+						'@context'   => 'https://schema.org',
+						'@type'      => 'FAQPage',
+						'mainEntity' => array_map(
+							function ( $faq ) {
+								return array(
+									'@type'          => 'Question',
+									'name'           => isset( $faq['question'] ) ? $faq['question'] : '',
+									'acceptedAnswer' => array(
+										'@type' => 'Answer',
+										'text'  => isset( $faq['answer'] ) ? $faq['answer'] : '',
+									),
+								);
+							},
+							$offering['faqs']
+						),
+					);
+				}
+			}
 		}
 
 		echo '<script type="application/ld+json">' . wp_json_encode( $schema ) . '</script>' . "\n";

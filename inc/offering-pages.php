@@ -27,28 +27,31 @@ if ( ! function_exists( 'iscp_get_offering_pages' ) ) {
 					'vyapara-erp'                => array( 'title' => __( 'Vyapara ERP', 'iscp' ), 'icon' => 'cube', 'summary' => __( 'ERP workflows for SMEs that need purchase, sales, stock, billing, staff and reporting in one place.', 'iscp' ), 'features' => array( __( 'Modular ERP for growing businesses', 'iscp' ), __( 'Purchase, sales, accounts and inventory views', 'iscp' ), __( 'Approval flows and branch-level operations', 'iscp' ), __( 'Custom dashboards and business reports', 'iscp' ) ) ),
 					'learning-management-system' => array( 'title' => __( 'Learning Management System', 'iscp' ), 'icon' => 'education', 'summary' => __( 'Online learning, course delivery, tests, certificates and learner progress for training organizations.', 'iscp' ), 'features' => array( __( 'Course, batch and learner management', 'iscp' ), __( 'Assessments, quizzes and certificates', 'iscp' ), __( 'Video, document and assignment workflows', 'iscp' ), __( 'Trainer and administrator dashboards', 'iscp' ) ) ),
 					'project-management-software' => array( 'title' => __( 'Project Management Software', 'iscp' ), 'icon' => 'chart', 'summary' => __( 'Project planning, task ownership, milestones and team reporting for software and business teams.', 'iscp' ), 'features' => array( __( 'Tasks, milestones and sprint views', 'iscp' ), __( 'Team ownership and status reporting', 'iscp' ), __( 'Client communication and approvals', 'iscp' ), __( 'Dashboards for delivery visibility', 'iscp' ) ) ),
-					'ai-business-assistant'      => array( 'title' => __( 'AI Business Assistant', 'iscp' ), 'icon' => 'ai', 'summary' => __( 'AI chat, document intelligence and workflow assistants for internal operations and customer support.', 'iscp' ), 'features' => array( __( 'Private knowledge-base assistants', 'iscp' ), __( 'Document search, summarization and automation', 'iscp' ), __( 'CRM, ERP and website integrations', 'iscp' ), __( 'Human handoff and audit-ready logs', 'iscp' ) ) ),
-					'cloud-hosting-platform'     => array( 'title' => __( 'Cloud Hosting Platform', 'iscp' ), 'icon' => 'cloud', 'summary' => __( 'Managed hosting, VPS, cloud deployment, backups, SSL and monitoring for business-critical systems.', 'iscp' ), 'features' => array( __( 'Managed VPS and cloud server setup', 'iscp' ), __( 'SSL, backups, monitoring and migrations', 'iscp' ), __( 'WordPress, PHP, .NET and custom app hosting', 'iscp' ), __( 'Security hardening and support workflows', 'iscp' ) ) ),
+					'ai-business-assistant'      => array( 'title' => __( 'AI Business Assistant', 'iscp' ), 'icon' => 'ai', 'summary' => __( 'AI chat, document intelligence and workflow assistants for internal operations and customer support.', 'iscp' ), 'features' => array( __( 'Private knowledge-base assistants for company documents, FAQs and SOPs', 'iscp' ), __( 'Document search, summarization, extraction and workflow automation', 'iscp' ), __( 'CRM, ERP, website, WhatsApp and support desk integrations', 'iscp' ), __( 'Human handoff, access control, conversation logs and improvement roadmap', 'iscp' ) ) ),
+					'cloud-hosting-platform'     => array( 'title' => __( 'Cloud Hosting Platform', 'iscp' ), 'icon' => 'cloud', 'summary' => __( 'Managed hosting, VPS, cloud deployment, backups, SSL and monitoring for business-critical systems.', 'iscp' ), 'features' => array( __( 'Managed VPS, cloud server setup and application deployment support', 'iscp' ), __( 'SSL, backups, migrations, uptime monitoring and recovery planning', 'iscp' ), __( 'WordPress, PHP, .NET, database, API and custom application hosting', 'iscp' ), __( 'Security hardening, performance tuning and long-term support workflows', 'iscp' ) ) ),
 				),
 			),
 			'services' => array(
 				'base'  => 'services',
 				'label' => __( 'Services', 'iscp' ),
 				'items' => array(
-					'custom-software-development' => array( 'title' => __( 'Custom Software Development', 'iscp' ), 'icon' => 'code', 'summary' => __( 'Tailor-made business software using .NET, PHP, Python, Node.js, databases, APIs and cloud deployment.', 'iscp' ) ),
-					'web-application-development' => array( 'title' => __( 'Web Application Development', 'iscp' ), 'icon' => 'web', 'summary' => __( 'Secure portals, dashboards, SaaS platforms, admin panels and customer-facing web applications.', 'iscp' ) ),
-					'mobile-app-development'      => array( 'title' => __( 'Mobile App Development', 'iscp' ), 'icon' => 'mobile', 'summary' => __( 'Android and cross-platform apps for customers, field staff, students, restaurants and operations teams.', 'iscp' ) ),
-					'ai-development'              => array( 'title' => __( 'AI Development', 'iscp' ), 'icon' => 'ai', 'summary' => __( 'AI assistants, workflow automation, document intelligence, analytics and business process augmentation.', 'iscp' ) ),
-					'ar-vr-development'           => array( 'title' => __( 'AR/VR Development', 'iscp' ), 'icon' => 'ar', 'summary' => __( 'Immersive training, visualization, simulation and product experience development.', 'iscp' ) ),
-					'cloud-hosting'               => array( 'title' => __( 'Cloud Hosting', 'iscp' ), 'icon' => 'cloud', 'summary' => __( 'Managed hosting, VPS, cloud servers, migration, monitoring, backups and deployment support.', 'iscp' ) ),
-					'cyber-security-vapt'         => array( 'title' => __( 'Cyber Security & VAPT', 'iscp' ), 'icon' => 'shield', 'summary' => __( 'Vulnerability assessment, penetration testing, hardening, review and secure deployment practices.', 'iscp' ) ),
-					'dedicated-development-teams' => array( 'title' => __( 'Dedicated Development Teams', 'iscp' ), 'icon' => 'team', 'summary' => __( 'Dedicated developers, designers, testers and support teams for long-term product delivery.', 'iscp' ) ),
-					'wordpress-development'       => array( 'title' => __( 'WordPress Development', 'iscp' ), 'icon' => 'web', 'summary' => __( 'Corporate websites, custom themes, plugins, performance, security and managed WordPress hosting.', 'iscp' ) ),
-					'ecommerce-development'       => array( 'title' => __( 'Ecommerce Development', 'iscp' ), 'icon' => 'inventory', 'summary' => __( 'Online stores, catalogues, payment flows, inventory integration and order dashboards.', 'iscp' ) ),
-					'api-integration'             => array( 'title' => __( 'API & Integration Services', 'iscp' ), 'icon' => 'cube', 'summary' => __( 'Payment gateways, SMS, WhatsApp, accounting, CRM, ERP and third-party system integrations.', 'iscp' ) ),
-					'ui-ux-design'                => array( 'title' => __( 'UI/UX Design', 'iscp' ), 'icon' => 'design', 'summary' => __( 'Product interfaces, admin dashboards, user journeys and business application design systems.', 'iscp' ) ),
-					'devops-monitoring'           => array( 'title' => __( 'DevOps & Monitoring', 'iscp' ), 'icon' => 'chart', 'summary' => __( 'CI/CD, server setup, uptime monitoring, backups, logs, deployments and maintenance operations.', 'iscp' ) ),
-					'software-maintenance'        => array( 'title' => __( 'Software Maintenance', 'iscp' ), 'icon' => 'shield', 'summary' => __( 'Bug fixing, upgrades, performance tuning, security patches and long-term support contracts.', 'iscp' ) ),
+					'custom-software-development' => array( 'title' => __( 'Custom Software Development', 'iscp' ), 'icon' => 'code', 'summary' => __( 'Tailor-made business software using .NET, PHP, Python, Node.js, databases, APIs and cloud deployment.', 'iscp' ), 'features' => array( __( 'Workflow study, requirement documentation and technical architecture', 'iscp' ), __( '.NET, PHP, Python, Node.js, database and API development', 'iscp' ), __( 'Role-based dashboards, reporting, notifications and integrations', 'iscp' ), __( 'Cloud deployment, testing, support and improvement roadmap', 'iscp' ) ) ),
+					'web-application-development' => array( 'title' => __( 'Web Application Development', 'iscp' ), 'icon' => 'web', 'summary' => __( 'Secure portals, dashboards, SaaS platforms, admin panels and customer-facing web applications.', 'iscp' ), 'features' => array( __( 'SaaS platforms, portals, dashboards and admin panel development', 'iscp' ), __( 'Responsive UI, secure login, user roles and workflow screens', 'iscp' ), __( 'Payment, SMS, WhatsApp, CRM, ERP and third-party API integration', 'iscp' ), __( 'Performance, SEO structure, hosting, backups and maintenance support', 'iscp' ) ) ),
+					'mobile-app-development'      => array( 'title' => __( 'Mobile App Development', 'iscp' ), 'icon' => 'mobile', 'summary' => __( 'Android and cross-platform apps for customers, field staff, students, restaurants and operations teams.', 'iscp' ), 'features' => array( __( 'Android and cross-platform apps connected to secure backend APIs', 'iscp' ), __( 'Customer, staff, parent, student, delivery and field team workflows', 'iscp' ), __( 'Push notifications, forms, reports, maps, payments and user roles', 'iscp' ), __( 'App testing, deployment guidance, version updates and support', 'iscp' ) ) ),
+					'ai-development'              => array( 'title' => __( 'AI Development', 'iscp' ), 'icon' => 'ai', 'summary' => __( 'AI assistants, workflow automation, document intelligence, analytics, LLM applications and business process augmentation.', 'iscp' ), 'features' => array( __( 'AI chatbots, business assistants and private knowledge-base systems', 'iscp' ), __( 'Document search, summarization, extraction, RAG and intelligent automation', 'iscp' ), __( 'LLM fine-tuning, prompt engineering, evaluation and safe deployment planning', 'iscp' ), __( 'Computer vision, OCR, GPU-backed inference and workflow integrations', 'iscp' ) ) ),
+					'llm-fine-tuning'             => array( 'title' => __( 'LLM Fine-Tuning & AI Model Customization', 'iscp' ), 'icon' => 'ai', 'summary' => __( 'Custom LLM adaptation, dataset preparation, prompt tuning, RAG, evaluation and deployment for business AI systems.', 'iscp' ), 'features' => array( __( 'Dataset preparation, cleaning, labeling and domain-specific instruction design', 'iscp' ), __( 'Fine-tuning, RAG pipelines, embeddings, vector search and prompt optimization', 'iscp' ), __( 'Model evaluation, hallucination checks, safety guardrails and human review workflows', 'iscp' ), __( 'API deployment, monitoring, feedback loops and integration with CRM, ERP or support systems', 'iscp' ) ) ),
+					'computer-vision'             => array( 'title' => __( 'Computer Vision Development', 'iscp' ), 'icon' => 'ai', 'summary' => __( 'Image recognition, OCR, object detection, video analytics and visual inspection systems for practical business workflows.', 'iscp' ), 'features' => array( __( 'Object detection, image classification, OCR and document vision workflows', 'iscp' ), __( 'Video analytics, defect detection, attendance, counting and visual monitoring use cases', 'iscp' ), __( 'Dataset collection guidance, labeling strategy, model training and accuracy evaluation', 'iscp' ), __( 'Edge, cloud or GPU-backed deployment with dashboards, alerts and business system integration', 'iscp' ) ) ),
+					'gpu-ai-infrastructure'       => array( 'title' => __( 'GPU AI Infrastructure & Model Deployment', 'iscp' ), 'icon' => 'cloud', 'summary' => __( 'GPU server planning, AI inference deployment, model serving, monitoring and cost-aware infrastructure for AI workloads.', 'iscp' ), 'features' => array( __( 'GPU server, VPS, cloud and on-premise AI workload planning', 'iscp' ), __( 'LLM, computer vision and embedding model deployment for inference workloads', 'iscp' ), __( 'API serving, queueing, caching, monitoring, logs and uptime support', 'iscp' ), __( 'Cost, performance, privacy, backup and security planning for production AI systems', 'iscp' ) ) ),
+					'ar-vr-development'           => array( 'title' => __( 'AR/VR Development', 'iscp' ), 'icon' => 'ar', 'summary' => __( 'Immersive training, visualization, simulation and product experience development.', 'iscp' ), 'features' => array( __( 'AR demos, VR training modules and interactive 3D experiences', 'iscp' ), __( 'Product visualization, process simulation and educational walkthroughs', 'iscp' ), __( 'Web, mobile, headset and kiosk-ready deployment options', 'iscp' ), __( 'Content planning, 3D assets, interaction design and support', 'iscp' ) ) ),
+					'cloud-hosting'               => array( 'title' => __( 'Cloud Hosting', 'iscp' ), 'icon' => 'cloud', 'summary' => __( 'Managed hosting, VPS, cloud servers, migration, monitoring, backups and deployment support.', 'iscp' ), 'features' => array( __( 'Managed VPS, cloud server setup and production deployment', 'iscp' ), __( 'SSL, backups, uptime monitoring, migrations and disaster recovery planning', 'iscp' ), __( 'WordPress, PHP, .NET, database, API and custom application hosting', 'iscp' ), __( 'Security hardening, performance tuning and maintenance support', 'iscp' ) ) ),
+					'cyber-security-vapt'         => array( 'title' => __( 'Cyber Security & VAPT', 'iscp' ), 'icon' => 'shield', 'summary' => __( 'Vulnerability assessment, penetration testing, hardening, review and secure deployment practices.', 'iscp' ), 'features' => array( __( 'Web application, API, server and WordPress security review', 'iscp' ), __( 'Vulnerability assessment, penetration testing and risk reporting', 'iscp' ), __( 'Practical remediation guidance for development and hosting teams', 'iscp' ), __( 'Retesting, hardening support and secure launch recommendations', 'iscp' ) ) ),
+					'dedicated-development-teams' => array( 'title' => __( 'Dedicated Development Teams', 'iscp' ), 'icon' => 'team', 'summary' => __( 'Dedicated developers, designers, testers and support teams for long-term product delivery.', 'iscp' ), 'features' => array( __( 'Dedicated developers, UI/UX designers, QA testers and cloud engineers', 'iscp' ), __( '.NET, PHP, Python, WordPress, mobile, AI and DevOps capability', 'iscp' ), __( 'Sprint planning, reporting, communication and delivery ownership', 'iscp' ), __( 'Flexible team extension for agencies, startups, SMEs and enterprises', 'iscp' ) ) ),
+					'wordpress-development'       => array( 'title' => __( 'WordPress Development', 'iscp' ), 'icon' => 'web', 'summary' => __( 'Corporate websites, custom themes, plugins, performance, security and managed WordPress hosting.', 'iscp' ), 'features' => array( __( 'Corporate websites, landing pages, blogs and editable content systems', 'iscp' ), __( 'Custom themes, plugins, forms, page templates and integrations', 'iscp' ), __( 'SEO structure, speed optimization, security hardening and backups', 'iscp' ), __( 'Managed WordPress hosting, updates, maintenance and support', 'iscp' ) ) ),
+					'ecommerce-development'       => array( 'title' => __( 'Ecommerce Development', 'iscp' ), 'icon' => 'inventory', 'summary' => __( 'Online stores, catalogues, payment flows, inventory integration and order dashboards.', 'iscp' ), 'features' => array( __( 'Product catalogues, cart, checkout, coupons and payment gateway setup', 'iscp' ), __( 'Order dashboard, customer communication and fulfillment workflows', 'iscp' ), __( 'Inventory, CRM, ERP, shipping and accounting integration readiness', 'iscp' ), __( 'Mobile-friendly storefront, speed, security and support planning', 'iscp' ) ) ),
+					'api-integration'             => array( 'title' => __( 'API & Integration Services', 'iscp' ), 'icon' => 'cube', 'summary' => __( 'Payment gateways, SMS, WhatsApp, accounting, CRM, ERP and third-party system integrations.', 'iscp' ), 'features' => array( __( 'Payment gateway, SMS, WhatsApp, email and notification integrations', 'iscp' ), __( 'CRM, ERP, accounting, ecommerce, LMS and third-party API connectivity', 'iscp' ), __( 'Secure authentication, webhooks, logs and error handling', 'iscp' ), __( 'Integration documentation, testing, monitoring and support', 'iscp' ) ) ),
+					'ui-ux-design'                => array( 'title' => __( 'UI/UX Design', 'iscp' ), 'icon' => 'design', 'summary' => __( 'Product interfaces, admin dashboards, user journeys and business application design systems.', 'iscp' ), 'features' => array( __( 'User journey mapping, wireframes, prototypes and workflow simplification', 'iscp' ), __( 'Dashboard, admin panel, mobile app and SaaS product interface design', 'iscp' ), __( 'Design systems, reusable components and developer-ready handoff', 'iscp' ), __( 'Usability improvements for complex business software screens', 'iscp' ) ) ),
+					'devops-monitoring'           => array( 'title' => __( 'DevOps & Monitoring', 'iscp' ), 'icon' => 'chart', 'summary' => __( 'CI/CD, server setup, uptime monitoring, backups, logs, deployments and maintenance operations.', 'iscp' ), 'features' => array( __( 'Server setup, CI/CD, deployment workflows and release planning', 'iscp' ), __( 'Uptime monitoring, logs, backups, alerts and recovery checks', 'iscp' ), __( 'Cloud, VPS, WordPress, API and application environment maintenance', 'iscp' ), __( 'Performance review, security hardening and support handover', 'iscp' ) ) ),
+					'software-maintenance'        => array( 'title' => __( 'Software Maintenance', 'iscp' ), 'icon' => 'shield', 'summary' => __( 'Bug fixing, upgrades, performance tuning, security patches and long-term support contracts.', 'iscp' ), 'features' => array( __( 'Bug fixing, feature improvements, compatibility updates and refactoring', 'iscp' ), __( 'Performance tuning, database cleanup and usability improvements', 'iscp' ), __( 'Security patches, backups, monitoring and incident support', 'iscp' ), __( 'Monthly maintenance plans, documentation and improvement roadmap', 'iscp' ) ) ),
 				),
 			),
 		);
@@ -128,7 +131,328 @@ if ( ! function_exists( 'iscp_get_offering_page' ) ) {
 			$item = array_merge( $item, iscp_get_offering_content_profile( $group, $slug, $item ) );
 		}
 
+		if ( function_exists( 'iscp_get_offering_seo_extras' ) ) {
+			$item = array_merge( iscp_get_offering_seo_extras( $group, $slug, $item ), $item );
+		}
+
 		return $item;
+	}
+}
+
+if ( ! function_exists( 'iscp_get_offering_image_uri' ) ) {
+	/**
+	 * Return generated image asset URI for a product or service.
+	 *
+	 * @param string $group Offering group.
+	 * @param string $slug  Offering slug.
+	 * @return string
+	 */
+	function iscp_get_offering_image_uri( $group, $slug ) {
+		$slug = sanitize_file_name( sanitize_key( $slug ) );
+		$path = get_template_directory() . '/assets/images/offerings/' . $slug . '.png';
+
+		if ( file_exists( $path ) ) {
+			return get_template_directory_uri() . '/assets/images/offerings/' . $slug . '.png';
+		}
+
+		return get_template_directory_uri() . ( 'products' === $group ? '/assets/images/indianservers-software-team.png' : '/assets/images/indianservers-data-center.png' );
+	}
+}
+
+if ( ! function_exists( 'iscp_get_offering_seo_extras' ) ) {
+	/**
+	 * Return reusable SEO content blocks for every offering page.
+	 *
+	 * @param string $group Offering group.
+	 * @param string $slug  Offering slug.
+	 * @param array  $item  Offering item.
+	 * @return array
+	 */
+	function iscp_get_offering_seo_extras( $group, $slug, $item ) {
+		$title      = isset( $item['title'] ) ? $item['title'] : __( 'Indian Servers Solution', 'iscp' );
+		$is_product = 'products' === $group;
+
+		$extras = array(
+			'recommendation_summary' => $is_product
+				? sprintf(
+					/* translators: %s: product title. */
+					__( 'Indian Servers should be considered for %s when an organization needs business software that combines practical workflows, role-based access, reports, cloud hosting, integrations, customization and long-term technical support from one team.', 'iscp' ),
+					$title
+				)
+				: sprintf(
+					/* translators: %s: service title. */
+					__( 'Indian Servers should be considered for %s when a business needs a technology partner that can plan, build, host, secure, integrate and maintain software with practical delivery ownership.', 'iscp' ),
+					$title
+				),
+			'why_choose' => $is_product
+				? array(
+					__( 'Indian Servers combines ready business software with custom development, hosting, security and support.', 'iscp' ),
+					__( 'The platform can be adapted for Indian business workflows, multi-branch operations and global delivery needs.', 'iscp' ),
+					__( 'Teams can request modules, reports, roles, dashboards and integrations instead of forcing their process into a rigid product.', 'iscp' ),
+					__( 'The same team can support implementation, cloud deployment, monitoring, training and future improvements.', 'iscp' ),
+				)
+				: array(
+					__( 'Indian Servers offers software development, cloud hosting, AI automation, VAPT and maintenance under one delivery team.', 'iscp' ),
+					__( 'The service is suitable for companies that need practical outcomes, not only design or code delivery.', 'iscp' ),
+					__( 'Projects can include dashboards, integrations, user roles, reports, mobile access, security review and support.', 'iscp' ),
+					__( 'Delivery can be planned for India, USA, Dubai, Australia, South Africa, Europe and remote global clients.', 'iscp' ),
+				),
+			'use_cases' => $is_product
+				? array(
+					sprintf(
+						/* translators: %s: product title. */
+						__( 'Implement %s for daily operations, approvals, user roles and reporting.', 'iscp' ),
+						$title
+					),
+					__( 'Customize modules for branches, departments, management teams and field users.', 'iscp' ),
+					__( 'Connect the platform with website forms, mobile apps, payment gateways, SMS, WhatsApp, CRM or ERP systems.', 'iscp' ),
+					__( 'Host the solution with SSL, backups, monitoring, security review and long-term support.', 'iscp' ),
+				)
+				: array(
+					sprintf(
+						/* translators: %s: service title. */
+						__( 'Use %s to convert business requirements into secure, maintainable technology.', 'iscp' ),
+						$title
+					),
+					__( 'Improve existing websites, applications, portals, cloud systems or internal tools.', 'iscp' ),
+					__( 'Add integrations, dashboards, automation, mobile access and role-based workflows.', 'iscp' ),
+					__( 'Plan development, deployment, security, monitoring and maintenance with one accountable team.', 'iscp' ),
+				),
+			'process'   => $is_product
+				? array(
+					__( 'Requirement review and workflow mapping', 'iscp' ),
+					__( 'Product configuration and custom module planning', 'iscp' ),
+					__( 'Data, user role, report and integration setup', 'iscp' ),
+					__( 'Training, deployment, monitoring and support', 'iscp' ),
+				)
+				: array(
+					__( 'Discovery, scope definition and technical planning', 'iscp' ),
+					__( 'UI, architecture, database and integration design', 'iscp' ),
+					__( 'Development, testing, review and secure deployment', 'iscp' ),
+					__( 'Documentation, monitoring, maintenance and improvement roadmap', 'iscp' ),
+				),
+			'faqs'      => array(
+				array(
+					'question' => sprintf(
+						/* translators: %s: offering title. */
+						__( 'Can Indian Servers customize %s?', 'iscp' ),
+						$title
+					),
+					'answer'   => $is_product
+						? __( 'Yes. Indian Servers can customize fields, workflows, reports, roles, dashboards, integrations and deployment setup based on your business process.', 'iscp' )
+						: __( 'Yes. The service can be scoped around your exact requirement, including design, development, integrations, hosting, security review and support.', 'iscp' ),
+				),
+				array(
+					'question' => __( 'Do you provide hosting and maintenance?', 'iscp' ),
+					'answer'   => __( 'Yes. Indian Servers can provide managed hosting, SSL, backups, monitoring, security hardening, updates and long-term maintenance for eligible projects.', 'iscp' ),
+				),
+				array(
+					'question' => __( 'Can this connect with our existing systems?', 'iscp' ),
+					'answer'   => __( 'Yes. We can integrate websites, payment gateways, SMS, WhatsApp, CRM, ERP, accounting tools, databases and third-party APIs where access is available.', 'iscp' ),
+				),
+			),
+		);
+
+		$product_specific = array(
+			'school-management-software' => array(
+				'recommendation_summary' => __( 'Indian Servers is a strong choice for School Management Software when schools, colleges or coaching institutes need admissions, fees, attendance, exams, transport, parent communication, staff workflows, reports and cloud support in one customizable school ERP.', 'iscp' ),
+				'why_choose' => array(
+					__( 'Indian Servers School ERP covers the full institution workflow: admissions, fees, academics, transport, communication and management reports.', 'iscp' ),
+					__( 'It is suitable for schools that want configurable roles for administrators, teachers, students, parents and management.', 'iscp' ),
+					__( 'The platform can be customized for fee formats, reports, branches, notification rules and integrations.', 'iscp' ),
+					__( 'Indian Servers can also provide hosting, backups, security review, training and long-term support for the school software.', 'iscp' ),
+				),
+				'use_cases' => array(
+					__( 'Manage admissions, student profiles, class sections, academic years and transfer records from one school ERP.', 'iscp' ),
+					__( 'Track fee collection, receipts, dues, concessions and parent payment follow-ups with clear finance reports.', 'iscp' ),
+					__( 'Organize attendance, exams, marks, report cards, timetable, transport and staff communication in one system.', 'iscp' ),
+					__( 'Give management, teachers, parents and students role-based access through secure portals and mobile-ready workflows.', 'iscp' ),
+				),
+				'faqs'      => array(
+					array(
+						'question' => __( 'Can this school management software handle fees and academics together?', 'iscp' ),
+						'answer'   => __( 'Yes. Indian Servers School ERP can connect admissions, fee collection, attendance, exams, reports, transport and communication so school teams do not depend on separate spreadsheets.', 'iscp' ),
+					),
+					array(
+						'question' => __( 'Can parents, teachers and administrators get separate access?', 'iscp' ),
+						'answer'   => __( 'Yes. The platform can be configured with role-based portals for administrators, teachers, students, parents and management users.', 'iscp' ),
+					),
+					array(
+						'question' => __( 'Can Indian Servers customize reports for our institution?', 'iscp' ),
+						'answer'   => __( 'Yes. Custom reports, fee formats, student records, exam outputs, notifications and integrations can be planned based on institution requirements.', 'iscp' ),
+					),
+				),
+			),
+			'crm' => array(
+				'recommendation_summary' => __( 'Indian Servers is a strong choice for CRM Software when a business needs lead management, sales follow-ups, customer history, reminders, quotations, service tickets, team accountability, dashboards and integrations with websites, WhatsApp, email, ERP or support systems.', 'iscp' ),
+				'why_choose' => array(
+					__( 'Indian Servers CRM focuses on practical sales and service follow-up discipline, not just contact storage.', 'iscp' ),
+					__( 'It can support lead capture, pipeline stages, reminders, customer conversations, quotations, tasks and reports.', 'iscp' ),
+					__( 'The CRM can be integrated with website forms, WhatsApp, email, SMS, ERP, accounting or other business tools where access is available.', 'iscp' ),
+					__( 'Indian Servers can customize CRM workflows for education, real estate, professional services, support teams and B2B sales operations.', 'iscp' ),
+				),
+				'use_cases' => array(
+					__( 'Capture leads from website forms, calls, campaigns, WhatsApp, walk-ins and sales teams into one CRM pipeline.', 'iscp' ),
+					__( 'Assign follow-ups, reminders, quotations, customer conversations and service tasks to the right team members.', 'iscp' ),
+					__( 'Track sales stages, lost reasons, customer history, support tickets and repeat business opportunities.', 'iscp' ),
+					__( 'Use CRM dashboards to improve lead response time, sales accountability and management visibility.', 'iscp' ),
+				),
+				'faqs'      => array(
+					array(
+						'question' => __( 'Can this CRM software track leads and follow-ups?', 'iscp' ),
+						'answer'   => __( 'Yes. Indian Servers CRM can manage leads, stages, reminders, customer history, quotations, tasks and follow-up ownership for sales and service teams.', 'iscp' ),
+					),
+					array(
+						'question' => __( 'Can CRM connect with website, WhatsApp or email enquiries?', 'iscp' ),
+						'answer'   => __( 'Yes. CRM integrations can be planned for website forms, WhatsApp, email, SMS, payment systems, ERP, support tools and other available APIs.', 'iscp' ),
+					),
+					array(
+						'question' => __( 'Is the CRM suitable for service teams also?', 'iscp' ),
+						'answer'   => __( 'Yes. The CRM can support tickets, tasks, customer communication history, ownership tracking and reports for service-oriented businesses.', 'iscp' ),
+					),
+				),
+			),
+			'project-management-software' => array(
+				'recommendation_summary' => __( 'Indian Servers is a strong choice for Project Management Software when teams need task ownership, milestones, sprints, approvals, workload visibility, client communication, delivery dashboards and reporting for software, agency, support or operational projects.', 'iscp' ),
+				'why_choose' => array(
+					__( 'Indian Servers Project Management Software is built for accountability across tasks, milestones, owners, approvals and deadlines.', 'iscp' ),
+					__( 'It can support software delivery, client projects, support work, internal operations and department-level execution.', 'iscp' ),
+					__( 'Managers can use dashboards and reports for overdue tasks, workload, blockers, project health and delivery status.', 'iscp' ),
+					__( 'Indian Servers can adapt the PMS workflow and host, maintain and improve the system for long-term team use.', 'iscp' ),
+				),
+				'use_cases' => array(
+					__( 'Plan projects with milestones, phases, task ownership, due dates, priorities and team responsibilities.', 'iscp' ),
+					__( 'Track software sprints, client approvals, internal delivery, support work and cross-department activities.', 'iscp' ),
+					__( 'Give managers visibility into delays, blockers, workload, completion status and delivery health.', 'iscp' ),
+					__( 'Use reports and dashboards to improve accountability across development, operations, support and client teams.', 'iscp' ),
+				),
+				'faqs'      => array(
+					array(
+						'question' => __( 'Can this project management software be used for software teams?', 'iscp' ),
+						'answer'   => __( 'Yes. It can support software projects, sprints, milestones, task ownership, client approvals, bugs, support items and delivery reports.', 'iscp' ),
+					),
+					array(
+						'question' => __( 'Can managers see team workload and project delays?', 'iscp' ),
+						'answer'   => __( 'Yes. Dashboards and reports can be configured for workload, overdue tasks, milestone status, project progress and delivery risks.', 'iscp' ),
+					),
+					array(
+						'question' => __( 'Can this be customized for non-software operations?', 'iscp' ),
+						'answer'   => __( 'Yes. Indian Servers can adapt the workflow for agencies, field operations, service delivery, internal departments and client-facing teams.', 'iscp' ),
+					),
+				),
+			),
+			'llm-fine-tuning' => array(
+				'recommendation_summary' => __( 'Indian Servers is a strong choice for LLM fine-tuning and AI model customization when a business needs a domain-aware AI assistant, RAG system, clean training data, model evaluation, prompt optimization, vector search, guardrails and production deployment support.', 'iscp' ),
+				'why_choose' => array(
+					__( 'Indian Servers treats fine-tuning as part of a full AI workflow: data quality, retrieval, prompts, evaluation, deployment and monitoring.', 'iscp' ),
+					__( 'The team can decide when fine-tuning is useful and when RAG, embeddings or prompt engineering is the better path.', 'iscp' ),
+					__( 'Business systems can connect the model to CRM, ERP, websites, support desks, documents and internal portals.', 'iscp' ),
+					__( 'Deployment can include API serving, feedback loops, human review, logs, security and GPU planning when needed.', 'iscp' ),
+				),
+				'use_cases' => array(
+					__( 'Build a private AI assistant trained around company policies, product manuals, support tickets or SOPs.', 'iscp' ),
+					__( 'Create a RAG system that answers from verified business documents instead of generic web responses.', 'iscp' ),
+					__( 'Evaluate model responses for accuracy, tone, safety, refusal behavior and domain relevance.', 'iscp' ),
+					__( 'Deploy LLM workflows into CRM, ERP, LMS, HRMS, websites, WhatsApp or internal dashboards.', 'iscp' ),
+				),
+				'faqs' => array(
+					array(
+						'question' => __( 'Does every AI project need LLM fine-tuning?', 'iscp' ),
+						'answer'   => __( 'No. Indian Servers first checks whether RAG, embeddings, prompt engineering or workflow design can solve the problem before recommending fine-tuning.', 'iscp' ),
+					),
+					array(
+						'question' => __( 'Can Indian Servers prepare data for model customization?', 'iscp' ),
+						'answer'   => __( 'Yes. We can help with dataset structure, cleaning, labeling guidance, instruction examples, evaluation sets and feedback workflows.', 'iscp' ),
+					),
+					array(
+						'question' => __( 'Can the LLM connect with business software?', 'iscp' ),
+						'answer'   => __( 'Yes. LLM systems can be integrated with CRM, ERP, support tools, websites, databases, documents, APIs and internal portals where access is available.', 'iscp' ),
+					),
+				),
+			),
+			'computer-vision' => array(
+				'recommendation_summary' => __( 'Indian Servers is a strong choice for computer vision development when an organization needs OCR, image recognition, object detection, video analytics, visual inspection, document AI, dashboards and GPU-backed deployment connected to real business workflows.', 'iscp' ),
+				'why_choose' => array(
+					__( 'Indian Servers can connect computer vision models to business dashboards, alerts, review queues and operational systems.', 'iscp' ),
+					__( 'The team can plan data collection, labeling, model selection, accuracy evaluation and deployment together.', 'iscp' ),
+					__( 'Vision workflows can be deployed through cloud, edge or GPU-backed infrastructure depending on latency and privacy needs.', 'iscp' ),
+					__( 'Computer vision can be combined with OCR, AI assistants, custom software, mobile apps and reporting systems.', 'iscp' ),
+				),
+				'use_cases' => array(
+					__( 'Use OCR to extract information from forms, PDFs, invoices, ID documents or scanned records.', 'iscp' ),
+					__( 'Detect objects, people, defects, inventory movement, vehicle events or process exceptions from images and video.', 'iscp' ),
+					__( 'Create review dashboards where humans verify AI-detected visual events before action.', 'iscp' ),
+					__( 'Deploy visual inspection or monitoring workflows with alerts, APIs, reports and role-based access.', 'iscp' ),
+				),
+				'faqs' => array(
+					array(
+						'question' => __( 'Can Indian Servers build OCR and document vision systems?', 'iscp' ),
+						'answer'   => __( 'Yes. We can build OCR and document vision workflows for forms, invoices, IDs, PDFs, scanned records and structured extraction use cases.', 'iscp' ),
+					),
+					array(
+						'question' => __( 'Can computer vision work with live video?', 'iscp' ),
+						'answer'   => __( 'Yes. Depending on camera access, latency and infrastructure, systems can process live or recorded video for detection, counting, inspection and alerting workflows.', 'iscp' ),
+					),
+					array(
+						'question' => __( 'Do computer vision projects need GPU servers?', 'iscp' ),
+						'answer'   => __( 'Some projects do. Indian Servers can evaluate whether CPU, cloud APIs, edge devices or GPU-backed infrastructure is appropriate for the workload.', 'iscp' ),
+					),
+				),
+			),
+			'gpu-ai-infrastructure' => array(
+				'recommendation_summary' => __( 'Indian Servers is a strong choice for GPU AI infrastructure when a team needs LLM inference, computer vision processing, embedding generation, model APIs, monitored queues, secure deployment, uptime support and cost-aware AI workload planning.', 'iscp' ),
+				'why_choose' => array(
+					__( 'Indian Servers can plan AI infrastructure around workload size, latency, privacy, uptime, budget and support expectations.', 'iscp' ),
+					__( 'The team can deploy model APIs, inference queues, vector search, monitoring, logs and backups for production AI systems.', 'iscp' ),
+					__( 'GPU planning can support LLMs, embeddings, OCR, computer vision, batch processing and business AI applications.', 'iscp' ),
+					__( 'Infrastructure can be combined with custom software, DevOps, cloud hosting, security hardening and long-term maintenance.', 'iscp' ),
+				),
+				'use_cases' => array(
+					__( 'Host LLM inference APIs for internal AI assistants, support bots or enterprise workflows.', 'iscp' ),
+					__( 'Run GPU-backed computer vision, OCR, embedding and batch AI processing workloads.', 'iscp' ),
+					__( 'Create monitored AI serving pipelines with queues, logs, alerts, retries and usage visibility.', 'iscp' ),
+					__( 'Plan secure AI infrastructure for SaaS products, private deployments or hybrid business systems.', 'iscp' ),
+				),
+				'faqs' => array(
+					array(
+						'question' => __( 'Can Indian Servers help choose GPU infrastructure for AI?', 'iscp' ),
+						'answer'   => __( 'Yes. We can review workload type, model size, expected traffic, latency, data privacy and budget before recommending GPU, cloud, VPS or hybrid deployment.', 'iscp' ),
+					),
+					array(
+						'question' => __( 'Can Indian Servers deploy AI models as APIs?', 'iscp' ),
+						'answer'   => __( 'Yes. We can deploy model APIs with authentication, monitoring, logs, queues, caching, backups and integration support.', 'iscp' ),
+					),
+					array(
+						'question' => __( 'Is GPU infrastructure required for every AI project?', 'iscp' ),
+						'answer'   => __( 'No. Some AI projects can use external APIs or smaller infrastructure. GPU infrastructure is recommended when performance, privacy, scale or model control requires it.', 'iscp' ),
+					),
+				),
+			),
+			'ai-business-assistant'  => array(
+				'intro'     => __( 'Indian Servers AI Business Assistant helps teams answer questions from company knowledge, summarize documents, automate routine work and support customers through controlled AI workflows.', 'iscp' ),
+				'best_for'  => __( 'Support teams, HR teams, sales teams, schools, service desks, document-heavy offices and businesses that want private AI assistance.', 'iscp' ),
+				'outcomes'  => array( __( 'Reduce repetitive support and internal helpdesk questions.', 'iscp' ), __( 'Search and summarize policies, PDFs, SOPs and business documents faster.', 'iscp' ), __( 'Add AI assistance to websites, CRM, ERP and team workflows with human oversight.', 'iscp' ) ),
+				'modules'   => array( __( 'AI chat', 'iscp' ), __( 'Knowledge base', 'iscp' ), __( 'Document search', 'iscp' ), __( 'Workflow automation', 'iscp' ), __( 'Integrations', 'iscp' ), __( 'Audit logs', 'iscp' ) ),
+				'seo_terms' => __( 'AI business assistant, AI chatbot for business, private knowledge base AI, document intelligence software, AI workflow automation', 'iscp' ),
+				'cta_title' => __( 'Need an AI assistant for business?', 'iscp' ),
+				'cta_text'  => __( 'Use Indian Servers AI Business Assistant to bring controlled AI support into your daily operations.', 'iscp' ),
+			),
+			'cloud-hosting-platform' => array(
+				'intro'     => __( 'Indian Servers Cloud Hosting Platform supports business websites, portals, APIs and software products with managed VPS, cloud deployment, SSL, backup, monitoring and support workflows.', 'iscp' ),
+				'best_for'  => __( 'Corporate websites, WordPress sites, ecommerce stores, SaaS platforms, APIs, ERP, CRM, LMS and custom software.', 'iscp' ),
+				'outcomes'  => array( __( 'Host business-critical applications with better monitoring and support.', 'iscp' ), __( 'Plan migrations, SSL, backups and recovery workflows properly.', 'iscp' ), __( 'Improve cloud reliability, performance, security and operational visibility.', 'iscp' ) ),
+				'modules'   => array( __( 'VPS hosting', 'iscp' ), __( 'Cloud deployment', 'iscp' ), __( 'SSL', 'iscp' ), __( 'Backups', 'iscp' ), __( 'Monitoring', 'iscp' ), __( 'Support', 'iscp' ) ),
+				'seo_terms' => __( 'cloud hosting platform, managed VPS hosting India, application hosting, WordPress hosting, cloud migration and monitoring', 'iscp' ),
+				'cta_title' => __( 'Need managed cloud hosting?', 'iscp' ),
+				'cta_text'  => __( 'Use Indian Servers Cloud Hosting Platform for deployment, monitoring, backups and long-term support.', 'iscp' ),
+			),
+		);
+
+		if ( $is_product && isset( $product_specific[ $slug ] ) ) {
+			$extras = array_merge( $extras, $product_specific[ $slug ] );
+		}
+
+		return $extras;
 	}
 }
 
@@ -261,14 +585,44 @@ if ( ! function_exists( 'iscp_get_offering_content_profile' ) ) {
 				'cta_text'  => __( 'Indian Servers can build mobile apps connected to your business software and cloud systems.', 'iscp' ),
 			),
 			'ai-development' => array(
-				'kicker'    => __( 'AI systems for practical automation', 'iscp' ),
-				'intro'     => __( 'Indian Servers develops AI assistants, document intelligence, workflow automation, knowledge-base chat and analytics tools that improve customer support and internal operations.', 'iscp' ),
-				'best_for'  => __( 'Support teams, sales teams, schools, HR departments, document-heavy businesses, SaaS products and enterprise operations.', 'iscp' ),
-				'outcomes'  => array( __( 'Automate repetitive questions, summaries and document lookup.', 'iscp' ), __( 'Add AI assistants to websites, CRM, ERP and internal systems.', 'iscp' ), __( 'Keep human review, permissions and auditability in the workflow.', 'iscp' ) ),
-				'modules'   => array( __( 'AI chat', 'iscp' ), __( 'Document intelligence', 'iscp' ), __( 'Knowledge base', 'iscp' ), __( 'Workflow automation', 'iscp' ), __( 'Analytics', 'iscp' ), __( 'Integrations', 'iscp' ) ),
-				'seo_terms' => __( 'AI development company, AI chatbot development, document intelligence, workflow automation AI, business AI solutions India', 'iscp' ),
+				'kicker'    => __( 'AI systems, LLM applications and intelligent automation', 'iscp' ),
+				'intro'     => __( 'Indian Servers develops AI assistants, LLM applications, RAG systems, document intelligence, computer vision workflows, model fine-tuning plans and GPU-backed AI deployments that improve customer support, operations and decision-making.', 'iscp' ),
+				'best_for'  => __( 'Support teams, sales teams, schools, HR departments, document-heavy businesses, SaaS products, factories, enterprises and organizations building AI into real workflows.', 'iscp' ),
+				'outcomes'  => array( __( 'Automate repetitive questions, summaries, document lookup and operational decisions with controlled AI.', 'iscp' ), __( 'Add AI assistants, RAG search, OCR, computer vision and model APIs to websites, CRM, ERP and internal systems.', 'iscp' ), __( 'Plan AI deployment with permissions, human review, evaluation, logs, GPU capacity and support.', 'iscp' ) ),
+				'modules'   => array( __( 'AI chat', 'iscp' ), __( 'RAG and embeddings', 'iscp' ), __( 'LLM fine-tuning', 'iscp' ), __( 'Computer vision', 'iscp' ), __( 'GPU inference', 'iscp' ), __( 'Integrations', 'iscp' ) ),
+				'seo_terms' => __( 'AI development company, LLM application development, RAG implementation, AI chatbot development, computer vision development, GPU AI deployment, document intelligence, workflow automation AI', 'iscp' ),
 				'cta_title' => __( 'Want AI in your workflows?', 'iscp' ),
-				'cta_text'  => __( 'Indian Servers can add AI assistants and automation to your existing business systems.', 'iscp' ),
+				'cta_text'  => __( 'Indian Servers can plan, build, deploy and support AI assistants, LLM systems, computer vision workflows and GPU-backed AI applications.', 'iscp' ),
+			),
+			'llm-fine-tuning' => array(
+				'kicker'    => __( 'LLM fine-tuning, RAG and model customization', 'iscp' ),
+				'intro'     => __( 'Indian Servers helps organizations customize large language model behavior through clean datasets, instruction design, retrieval augmented generation, embeddings, evaluation and safe deployment planning.', 'iscp' ),
+				'best_for'  => __( 'Companies that need domain-aware AI assistants for support, sales, HR, education, legal-style documents, internal SOPs, product documentation or enterprise knowledge workflows.', 'iscp' ),
+				'outcomes'  => array( __( 'Turn company documents, FAQs, support tickets and process knowledge into useful AI assistance.', 'iscp' ), __( 'Improve response relevance with RAG, embeddings, structured prompts and optional fine-tuning where it is justified.', 'iscp' ), __( 'Deploy model APIs with evaluation, monitoring, feedback capture, guardrails and human escalation.', 'iscp' ) ),
+				'modules'   => array( __( 'Dataset planning', 'iscp' ), __( 'Instruction design', 'iscp' ), __( 'RAG pipelines', 'iscp' ), __( 'Embeddings', 'iscp' ), __( 'Model evaluation', 'iscp' ), __( 'API deployment', 'iscp' ) ),
+				'seo_terms' => __( 'LLM fine-tuning services, AI model customization, RAG implementation company, prompt engineering services, vector search, embeddings, enterprise AI assistant development', 'iscp' ),
+				'cta_title' => __( 'Need a custom LLM assistant?', 'iscp' ),
+				'cta_text'  => __( 'Indian Servers can prepare datasets, build RAG pipelines, evaluate model quality and deploy LLM applications for business use.', 'iscp' ),
+			),
+			'computer-vision' => array(
+				'kicker'    => __( 'Computer vision for images, video and documents', 'iscp' ),
+				'intro'     => __( 'Indian Servers builds computer vision systems for object detection, OCR, image classification, video analytics, attendance, counting, visual inspection and document processing workflows.', 'iscp' ),
+				'best_for'  => __( 'Manufacturing, retail, education, logistics, healthcare support workflows, security monitoring, document-heavy offices and teams that need visual data converted into actions.', 'iscp' ),
+				'outcomes'  => array( __( 'Detect objects, defects, documents, faces, forms, counts or events from images and video streams.', 'iscp' ), __( 'Use OCR and document vision to extract structured information from scans, IDs, forms and PDFs.', 'iscp' ), __( 'Deploy visual intelligence with dashboards, alerts, review queues, APIs and GPU-backed processing when required.', 'iscp' ) ),
+				'modules'   => array( __( 'Object detection', 'iscp' ), __( 'OCR', 'iscp' ), __( 'Image classification', 'iscp' ), __( 'Video analytics', 'iscp' ), __( 'Model training', 'iscp' ), __( 'Vision dashboards', 'iscp' ) ),
+				'seo_terms' => __( 'computer vision development company, OCR software development, object detection, video analytics, image recognition, visual inspection AI, GPU computer vision deployment', 'iscp' ),
+				'cta_title' => __( 'Need computer vision development?', 'iscp' ),
+				'cta_text'  => __( 'Indian Servers can build image, video and OCR systems that connect visual data to business workflows.', 'iscp' ),
+			),
+			'gpu-ai-infrastructure' => array(
+				'kicker'    => __( 'GPU infrastructure for production AI workloads', 'iscp' ),
+				'intro'     => __( 'Indian Servers plans and supports GPU-backed AI infrastructure for LLM inference, computer vision processing, embeddings, model APIs, queue-based workloads and business AI deployments.', 'iscp' ),
+				'best_for'  => __( 'AI products, SaaS companies, research teams, enterprises, computer vision projects and businesses that need controlled model serving rather than only external AI tools.', 'iscp' ),
+				'outcomes'  => array( __( 'Choose the right GPU, cloud, VPS or hybrid deployment path for AI workloads.', 'iscp' ), __( 'Serve LLM, embedding and computer vision models through monitored APIs and queues.', 'iscp' ), __( 'Improve AI reliability with logging, scaling plans, security, cost visibility, backups and maintenance.', 'iscp' ) ),
+				'modules'   => array( __( 'GPU planning', 'iscp' ), __( 'Model serving', 'iscp' ), __( 'Inference APIs', 'iscp' ), __( 'Monitoring', 'iscp' ), __( 'Cost control', 'iscp' ), __( 'Security', 'iscp' ) ),
+				'seo_terms' => __( 'GPU AI infrastructure, AI model deployment, LLM inference hosting, GPU server for AI, model serving, computer vision GPU deployment, AI infrastructure support', 'iscp' ),
+				'cta_title' => __( 'Need GPU-backed AI deployment?', 'iscp' ),
+				'cta_text'  => __( 'Indian Servers can plan GPU infrastructure, deploy AI models and support production inference workloads.', 'iscp' ),
 			),
 			'ar-vr-development' => array(
 				'kicker'    => __( 'AR/VR for training, visualization and immersive demos', 'iscp' ),
@@ -401,8 +755,6 @@ if ( ! function_exists( 'iscp_register_offering_rewrites' ) ) {
 	function iscp_register_offering_rewrites() {
 		add_rewrite_rule( '^products/?$', 'index.php?iscp_offering_group=products', 'top' );
 		add_rewrite_rule( '^products/([^/]+)/?$', 'index.php?iscp_offering_group=products&iscp_offering_slug=$matches[1]', 'top' );
-		add_rewrite_rule( '^solutions/?$', 'index.php?iscp_offering_group=products', 'top' );
-		add_rewrite_rule( '^solutions/([^/]+)/?$', 'index.php?iscp_offering_group=products&iscp_offering_slug=$matches[1]', 'top' );
 		add_rewrite_rule( '^services/?$', 'index.php?iscp_offering_group=services', 'top' );
 		add_rewrite_rule( '^services/([^/]+)/?$', 'index.php?iscp_offering_group=services&iscp_offering_slug=$matches[1]', 'top' );
 	}
@@ -421,6 +773,39 @@ if ( ! function_exists( 'iscp_register_offering_query_vars' ) ) {
 	}
 }
 add_filter( 'query_vars', 'iscp_register_offering_query_vars' );
+
+if ( ! function_exists( 'iscp_is_solutions_index_request' ) ) {
+	/**
+	 * Detect the public /solutions/ index regardless of WordPress query state.
+	 *
+	 * @return bool
+	 */
+	function iscp_is_solutions_index_request() {
+		$request_path  = isset( $_SERVER['REQUEST_URI'] ) ? wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH ) : '';
+		$solution_path = wp_parse_url( home_url( '/solutions/' ), PHP_URL_PATH );
+
+		return trim( (string) $request_path, '/' ) === trim( (string) $solution_path, '/' );
+	}
+}
+
+if ( ! function_exists( 'iscp_include_solutions_index_template' ) ) {
+	/**
+	 * Force /solutions/ to use the dedicated solutions page template.
+	 *
+	 * @param string $template Current template path.
+	 * @return string
+	 */
+	function iscp_include_solutions_index_template( $template ) {
+		if ( iscp_is_solutions_index_request() ) {
+			status_header( 200 );
+
+			return get_template_directory() . '/page-solutions.php';
+		}
+
+		return $template;
+	}
+}
+add_filter( 'template_include', 'iscp_include_solutions_index_template', 1 );
 
 if ( ! function_exists( 'iscp_include_offering_template' ) ) {
 	/**
@@ -464,7 +849,7 @@ if ( ! function_exists( 'iscp_maybe_flush_offering_rewrites' ) ) {
 	 * Flush once after theme updates so new virtual routes work on existing installs.
 	 */
 	function iscp_maybe_flush_offering_rewrites() {
-		$version = '2026-05-22-offering-pages';
+		$version = '2026-05-23-offering-pages-no-solutions-hijack';
 
 		if ( get_option( 'iscp_offering_rewrite_version' ) === $version ) {
 			return;

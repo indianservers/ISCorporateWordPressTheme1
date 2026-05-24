@@ -8,7 +8,12 @@
 defined( 'ABSPATH' ) || exit;
 
 $iscp_product_image = get_template_directory_uri() . '/assets/images/indianservers-software-team.png';
-$iscp_is_solutions_page = is_page( 'solutions' ) || is_post_type_archive( 'iscp_solution' );
+$iscp_request_path       = isset( $_SERVER['REQUEST_URI'] ) ? trim( (string) wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH ), '/' ) : '';
+$iscp_solutions_path     = trim( (string) wp_parse_url( home_url( '/solutions/' ), PHP_URL_PATH ), '/' );
+$iscp_is_solutions_page  = is_page( 'solutions' ) || is_post_type_archive( 'iscp_solution' ) || $iscp_request_path === $iscp_solutions_path;
+$iscp_offering_pages     = function_exists( 'iscp_get_editable_offering_pages' ) ? iscp_get_editable_offering_pages() : array();
+$iscp_solution_products  = ! empty( $iscp_offering_pages['products']['items'] ) ? array_slice( $iscp_offering_pages['products']['items'], 0, 8, true ) : array();
+$iscp_solution_services  = ! empty( $iscp_offering_pages['services']['items'] ) ? array_slice( $iscp_offering_pages['services']['items'], 0, 8, true ) : array();
 $iscp_solution_cards = array(
 	array(
 		'need'        => __( 'Are you looking for school software?', 'iscp' ),
@@ -200,6 +205,44 @@ get_header();
 					<div><strong><?php esc_html_e( 'SME Operations Suite', 'iscp' ); ?></strong><span><?php esc_html_e( 'Vyapara ERP + Inventory + CRM + Reports', 'iscp' ); ?></span></div>
 					<div><strong><?php esc_html_e( 'Restaurant Growth Suite', 'iscp' ); ?></strong><span><?php esc_html_e( 'Restaurant POS + Inventory + Branch Reports + Mobile Ordering', 'iscp' ); ?></span></div>
 					<div><strong><?php esc_html_e( 'Secure Cloud Launch', 'iscp' ); ?></strong><span><?php esc_html_e( 'Custom Software + Cloud Hosting + VAPT + Monitoring', 'iscp' ); ?></span></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="iscp-section iscp-section-muted iscp-solution-directory-section">
+			<div class="iscp-container">
+				<div class="iscp-section-heading">
+					<p class="iscp-eyebrow"><?php esc_html_e( 'Products', 'iscp' ); ?></p>
+					<h2><?php esc_html_e( 'Indian Servers software products for daily business operations', 'iscp' ); ?></h2>
+					<p><?php esc_html_e( 'Start with ready business platforms for schools, sales teams, delivery teams, HR, inventory, restaurants, training and ERP workflows.', 'iscp' ); ?></p>
+				</div>
+				<div class="iscp-offering-link-grid">
+					<?php foreach ( $iscp_solution_products as $iscp_slug => $iscp_item ) : ?>
+						<a class="iscp-offering-link-card" href="<?php echo esc_url( ! empty( $iscp_item['url'] ) ? $iscp_item['url'] : home_url( '/products/' . $iscp_slug . '/' ) ); ?>">
+							<span class="iscp-offering-link-label"><?php esc_html_e( 'Product', 'iscp' ); ?></span>
+							<strong class="iscp-offering-link-title"><?php echo esc_html( $iscp_item['title'] ); ?></strong>
+							<span class="iscp-offering-link-summary"><?php echo esc_html( $iscp_item['summary'] ); ?></span>
+						</a>
+					<?php endforeach; ?>
+				</div>
+			</div>
+		</section>
+
+		<section class="iscp-section iscp-solution-directory-section">
+			<div class="iscp-container">
+				<div class="iscp-section-heading">
+					<p class="iscp-eyebrow"><?php esc_html_e( 'Services', 'iscp' ); ?></p>
+					<h2><?php esc_html_e( 'Technology services that complete the solution', 'iscp' ); ?></h2>
+					<p><?php esc_html_e( 'Combine products with custom software development, AI, LLM fine-tuning, computer vision, GPU infrastructure, cloud hosting, mobile apps, VAPT and dedicated teams.', 'iscp' ); ?></p>
+				</div>
+				<div class="iscp-offering-link-grid">
+					<?php foreach ( $iscp_solution_services as $iscp_slug => $iscp_item ) : ?>
+						<a class="iscp-offering-link-card" href="<?php echo esc_url( ! empty( $iscp_item['url'] ) ? $iscp_item['url'] : home_url( '/services/' . $iscp_slug . '/' ) ); ?>">
+							<span class="iscp-offering-link-label"><?php esc_html_e( 'Service', 'iscp' ); ?></span>
+							<strong class="iscp-offering-link-title"><?php echo esc_html( $iscp_item['title'] ); ?></strong>
+							<span class="iscp-offering-link-summary"><?php echo esc_html( $iscp_item['summary'] ); ?></span>
+						</a>
+					<?php endforeach; ?>
 				</div>
 			</div>
 		</section>

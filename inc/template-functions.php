@@ -293,6 +293,7 @@ if ( ! function_exists( 'iscp_get_menu_icon_path' ) ) {
 			'services' => 'M7 3h10l4 7-9 11L3 10l4-7Zm1.1 2L5.5 9h13L15.9 5H8.1ZM7 11l5 6.1 5-6.1H7Z',
 			'products' => 'M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3Zm0 2.3L6 8.7v6.6l6 3.4 6-3.4V8.7l-6-3.4Z',
 			'contact'  => 'M4 4h16v13H7.6L4 20V4Zm2 2v9.4l.8-.7H18V6H6Zm2.5 3h7v2h-7V9Zm0 3h5v2h-5v-2Z',
+			'careers'  => 'M9 6V4a3 3 0 0 1 6 0v2h5v14H4V6h5Zm2 0h2V4a1 1 0 0 0-2 0v2Zm-5 2v10h12V8H6Zm4 3h4v2h-4v-2Z',
 		);
 
 		if ( isset( $icons[ $icon ] ) ) {
@@ -998,10 +999,10 @@ if ( ! function_exists( 'iscp_get_cpt_default_content' ) ) {
 				<section>
 					<h2><?php esc_html_e( 'What We Cover', 'iscp' ); ?></h2>
 					<ul>
-						<li><?php esc_html_e( 'Requirement study, workflow mapping and technical planning.', 'iscp' ); ?></li>
-						<li><?php esc_html_e( 'Responsive web, mobile and dashboard experiences.', 'iscp' ); ?></li>
-						<li><?php esc_html_e( 'Role-based access, reporting, notifications and integrations.', 'iscp' ); ?></li>
-						<li><?php esc_html_e( 'Deployment, hosting, monitoring, security review and support.', 'iscp' ); ?></li>
+						<li><?php esc_html_e( 'Requirement study, workflow mapping, user roles and technical planning.', 'iscp' ); ?></li>
+						<li><?php esc_html_e( 'Responsive web, mobile, admin dashboard and customer portal experiences.', 'iscp' ); ?></li>
+						<li><?php esc_html_e( 'Reports, approvals, notifications, payments, SMS, WhatsApp and third-party integrations.', 'iscp' ); ?></li>
+						<li><?php esc_html_e( 'Cloud deployment, SSL, backups, monitoring, VAPT guidance and support.', 'iscp' ); ?></li>
 					</ul>
 				</section>
 				<section>
@@ -1012,6 +1013,27 @@ if ( ! function_exists( 'iscp_get_cpt_default_content' ) ) {
 						<li><?php esc_html_e( 'Delivery presence across Vijayawada, Dehradun, Dubai and USA-connected operations.', 'iscp' ); ?></li>
 						<li><?php esc_html_e( 'Built for Indian business realities with scalable global architecture.', 'iscp' ); ?></li>
 					</ul>
+				</section>
+				<section>
+					<h2><?php esc_html_e( 'Business Outcomes', 'iscp' ); ?></h2>
+					<ul>
+						<li><?php esc_html_e( 'Reduce manual work, duplicate entry and disconnected spreadsheet tracking.', 'iscp' ); ?></li>
+						<li><?php esc_html_e( 'Improve management visibility through dashboards, analytics and exportable reports.', 'iscp' ); ?></li>
+						<li><?php esc_html_e( 'Give teams secure access to the right information at the right time.', 'iscp' ); ?></li>
+						<li><?php esc_html_e( 'Plan future enhancements through a clear support and improvement roadmap.', 'iscp' ); ?></li>
+					</ul>
+				</section>
+				<section>
+					<h2><?php esc_html_e( 'SEO Search Focus', 'iscp' ); ?></h2>
+					<p>
+						<?php
+						printf(
+							/* translators: %s: page title. */
+							esc_html__( '%1$s by Indian Servers is relevant for organizations searching for software development, SaaS products, cloud hosting, AI automation, cyber security, ERP, CRM, HRMS, school management software and managed technology support.', 'iscp' ),
+							esc_html( $title )
+						);
+						?>
+					</p>
 				</section>
 			</div>
 		</div>

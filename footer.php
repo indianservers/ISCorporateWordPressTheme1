@@ -33,7 +33,7 @@ $iscp_social_links['Instagram'] = $iscp_social_links['Instagram'] ? $iscp_social
 ?>
 </main>
 
-<?php if ( is_active_sidebar( 'cta-before-footer' ) ) : ?>
+<?php if ( ! is_front_page() && is_active_sidebar( 'cta-before-footer' ) ) : ?>
 	<section class="iscp-widget-cta-before-footer" aria-label="<?php esc_attr_e( 'Call to action', 'iscp' ); ?>">
 		<div class="iscp-container">
 			<?php dynamic_sidebar( 'cta-before-footer' ); ?>
@@ -132,6 +132,7 @@ $iscp_social_links['Instagram'] = $iscp_social_links['Instagram'] ? $iscp_social
 			</ul>
 		</section>
 
+		<?php if ( ! is_front_page() ) : ?>
 		<?php for ( $iscp_widget_index = 1; $iscp_widget_index <= 4; $iscp_widget_index++ ) : ?>
 			<?php if ( is_active_sidebar( 'footer-' . $iscp_widget_index ) ) : ?>
 				<section class="iscp-footer-column iscp-footer-widget-column">
@@ -139,6 +140,7 @@ $iscp_social_links['Instagram'] = $iscp_social_links['Instagram'] ? $iscp_social
 				</section>
 			<?php endif; ?>
 		<?php endfor; ?>
+		<?php endif; ?>
 	</div>
 
 	<div class="iscp-container iscp-footer-bottom">

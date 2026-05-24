@@ -182,3 +182,24 @@ a {
 	background: #07101f;
 	border-radius: 18px;
 }
+
+/* Match frontend typography: headings should never exceed 18px. */
+.editor-styles-wrapper :where(
+	h1,
+	h2,
+	h3,
+	[class*="-title"],
+	[class*="-heading"],
+	.has-large-font-size,
+	.has-xl-font-size,
+	.has-2xl-font-size,
+	.has-2-xl-font-size
+) {
+	font-size: 18px !important;
+	line-height: 1.35;
+}
+
+.editor-styles-wrapper :where(h4, h5, h6) {
+	font-size: 16px !important;
+	line-height: 1.4;
+}

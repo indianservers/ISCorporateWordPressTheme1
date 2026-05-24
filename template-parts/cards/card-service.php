@@ -31,17 +31,27 @@ $iscp_icons       = array(
 $iscp_icon_path   = isset( $iscp_icons[ $iscp_icon ] ) ? $iscp_icons[ $iscp_icon ] : $iscp_icons['code'];
 ?>
 
-<article class="iscp-card iscp-service-tile iscp-service-card iscp-reveal">
-	<?php if ( has_post_thumbnail() && empty( $args['title'] ) ) : ?>
-		<a class="iscp-card-media" href="<?php echo esc_url( $iscp_url ); ?>">
-			<?php the_post_thumbnail( 'iscp-card' ); ?>
-		</a>
-	<?php endif; ?>
-	<span class="iscp-service-mark" aria-hidden="true">
-		<svg viewBox="0 0 24 24" focusable="false"><path d="<?php echo esc_attr( $iscp_icon_path ); ?>"/></svg>
-	</span>
-	<p class="iscp-card-kicker"><?php echo esc_html( $iscp_label ); ?></p>
-	<h3><a href="<?php echo esc_url( $iscp_url ); ?>"><?php echo esc_html( $iscp_title ); ?></a></h3>
-	<p><?php echo esc_html( wp_trim_words( $iscp_description, 22 ) ); ?></p>
-	<a class="iscp-card-link" href="<?php echo esc_url( $iscp_url ); ?>"><?php esc_html_e( 'Learn More', 'iscp' ); ?></a>
+<article class="iscp-offering-card iscp-offering-card-<?php echo esc_attr( $iscp_icon ); ?> iscp-service-card iscp-reveal">
+	<a class="iscp-offering-card-media" href="<?php echo esc_url( $iscp_url ); ?>" aria-hidden="true" tabindex="-1">
+		<?php if ( has_post_thumbnail() && empty( $args['title'] ) ) : ?>
+			<?php the_post_thumbnail( 'iscp-card', array( 'class' => 'iscp-offering-card-thumb' ) ); ?>
+		<?php endif; ?>
+		<span class="iscp-offering-card-icon" aria-hidden="true">
+			<svg viewBox="0 0 24 24" focusable="false"><path d="<?php echo esc_attr( $iscp_icon_path ); ?>"/></svg>
+		</span>
+		<span class="iscp-offering-card-art" aria-hidden="true">
+			<span></span>
+			<span></span>
+			<span></span>
+		</span>
+	</a>
+	<div class="iscp-offering-card-body">
+		<p class="iscp-card-kicker"><?php echo esc_html( $iscp_label ); ?></p>
+		<h3><a href="<?php echo esc_url( $iscp_url ); ?>"><?php echo esc_html( $iscp_title ); ?></a></h3>
+		<p><?php echo esc_html( wp_trim_words( $iscp_description, 22 ) ); ?></p>
+		<div class="iscp-offering-card-actions">
+			<a class="iscp-card-link" href="<?php echo esc_url( $iscp_url ); ?>"><?php esc_html_e( 'Learn More', 'iscp' ); ?></a>
+			<a class="iscp-card-quote" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Request Quote', 'iscp' ); ?></a>
+		</div>
+	</div>
 </article>

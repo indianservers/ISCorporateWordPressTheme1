@@ -106,14 +106,15 @@ get_header();
 					<?php
 					$iscp_item_url = ! empty( $iscp_item['url'] ) ? $iscp_item['url'] : home_url( '/' . $iscp_group_data['base'] . '/' . $iscp_slug . '/' );
 					$iscp_icon     = isset( $iscp_item['icon'] ) ? $iscp_item['icon'] : 'cube';
+					$iscp_item_image = function_exists( 'iscp_get_offering_image_uri' ) ? iscp_get_offering_image_uri( $iscp_group, $iscp_slug ) : '';
 					?>
 					<article class="iscp-offering-card iscp-offering-card-<?php echo esc_attr( sanitize_html_class( $iscp_icon ) ); ?>">
 						<a class="iscp-offering-card-media" href="<?php echo esc_url( $iscp_item_url ); ?>" aria-label="<?php echo esc_attr( $iscp_item['title'] ); ?>">
-							<span class="iscp-offering-card-icon" aria-hidden="true">
+							<?php if ( $iscp_item_image ) : ?>
+								<img class="iscp-offering-card-thumb" src="<?php echo esc_url( $iscp_item_image ); ?>" alt="<?php echo esc_attr( $iscp_item['title'] ); ?>" loading="lazy" decoding="async">
+							<?php endif; ?>
+							<span class="iscp-offering-card-icon iscp-offering-card-icon-overlay" aria-hidden="true">
 								<svg viewBox="0 0 24 24" focusable="false"><path d="<?php echo esc_attr( iscp_get_offering_icon_path( $iscp_icon ) ); ?>"/></svg>
-							</span>
-							<span class="iscp-offering-card-art" aria-hidden="true">
-								<span></span><span></span><span></span>
 							</span>
 						</a>
 						<div class="iscp-offering-card-body">

@@ -132,6 +132,7 @@ if ( iscp_get_theme_mod( 'iscp_sticky_header_enabled', true ) ) {
 							</ul>
 						</li>
 						<li><a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( 'contact' ); ?><span class="iscp-menu-text"><?php esc_html_e( 'Contact', 'iscp' ); ?></span></a></li>
+						<li><a href="<?php echo esc_url( home_url( '/careers/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( 'careers' ); ?><span class="iscp-menu-text"><?php esc_html_e( 'Careers', 'iscp' ); ?></span></a></li>
 					</ul>
 				<?php endif; ?>
 			</nav>

@@ -18,13 +18,6 @@ defined( 'ABSPATH' ) || exit;
 	<div class="iscp-card-body">
 		<header class="iscp-entry-header">
 			<?php the_title( '<h2 class="iscp-entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' ); ?>
-
-			<?php if ( 'post' === get_post_type() ) : ?>
-				<div class="iscp-entry-meta">
-					<?php iscp_posted_on(); ?>
-					<?php iscp_posted_by(); ?>
-				</div>
-			<?php endif; ?>
 		</header>
 
 		<div class="iscp-entry-summary">
@@ -36,4 +29,3 @@ defined( 'ABSPATH' ) || exit;
 		</footer>
 	</div>
 </article>
-

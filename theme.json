@@ -125,17 +125,17 @@
 				{
 					"name": "Large",
 					"slug": "large",
-					"size": "1.25rem"
+					"size": "1.125rem"
 				},
 				{
 					"name": "XL",
 					"slug": "xl",
-					"size": "1.75rem"
+					"size": "1.125rem"
 				},
 				{
 					"name": "2XL",
 					"slug": "2xl",
-					"size": "2.5rem"
+					"size": "1.125rem"
 				}
 			]
 		}

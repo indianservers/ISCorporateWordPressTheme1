@@ -12,7 +12,10 @@ $iscp_services     = array(
 	array( 'title' => __( 'Custom Software', 'iscp' ), 'icon' => 'code', 'description' => __( '.NET, PHP, Python, APIs, databases and business applications built around real workflows.', 'iscp' ), 'url' => home_url( '/services/custom-software-development/' ) ),
 	array( 'title' => __( 'Web Apps', 'iscp' ), 'icon' => 'design', 'description' => __( 'Portals, dashboards, WordPress, Laravel, React and business-facing web platforms.', 'iscp' ), 'url' => home_url( '/services/web-application-development/' ) ),
 	array( 'title' => __( 'Mobile Apps', 'iscp' ), 'icon' => 'mobile', 'description' => __( 'Android and cross-platform apps for staff, customers, students and field teams.', 'iscp' ), 'url' => home_url( '/services/mobile-app-development/' ) ),
-	array( 'title' => __( 'AI Solutions', 'iscp' ), 'icon' => 'ai', 'description' => __( 'AI assistants, workflow automation, document intelligence and smart analytics.', 'iscp' ), 'url' => home_url( '/services/ai-development/' ) ),
+	array( 'title' => __( 'AI Development', 'iscp' ), 'icon' => 'ai', 'description' => __( 'AI assistants, RAG, document intelligence, automation, analytics and business AI workflows.', 'iscp' ), 'url' => home_url( '/services/ai-development/' ) ),
+	array( 'title' => __( 'LLM Fine-Tuning', 'iscp' ), 'icon' => 'ai', 'description' => __( 'Dataset preparation, RAG, embeddings, prompt optimization, model evaluation and LLM deployment.', 'iscp' ), 'url' => home_url( '/services/llm-fine-tuning/' ) ),
+	array( 'title' => __( 'Computer Vision', 'iscp' ), 'icon' => 'ai', 'description' => __( 'OCR, object detection, image recognition, video analytics and visual inspection systems.', 'iscp' ), 'url' => home_url( '/services/computer-vision/' ) ),
+	array( 'title' => __( 'GPU AI Infrastructure', 'iscp' ), 'icon' => 'cloud', 'description' => __( 'GPU-backed model deployment, inference APIs, monitoring and AI workload infrastructure.', 'iscp' ), 'url' => home_url( '/services/gpu-ai-infrastructure/' ) ),
 	array( 'title' => __( 'AR/VR Experiences', 'iscp' ), 'icon' => 'design', 'description' => __( 'Training simulations, product visualization and immersive learning experiences.', 'iscp' ), 'url' => home_url( '/services/ar-vr-development/' ) ),
 	array( 'title' => __( 'Cloud Hosting', 'iscp' ), 'icon' => 'cloud', 'description' => __( 'Hosting, VPS, cloud servers, SSL, backups, monitoring and migration services.', 'iscp' ), 'url' => home_url( '/services/cloud-hosting/' ) ),
 	array( 'title' => __( 'Cyber Security', 'iscp' ), 'icon' => 'shield', 'description' => __( 'VAPT, hardening, audits, secure deployment and cyber awareness systems.', 'iscp' ), 'url' => home_url( '/services/cyber-security-vapt/' ) ),
@@ -44,7 +47,7 @@ get_header();
 		array(
 			'eyebrow'     => __( 'Services', 'iscp' ),
 			'title'       => __( 'Software, Cloud, AI and Security Services', 'iscp' ),
-			'description' => __( 'A focused service portfolio for companies that need business software, managed hosting, secure applications and long-term technology support.', 'iscp' ),
+			'description' => __( 'A focused service portfolio for companies that need business software, AI development, LLM fine-tuning, computer vision, GPU infrastructure, managed hosting, secure applications and long-term technology support.', 'iscp' ),
 			'variant'     => 'services',
 			'primary'     => array( 'label' => __( 'Start a Project', 'iscp' ), 'url' => home_url( '/contact/' ) ),
 		)
@@ -66,7 +69,7 @@ get_header();
 			<div class="iscp-page-copy">
 				<p class="iscp-eyebrow"><?php esc_html_e( 'What We Do', 'iscp' ); ?></p>
 				<h2><?php esc_html_e( 'End-to-end delivery from application planning to cloud support', 'iscp' ); ?></h2>
-				<p><?php esc_html_e( 'Indian Servers can design, build, host, secure and maintain software products. Services are organized for business outcomes rather than one-off tasks.', 'iscp' ); ?></p>
+				<p><?php esc_html_e( 'Indian Servers can design, build, host, secure and maintain software products, AI systems, LLM workflows, computer vision pipelines and GPU-backed deployments. Services are organized for business outcomes rather than one-off tasks.', 'iscp' ); ?></p>
 			</div>
 			<figure class="iscp-page-image-card">
 				<img src="<?php echo esc_url( $iscp_server_image ); ?>" alt="<?php esc_attr_e( 'Indian Servers server and cloud hosting infrastructure', 'iscp' ); ?>" loading="lazy" decoding="async">
@@ -98,7 +101,7 @@ get_header();
 			<div>
 				<p class="iscp-eyebrow"><?php esc_html_e( 'Technology Coverage', 'iscp' ); ?></p>
 				<h2><?php esc_html_e( 'From code to cloud, our services cover the complete application lifecycle', 'iscp' ); ?></h2>
-				<p><?php esc_html_e( 'Use Indian Servers for new software, legacy improvements, hosting migrations, security reviews, AI integrations and dedicated development capacity.', 'iscp' ); ?></p>
+				<p><?php esc_html_e( 'Use Indian Servers for new software, legacy improvements, hosting migrations, security reviews, AI assistants, LLM fine-tuning, RAG pipelines, computer vision, GPU inference and dedicated development capacity.', 'iscp' ); ?></p>
 			</div>
 			<div class="iscp-service-stack-list">
 				<?php foreach ( $iscp_service_stack as $iscp_stack_item ) : ?>
