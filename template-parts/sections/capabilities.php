@@ -19,6 +19,16 @@ $iscp_capability_cards = array(
 	array( 'title' => __( 'Cyber Security', 'iscp' ), 'icon' => 'shield', 'url' => '/services/cyber-security-vapt/' ),
 	array( 'title' => __( 'Dedicated Teams', 'iscp' ), 'icon' => 'team', 'url' => '/services/dedicated-development-teams/' ),
 );
+$iscp_tech_stack = array(
+	array( 'title' => __( '.NET', 'iscp' ), 'mark' => 'N', 'class' => 'dotnet' ),
+	array( 'title' => __( 'PHP', 'iscp' ), 'mark' => 'P', 'class' => 'php' ),
+	array( 'title' => __( 'Python', 'iscp' ), 'mark' => 'Py', 'class' => 'python' ),
+	array( 'title' => __( 'React', 'iscp' ), 'mark' => 'R', 'class' => 'react' ),
+	array( 'title' => __( 'Node.js', 'iscp' ), 'mark' => 'N', 'class' => 'node' ),
+	array( 'title' => __( 'WordPress', 'iscp' ), 'mark' => 'W', 'class' => 'wordpress' ),
+	array( 'title' => __( 'Cloud', 'iscp' ), 'mark' => 'C', 'class' => 'cloud' ),
+	array( 'title' => __( 'AI/ML', 'iscp' ), 'mark' => 'AI', 'class' => 'ai' ),
+);
 
 $iscp_icons = array(
 	'code'   => 'M8.7 16.6 4.1 12l4.6-4.6 1.4 1.4L6.9 12l3.2 3.2-1.4 1.4Zm6.6 0-1.4-1.4 3.2-3.2-3.2-3.2 1.4-1.4 4.6 4.6-4.6 4.6ZM12.2 18h-2.1l1.7-12h2.1l-1.7 12Z',
@@ -39,14 +49,23 @@ $iscp_icons = array(
 			<h2><?php esc_html_e( 'Eight Ways Indian Servers Helps Businesses Build and Scale', 'iscp' ); ?></h2>
 		</div>
 
-		<div class="iscp-capability-main-grid">
+		<div class="iscp-capability-main-grid iscp-tech-pill-grid">
 			<?php foreach ( $iscp_capability_cards as $iscp_card ) : ?>
-				<a class="iscp-capability-main-card iscp-reveal" href="<?php echo esc_url( home_url( $iscp_card['url'] ) ); ?>">
+				<a class="iscp-capability-main-card iscp-tech-pill iscp-tech-pill-<?php echo esc_attr( sanitize_html_class( $iscp_card['icon'] ) ); ?> iscp-reveal" href="<?php echo esc_url( home_url( $iscp_card['url'] ) ); ?>">
 					<span aria-hidden="true">
 						<svg viewBox="0 0 24 24" focusable="false"><path d="<?php echo esc_attr( $iscp_icons[ $iscp_card['icon'] ] ); ?>"/></svg>
 					</span>
 					<strong><?php echo esc_html( $iscp_card['title'] ); ?></strong>
 				</a>
+			<?php endforeach; ?>
+		</div>
+
+		<div class="iscp-stack-pills iscp-reveal" aria-label="<?php esc_attr_e( 'Technology stack', 'iscp' ); ?>">
+			<?php foreach ( $iscp_tech_stack as $iscp_tech ) : ?>
+				<span class="iscp-stack-pill iscp-stack-pill-<?php echo esc_attr( sanitize_html_class( $iscp_tech['class'] ) ); ?>">
+					<i aria-hidden="true"><?php echo esc_html( $iscp_tech['mark'] ); ?></i>
+					<?php echo esc_html( $iscp_tech['title'] ); ?>
+				</span>
 			<?php endforeach; ?>
 		</div>
 

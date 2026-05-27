@@ -92,6 +92,55 @@
 		});
 	};
 
+	ISCP.initActiveNav = function () {
+		var links = document.querySelectorAll('.iscp-primary-menu > li > a[href]');
+		var currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+
+		links.forEach(function (link) {
+			var linkPath;
+
+			try {
+				linkPath = new URL(link.href, window.location.origin).pathname.replace(/\/+$/, '') || '/';
+			} catch (error) {
+				return;
+			}
+
+			if (linkPath === currentPath) {
+				link.classList.add('iscp-active-link');
+			}
+		});
+	};
+
+	ISCP.initMegaMenuDescriptions = function () {
+		var submenuLinks = document.querySelectorAll('.iscp-primary-menu .sub-menu a');
+
+		submenuLinks.forEach(function (link) {
+			if (link.querySelector('.iscp-menu-description')) {
+				return;
+			}
+
+			var text = link.querySelector('.iscp-menu-text');
+
+			if (!text) {
+				return;
+			}
+
+			var title = text.textContent.trim();
+			var description = document.createElement('span');
+			description.className = 'iscp-menu-description';
+			description.textContent = 'Explore ' + title + ' planning, delivery and support.';
+
+			if (!text.parentElement.classList.contains('iscp-menu-copy')) {
+				var copy = document.createElement('span');
+				copy.className = 'iscp-menu-copy';
+				text.parentElement.insertBefore(copy, text);
+				copy.appendChild(text);
+			}
+
+			text.parentElement.appendChild(description);
+		});
+	};
+
 	ISCP.initDropdowns = function () {
 		dropdownItems.forEach(function (item) {
 			var link = item.querySelector('a');
@@ -358,6 +407,111 @@
 		}
 	};
 
+	ISCP.initCounters = function () {
+		var counters = document.querySelectorAll('[data-iscp-count]');
+
+		if (!counters.length) {
+			return;
+		}
+
+		function complete(counter) {
+			counter.textContent = counter.getAttribute('data-iscp-count-display') || counter.getAttribute('data-iscp-count') + (counter.getAttribute('data-iscp-count-suffix') || '');
+		}
+
+		function animate(counter) {
+			var target = parseFloat(counter.getAttribute('data-iscp-count')) || 0;
+			var suffix = counter.getAttribute('data-iscp-count-suffix') || '';
+			var start = null;
+			var duration = 1200;
+
+			function step(timestamp) {
+				if (!start) {
+					start = timestamp;
+				}
+
+				var progress = Math.min((timestamp - start) / duration, 1);
+				var eased = 1 - Math.pow(1 - progress, 3);
+				counter.textContent = Math.round(target * eased) + suffix;
+
+				if (progress < 1) {
+					window.requestAnimationFrame(step);
+				} else {
+					complete(counter);
+				}
+			}
+
+			window.requestAnimationFrame(step);
+		}
+
+		if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			counters.forEach(complete);
+			return;
+		}
+
+		var observer = new IntersectionObserver(function (entries) {
+			entries.forEach(function (entry) {
+				if (entry.isIntersecting) {
+					animate(entry.target);
+					observer.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.35 });
+
+		counters.forEach(function (counter) {
+			counter.textContent = '0' + (counter.getAttribute('data-iscp-count-suffix') || '');
+			observer.observe(counter);
+		});
+	};
+
+	ISCP.initTiltCards = function () {
+		var cards = document.querySelectorAll('.iscp-service-card, .iscp-solution-card, .iscp-capability-main-card, .iscp-recent-post-card');
+
+		if (!cards.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.matchMedia('(hover: none)').matches) {
+			return;
+		}
+
+		cards.forEach(function (card) {
+			card.addEventListener('mousemove', function (event) {
+				var rect = card.getBoundingClientRect();
+				var x = (event.clientX - rect.left) / rect.width - 0.5;
+				var y = (event.clientY - rect.top) / rect.height - 0.5;
+				card.style.setProperty('--iscp-tilt-x', (-y * 7).toFixed(2) + 'deg');
+				card.style.setProperty('--iscp-tilt-y', (x * 7).toFixed(2) + 'deg');
+			});
+
+			card.addEventListener('mouseleave', function () {
+				card.style.removeProperty('--iscp-tilt-x');
+				card.style.removeProperty('--iscp-tilt-y');
+			});
+		});
+	};
+
+	ISCP.initImageSkeletons = function () {
+		var mediaItems = document.querySelectorAll('.iscp-card-media img, .iscp-offering-card-media img, .iscp-recent-post-media img, .iscp-section-photo img');
+
+		mediaItems.forEach(function (image) {
+			var media = image.closest('.iscp-card-media, .iscp-offering-card-media, .iscp-recent-post-media, .iscp-section-photo');
+
+			if (!media) {
+				return;
+			}
+
+			media.classList.add('iscp-image-loading');
+
+			function markLoaded() {
+				media.classList.remove('iscp-image-loading');
+				media.classList.add('iscp-image-loaded');
+			}
+
+			if (image.complete) {
+				markLoaded();
+			} else {
+				image.addEventListener('load', markLoaded, { once: true });
+				image.addEventListener('error', markLoaded, { once: true });
+			}
+		});
+	};
+
 	document.addEventListener('keydown', function (event) {
 		if (event.key === 'Escape') {
 			var wasMenuOpen = ISCP.isMenuOpen();
@@ -377,6 +531,8 @@
 
 	ISCP.updateHeaderScrollState();
 	ISCP.initMenu();
+	ISCP.initActiveNav();
+	ISCP.initMegaMenuDescriptions();
 	ISCP.initDropdowns();
 	ISCP.initBackToTop();
 	ISCP.initReveal();
@@ -384,5 +540,8 @@
 	ISCP.initSliders();
 	ISCP.initStickyCta();
 	ISCP.initExitModal();
+	ISCP.initCounters();
+	ISCP.initTiltCards();
+	ISCP.initImageSkeletons();
 	ISCP.updateScrollProgress();
 }());

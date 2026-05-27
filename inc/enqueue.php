@@ -31,9 +31,16 @@ if ( ! function_exists( 'iscp_enqueue_assets' ) ) {
 	 */
 	function iscp_enqueue_assets() {
 		wp_enqueue_style(
+			'iscp-display-font',
+			'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap',
+			array(),
+			null
+		);
+
+		wp_enqueue_style(
 			'iscp-main',
 			get_template_directory_uri() . '/assets/css/main.css',
-			array(),
+			array( 'iscp-display-font' ),
 			iscp_asset_version( 'assets/css/main.css' )
 		);
 

@@ -14,6 +14,7 @@ defined( 'ABSPATH' ) || exit;
 			<p class="iscp-eyebrow"><?php esc_html_e( 'Work With Indian Servers', 'iscp' ); ?></p>
 			<h2><?php esc_html_e( 'Need HRMS, CRM, ERP, AI, AR, VAPT or Cloud Hosting?', 'iscp' ); ?></h2>
 			<p><?php esc_html_e( 'Talk to Indian Servers Pvt. Ltd. for SaaS products, custom software development and managed digital infrastructure across India and global branch regions.', 'iscp' ); ?></p>
+			<p class="iscp-regions-text"><?php esc_html_e( 'We serve clients in Hyderabad, Bengaluru, Delhi, Mumbai, Chennai and Pune (India); Dubai, Abu Dhabi and Sharjah (UAE); Cape Town and Johannesburg (South Africa); Melbourne and Sydney (Australia); and New Jersey, Chicago and Houston (USA).', 'iscp' ); ?></p>
 		</div>
 		<div class="iscp-action-row">
 			<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Start a Project', 'iscp' ); ?></a>

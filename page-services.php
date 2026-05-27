@@ -47,6 +47,7 @@ get_header();
 		array(
 			'eyebrow'     => __( 'Services', 'iscp' ),
 			'title'       => __( 'Software, Cloud, AI and Security Services', 'iscp' ),
+			'subtitle'    => __( 'From ideation to deployment — Indian Servers delivers custom software, web apps, mobile apps, AI systems, cloud hosting, cyber security (VAPT), and dedicated offshore development teams for businesses worldwide.', 'iscp' ),
 			'description' => __( 'A focused service portfolio for companies that need business software, AI development, LLM fine-tuning, computer vision, GPU infrastructure, managed hosting, secure applications and long-term technology support.', 'iscp' ),
 			'variant'     => 'services',
 			'primary'     => array( 'label' => __( 'Start a Project', 'iscp' ), 'url' => home_url( '/contact/' ) ),

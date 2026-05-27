@@ -8,14 +8,14 @@
 defined( 'ABSPATH' ) || exit;
 
 $iscp_features = array(
-	__( '.NET / ASP.NET Core', 'iscp' ),
-	__( 'PHP / WordPress / Laravel', 'iscp' ),
-	__( 'Python / AI / Data', 'iscp' ),
-	__( 'React / Node.js / APIs', 'iscp' ),
-	__( 'MySQL / SQL Server', 'iscp' ),
-	__( 'Android / Mobile Apps', 'iscp' ),
-	__( 'Cloud / VPS / DevOps', 'iscp' ),
-	__( 'Security / VAPT', 'iscp' ),
+	array( 'label' => __( '.NET', 'iscp' ), 'subtitle' => __( 'Enterprise apps, APIs, Azure — .NET 8 & C#', 'iscp' ) ),
+	array( 'label' => __( 'PHP', 'iscp' ), 'subtitle' => __( 'WordPress, Laravel, custom CMS and portals', 'iscp' ) ),
+	array( 'label' => __( 'Python', 'iscp' ), 'subtitle' => __( 'AI, ML, data pipelines, Django and FastAPI', 'iscp' ) ),
+	array( 'label' => __( 'React', 'iscp' ), 'subtitle' => __( 'SPAs, dashboards, PWAs with React 18 and Next.js', 'iscp' ) ),
+	array( 'label' => __( 'MySQL', 'iscp' ), 'subtitle' => __( 'Relational databases, query optimisation, migrations', 'iscp' ) ),
+	array( 'label' => __( 'Android', 'iscp' ), 'subtitle' => __( 'Native and cross-platform Android and iOS apps', 'iscp' ) ),
+	array( 'label' => __( 'Cloud', 'iscp' ), 'subtitle' => __( 'AWS, Azure, GCP — VPS, containers, monitoring', 'iscp' ) ),
+	array( 'label' => __( 'Security', 'iscp' ), 'subtitle' => __( 'VAPT, penetration testing, ISO 27001, CERT-In', 'iscp' ) ),
 );
 ?>
 
@@ -29,7 +29,8 @@ $iscp_features = array(
 			<?php foreach ( $iscp_features as $iscp_feature ) : ?>
 				<article class="iscp-feature-item iscp-reveal">
 					<span aria-hidden="true"></span>
-					<h3><?php echo esc_html( $iscp_feature ); ?></h3>
+					<h3><?php echo esc_html( $iscp_feature['label'] ); ?></h3>
+					<small><?php echo esc_html( $iscp_feature['subtitle'] ); ?></small>
 					<p><?php esc_html_e( 'Used across Indian Servers projects for scalable, secure and maintainable software delivery.', 'iscp' ); ?></p>
 				</article>
 			<?php endforeach; ?>

@@ -398,10 +398,15 @@ if ( ! class_exists( 'ISCP_Icon_Menu_Walker' ) ) {
 
 			$title = apply_filters( 'the_title', $item->title, $item->ID );
 			$icon  = iscp_get_menu_icon_key( $item, $depth ? 'cube' : 'products' );
+			$description = ! empty( $item->description ) ? wp_trim_words( wp_strip_all_tags( $item->description ), 12 ) : '';
 			$item_output  = isset( $args->before ) ? $args->before : '';
 			$item_output .= '<a' . $attributes . '>';
 			$item_output .= iscp_get_menu_icon_markup( $icon );
-			$item_output .= '<span class="iscp-menu-text">' . ( isset( $args->link_before ) ? $args->link_before : '' ) . esc_html( $title ) . ( isset( $args->link_after ) ? $args->link_after : '' ) . '</span>';
+			$item_output .= '<span class="iscp-menu-copy"><span class="iscp-menu-text">' . ( isset( $args->link_before ) ? $args->link_before : '' ) . esc_html( $title ) . ( isset( $args->link_after ) ? $args->link_after : '' ) . '</span>';
+			if ( $description && $depth > 0 ) {
+				$item_output .= '<span class="iscp-menu-description">' . esc_html( $description ) . '</span>';
+			}
+			$item_output .= '</span>';
 			$item_output .= '</a>';
 			$item_output .= isset( $args->after ) ? $args->after : '';
 
@@ -438,11 +443,13 @@ if ( ! function_exists( 'iscp_append_primary_navigation_items' ) ) {
 
 			foreach ( array_slice( $groups[ $group ], 0, $limit, true ) as $slug => $offering ) {
 				$icon = isset( $offering['icon'] ) ? $offering['icon'] : iscp_get_menu_icon_key( $offering['title'] );
+				$summary = ! empty( $offering['summary'] ) ? wp_trim_words( wp_strip_all_tags( $offering['summary'] ), 11 ) : '';
 				$submenu .= sprintf(
-					'<li class="menu-item"><a href="%1$s">%2$s<span class="iscp-menu-text">%3$s</span></a></li>',
+					'<li class="menu-item"><a href="%1$s">%2$s<span class="iscp-menu-copy"><span class="iscp-menu-text">%3$s</span><span class="iscp-menu-description">%4$s</span></span></a></li>',
 					esc_url( home_url( '/' . $group . '/' . $slug . '/' ) ),
 					iscp_get_menu_icon_markup( $icon ),
-					esc_html( $offering['title'] )
+					esc_html( $offering['title'] ),
+					esc_html( $summary )
 				);
 			}
 
@@ -567,6 +574,7 @@ if ( ! function_exists( 'iscp_render_template_hero' ) ) {
 		$defaults = array(
 			'eyebrow'     => __( 'ISCP Template Studio', 'iscp' ),
 			'title'       => get_the_title(),
+			'subtitle'    => '',
 			'description' => '',
 			'variant'     => 'default',
 			'visual'      => '',
@@ -580,6 +588,9 @@ if ( ! function_exists( 'iscp_render_template_hero' ) ) {
 				<div class="iscp-template-hero-copy">
 					<p class="iscp-eyebrow"><?php echo esc_html( $args['eyebrow'] ); ?></p>
 					<h1><?php echo esc_html( $args['title'] ); ?></h1>
+					<?php if ( $args['subtitle'] ) : ?>
+						<p class="iscp-template-hero-subtitle"><?php echo esc_html( $args['subtitle'] ); ?></p>
+					<?php endif; ?>
 					<?php if ( $args['description'] ) : ?>
 						<p class="iscp-template-hero-lead"><?php echo esc_html( $args['description'] ); ?></p>
 					<?php endif; ?>
@@ -911,7 +922,7 @@ if ( ! function_exists( 'iscp_render_conversion_tools' ) ) {
 	 * Render optional conversion tools.
 	 */
 	function iscp_render_conversion_tools() {
-		if ( iscp_get_theme_mod( 'iscp_scroll_progress_enabled', false ) ) {
+		if ( iscp_get_theme_mod( 'iscp_scroll_progress_enabled', true ) ) {
 			echo '<div class="iscp-scroll-progress" aria-hidden="true"><span></span></div>';
 		}
 

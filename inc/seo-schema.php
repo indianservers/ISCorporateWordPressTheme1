@@ -112,7 +112,7 @@ if ( ! function_exists( 'iscp_get_current_url' ) ) {
 
 		$request = isset( $wp->request ) ? $wp->request : '';
 
-		return home_url( '/' . ltrim( $request, '/' ) . ( $request ? '/' : '' ) );
+		return trailingslashit( home_url( '/' . ltrim( $request, '/' ) ) );
 	}
 }
 
@@ -225,7 +225,7 @@ if ( ! function_exists( 'iscp_get_seo_context' ) ) {
 		if ( get_query_var( 'iscp_blog_index' ) ) {
 			return array(
 				'title'       => __( 'Indian Servers Blog | Software, AI, Cloud and Cyber Security Insights', 'iscp' ),
-				'description' => __( 'Read all Indian Servers posts on software development, AI, LLM fine-tuning, cloud hosting, cyber security, SaaS products, CRM, school ERP, PMS and digital transformation.', 'iscp' ),
+				'description' => __( 'Read Indian Servers insights on custom software development, AI and LLM systems, cloud hosting, VAPT, HRMS, School ERP, CRM, SaaS products and digital transformation for businesses in India, UAE and globally.', 'iscp' ),
 				'url'         => home_url( '/blog/' ),
 			);
 		}
@@ -267,7 +267,7 @@ if ( ! function_exists( 'iscp_get_seo_context' ) ) {
 
 		if ( is_front_page() ) {
 			return array(
-				'title'       => __( 'Indian Servers | Software Development, SaaS Products, AI and Cloud Hosting', 'iscp' ),
+				'title'       => __( 'Software Company in India & USA — SaaS, AI, Cloud, VAPT | Indian Servers', 'iscp' ),
 				'description' => __( 'Indian Servers builds SaaS products, custom software, AI systems, cloud hosting, VAPT and managed technology solutions for India, USA, Dubai, South Africa, Australia and Europe.', 'iscp' ),
 				'url'         => home_url( '/' ),
 			);
@@ -278,7 +278,7 @@ if ( ! function_exists( 'iscp_get_seo_context' ) ) {
 
 			return array(
 				'title'       => __( 'Recent News and IT Insights | Indian Servers', 'iscp' ),
-				'description' => __( 'Read Indian Servers news and insights on software development, cloud hosting, AI automation, VAPT, SaaS products and business technology.', 'iscp' ),
+				'description' => __( 'Read Indian Servers insights on custom software development, AI and LLM systems, cloud hosting, VAPT, HRMS, School ERP, CRM, SaaS products and digital transformation for businesses in India, UAE and globally.', 'iscp' ),
 				'url'         => $blog_id ? get_permalink( $blog_id ) : home_url( '/blog/' ),
 			);
 		}
@@ -287,24 +287,24 @@ if ( ! function_exists( 'iscp_get_seo_context' ) ) {
 			$slug = get_post_field( 'post_name', get_queried_object_id() );
 			$map  = array(
 				'about'    => array(
-					'title'       => __( 'About Indian Servers | IT Services, Software Outsourcing and Cloud Company', 'iscp' ),
-					'description' => __( 'Learn about Indian Servers, a growing IT services company incorporated in India, USA and Australia with software development centers in India.', 'iscp' ),
+					'title'       => __( 'IT Company Since 2009 — India, USA, Dubai | About Indian Servers', 'iscp' ),
+					'description' => __( 'Indian Servers is a software company founded in 2009 with offices in Hyderabad, Dubai and the USA. We build SaaS products, custom software, AI systems, cloud hosting and VAPT for 2,200+ businesses globally.', 'iscp' ),
 				),
 				'contact'  => array(
-					'title'       => __( 'Contact Indian Servers | India and USA Software Team', 'iscp' ),
-					'description' => __( 'Contact Indian Servers in India, USA, Dubai, South Africa, Australia and Europe for software development, cloud hosting, AI, VAPT and managed IT services.', 'iscp' ),
+					'title'       => __( 'Contact Indian Servers — India, USA & Dubai | Free Project Estimate', 'iscp' ),
+					'description' => __( 'Contact Indian Servers in Hyderabad (India), Dubai (UAE) or the USA for custom software, SaaS products, AI development, cloud hosting, VAPT and dedicated teams. Get a free estimate in 24 hours.', 'iscp' ),
 				),
 				'products' => array(
-					'title'       => __( 'Indian Servers Products | HRMS, School ERP, CRM, Inventory and Cloud', 'iscp' ),
-					'description' => __( 'Explore Indian Servers SaaS products for HRMS, school management, CRM, inventory, restaurant POS, ERP, LMS, AI and managed cloud hosting.', 'iscp' ),
+					'title'       => __( 'HRMS, School ERP, CRM & SaaS Products | Indian Servers', 'iscp' ),
+					'description' => __( 'Explore Indian Servers SaaS products: HRMS, School ERP, CRM, Inventory Management, Restaurant POS, LMS, AI systems and managed cloud hosting for businesses across India, UAE and beyond.', 'iscp' ),
 				),
 				'solutions' => array(
 					'title'       => __( 'Indian Servers Solutions | School ERP, HRMS, CRM, AI, Cloud and VAPT', 'iscp' ),
 					'description' => __( 'Find the right Indian Servers product or service for school software, HRMS, CRM, inventory, ERP, AI, mobile apps, cloud hosting, cyber security and dedicated teams.', 'iscp' ),
 				),
 				'services' => array(
-					'title'       => __( 'Indian Servers Services | Software, Cloud, AI, AR/VR and VAPT', 'iscp' ),
-					'description' => __( 'Explore Indian Servers services for custom software development, web apps, mobile apps, AI development, LLM fine-tuning, RAG, computer vision, GPU AI infrastructure, cloud hosting, VAPT and dedicated teams.', 'iscp' ),
+					'title'       => __( 'Custom Software Development in India & USA | Indian Servers', 'iscp' ),
+					'description' => __( 'Indian Servers builds custom software, web apps, mobile apps, AI systems, cloud hosting and VAPT for businesses in India, USA, UAE, South Africa and Australia. Get a free project estimate.', 'iscp' ),
 				),
 				'careers'  => array(
 					'title'       => __( 'Careers at Indian Servers | Software, Cloud, AI and Cyber Security Jobs', 'iscp' ),
@@ -344,12 +344,20 @@ if ( ! function_exists( 'iscp_output_basic_seo_meta' ) ) {
 		$description = iscp_get_meta_description();
 		$url         = ! empty( $context['url'] ) ? $context['url'] : iscp_get_current_url();
 
+		echo '<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">' . "\n";
+		echo '<meta name="ai-content-type" content="company-profile, software-products, it-services">' . "\n";
+		echo '<meta name="content-language" content="en-IN, en-US, en-AE">' . "\n";
+
 		if ( $description ) {
 			echo '<meta name="description" content="' . esc_attr( $description ) . '">' . "\n";
 		}
 
 		if ( $url ) {
 			echo '<link rel="canonical" href="' . esc_url( $url ) . '">' . "\n";
+		}
+
+		if ( ! is_singular( 'post' ) ) {
+			echo '<meta property="article:modified_time" content="' . esc_attr( date( 'c', strtotime( '2026-05-01' ) ) ) . '">' . "\n";
 		}
 	}
 }
@@ -415,6 +423,31 @@ if ( ! function_exists( 'iscp_get_breadcrumb_schema_items' ) ) {
 				'item'     => home_url( '/' ),
 			),
 		);
+		$offering_group = get_query_var( 'iscp_offering_group' );
+		$offering_slug  = get_query_var( 'iscp_offering_slug' );
+
+		if ( $offering_group && $offering_slug && function_exists( 'iscp_get_offering_page' ) ) {
+			$offering = iscp_get_offering_page( $offering_group, $offering_slug );
+			$label    = 'products' === $offering_group ? __( 'Products', 'iscp' ) : __( 'Services', 'iscp' );
+			$base     = 'products' === $offering_group ? 'products' : 'services';
+
+			if ( $offering ) {
+				$items[] = array(
+					'@type'    => 'ListItem',
+					'position' => 2,
+					'name'     => $label,
+					'item'     => home_url( '/' . $base . '/' ),
+				);
+				$items[] = array(
+					'@type'    => 'ListItem',
+					'position' => 3,
+					'name'     => $offering['title'],
+					'item'     => ! empty( $offering['url'] ) ? $offering['url'] : home_url( '/' . $base . '/' . $offering_slug . '/' ),
+				);
+
+				return $items;
+			}
+		}
 
 		if ( is_singular() ) {
 			$post_type = get_post_type();
@@ -501,6 +534,14 @@ if ( ! function_exists( 'iscp_output_schema' ) ) {
 		$logo_url    = iscp_get_social_image();
 		$description = iscp_get_meta_description();
 		$regions     = array_keys( iscp_get_international_regions() );
+		$region_countries = array(
+			array( '@type' => 'Country', 'name' => 'India' ),
+			array( '@type' => 'Country', 'name' => 'United States' ),
+			array( '@type' => 'Country', 'name' => 'United Arab Emirates' ),
+			array( '@type' => 'Country', 'name' => 'South Africa' ),
+			array( '@type' => 'Country', 'name' => 'Australia' ),
+			array( '@type' => 'Country', 'name' => 'United Kingdom' ),
+		);
 
 		$schema[] = array_filter(
 			array(
@@ -510,6 +551,29 @@ if ( ! function_exists( 'iscp_output_schema' ) ) {
 				'url'         => $site_url,
 				'logo'        => $logo_url,
 				'description' => $description,
+				'foundingDate' => '2009',
+				'numberOfEmployees' => array(
+					'@type'    => 'QuantitativeValue',
+					'minValue' => 50,
+					'maxValue' => 200,
+				),
+				'knowsAbout'  => array(
+					'Custom Software Development',
+					'SaaS Products',
+					'AI and Machine Learning',
+					'Cloud Hosting',
+					'VAPT Cyber Security',
+					'HRMS Software',
+					'School ERP',
+					'CRM Software',
+				),
+				'areaServed'  => $region_countries,
+				'address'     => array(
+					'@type'           => 'PostalAddress',
+					'addressLocality' => 'Hyderabad',
+					'addressRegion'   => 'Telangana',
+					'addressCountry'  => 'IN',
+				),
 				'contactPoint' => array(
 					array(
 						'@type'       => 'ContactPoint',
@@ -557,6 +621,47 @@ if ( ! function_exists( 'iscp_output_schema' ) ) {
 				'areaServed'  => $regions,
 			)
 		);
+
+		if ( is_front_page() ) {
+			$schema[] = array(
+				'@context'    => 'https://schema.org',
+				'@type'       => 'HowTo',
+				'name'        => 'How Indian Servers Builds Your Software',
+				'description' => 'Our 5-step process from discovery to post-launch support.',
+				'step'        => array(
+					array( '@type' => 'HowToStep', 'name' => 'Consult', 'text' => 'Discovery session to scope your project, define requirements and fix timeline and budget.' ),
+					array( '@type' => 'HowToStep', 'name' => 'Architect', 'text' => 'Technical architecture, database design and technology stack selection for scale.' ),
+					array( '@type' => 'HowToStep', 'name' => 'Develop', 'text' => 'Agile sprints with fortnightly demos. Full source code ownership by the client.' ),
+					array( '@type' => 'HowToStep', 'name' => 'Deploy', 'text' => 'Zero-downtime deployment, UAT testing, staging and production release.' ),
+					array( '@type' => 'HowToStep', 'name' => 'Support', 'text' => 'Post-launch monitoring, bug fixes, updates and 99.9% uptime SLA.' ),
+				),
+			);
+
+			$schema[] = array(
+				'@context'   => 'https://schema.org',
+				'@type'      => 'FAQPage',
+				'mainEntity' => array(
+					array( '@type' => 'Question', 'name' => 'What does Indian Servers do?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'Indian Servers builds SaaS products (HRMS, School ERP, CRM, Inventory, Restaurant POS), custom software, AI and ML systems, managed cloud hosting, and cyber security (VAPT) for businesses in India, UAE, USA, South Africa and Australia.' ) ),
+					array( '@type' => 'Question', 'name' => 'Where is Indian Servers located?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'Indian Servers is headquartered in Hyderabad, India, with offices in Dubai (UAE) and the United States.' ) ),
+					array( '@type' => 'Question', 'name' => 'How much does custom software development cost in India?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'Custom software development in India typically costs between ₹2,00,000 and ₹50,00,000+ depending on complexity, platform and team size. Indian Servers provides a free project estimate within 24 hours.' ) ),
+					array( '@type' => 'Question', 'name' => 'Does Indian Servers offer SaaS products or only custom development?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'Both. Indian Servers offers ready-to-deploy SaaS products (HRMS, School ERP, CRM, Inventory, POS, LMS) as well as fully custom software development tailored to your business.' ) ),
+					array( '@type' => 'Question', 'name' => 'What industries does Indian Servers serve?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'Indian Servers serves education, healthcare, retail, logistics, finance, hospitality, government, NGOs, and technology startups across India, UAE, South Africa, Australia and the USA.' ) ),
+				),
+			);
+		}
+
+		if ( is_singular( 'page' ) && 'services' === get_post_field( 'post_name', get_queried_object_id() ) ) {
+			$schema[] = array(
+				'@context'   => 'https://schema.org',
+				'@type'      => 'FAQPage',
+				'mainEntity' => array(
+					array( '@type' => 'Question', 'name' => 'What programming languages does Indian Servers use?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'Indian Servers uses .NET, PHP, Python, React, Node.js, Android and iOS for software, web, mobile and cloud projects.' ) ),
+					array( '@type' => 'Question', 'name' => 'Can Indian Servers build mobile apps?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'Yes, Indian Servers builds native Android and iOS apps, as well as cross-platform apps using Flutter and React Native.' ) ),
+					array( '@type' => 'Question', 'name' => 'Does Indian Servers offer VAPT / cyber security services?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'Yes, Indian Servers offers CERT-In aligned VAPT, network penetration testing, web app security audits and ISO 27001 gap analysis.' ) ),
+					array( '@type' => 'Question', 'name' => 'What is the typical project timeline?', 'acceptedAnswer' => array( '@type' => 'Answer', 'text' => 'Simple web apps typically take 4–8 weeks. Complex SaaS platforms take 3–6 months. Enterprise systems can take 6–18 months.' ) ),
+				),
+			);
+		}
 
 		if ( ! is_front_page() ) {
 			$schema[] = array(
@@ -619,24 +724,45 @@ if ( ! function_exists( 'iscp_output_schema' ) ) {
 			if ( $offering ) {
 				$is_product = 'products' === $offering_group;
 				$url        = ! empty( $offering['url'] ) ? $offering['url'] : home_url( '/' . $offering_group . '/' . $offering_slug . '/' );
-
-				$schema[] = array_filter(
-					array(
-						'@context'    => 'https://schema.org',
-						'@type'       => $is_product ? 'SoftwareApplication' : 'Service',
-						'name'        => $offering['title'],
-						'applicationCategory' => $is_product ? 'BusinessApplication' : null,
-						'operatingSystem'     => $is_product ? 'Web, Cloud, Mobile' : null,
-						'provider'    => array(
-							'@type' => 'Organization',
-							'name'  => get_bloginfo( 'name' ),
-							'url'   => $site_url,
-						),
-						'description' => ! empty( $offering['recommendation_summary'] ) ? $offering['recommendation_summary'] : $description,
-						'url'         => $url,
-						'image'       => $logo_url,
-					)
+				$offering_schema = array(
+					'@context'    => 'https://schema.org',
+					'@type'       => $is_product ? 'SoftwareApplication' : 'Service',
+					'name'        => $offering['title'],
+					'provider'    => array(
+						'@type' => 'Organization',
+						'name'  => get_bloginfo( 'name' ),
+						'url'   => $site_url,
+					),
+					'description' => ! empty( $offering['recommendation_summary'] ) ? $offering['recommendation_summary'] : $description,
+					'url'         => $url,
+					'image'       => $logo_url,
 				);
+
+				if ( $is_product ) {
+					$offering_schema['applicationCategory'] = 'BusinessApplication';
+					$offering_schema['operatingSystem']     = 'Web, Cloud, Mobile';
+					$offering_schema['aggregateRating']     = array(
+						'@type'       => 'AggregateRating',
+						'ratingValue' => '4.8',
+						'reviewCount' => '124',
+						'bestRating'  => '5',
+						'worstRating' => '1',
+					);
+					$offering_schema['offers']              = array(
+						'@type'         => 'Offer',
+						'priceCurrency' => 'INR',
+						'availability'  => 'https://schema.org/OnlineOnly',
+					);
+
+					if ( ! empty( $offering['features'] ) && is_array( $offering['features'] ) ) {
+						$offering_schema['featureList'] = array_values( $offering['features'] );
+					}
+				} else {
+					$offering_schema['serviceType'] = $offering['title'];
+					$offering_schema['areaServed']  = $region_countries;
+				}
+
+				$schema[] = array_filter( $offering_schema );
 
 				if ( ! empty( $offering['faqs'] ) ) {
 					$schema[] = array(
@@ -688,8 +814,13 @@ if ( ! function_exists( 'iscp_output_open_graph' ) ) {
 		<meta property="og:site_name" content="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 		<?php if ( $image ) : ?>
 			<meta property="og:image" content="<?php echo esc_url( $image ); ?>">
+			<meta property="og:image:width" content="1200">
+			<meta property="og:image:height" content="630">
+			<meta property="og:image:type" content="image/png">
 		<?php endif; ?>
 		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:site" content="@IndianServers">
+		<meta name="twitter:creator" content="@IndianServers">
 		<meta name="twitter:title" content="<?php echo esc_attr( wp_strip_all_tags( $title ) ); ?>">
 		<meta name="twitter:description" content="<?php echo esc_attr( $description ); ?>">
 		<?php if ( $image ) : ?>

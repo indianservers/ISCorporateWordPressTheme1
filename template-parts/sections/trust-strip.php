@@ -8,14 +8,14 @@
 defined( 'ABSPATH' ) || exit;
 
 $iscp_logos = array(
-	array( 'label' => __( 'HRMS', 'iscp' ), 'icon' => 'team' ),
-	array( 'label' => __( 'School ERP', 'iscp' ), 'icon' => 'school' ),
-	array( 'label' => __( 'CRM', 'iscp' ), 'icon' => 'crm' ),
-	array( 'label' => __( 'Inventory', 'iscp' ), 'icon' => 'inventory' ),
-	array( 'label' => __( 'Restaurant POS', 'iscp' ), 'icon' => 'restaurant' ),
-	array( 'label' => __( 'AI / AR', 'iscp' ), 'icon' => 'ai' ),
-	array( 'label' => __( 'VAPT', 'iscp' ), 'icon' => 'shield' ),
-	array( 'label' => __( 'Cloud Hosting', 'iscp' ), 'icon' => 'cloud' ),
+	array( 'label' => __( 'HRMS', 'iscp' ), 'subtitle' => __( 'Payroll, Attendance & HR for 10–5,000 staff', 'iscp' ), 'icon' => 'team' ),
+	array( 'label' => __( 'School ERP', 'iscp' ), 'subtitle' => __( 'Used by 300+ schools across India', 'iscp' ), 'icon' => 'school' ),
+	array( 'label' => __( 'CRM', 'iscp' ), 'subtitle' => __( 'Lead tracking, pipeline and follow-ups', 'iscp' ), 'icon' => 'crm' ),
+	array( 'label' => __( 'Inventory', 'iscp' ), 'subtitle' => __( 'Stock, warehouse and supplier management', 'iscp' ), 'icon' => 'inventory' ),
+	array( 'label' => __( 'Restaurant POS', 'iscp' ), 'subtitle' => __( 'Billing, KOT, table and cloud reports', 'iscp' ), 'icon' => 'restaurant' ),
+	array( 'label' => __( 'AI / AR', 'iscp' ), 'subtitle' => __( 'LLM, chatbots, computer vision and AR', 'iscp' ), 'icon' => 'ai' ),
+	array( 'label' => __( 'VAPT', 'iscp' ), 'subtitle' => __( 'CERT-In aligned penetration testing', 'iscp' ), 'icon' => 'shield' ),
+	array( 'label' => __( 'Cloud Hosting', 'iscp' ), 'subtitle' => __( 'VPS, dedicated, managed and monitoring', 'iscp' ), 'icon' => 'cloud' ),
 );
 
 $iscp_icons = array(
@@ -33,12 +33,13 @@ $iscp_icons = array(
 <section class="iscp-trust-strip iscp-glass-product-strip">
 	<div class="iscp-container">
 		<p class="iscp-eyebrow"><?php esc_html_e( 'Indian Servers Suite', 'iscp' ); ?></p>
-		<h2><?php esc_html_e( 'SaaS products, custom software, AI systems and managed cloud solutions.', 'iscp' ); ?></h2>
+		<h2><?php esc_html_e( 'From HRMS and School ERP to AI systems, VAPT and managed cloud — one technology partner for your entire business.', 'iscp' ); ?></h2>
 		<div class="iscp-logo-strip" aria-label="<?php esc_attr_e( 'Indian Servers capability areas', 'iscp' ); ?>">
 			<?php foreach ( $iscp_logos as $iscp_index => $iscp_logo ) : ?>
 				<span class="iscp-product-pill iscp-product-pill-<?php echo esc_attr( (string) ( $iscp_index + 1 ) ); ?>">
 					<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="<?php echo esc_attr( $iscp_icons[ $iscp_logo['icon'] ] ); ?>"/></svg>
-					<?php echo esc_html( $iscp_logo['label'] ); ?>
+					<span><?php echo esc_html( $iscp_logo['label'] ); ?></span>
+					<small><?php echo esc_html( $iscp_logo['subtitle'] ); ?></small>
 				</span>
 			<?php endforeach; ?>
 		</div>

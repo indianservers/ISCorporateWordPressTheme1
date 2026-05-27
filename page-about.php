@@ -36,6 +36,31 @@ get_header();
 ?>
 
 <main id="iscp-primary" class="iscp-main iscp-template-page iscp-about-page">
+	<div class="iscp-container iscp-about-summary">
+		<p><?php esc_html_e( 'Indian Servers is a software technology company founded in 2009, incorporated in India, the USA, and Australia.', 'iscp' ); ?></p>
+		<p><?php esc_html_e( 'We build SaaS products (HRMS, School ERP, CRM, Inventory Management, Restaurant POS), custom software, AI and machine learning systems, managed cloud hosting infrastructure, and cyber security (VAPT) solutions.', 'iscp' ); ?></p>
+		<p><?php esc_html_e( 'Our 2,200+ clients span India, the UAE, South Africa, Australia, and the United States — from small businesses to large enterprises and government departments.', 'iscp' ); ?></p>
+	</div>
+
+	<div class="iscp-container iscp-fact-box">
+		<dl>
+			<dt><?php esc_html_e( 'Founded', 'iscp' ); ?></dt>
+			<dd><?php esc_html_e( '2009', 'iscp' ); ?></dd>
+			<dt><?php esc_html_e( 'Headquarters', 'iscp' ); ?></dt>
+			<dd><?php esc_html_e( 'Hyderabad, India', 'iscp' ); ?></dd>
+			<dt><?php esc_html_e( 'Other Offices', 'iscp' ); ?></dt>
+			<dd><?php esc_html_e( 'Dubai UAE; USA', 'iscp' ); ?></dd>
+			<dt><?php esc_html_e( 'Products', 'iscp' ); ?></dt>
+			<dd><?php esc_html_e( '8 SaaS Platforms', 'iscp' ); ?></dd>
+			<dt><?php esc_html_e( 'Clients', 'iscp' ); ?></dt>
+			<dd><?php esc_html_e( '2,200+', 'iscp' ); ?></dd>
+			<dt><?php esc_html_e( 'Industries', 'iscp' ); ?></dt>
+			<dd><?php esc_html_e( 'Education, Retail, Healthcare, Logistics, Finance, Government', 'iscp' ); ?></dd>
+			<dt><?php esc_html_e( 'Certifications', 'iscp' ); ?></dt>
+			<dd><?php esc_html_e( 'ISO, CERT-In, NASSCOM', 'iscp' ); ?></dd>
+		</dl>
+	</div>
+
 	<section class="iscp-about-hero">
 		<div class="iscp-container iscp-about-hero-grid">
 			<div class="iscp-about-hero-copy">

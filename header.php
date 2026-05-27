@@ -119,7 +119,7 @@ if ( iscp_get_theme_mod( 'iscp_sticky_header_enabled', true ) ) {
 							<a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( 'services' ); ?><span class="iscp-menu-text"><?php esc_html_e( 'Services', 'iscp' ); ?></span></a>
 							<ul class="sub-menu">
 								<?php foreach ( array_slice( iscp_get_offering_navigation_groups()['services'], 0, 8, true ) as $iscp_slug => $iscp_item ) : ?>
-									<li><a href="<?php echo esc_url( home_url( '/services/' . $iscp_slug . '/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( isset( $iscp_item['icon'] ) ? $iscp_item['icon'] : 'code' ); ?><span class="iscp-menu-text"><?php echo esc_html( $iscp_item['title'] ); ?></span></a></li>
+									<li><a href="<?php echo esc_url( home_url( '/services/' . $iscp_slug . '/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( isset( $iscp_item['icon'] ) ? $iscp_item['icon'] : 'code' ); ?><span class="iscp-menu-copy"><span class="iscp-menu-text"><?php echo esc_html( $iscp_item['title'] ); ?></span><span class="iscp-menu-description"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( isset( $iscp_item['summary'] ) ? $iscp_item['summary'] : '' ), 11 ) ); ?></span></span></a></li>
 								<?php endforeach; ?>
 							</ul>
 						</li>
@@ -127,7 +127,7 @@ if ( iscp_get_theme_mod( 'iscp_sticky_header_enabled', true ) ) {
 							<a href="<?php echo esc_url( home_url( '/products/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( 'products' ); ?><span class="iscp-menu-text"><?php esc_html_e( 'Products', 'iscp' ); ?></span></a>
 							<ul class="sub-menu">
 								<?php foreach ( iscp_get_offering_navigation_groups()['products'] as $iscp_slug => $iscp_item ) : ?>
-									<li><a href="<?php echo esc_url( home_url( '/products/' . $iscp_slug . '/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( isset( $iscp_item['icon'] ) ? $iscp_item['icon'] : 'cube' ); ?><span class="iscp-menu-text"><?php echo esc_html( $iscp_item['title'] ); ?></span></a></li>
+									<li><a href="<?php echo esc_url( home_url( '/products/' . $iscp_slug . '/' ) ); ?>"><?php echo iscp_get_menu_icon_markup( isset( $iscp_item['icon'] ) ? $iscp_item['icon'] : 'cube' ); ?><span class="iscp-menu-copy"><span class="iscp-menu-text"><?php echo esc_html( $iscp_item['title'] ); ?></span><span class="iscp-menu-description"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( isset( $iscp_item['summary'] ) ? $iscp_item['summary'] : '' ), 11 ) ); ?></span></span></a></li>
 								<?php endforeach; ?>
 							</ul>
 						</li>
