@@ -29,13 +29,20 @@ $iscp_hero_stats = array(
 	array( 'value' => __( '8', 'iscp' ), 'label' => __( 'Product Lines', 'iscp' ) ),
 	array( 'value' => __( '3', 'iscp' ), 'label' => __( 'Global Hubs', 'iscp' ) ),
 );
+$iscp_hero_headline       = iscp_get_theme_mod( 'iscp_hero_headline', __( 'Software That Works. AI That Thinks. Cloud That Scales.', 'iscp' ) );
+$iscp_hero_headline_words = preg_split( '/\s+/', trim( wp_strip_all_tags( $iscp_hero_headline ) ) );
+$iscp_hero_headline_lines = array_slice( array_chunk( array_filter( $iscp_hero_headline_words ), 3 ), 0, 3 );
 ?>
 
 <section id="iscp-hero" class="iscp-section iscp-hero-section iscp-hero-layout-<?php echo esc_attr( $iscp_hero_layout ); ?>">
 	<div class="iscp-container iscp-hero-grid">
 		<div class="iscp-hero-copy iscp-reveal">
 			<p class="iscp-eyebrow"><?php echo esc_html( iscp_get_theme_mod( 'iscp_hero_eyebrow', __( 'Trusted by 2,200+ businesses across 6 countries', 'iscp' ) ) ); ?></p>
-			<h1><?php echo esc_html( iscp_get_theme_mod( 'iscp_hero_headline', __( 'Software That Works. AI That Thinks. Cloud That Scales.', 'iscp' ) ) ); ?></h1>
+			<h1 aria-label="<?php echo esc_attr( $iscp_hero_headline ); ?>">
+				<?php foreach ( $iscp_hero_headline_lines as $iscp_hero_headline_line ) : ?>
+					<span><?php echo esc_html( implode( ' ', $iscp_hero_headline_line ) ); ?></span>
+				<?php endforeach; ?>
+			</h1>
 			<p class="iscp-hero-subtitle"><?php echo esc_html( iscp_get_theme_mod( 'iscp_hero_subtitle', __( 'Indian Servers builds custom software, SaaS products, AI systems and managed cloud infrastructure for businesses in India, USA, UAE, Australia and South Africa.', 'iscp' ) ) ); ?></p>
 			<div class="iscp-action-row">
 				<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( iscp_get_theme_mod( 'iscp_hero_primary_cta_url' ) ); ?>"><?php echo esc_html( iscp_get_theme_mod( 'iscp_hero_primary_cta_text', __( 'Get a Free Estimate', 'iscp' ) ) ); ?></a>

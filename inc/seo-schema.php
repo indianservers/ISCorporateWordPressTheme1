@@ -170,8 +170,8 @@ if ( ! function_exists( 'iscp_render_language_selector' ) ) {
 		?>
 		<div class="iscp-language-selector">
 			<button type="button" aria-haspopup="true" aria-expanded="false">
-				<span aria-hidden="true">EN</span>
-				<?php echo esc_html( strtoupper( $current ) ); ?>
+				<span aria-hidden="true"><?php echo esc_html( strtoupper( $current ) ); ?></span>
+				<span class="iscp-language-current"><?php echo esc_html( strtoupper( $current ) ); ?></span>
 			</button>
 			<ul aria-label="<?php esc_attr_e( 'Select language', 'iscp' ); ?>">
 				<?php foreach ( $languages as $key => $language ) : ?>

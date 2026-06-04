@@ -41,7 +41,21 @@ $iscp_fallback       = ! empty( $iscp_offering_pages['products']['items'] ) ? ar
 				?>
 			<?php else : ?>
 				<?php foreach ( $iscp_fallback as $iscp_slug => $iscp_item ) : ?>
-					<?php get_template_part( 'template-parts/cards/card', 'solution', array( 'label' => __( 'SaaS Product', 'iscp' ), 'title' => $iscp_item['title'], 'icon' => isset( $iscp_item['icon'] ) ? $iscp_item['icon'] : 'cube', 'description' => $iscp_item['summary'], 'url' => ! empty( $iscp_item['url'] ) ? $iscp_item['url'] : home_url( '/products/' . $iscp_slug . '/' ) ) ); ?>
+					<?php
+					$iscp_item_image = function_exists( 'iscp_get_offering_image_uri' ) ? iscp_get_offering_image_uri( 'products', $iscp_slug ) : '';
+					get_template_part(
+						'template-parts/cards/card',
+						'solution',
+						array(
+							'label'       => __( 'SaaS Product', 'iscp' ),
+							'title'       => $iscp_item['title'],
+							'icon'        => isset( $iscp_item['icon'] ) ? $iscp_item['icon'] : 'cube',
+							'description' => $iscp_item['summary'],
+							'url'         => ! empty( $iscp_item['url'] ) ? $iscp_item['url'] : home_url( '/products/' . $iscp_slug . '/' ),
+							'image'       => $iscp_item_image,
+						)
+					);
+					?>
 				<?php endforeach; ?>
 			<?php endif; ?>
 		</div>

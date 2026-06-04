@@ -13,6 +13,9 @@
 	var progressBar = document.querySelector('.iscp-scroll-progress span');
 	var exitModal = document.querySelector('[data-iscp-exit-modal]');
 	var exitModalCloseButtons = document.querySelectorAll('[data-iscp-modal-close]');
+	var demoModal = document.querySelector('[data-iscp-demo-modal]');
+	var demoModalOpenButtons = document.querySelectorAll('[data-iscp-demo-modal-open]');
+	var demoModalCloseButtons = document.querySelectorAll('[data-iscp-demo-modal-close]');
 	var stickyCta = document.querySelector('.iscp-sticky-cta');
 	var lastFocusedElement = null;
 	var ticking = false;
@@ -401,6 +404,74 @@
 		exitModal.addEventListener('keydown', ISCP.keepFocusInModal);
 	};
 
+	ISCP.openDemoModal = function () {
+		if (!demoModal) {
+			return;
+		}
+
+		lastFocusedElement = document.activeElement;
+		demoModal.hidden = false;
+		body.classList.add('iscp-modal-open');
+
+		var focusTarget = demoModal.querySelector('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+
+		if (focusTarget) {
+			focusTarget.focus();
+		}
+	};
+
+	ISCP.closeDemoModal = function () {
+		if (!demoModal || demoModal.hidden) {
+			return;
+		}
+
+		demoModal.hidden = true;
+		body.classList.remove('iscp-modal-open');
+
+		if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+			lastFocusedElement.focus();
+		}
+	};
+
+	ISCP.keepFocusInDemoModal = function (event) {
+		if (!demoModal || demoModal.hidden || event.key !== 'Tab') {
+			return;
+		}
+
+		var focusable = demoModal.querySelectorAll('button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+
+		if (!focusable.length) {
+			return;
+		}
+
+		var first = focusable[0];
+		var last = focusable[focusable.length - 1];
+
+		if (event.shiftKey && document.activeElement === first) {
+			event.preventDefault();
+			last.focus();
+		} else if (!event.shiftKey && document.activeElement === last) {
+			event.preventDefault();
+			first.focus();
+		}
+	};
+
+	ISCP.initDemoModal = function () {
+		if (!demoModal || !demoModalOpenButtons.length) {
+			return;
+		}
+
+		demoModalOpenButtons.forEach(function (button) {
+			button.addEventListener('click', ISCP.openDemoModal);
+		});
+
+		demoModalCloseButtons.forEach(function (button) {
+			button.addEventListener('click', ISCP.closeDemoModal);
+		});
+
+		demoModal.addEventListener('keydown', ISCP.keepFocusInDemoModal);
+	};
+
 	ISCP.initStickyCta = function () {
 		if (stickyCta) {
 			body.classList.add('iscp-has-sticky-cta');
@@ -518,6 +589,7 @@
 			ISCP.setMenuState(false);
 			ISCP.closeDropdowns();
 			ISCP.closeExitModal();
+			ISCP.closeDemoModal();
 			if (wasMenuOpen && toggle) {
 				toggle.focus();
 			}
@@ -540,6 +612,7 @@
 	ISCP.initSliders();
 	ISCP.initStickyCta();
 	ISCP.initExitModal();
+	ISCP.initDemoModal();
 	ISCP.initCounters();
 	ISCP.initTiltCards();
 	ISCP.initImageSkeletons();

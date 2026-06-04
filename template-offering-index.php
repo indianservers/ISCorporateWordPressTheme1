@@ -118,6 +118,7 @@ get_header();
 							</span>
 						</a>
 						<div class="iscp-offering-card-body">
+							<p class="iscp-card-kicker"><?php echo esc_html( $iscp_is_product ? __( 'SaaS Product', 'iscp' ) : __( 'Technology Service', 'iscp' ) ); ?></p>
 							<h3><a href="<?php echo esc_url( $iscp_item_url ); ?>"><?php echo esc_html( $iscp_item['title'] ); ?></a></h3>
 							<p><?php echo esc_html( wp_trim_words( $iscp_item['summary'], 22 ) ); ?></p>
 						</div>

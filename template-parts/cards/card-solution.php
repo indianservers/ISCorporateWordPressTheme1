@@ -18,6 +18,7 @@ $iscp_label       = isset( $args['label'] ) ? $args['label'] : iscp_get_first_te
 $iscp_label       = $iscp_label ? $iscp_label : __( 'Solution', 'iscp' );
 $iscp_url         = isset( $args['url'] ) ? $args['url'] : get_permalink();
 $iscp_icon        = isset( $args['icon'] ) ? sanitize_key( $args['icon'] ) : 'cube';
+$iscp_image       = isset( $args['image'] ) ? $args['image'] : '';
 $iscp_icons       = array(
 	'cube'       => 'M12 3l8 4.5v9L12 21l-8-4.5v-9L12 3zm0 2.3L6 8.7v6.6l6 3.4 6-3.4V8.7l-6-3.4zm0 4.2l3 1.7v3.6l-3 1.7-3-1.7v-3.6l3-1.7z',
 	'team'       => 'M9 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm7.5-.5a3 3 0 1 1 0-6 3 3 0 0 1 0 6ZM2.5 20a6.5 6.5 0 0 1 13 0h-2a4.5 4.5 0 0 0-9 0h-2Zm12.8-5.8A5.5 5.5 0 0 1 21.5 20h-2a3.5 3.5 0 0 0-4-3.5l-.2-2.3Z',
@@ -33,9 +34,13 @@ $iscp_icon_path   = isset( $iscp_icons[ $iscp_icon ] ) ? $iscp_icons[ $iscp_icon
 ?>
 
 <article class="iscp-card iscp-home-card iscp-solution-card iscp-reveal">
-	<?php if ( has_post_thumbnail() && empty( $args['title'] ) ) : ?>
+	<?php if ( $iscp_image || ( has_post_thumbnail() && empty( $args['title'] ) ) ) : ?>
 		<a class="iscp-card-media" href="<?php echo esc_url( $iscp_url ); ?>">
-			<?php the_post_thumbnail( 'iscp-card' ); ?>
+			<?php if ( $iscp_image ) : ?>
+				<img src="<?php echo esc_url( $iscp_image ); ?>" alt="<?php echo esc_attr( $iscp_title ); ?>" loading="lazy" decoding="async">
+			<?php else : ?>
+				<?php the_post_thumbnail( 'iscp-card' ); ?>
+			<?php endif; ?>
 		</a>
 	<?php endif; ?>
 	<div class="iscp-card-body">

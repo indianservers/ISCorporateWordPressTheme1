@@ -22,6 +22,31 @@ $iscp_faqs      = ! empty( $iscp_offering['faqs'] ) ? $iscp_offering['faqs'] : a
 $iscp_seo_terms = ! empty( $iscp_offering['seo_terms'] ) ? $iscp_offering['seo_terms'] : '';
 $iscp_recommendation_summary = ! empty( $iscp_offering['recommendation_summary'] ) ? $iscp_offering['recommendation_summary'] : '';
 $iscp_why_choose = ! empty( $iscp_offering['why_choose'] ) ? $iscp_offering['why_choose'] : array();
+$iscp_demo_modal_id = 'iscp-demo-modal-' . sanitize_html_class( $iscp_slug );
+$iscp_phone_display = iscp_get_theme_mod( 'iscp_phone_display', '+91 9618222220' );
+$iscp_phone_tel     = iscp_get_theme_mod( 'iscp_phone_tel', '+919618222220' );
+$iscp_whatsapp_number = preg_replace( '/[^0-9]/', '', iscp_get_theme_mod( 'iscp_whatsapp_number', '919618222220' ) );
+$iscp_demo_message  = sprintf(
+	/* translators: %s: offering title. */
+	__( 'Hello Indian Servers, I would like to request a demo for %s.', 'iscp' ),
+	$iscp_offering['title']
+);
+$iscp_whatsapp_url  = 'https://wa.me/' . $iscp_whatsapp_number . '?text=' . rawurlencode( $iscp_demo_message );
+$iscp_demo_mailto   = 'mailto:' . iscp_get_theme_mod( 'iscp_email', 'info@indianservers.com' ) . '?subject=' . rawurlencode( sprintf( __( 'Demo request: %s', 'iscp' ), $iscp_offering['title'] ) ) . '&body=' . rawurlencode( $iscp_demo_message );
+$iscp_industries    = array(
+	array( 'label' => __( 'Education', 'iscp' ), 'icon' => 'education' ),
+	array( 'label' => __( 'HR', 'iscp' ), 'icon' => 'team' ),
+	array( 'label' => __( 'Hospitality', 'iscp' ), 'icon' => 'restaurant' ),
+	array( 'label' => __( 'Retail', 'iscp' ), 'icon' => 'inventory' ),
+	array( 'label' => __( 'Healthcare', 'iscp' ), 'icon' => 'shield' ),
+	array( 'label' => __( 'Manufacturing', 'iscp' ), 'icon' => 'cube' ),
+);
+$iscp_hero_stats    = array(
+	array( 'value' => __( '15+ Years', 'iscp' ), 'label' => __( 'Delivery Experience', 'iscp' ), 'icon' => 'chart' ),
+	array( 'value' => __( 'Global Clients', 'iscp' ), 'label' => __( 'India, USA and beyond', 'iscp' ), 'icon' => 'cloud' ),
+	array( 'value' => __( 'AI + Cloud', 'iscp' ), 'label' => __( 'Modern deployment stack', 'iscp' ), 'icon' => 'ai' ),
+	array( 'value' => __( 'Long-Term Support', 'iscp' ), 'label' => __( 'Managed improvement', 'iscp' ), 'icon' => 'shield' ),
+);
 
 get_header();
 ?>
@@ -34,13 +59,44 @@ get_header();
 				<h1><?php echo esc_html( $iscp_offering['title'] ); ?></h1>
 				<p class="iscp-template-hero-lead"><?php echo esc_html( $iscp_offering['summary'] ); ?></p>
 				<div class="iscp-action-row">
-					<a class="iscp-btn iscp-btn-primary" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Discuss Requirement', 'iscp' ); ?></a>
+					<button class="iscp-btn iscp-btn-primary" type="button" data-iscp-demo-modal-open aria-controls="<?php echo esc_attr( $iscp_demo_modal_id ); ?>"><?php esc_html_e( 'Request Demo', 'iscp' ); ?></button>
 					<a class="iscp-btn iscp-btn-ghost" href="<?php echo esc_url( home_url( $iscp_is_product ? '/products/' : '/services/' ) ); ?>"><?php esc_html_e( 'View All', 'iscp' ); ?></a>
 				</div>
 			</div>
 			<figure class="iscp-page-image-card">
 				<img src="<?php echo esc_url( $iscp_image ); ?>" alt="<?php echo esc_attr( $iscp_offering['title'] ); ?>" loading="lazy" decoding="async">
 			</figure>
+		</div>
+	</section>
+
+	<section class="iscp-offering-proof-section" aria-label="<?php esc_attr_e( 'Indian Servers offering highlights', 'iscp' ); ?>">
+		<div class="iscp-container">
+			<div class="iscp-offering-proof-grid">
+				<?php foreach ( $iscp_hero_stats as $iscp_stat ) : ?>
+					<div class="iscp-offering-stat-card">
+						<span class="iscp-offering-stat-icon" aria-hidden="true">
+							<svg viewBox="0 0 24 24" focusable="false"><path d="<?php echo esc_attr( iscp_get_offering_icon_path( $iscp_stat['icon'] ) ); ?>"/></svg>
+						</span>
+						<strong><?php echo esc_html( $iscp_stat['value'] ); ?></strong>
+						<span><?php echo esc_html( $iscp_stat['label'] ); ?></span>
+					</div>
+				<?php endforeach; ?>
+			</div>
+			<?php if ( $iscp_is_product ) : ?>
+				<div class="iscp-offering-industries">
+					<strong><?php esc_html_e( 'Industries Served', 'iscp' ); ?></strong>
+					<div class="iscp-offering-industry-chip-grid">
+						<?php foreach ( $iscp_industries as $iscp_industry ) : ?>
+							<span>
+								<span class="iscp-offering-industry-icon" aria-hidden="true">
+									<svg viewBox="0 0 24 24" focusable="false"><path d="<?php echo esc_attr( iscp_get_offering_icon_path( $iscp_industry['icon'] ) ); ?>"/></svg>
+								</span>
+								<?php echo esc_html( $iscp_industry['label'] ); ?>
+							</span>
+						<?php endforeach; ?>
+					</div>
+				</div>
+			<?php endif; ?>
 		</div>
 	</section>
 
@@ -201,11 +257,15 @@ get_header();
 	<section class="iscp-section iscp-offering-cta-band">
 		<div class="iscp-container iscp-offering-cta-card">
 			<div>
-				<p class="iscp-eyebrow"><?php esc_html_e( 'Request a Quote', 'iscp' ); ?></p>
+				<p class="iscp-eyebrow"><?php echo esc_html( $iscp_is_product ? __( 'Request a Demo', 'iscp' ) : __( 'Start a Project', 'iscp' ) ); ?></p>
 				<h2><?php echo esc_html( ! empty( $iscp_offering['cta_title'] ) ? $iscp_offering['cta_title'] : __( 'Ready to discuss this requirement?', 'iscp' ) ); ?></h2>
 				<p><?php echo esc_html( ! empty( $iscp_offering['cta_text'] ) ? $iscp_offering['cta_text'] : __( 'Indian Servers can help you plan, build and support the right solution.', 'iscp' ) ); ?></p>
 			</div>
-			<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( home_url( '/contact/' ) ); ?>"><?php esc_html_e( 'Request a Quote', 'iscp' ); ?></a>
+			<div class="iscp-offering-cta-actions">
+				<button class="iscp-btn iscp-btn-gold" type="button" data-iscp-demo-modal-open aria-controls="<?php echo esc_attr( $iscp_demo_modal_id ); ?>"><?php esc_html_e( 'Request Demo', 'iscp' ); ?></button>
+				<a class="iscp-btn iscp-btn-primary" href="<?php echo esc_url( 'tel:' . $iscp_phone_tel ); ?>"><?php echo esc_html( $iscp_phone_display ); ?></a>
+				<a class="iscp-btn iscp-btn-secondary" href="<?php echo esc_url( $iscp_whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'WhatsApp', 'iscp' ); ?></a>
+			</div>
 		</div>
 	</section>
 
@@ -236,6 +296,21 @@ get_header();
 			</div>
 		</div>
 	</section>
+
+	<div id="<?php echo esc_attr( $iscp_demo_modal_id ); ?>" class="iscp-demo-modal" data-iscp-demo-modal hidden>
+		<div class="iscp-demo-modal-backdrop" data-iscp-demo-modal-close></div>
+		<div class="iscp-demo-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="<?php echo esc_attr( $iscp_demo_modal_id ); ?>-title" aria-describedby="<?php echo esc_attr( $iscp_demo_modal_id ); ?>-description">
+			<button class="iscp-demo-modal-close" type="button" data-iscp-demo-modal-close><?php esc_html_e( 'Close', 'iscp' ); ?></button>
+			<p class="iscp-eyebrow"><?php esc_html_e( 'Request Demo', 'iscp' ); ?></p>
+			<h2 id="<?php echo esc_attr( $iscp_demo_modal_id ); ?>-title"><?php echo esc_html( sprintf( __( 'See %s in action', 'iscp' ), $iscp_offering['title'] ) ); ?></h2>
+			<p id="<?php echo esc_attr( $iscp_demo_modal_id ); ?>-description"><?php esc_html_e( 'Choose a direct contact option and our team will help with demo timing, requirements and next steps.', 'iscp' ); ?></p>
+			<div class="iscp-demo-modal-actions">
+				<a class="iscp-btn iscp-btn-primary" href="<?php echo esc_url( $iscp_whatsapp_url ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Request on WhatsApp', 'iscp' ); ?></a>
+				<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( 'tel:' . $iscp_phone_tel ); ?>"><?php echo esc_html( $iscp_phone_display ); ?></a>
+				<a class="iscp-btn iscp-btn-secondary" href="<?php echo esc_url( $iscp_demo_mailto ); ?>"><?php esc_html_e( 'Email Requirement', 'iscp' ); ?></a>
+			</div>
+		</div>
+	</div>
 </main>
 
 <?php

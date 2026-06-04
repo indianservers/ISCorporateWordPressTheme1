@@ -29,6 +29,17 @@ $iscp_usa_contact   = array(
 	'team_email' => '',
 	'address'    => __( '752 Century Farm Ln, Naperville, IL 60563, United States', 'iscp' ),
 );
+$iscp_manager_contact = array(
+	'label'      => __( 'Manager Contact', 'iscp' ),
+	'name'       => 'Mr Vishnu',
+	'title'      => __( 'Manager', 'iscp' ),
+	'company'    => __( 'Indian Servers Pvt. Ltd.', 'iscp' ),
+	'phone'      => '+91 9603982748',
+	'tel'        => '+919603982748',
+	'email'      => '',
+	'team_email' => '',
+	'address'    => __( 'India operations and customer coordination.', 'iscp' ),
+);
 $iscp_locations     = __( 'India | USA | Dubai | South Africa | Australia | Europe', 'iscp' );
 $iscp_hours         = __( '9 AM - 5 PM', 'iscp' );
 $iscp_whatsapp      = 'https://wa.me/919618222220?text=' . rawurlencode( __( 'Hello Indian Servers, I would like to discuss a project.', 'iscp' ) );
@@ -69,7 +80,7 @@ get_header();
 	<section class="iscp-section iscp-contact-details-section">
 		<div class="iscp-container">
 			<div class="iscp-contact-office-grid">
-				<?php foreach ( array( $iscp_india_contact, $iscp_usa_contact ) as $iscp_contact ) : ?>
+				<?php foreach ( array( $iscp_india_contact, $iscp_manager_contact, $iscp_usa_contact ) as $iscp_contact ) : ?>
 					<article class="iscp-card iscp-contact-office-card">
 						<div class="iscp-card-body">
 							<span class="iscp-contact-icon" aria-hidden="true">
@@ -86,10 +97,12 @@ get_header();
 									<span><?php esc_html_e( 'Mobile', 'iscp' ); ?></span>
 									<a href="<?php echo esc_url( 'tel:' . $iscp_contact['tel'] ); ?>"><?php echo esc_html( $iscp_contact['phone'] ); ?></a>
 								</li>
-								<li>
-									<span><?php esc_html_e( 'Email', 'iscp' ); ?></span>
-									<a href="<?php echo esc_url( 'mailto:' . $iscp_contact['email'] ); ?>"><?php echo esc_html( $iscp_contact['email'] ); ?></a>
-								</li>
+								<?php if ( ! empty( $iscp_contact['email'] ) ) : ?>
+									<li>
+										<span><?php esc_html_e( 'Email', 'iscp' ); ?></span>
+										<a href="<?php echo esc_url( 'mailto:' . $iscp_contact['email'] ); ?>"><?php echo esc_html( $iscp_contact['email'] ); ?></a>
+									</li>
+								<?php endif; ?>
 								<?php if ( ! empty( $iscp_contact['team_email'] ) ) : ?>
 									<li>
 										<span><?php esc_html_e( 'Team', 'iscp' ); ?></span>
