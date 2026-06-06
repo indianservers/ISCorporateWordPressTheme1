@@ -47,6 +47,7 @@ $iscp_hero_headline_lines = array_slice( array_chunk( array_filter( $iscp_hero_h
 			<div class="iscp-action-row">
 				<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( iscp_get_theme_mod( 'iscp_hero_primary_cta_url' ) ); ?>"><?php echo esc_html( iscp_get_theme_mod( 'iscp_hero_primary_cta_text', __( 'Get a Free Estimate', 'iscp' ) ) ); ?></a>
 				<a class="iscp-btn iscp-btn-light" href="<?php echo esc_url( iscp_get_theme_mod( 'iscp_hero_secondary_cta_url' ) ); ?>"><?php echo esc_html( iscp_get_theme_mod( 'iscp_hero_secondary_cta_text', __( 'Explore Our Products', 'iscp' ) ) ); ?></a>
+				<a class="iscp-btn iscp-btn-ghost iscp-hero-partner-btn" href="<?php echo esc_url( home_url( '/become-our-partner/' ) ); ?>"><?php esc_html_e( 'Become our Partner', 'iscp' ); ?></a>
 			</div>
 			<div class="iscp-hero-stats-bar" aria-label="<?php esc_attr_e( 'Indian Servers quick numbers', 'iscp' ); ?>">
 				<?php foreach ( $iscp_hero_stats as $iscp_hero_stat ) : ?>

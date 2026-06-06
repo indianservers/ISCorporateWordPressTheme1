@@ -125,6 +125,39 @@ if ( ! function_exists( 'iscp_get_site_icon_png_url' ) ) {
 	}
 }
 
+if ( ! function_exists( 'iscp_maybe_load_partner_page_template' ) ) {
+	/**
+	 * Render the partner landing page for its public slug when no admin page exists.
+	 *
+	 * @param string $template Current template path.
+	 * @return string
+	 */
+	function iscp_maybe_load_partner_page_template( $template ) {
+		if ( ! is_404() || empty( $_SERVER['REQUEST_URI'] ) ) {
+			return $template;
+		}
+
+		$request_path = trim( (string) wp_parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH ), '/' );
+		$home_path    = trim( (string) wp_parse_url( home_url( '/' ), PHP_URL_PATH ), '/' );
+
+		if ( $home_path && 0 === strpos( $request_path, $home_path . '/' ) ) {
+			$request_path = substr( $request_path, strlen( $home_path ) + 1 );
+		}
+
+		if ( 'become-our-partner' !== trim( $request_path, '/' ) ) {
+			return $template;
+		}
+
+		global $wp_query;
+
+		$wp_query->is_404 = false;
+		status_header( 200 );
+
+		return get_template_directory() . '/template-partner.php';
+	}
+}
+add_filter( 'template_include', 'iscp_maybe_load_partner_page_template' );
+
 if ( ! function_exists( 'iscp_render_brand_logo' ) ) {
 	/**
 	 * Render the bundled Indian Servers logo.
