@@ -144,8 +144,9 @@ These blocks use plain HTML classes so the theme can style them cleanly. They ar
 <section class="iscp-manual-grid">
   <article><h2>Mobile</h2><p><a href="tel:+919618222220">+91 9618222220</a></p></article>
   <article><h2>Email</h2><p><a href="mailto:info@indianservers.com">info@indianservers.com</a></p></article>
-  <article><h2>Presence</h2><p>India | USA | Aus</p></article>
+  <article><h2>Presence</h2><p>India | USA | Dubai | South Africa | Australia | Europe</p></article>
   <article><h2>Business Hours</h2><p>9 AM - 5 PM</p></article>
+  <article><h2>South Africa</h2><p><strong>Dr. Madhur Pucha</strong><br>Fractional Regional Director - Africa Operations / South Africa<br><a href="tel:+27636456254">+27 636456254</a><br><a href="tel:+918884201201">+91 8884201201</a><br>Unit 196, Waterfall Heights, CNR Jason Close, Bekker's Road, Midrand-1686. Gauteng Province, South Africa</p></article>
 </section>
 
 <section class="iscp-manual-cta">
@@ -357,4 +358,3 @@ These blocks use plain HTML classes so the theme can style them cleanly. They ar
 <section class="iscp-manual-grid"><article><h2>Bug Fixing</h2><p>Investigate issues, stabilize workflows and reduce operational friction.</p></article><article><h2>Upgrades</h2><p>Modernize frameworks, plugins, libraries, servers and integrations.</p></article><article><h2>Performance</h2><p>Improve page speed, query behavior, API response and server readiness.</p></article><article><h2>Security</h2><p>Patch vulnerabilities, review access and strengthen deployments.</p></article></section>
 <section class="iscp-manual-cta"><h2>Give existing software the care it needs to keep serving the business.</h2><a class="iscp-btn iscp-btn-gold" href="/contact/">Request Maintenance Support</a></section>
 ```
-

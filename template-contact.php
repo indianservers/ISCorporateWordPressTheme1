@@ -40,6 +40,19 @@ $iscp_manager_contact = array(
 	'team_email' => '',
 	'address'    => __( 'India operations and customer coordination.', 'iscp' ),
 );
+$iscp_south_africa_contact = array(
+	'label'           => __( 'South Africa Contact', 'iscp' ),
+	'name'            => 'Dr. Madhur Pucha',
+	'title'           => __( 'Fractional Regional Director - Africa Operations / South Africa', 'iscp' ),
+	'company'         => __( 'Indian Servers Africa Operations', 'iscp' ),
+	'phone'           => '+27 636456254',
+	'tel'             => '+27636456254',
+	'secondary_phone' => '+91 8884201201',
+	'secondary_tel'   => '+918884201201',
+	'email'           => '',
+	'team_email'      => '',
+	'address'         => __( "Unit 196, Waterfall Heights, CNR Jason Close, Bekker's Road, Midrand-1686. Gauteng Province, South Africa", 'iscp' ),
+);
 $iscp_locations     = __( 'India | USA | Dubai | South Africa | Australia | Europe', 'iscp' );
 $iscp_hours         = __( '9 AM - 5 PM', 'iscp' );
 $iscp_whatsapp      = 'https://wa.me/919618222220?text=' . rawurlencode( __( 'Hello Indian Servers, I would like to discuss a project.', 'iscp' ) );
@@ -80,7 +93,7 @@ get_header();
 	<section class="iscp-section iscp-contact-details-section">
 		<div class="iscp-container">
 			<div class="iscp-contact-office-grid">
-				<?php foreach ( array( $iscp_india_contact, $iscp_manager_contact, $iscp_usa_contact ) as $iscp_contact ) : ?>
+				<?php foreach ( array( $iscp_india_contact, $iscp_manager_contact, $iscp_usa_contact, $iscp_south_africa_contact ) as $iscp_contact ) : ?>
 					<article class="iscp-card iscp-contact-office-card">
 						<div class="iscp-card-body">
 							<span class="iscp-contact-icon" aria-hidden="true">
@@ -97,6 +110,12 @@ get_header();
 									<span><?php esc_html_e( 'Mobile', 'iscp' ); ?></span>
 									<a href="<?php echo esc_url( 'tel:' . $iscp_contact['tel'] ); ?>"><?php echo esc_html( $iscp_contact['phone'] ); ?></a>
 								</li>
+								<?php if ( ! empty( $iscp_contact['secondary_phone'] ) && ! empty( $iscp_contact['secondary_tel'] ) ) : ?>
+									<li>
+										<span><?php esc_html_e( 'India Mobile', 'iscp' ); ?></span>
+										<a href="<?php echo esc_url( 'tel:' . $iscp_contact['secondary_tel'] ); ?>"><?php echo esc_html( $iscp_contact['secondary_phone'] ); ?></a>
+									</li>
+								<?php endif; ?>
 								<?php if ( ! empty( $iscp_contact['email'] ) ) : ?>
 									<li>
 										<span><?php esc_html_e( 'Email', 'iscp' ); ?></span>
