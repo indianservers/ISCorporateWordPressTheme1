@@ -142,9 +142,10 @@ $iscp_product_layers = array(
 );
 
 get_header();
+iscp_render_software_hub_link();
 ?>
 
-<main id="iscp-primary" class="iscp-main iscp-template-page <?php echo esc_attr( $iscp_is_solutions_page ? 'iscp-solutions-finder-page' : 'iscp-products-page' ); ?>">
+<div id="iscp-internal-content" class="iscp-main iscp-template-page <?php echo esc_attr( $iscp_is_solutions_page ? 'iscp-solutions-finder-page' : 'iscp-products-page' ); ?>">
 	<?php if ( $iscp_is_solutions_page ) : ?>
 		<section class="iscp-template-hero iscp-template-hero-offering iscp-solutions-hero">
 			<div class="iscp-container iscp-template-hero-grid">
@@ -325,7 +326,7 @@ get_header();
 
 	<?php get_template_part( 'template-parts/sections/cta' ); ?>
 	<?php endif; ?>
-</main>
+</div>
 
 <?php
 get_footer();

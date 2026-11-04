@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indian Servers — Phase 2 Implementation & Measurement</title>
+<style>body{font:16px/1.65 system-ui,sans-serif;max-width:1050px;margin:40px auto;padding:0 20px;color:#142238;background:#fff}h1,h2{line-height:1.25}h2{margin-top:2em}table{border-collapse:collapse;width:100%;margin:1em 0}th,td{border:1px solid #dce4ef;padding:10px;text-align:left;vertical-align:top}code,pre{overflow-wrap:anywhere;white-space:pre-wrap}a{color:#165bbd}.note{padding:16px;background:#f0f6ff;border-left:4px solid #2563eb}</style>
+</head>
+<body>
+<h1>Phase 2: service discovery and qualified enquiries</h1>
+<p>Indian Servers Corp Pro 1.0.40 · 4 November 2026</p>
+<p class="note">Implemented in the existing theme. Sixteen existing service URLs are enhanced; no competing service URLs were created. Two native pages provide one location directory and one Andhra Pradesh coverage page. The homepage and public navigation remain unchanged. Production accounts and hosting were not available, so external indexing, rankings, traffic and delivery outcomes are not claimed.</p>
+
+<h2>A. Audit and reuse</h2>
+<p>Phase 1 already provided the software directory, nine native topic pages, product/service virtual routes, native-page setup, shared contact profile, plugin-aware metadata, connected schema and native sitemap integration. These are reused. No new plugin, custom post type, API, database table, analytics vendor or CRM was added.</p>
+<p>The repository has no connected enquiry-submission form or CRM configuration. Existing WhatsApp, email and call destinations remain the contact workflow. No Search Console, Google Business Profile or analytics account connector was available. The new dashboard therefore separates local inventory from unavailable external measurements.</p>
+<p>Existing content had adequate service-topic coverage, but lacked a shared buying journey, clear qualification questions, contextual cross-links and a substantive regional directory. There was no verified city-specific case-study evidence to justify individual city pages. No screenshots, testimonials, customer logos, certifications or case studies were invented.</p>
+
+<h2>B. Pages and components</h2>
+<table><thead><tr><th>Requirement</th><th>Existing destination preserved</th></tr></thead><tbody>
+<tr><td>School management / education ERP</td><td><code>/products/school-management-software/</code></td></tr>
+<tr><td>College management / college ERP</td><td><code>/college-management-software/</code></td></tr>
+<tr><td>Fees</td><td><code>/fee-management-software/</code></td></tr>
+<tr><td>Marks</td><td><code>/marks-management-software/</code></td></tr>
+<tr><td>Examinations and results</td><td><code>/examination-results-management-software/</code></td></tr>
+<tr><td>Student attendance</td><td><code>/student-attendance-management-software/</code></td></tr>
+<tr><td>CRM</td><td><code>/products/crm/</code></td></tr>
+<tr><td>Sales / retail POS</td><td><code>/sales-pos-software/</code></td></tr>
+<tr><td>Accounting</td><td><code>/accounts-software/</code></td></tr>
+<tr><td>ERP</td><td><code>/products/vyapara-erp/</code></td></tr>
+<tr><td>Projects</td><td><code>/products/project-management-software/</code></td></tr>
+<tr><td>Tasks</td><td><code>/task-management-software/</code></td></tr>
+<tr><td>Custom / business management development</td><td><code>/services/custom-software-development/</code></td></tr>
+<tr><td>Web / business applications</td><td><code>/services/web-application-development/</code></td></tr>
+<tr><td>Inventory</td><td><code>/products/inventory-management-software/</code></td></tr>
+<tr><td>WhatsApp integrations</td><td><code>/whatsapp-api-integration/</code></td></tr>
+</tbody></table>
+<p>On sites where Phase 1 reused an owner's matching page or alias, its actual permalink remains authoritative. The inventory tab reports the configured destinations. Education ERP and business management development reuse existing offerings rather than introducing keyword-only pages.</p>
+<p><code>template-parts/components/software-service.php</code> is a reusable component inside the existing native/virtual templates. It provides a hero, applicable audience, call/demo/quotation actions, a workflow-planning panel, customer problem, feature cards, demonstration planning, FAQs and contextual links. Native owner content and manual virtual-page content remain rendered; they are not replaced in the database. Existing restaurant POS and other supporting pages remain available.</p>
+<p><code>template-parts/components/software-enquiry.php</code> handles the reusable qualification experience. The scoped <code>service-experience.css</code> and small vanilla <code>service-enquiry.js</code> load only on relevant internal pages. No heavy libraries or unnecessary animation were added. Mobile actions appear in the content flow instead of covering text. Real screenshots or recordings can be added after the owner supplies verified media; no generic illustration is presented as a product screenshot.</p>
+
+<h2>Location pages</h2>
+<ul>
+<li><code>/locations/</code>: native coverage-directory parent.</li>
+<li><code>/locations/andhra-pradesh/</code>: one substantive regional page linking relevant software, explaining how to prepare an enquiry and distinguishing service markets from offices.</li>
+</ul>
+<p>The regional page covers the requested priority and additional cities, plus the previously included Markapur. It distinguishes education administration, retail/distribution and service-organization workflows without claiming city-specific customers or offices. Remote/on-site delivery, travel, migration, training and support arrangements must be agreed for the particular project. No individual city pages were generated.</p>
+<p>An administrator visit creates only missing pages. Existing matching content, draft status and protected pages are preserved. A private/unpublished Locations parent blocks new regional publication and produces an administrator notice instead of changing visibility.</p>
+
+<h2>SEO, schema and internal links</h2>
+<p>Service titles are unique and specific. Native excerpts remain the editable description source, and owner-edited native titles are respected. Existing SEO plugins retain ownership through the Phase 1 guards. The same Organization identifier and primary telephone are retained. Breadcrumb schema is aligned with the visible Home → Software Solutions → Service hierarchy. The hub and regional directory use CollectionPage and ItemList with links visible on those pages.</p>
+<p>WordPress automatically includes the published location pages in its native page sitemap. The Phase 1 virtual provider and legacy sitemap redirect remain. No separate sitemap subsystem was added. Reviews, ratings, prices and unverified LocalBusiness offices remain absent from the new graph. Schema syntax/structure was locally checked; external rich-result approval is not claimed.</p>
+<p>Each enhanced service links to a small set of related needs. Examples include school → fees/marks/attendance, college → education management/fees/examinations, CRM → sales/tasks/WhatsApp, ERP → accounts/inventory/custom work and projects → tasks. No sitewide keyword-link automation or menu change was made.</p>
+
+<h2>Enquiry handling and privacy</h2>
+<ol>
+<li>The visitor can call, use the existing direct WhatsApp/email links, or choose a demonstration/quotation.</li>
+<li>The composer preselects the current service. Name, mobile, organization, service, city, requirement and consent are required; email is optional.</li>
+<li>Preparing the message performs local validation and shows a text-safe preview. It does not submit an enquiry.</li>
+<li>The visitor explicitly opens WhatsApp or an email draft, reviews the recipient/message and sends through that channel. Opening the channel is not evidence of receipt.</li>
+</ol>
+<p>There is no new server-side form endpoint, lead database, submission REST exposure or CRM. The theme makes no form-data fetch request and stores no enquiry in cookies, local storage or public metadata. Consequently it introduces no new server submission queue for spam. The existing communication provider's abuse controls and the business inbox still apply. Do not treat browser validation as security for a future backend: if an existing secure form/CRM is connected later, use its server-side validation, permissions, rate limiting and anti-spam controls.</p>
+<p>Consent revocation or input edits invalidate the preview and clear prepared handoff URLs. Message preview uses text content, not HTML. The composer is hidden if JavaScript is unavailable and direct contact alternatives remain. A privacy-policy link appears only when WordPress has a published policy configured. The owner should review that policy for the actual website and external communication providers; no unverified legal policy was published by this work.</p>
+
+<h2>Reporting and measurement</h2>
+<p>The existing theme dashboard now has <strong>SEO &amp; Enquiries</strong>. It lists actual configured service destinations, published native service pages and the regional-page count. Virtual routes are distinguished from WordPress page records. Unavailable metrics are labeled as unavailable, not zero.</p>
+<table><thead><tr><th>Measure</th><th>Source / procedure</th><th>Current state</th></tr></thead><tbody>
+<tr><td>Service and regional pages</td><td>Native WordPress publication state and existing catalog.</td><td>Available in the theme dashboard; verify the production inventory after update.</td></tr>
+<tr><td>Indexing and canonical selection</td><td>Search Console URL Inspection and indexing reports; Bing Webmaster Tools.</td><td>External account required.</td></tr>
+<tr><td>Organic clicks, impressions, CTR and visit queries</td><td>Search Console Search Results report, with a fixed date range and page/query/country filters. Export a baseline and compare the same duration later.</td><td>No account data available. No statistics fabricated.</td></tr>
+<tr><td>Geographic interest</td><td>Search Console country data plus authorized, consented analytics where finer geographic data is available.</td><td>No city-level performance is inferred from a service-area list.</td></tr>
+<tr><td>Call clicks and demo/quote intent</td><td>Privacy-limited browser events, forwarded by the site's existing consent-aware analytics integration.</td><td>Events available; no provider loaded or event counts persisted by the theme.</td></tr>
+<tr><td>Submitted leads / confirmed demo requests</td><td>Existing inbox or verified CRM delivery records; identify actual received messages.</td><td>Draft preparation and channel opening are not submitted leads.</td></tr>
+<tr><td>Page conversion rate</td><td>Confirmed submitted leads ÷ consented sessions for the same page/date range; define attribution and deduplication.</td><td>Not calculable without both sources.</td></tr>
+<tr><td>Core Web Vitals</td><td>Search Console field data / PageSpeed Insights and a recorded lab assessment.</td><td>Not measured from screenshot or source-code checks.</td></tr>
+<tr><td>AI-search visibility</td><td>Dated observation log: engine, exact query, cited URL, observed answer and evidence.</td><td>Separate from organic clicks and rankings; no AI recommendation claimed.</td></tr>
+</tbody></table>
+<p>Event contract: <code>document</code> emits <code>iscp:conversion</code> with only <code>{ action, service }</code>. Actions include <code>call_click</code>, <code>demo_intent</code>, <code>quote_intent</code>, <code>whatsapp_click</code>, <code>email_click</code>, <code>enquiry_prepared</code>, <code>whatsapp_handoff</code> and <code>email_draft</code>. No names, phone inputs, email inputs, city fields or message text enter the event payload. Any existing analytics adapter must enforce its normal consent policy before forwarding events. Do not label <code>enquiry_prepared</code> or a handoff as a confirmed lead.</p>
+
+<h2>C. Validation</h2>
+<ul>
+<li>Phase 1 source was backed up before editing at <code>%TEMP%/iscp-phase2-20261104/iscp-before-phase2.zip</code>, with a SHA-256 baseline manifest. This is a source backup; production database access was unavailable.</li>
+<li>All 30 protected homepage/shared files retain their Phase 1 hashes. Complete homepage HTML matched after decoding randomized email entities. No asset-version or theme-directory normalization was needed for the Phase 2 comparison.</li>
+<li>Baseline/after screenshots were captured at requested desktop 1440×1000 and mobile 390×844 viewports. Existing animations/loading make exact pixel equality unsuitable; screenshot and HTML/source checks are reported separately.</li>
+<li>The Phase 1 tests remain applicable: 56 WordPress integration assertions and 360 HTTP assertions.</li>
+<li>Phase 2 tests passed 103 WordPress assertions and 364 HTTP assertions: reuse, duplicate avoidance, owner drafts/private-parent protection, administrator permissions, related destinations, unique metadata, schema, canonicals, redirects, region publication and sitemap inclusion.</li>
+<li>Browser checks covered desktop/mobile layout, no horizontal overflow, service preselection, optional email, mandatory consent, invalid short phone, local preview, input-change invalidation, consent revocation and text-safe markup handling. No enquiry was sent and no browser console errors were observed in these flows.</li>
+<li>PHP and JavaScript syntax and theme JSON parsing were checked. The isolated runtime is WordPress 7.1.4 / PHP 8.4.21 with the official SQLite integration. PHP 7.4 execution and configured production SEO plugins were not available.</li>
+<li>The existing early-translation-loading notice on current WordPress is also present in the baseline. It was not introduced or broadly refactored here.</li>
+</ul>
+<p>Local tests: <code>php tests/phase2-integration.php WORDPRESS_ROOT</code> and <code>python tests/phase2-http.py http://127.0.0.1:8765</code>. The PHP test requires a disposable installation, the existing test marker and WordPress environment type <code>local</code>. Keep the Phase 1 tests too. Test code is excluded from the installable theme ZIP.</p>
+
+<h2>Deployment checklist</h2>
+<ol>
+<li>Back up the real database/theme, install version 1.0.40, and visit the dashboard as an administrator. Review the two new/reused location pages and existing service destinations.</li>
+<li>Check the Contact Customizer values. The supplied primary contact is +91 9618222220; saved owner settings remain authoritative.</li>
+<li>Verify actual assigned templates, installed SEO/security/cache/form plugins, noindex settings and production form/inbox delivery. No production configuration is assumed from the isolated test site.</li>
+<li>Review <code>/software-solutions/</code>, each priority service, <code>/locations/andhra-pradesh/</code>, native sitemaps and the legacy redirect. A physical server-root sitemap can take precedence over WordPress and still needs a hosting check.</li>
+<li>Use the existing caching workflow to clear stale internal-page assets. Compare the production homepage and navigation at desktop/mobile sizes before signing off.</li>
+<li>Verify canonical and JSON-LD output with the configured production SEO plugin. The theme yields to supported plugins; virtual-route coverage still needs a real plugin configuration check.</li>
+<li>Confirm live crawler access, robots.txt, CDN/firewall policies and page indexability. No crawler/training permissions were changed in this phase.</li>
+<li>Verify Search Console ownership using the account's approved method, submit the actual sitemap, inspect key URLs and save a dated performance export. Do not place verification credentials or service-account secrets in the theme.</li>
+<li>For Google Business Profile, verify the real name, address/eligibility, phone, website, available category and services. Do not create a profile for every city in the directory. No account/profile was changed here.</li>
+<li>Review the published privacy policy, communication-provider handling and existing consent-aware analytics integration. Connect measurements only through the site's authorized infrastructure.</li>
+</ol>
+<p>Rollback: restore the Phase 1 source backup. Region pages remain native WordPress content; inspect <code>iscp_service_location_ids</code> and move only unwanted newly created pages to Trash. Do not delete reused owner pages. No existing service content or enquiry records need migration because they were not replaced or newly stored.</p>
+
+<h2>Changed files</h2>
+<p><code>inc/service-experience.php</code>, <code>inc/service-locations.php</code> and <code>inc/service-report.php</code> contain the new isolated logic. Existing <code>functions.php</code>, <code>page.php</code>, <code>template-offering.php</code>, <code>inc/admin-dashboard.php</code>, <code>inc/offering-pages.php</code>, <code>inc/seo-schema.php</code> and <code>inc/software-solutions.php</code> provide integration points. New component files are <code>software-service.php</code> and <code>software-enquiry.php</code>; new scoped assets are <code>service-experience.css</code> and <code>service-enquiry.js</code>. Release metadata, README, changelog and local tests were updated. Header, footer, homepage sections/cards, existing JavaScript and shared CSS were not edited.</p>
+
+<h2>D. Next opportunities — not implemented</h2>
+<p>There are no actual query-performance exports available to justify ranking or traffic claims. Treat queries such as school fee software in Vijayawada, college ERP in Guntur and custom software in Andhra Pradesh as hypotheses to evaluate against Search Console data, not observed visit queries.</p>
+<p>First collect approved product screenshots, guided-demo recordings, implementation documentation and real customer/project evidence. Consider city pages only when a city has distinct, verified service arrangements or useful local project material. Vijayawada, Visakhapatnam and Guntur can be evaluated first against actual demand and available evidence; no additional office or project claim is implied.</p>
+<p>Potential Phase 3 work includes authorized Search Console/analytics integration, verified CRM submission tracking, measured conversion improvements and evidence-led content. None of these external integrations or city pages was started.</p>
+
+<h2>Official measurement and business references</h2>
+<p><a href="https://support.google.com/webmasters/answer/7576553/performance-report-search">Search Console performance report</a> documents clicks, impressions, CTR and related filters. <a href="https://developers.google.com/search/docs/monitor-debug/google-analytics-search-console">Google's Search Console/Analytics guidance</a> explains the different measurement sources. These are procedures, not evidence of this site's results.</p>
+<p><a href="https://support.google.com/business/answer/3038177">Google Business Profile representation guidelines</a> should be checked against the actual business location and eligibility. <a href="https://developers.google.com/search/docs/appearance/structured-data/local-business">LocalBusiness structured-data documentation</a> informs the choice to avoid unverified office markup.</p>
+</body></html>

@@ -17,8 +17,9 @@ $iscp_manual_has_content = $iscp_manual_page && '' !== trim( wp_strip_all_tags( 
 
 get_header();
 ?>
+<?php iscp_render_software_hub_link(); ?>
 
-<main id="iscp-primary" class="iscp-main iscp-offering-index iscp-offering-index-<?php echo esc_attr( sanitize_html_class( $iscp_group ) ); ?>">
+<div id="iscp-internal-content" class="iscp-main iscp-offering-index iscp-offering-index-<?php echo esc_attr( sanitize_html_class( $iscp_group ) ); ?>">
 	<?php if ( ! $iscp_manual_has_content ) : ?>
 		<section class="iscp-template-hero iscp-template-hero-offering">
 			<div class="iscp-container iscp-template-hero-grid">
@@ -133,7 +134,7 @@ get_header();
 			</div>
 		</div>
 	</section>
-</main>
+</div>
 
 <?php
 get_footer();

@@ -32,6 +32,17 @@ if ( is_page( 'careers' ) ) {
 	return;
 }
 
+$iscp_service_experience = iscp_get_current_service_experience();
+if ( $iscp_service_experience ) {
+	get_header();
+	while ( have_posts() ) {
+		the_post();
+		get_template_part( 'template-parts/components/software-service', null, array( 'service' => $iscp_service_experience, 'native' => true ) );
+	}
+	get_footer();
+	return;
+}
+
 get_header();
 
 iscp_breadcrumbs();

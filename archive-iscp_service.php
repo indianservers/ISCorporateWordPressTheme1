@@ -8,6 +8,7 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
+iscp_render_software_hub_link();
 
 iscp_breadcrumbs();
 $iscp_manual_content_rendered = iscp_render_manual_page_content_by_path( 'services' );

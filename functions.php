@@ -24,6 +24,8 @@ $iscp_includes = array(
 	'inc/admin-dashboard.php',
 	'inc/starter-content.php',
 	'inc/compatibility.php',
+	'inc/software-solutions.php',
+	'inc/service-experience.php',
 );
 
 foreach ( $iscp_includes as $iscp_file ) {

@@ -1,0 +1,45 @@
+/* Loaded only for the new internal software pages; inherits the theme's tokens. */
+.iscp-software-content {
+	max-width: var(--iscp-container, 1180px);
+	margin-inline: auto;
+}
+.iscp-software-content .iscp-template-hero-lead {
+	color: var(--iscp-text);
+	font-size: 1.125rem;
+	line-height: 1.75;
+}
+.iscp-software-content .iscp-software-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1.5rem;
+	margin-block: 1.5rem 2.5rem;
+}
+.iscp-software-content .iscp-card {
+	padding: clamp(1rem, 3vw, 2rem);
+	border: 1px solid var(--iscp-border);
+	border-radius: var(--iscp-card-radius);
+	background: var(--iscp-surface);
+}
+.iscp-software-content h2 {
+	margin-top: 2.5rem;
+}
+.iscp-software-content h3 {
+	margin-top: 1.5rem;
+}
+.iscp-software-content .iscp-card h3 {
+	margin-top: 0;
+}
+.iscp-software-contact {
+	margin-block: 2.5rem;
+	padding: clamp(1rem, 3vw, 2rem);
+	border: 1px solid var(--iscp-border);
+	border-radius: var(--iscp-card-radius);
+}
+.iscp-software-contact .iscp-action-row {
+	flex-wrap: wrap;
+}
+@media (max-width: 640px) {
+	.iscp-software-content .iscp-software-grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}

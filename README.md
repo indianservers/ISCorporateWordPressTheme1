@@ -77,6 +77,26 @@ ISCP includes basic WooCommerce theme support and light styling for product arch
 
 Back up the site before updating. Upload the new `iscp` theme folder or install the packaged theme zip, then check the homepage, menus, Customizer settings, CPT archives, and permalinks. Child-theme customizations should be kept outside the parent theme folder.
 
+## Phase 1 Software Discovery — 1.0.39
+
+On the first dashboard visit by an administrator with permission to publish pages, the theme creates `/software-solutions/` and nine missing software-topic pages. Setup reuses matching pages and common aliases, preserves owner content and drafts, and does not change menus, Reading settings, or the homepage. Review the new pages under **Pages** after updating. Page titles, content and excerpts remain editable; excerpts supply the theme's page descriptions when no supported SEO plugin is active.
+
+The shared internal-page contact profile uses the existing **ISCP Theme Options > Contact** settings. Public business name and description fields are provided there too. The supplied primary contact is **+91 9618222220**.
+
+Public virtual offerings are added to WordPress's native `/wp-sitemap.xml` index. The old `/sitemap.xml` theme endpoint redirects there. Supported SEO plugins retain ownership of their metadata and sitemaps; verify their coverage of virtual routes after deployment. A physical sitemap file at the server root can take precedence and needs a separate hosting check. No robots.txt or model-training permissions are changed.
+
+See [the implementation and deployment report](docs/phase1-implementation.html) for the page map, test results, rollback notes and remaining live checks. Phase 2 is not included.
+
+## Phase 2 Service Pages — 1.0.40
+
+Sixteen existing service destinations now share an internal-page service component, with calls, demonstration/quotation preparation, feature cards and curated related links. Existing URLs, editable page content and the homepage are preserved. Education ERP remains part of the school/college offerings; business management development uses the existing custom software service.
+
+An administrator dashboard visit creates `/locations/` and `/locations/andhra-pradesh/` only when missing. Matching owner content and drafts are preserved. No city pages are generated. Review service coverage and confirm on-site arrangements before making specific delivery promises.
+
+The enquiry composer prepares a message locally after field validation and consent. The visitor must review and send it through the existing WhatsApp/email channel. Preparing a message or opening a channel is **not** a submitted lead. No new lead storage, CRM, REST endpoint, analytics vendor, cookies or tracking database is added. An existing consent-aware analytics integration can listen for the documented privacy-limited `iscp:conversion` browser event.
+
+Use **Appearance > Indian Servers Corp Pro > SEO & Enquiries** for local page inventory and external-measurement status. See [the Phase 2 report](docs/phase2-implementation.html) for deployment, measurement, privacy, verification and rollback details.
+
 ## Packaging Checklist
 
 - Zip only the `iscp` folder.

@@ -40,6 +40,7 @@ if ( ! function_exists( 'iscp_get_admin_tabs' ) ) {
 			'checklist'     => __( 'Theme Checklist', 'iscp' ),
 			'documentation' => __( 'Documentation', 'iscp' ),
 			'system-status' => __( 'System Status', 'iscp' ),
+			'seo-report' => __( 'SEO & Enquiries', 'iscp' ),
 			'support'       => __( 'Support', 'iscp' ),
 		);
 	}
@@ -101,6 +102,8 @@ if ( ! function_exists( 'iscp_render_admin_page' ) ) {
 					iscp_render_documentation_tab();
 				} elseif ( 'system-status' === $active_tab ) {
 					iscp_render_system_status_tab();
+				} elseif ( 'seo-report' === $active_tab ) {
+					iscp_render_service_discovery_report();
 				} elseif ( 'support' === $active_tab ) {
 					iscp_render_support_tab();
 				}

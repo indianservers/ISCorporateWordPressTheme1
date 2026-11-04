@@ -7,13 +7,15 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$iscp_business_profile = iscp_get_software_business_profile();
+
 $iscp_india_contact = array(
 	'label'      => __( 'India Contact', 'iscp' ),
 	'name'       => 'D SaiSatish',
 	'title'      => __( 'CEO, Indian Servers', 'iscp' ),
 	'company'    => __( 'Indian Servers Pvt. Ltd.', 'iscp' ),
-	'phone'      => '+91 9618222220',
-	'tel'        => '+919618222220',
+	'phone'      => $iscp_business_profile['phone'],
+	'tel'        => $iscp_business_profile['telephone'],
 	'email'      => 'saisatish@indianservers.com',
 	'team_email' => 'info@indianservers.com',
 	'address'    => __( 'India operations for software, cloud, AI, VAPT and managed technology delivery.', 'iscp' ),
@@ -55,7 +57,7 @@ $iscp_south_africa_contact = array(
 );
 $iscp_locations     = __( 'India | USA | Dubai | South Africa | Australia | Europe', 'iscp' );
 $iscp_hours         = __( '9 AM - 5 PM', 'iscp' );
-$iscp_whatsapp      = 'https://wa.me/919618222220?text=' . rawurlencode( __( 'Hello Indian Servers, I would like to discuss a project.', 'iscp' ) );
+$iscp_whatsapp      = $iscp_business_profile['whatsapp'] . '?text=' . rawurlencode( __( 'Hello Indian Servers, I would like to discuss a project.', 'iscp' ) );
 $iscp_socials    = array(
 	'Facebook'  => 'https://www.facebook.com/IndianServersPage',
 	'LinkedIn'  => 'https://www.linkedin.com/in/indianservers/',
@@ -76,7 +78,7 @@ $iscp_contact_promises = array(
 get_header();
 ?>
 
-<main id="iscp-primary" class="iscp-main iscp-template-page iscp-template-contact">
+<div id="iscp-internal-content" class="iscp-main iscp-template-page iscp-template-contact">
 	<?php
 	iscp_render_template_hero(
 		array(
@@ -230,7 +232,7 @@ get_header();
 			</ul>
 		</div>
 	</section>
-</main>
+</div>
 
 <?php
 get_footer();

@@ -39,9 +39,10 @@ $iscp_service_stack = array(
 );
 
 get_header();
+iscp_render_software_hub_link();
 ?>
 
-<main id="iscp-primary" class="iscp-main iscp-template-page iscp-services-page">
+<div id="iscp-internal-content" class="iscp-main iscp-template-page iscp-services-page">
 	<?php
 	iscp_render_template_hero(
 		array(
@@ -113,7 +114,7 @@ get_header();
 	</section>
 
 	<?php get_template_part( 'template-parts/sections/cta' ); ?>
-</main>
+</div>
 
 <?php
 get_footer();

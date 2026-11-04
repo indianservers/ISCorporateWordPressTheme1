@@ -753,10 +753,13 @@ if ( ! function_exists( 'iscp_register_offering_rewrites' ) ) {
 	 * Register virtual page URLs.
 	 */
 	function iscp_register_offering_rewrites() {
+		$pages = iscp_get_offering_pages();
+		$products = implode( '|', array_map( function ( $slug ) { return preg_quote( $slug, '#' ); }, array_keys( $pages['products']['items'] ) ) );
+		$services = implode( '|', array_map( function ( $slug ) { return preg_quote( $slug, '#' ); }, array_keys( $pages['services']['items'] ) ) );
 		add_rewrite_rule( '^products/?$', 'index.php?iscp_offering_group=products', 'top' );
-		add_rewrite_rule( '^products/([^/]+)/?$', 'index.php?iscp_offering_group=products&iscp_offering_slug=$matches[1]', 'top' );
+		add_rewrite_rule( '^products/(' . $products . ')/?$', 'index.php?iscp_offering_group=products&iscp_offering_slug=$matches[1]', 'top' );
 		add_rewrite_rule( '^services/?$', 'index.php?iscp_offering_group=services', 'top' );
-		add_rewrite_rule( '^services/([^/]+)/?$', 'index.php?iscp_offering_group=services&iscp_offering_slug=$matches[1]', 'top' );
+		add_rewrite_rule( '^services/(' . $services . ')/?$', 'index.php?iscp_offering_group=services&iscp_offering_slug=$matches[1]', 'top' );
 	}
 }
 add_action( 'init', 'iscp_register_offering_rewrites' );
@@ -812,6 +815,9 @@ if ( ! function_exists( 'iscp_include_offering_template' ) ) {
 	 * Load the offering template for virtual pages.
 	 */
 	function iscp_include_offering_template( $template ) {
+		if ( is_404() ) {
+			return $template;
+		}
 		$group = get_query_var( 'iscp_offering_group' );
 		$slug  = get_query_var( 'iscp_offering_slug' );
 
@@ -849,7 +855,7 @@ if ( ! function_exists( 'iscp_maybe_flush_offering_rewrites' ) ) {
 	 * Flush once after theme updates so new virtual routes work on existing installs.
 	 */
 	function iscp_maybe_flush_offering_rewrites() {
-		$version = '2026-05-23-offering-pages-no-solutions-hijack';
+		$version = '2026-11-04-offering-pages-known-slugs';
 
 		if ( get_option( 'iscp_offering_rewrite_version' ) === $version ) {
 			return;
@@ -867,6 +873,9 @@ if ( ! function_exists( 'iscp_offering_document_title' ) ) {
 	 * Set useful browser titles for virtual pages.
 	 */
 	function iscp_offering_document_title( $title ) {
+		if ( is_404() || iscp_is_major_seo_plugin_active() ) {
+			return $title;
+		}
 		$group = get_query_var( 'iscp_offering_group' );
 		$slug  = get_query_var( 'iscp_offering_slug' );
 
@@ -875,6 +884,12 @@ if ( ! function_exists( 'iscp_offering_document_title' ) ) {
 		}
 
 		if ( $slug ) {
+			if ( function_exists( 'iscp_get_current_service_experience' ) ) {
+				$experience = iscp_get_current_service_experience();
+				if ( $experience ) {
+					return $experience['seo_title'];
+				}
+			}
 			$page = iscp_get_offering_page( $group, $slug );
 			return ! empty( $page['title'] ) ? $page['title'] . ' | Indian Servers' : $title;
 		}

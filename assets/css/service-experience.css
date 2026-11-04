@@ -1,0 +1,78 @@
+/* Internal service/coverage pages only. No homepage selectors or dependencies. */
+.iscp-service-experience {
+	color: var(--iscp-text, #142238);
+	background: var(--iscp-surface, #fff);
+	padding-bottom: 2rem;
+}
+.iscp-service-breadcrumb { padding-block: 1.5rem; font-size: .85rem; }
+.iscp-service-breadcrumb ol { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; margin: 0; }
+.iscp-service-breadcrumb li + li::before { content: "/"; padding-right: .5rem; color: var(--iscp-muted); }
+.iscp-service-hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(2rem, 5vw, 5rem); align-items: center; padding-block: clamp(2rem, 5vw, 4rem); }
+.iscp-service-experience .iscp-service-title { font-size: clamp(2rem, 4.4vw, 3.65rem) !important; letter-spacing: -.035em; line-height: 1.12; margin: .7rem 0 1.5rem; max-width: 20ch; }
+.iscp-service-kicker { font-size: .75rem; font-weight: 750; text-transform: uppercase; letter-spacing: .12em; color: var(--iscp-primary); }
+.iscp-service-lead { font-size: 1.1rem; line-height: 1.8; max-width: 65ch; }
+.iscp-service-audience { font-size: .9rem; color: var(--iscp-muted); margin-block: 1.2rem 1.7rem; }
+.iscp-service-actions { display: flex; flex-wrap: wrap; gap: .9rem; align-items: center; }
+.iscp-service-actions .iscp-btn { min-height: 46px; text-align: center; }
+.iscp-service-experience .iscp-btn-ghost { color: var(--iscp-primary); border: 1px solid var(--iscp-border-strong); background: var(--iscp-surface); }
+.iscp-service-text-link { font-weight: 700; text-underline-offset: .3em; padding-block: .75rem; }
+.iscp-service-plan { background: var(--iscp-primary-light, #eff6ff); border: 1px solid var(--iscp-border); border-radius: 24px; padding: clamp(1.4rem, 3vw, 2.5rem); }
+.iscp-service-experience .iscp-service-plan h2 { font-size: clamp(1.35rem, 2vw, 1.9rem) !important; line-height: 1.35; margin-block: 1rem; }
+.iscp-service-plan ol { list-style: none; margin: 1.5rem 0; padding: 0; display: grid; gap: 1.1rem; }
+.iscp-service-plan li { display: grid; gap: .3rem; }
+.iscp-service-plan li span, .iscp-service-plan > p:last-child { font-size: .85rem; line-height: 1.65; color: var(--iscp-muted); }
+.iscp-service-section { padding-block: clamp(2rem, 5vw, 4rem); border-top: 1px solid var(--iscp-border); scroll-margin-top: 7rem; }
+.iscp-service-heading { max-width: 750px; margin-bottom: 1.75rem; }
+.iscp-service-experience .iscp-service-section > h2,
+.iscp-service-experience .iscp-service-heading h2,
+.iscp-service-experience .iscp-service-problem h2,
+.iscp-service-experience .iscp-service-demo h2 { font-size: clamp(1.4rem, 2.8vw, 2.1rem) !important; line-height: 1.3; margin-block: .6rem 1rem; }
+.iscp-service-problem { display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem; align-items: center; }
+.iscp-service-feature-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.iscp-service-feature { border: 1px solid var(--iscp-border); border-radius: var(--iscp-card-radius, 16px); padding: 1.5rem; display: flex; align-items: flex-start; gap: 1rem; background: var(--iscp-surface); }
+.iscp-service-feature h3 { margin: 0; font-size: 1rem !important; line-height: 1.7; }
+.iscp-service-feature-icon { flex: 0 0 36px; color: var(--iscp-primary); }
+.iscp-service-feature-icon .iscp-menu-icon { width: 32px; height: 32px; }
+.iscp-service-editor-content > .iscp-software-content { max-width: none; }
+.iscp-service-faq details { border-bottom: 1px solid var(--iscp-border); padding-block: 1rem; }
+.iscp-service-faq summary { cursor: pointer; font-weight: 700; min-height: 44px; padding-block: .6rem; }
+.iscp-service-demo { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.iscp-service-demo > div { max-width: 700px; }
+.iscp-service-related-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.iscp-service-related { display: block; border: 1px solid var(--iscp-border); padding: 1.5rem; border-radius: var(--iscp-card-radius); text-decoration: none; }
+.iscp-service-related h3 { margin: 0 0 .75rem; }
+.iscp-service-related span { color: var(--iscp-muted); font-size: .9rem; }
+.iscp-service-related:hover, .iscp-service-related:focus-visible { border-color: var(--iscp-primary); }
+.iscp-service-region-link { padding: 1.2rem; border-radius: 12px; background: var(--iscp-primary-light, #eff6ff); }
+.iscp-service-directory-note { border-top: 1px solid var(--iscp-border); padding-block: 2rem; margin-block: 2rem; }
+.iscp-enquiry-composer[hidden], .iscp-enquiry-review[hidden] { display: none; }
+.iscp-enquiry-privacy-note { font-size: .9rem; padding: 1rem; border-left: 3px solid var(--iscp-primary); background: var(--iscp-primary-light); }
+.iscp-enquiry-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; margin-block: 1.5rem; }
+.iscp-enquiry-fields label { display: grid; gap: .5rem; font-weight: 650; font-size: .9rem; }
+.iscp-enquiry-fields input, .iscp-enquiry-fields select, .iscp-enquiry-fields textarea { width: 100%; min-width: 0; min-height: 46px; padding: .8rem; border: 1px solid var(--iscp-border-strong, #b9c6d8); border-radius: 8px; color: var(--iscp-text); background: var(--iscp-surface); font: inherit; font-size: 16px; }
+.iscp-enquiry-message { grid-column: 1 / -1; }
+.iscp-enquiry-fields textarea { resize: vertical; }
+.iscp-enquiry-consent { display: flex; gap: .75rem; align-items: flex-start; margin-block: 1rem 1.5rem; font-size: .9rem; }
+.iscp-enquiry-consent input { flex: 0 0 20px; width: 20px; height: 20px; margin-top: .25rem; }
+.iscp-enquiry-review { padding: 1.5rem; background: var(--iscp-primary-light); border: 1px solid var(--iscp-border); border-radius: 12px; }
+.iscp-enquiry-review pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; padding: 1rem; background: var(--iscp-surface); border-radius: 8px; }
+.iscp-service-mobile-actions { display: none; }
+.iscp-service-region .iscp-template-hero-lead { color: var(--iscp-text); }
+.iscp-market-list { display: flex; gap: .6rem; flex-wrap: wrap; list-style: none; padding: 0; }
+.iscp-market-list li { padding: .5rem .9rem; border: 1px solid var(--iscp-border); border-radius: 8px; }
+.iscp-region-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.iscp-region-card { padding: 1.4rem; border: 1px solid var(--iscp-border); border-radius: var(--iscp-card-radius); }
+.iscp-service-region section { margin-block: 2.5rem; }
+@media (max-width: 800px) {
+	.iscp-service-hero, .iscp-service-problem, .iscp-region-grid { grid-template-columns: minmax(0, 1fr); }
+	.iscp-service-hero { gap: 2rem; }
+	.iscp-service-demo { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 560px) {
+	.iscp-service-feature-grid, .iscp-service-related-grid, .iscp-enquiry-fields { grid-template-columns: minmax(0, 1fr); }
+	.iscp-service-feature { padding: 1.2rem; }
+	.iscp-service-actions .iscp-btn { width: 100%; }
+	.iscp-service-mobile-actions { display: flex; gap: .75rem; padding: 1rem max(1rem, env(safe-area-inset-right)) 1rem max(1rem, env(safe-area-inset-left)); border-block: 1px solid var(--iscp-border); margin-top: 1.5rem; }
+	.iscp-service-mobile-actions a { flex: 1; text-align: center; padding: .85rem .5rem; border: 1px solid var(--iscp-primary); border-radius: 8px; font-weight: 750; background: var(--iscp-surface); }
+	.iscp-service-mobile-actions a:first-child { color: #fff; background: var(--iscp-primary); }
+}

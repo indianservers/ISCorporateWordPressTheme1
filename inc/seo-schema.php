@@ -139,6 +139,10 @@ if ( ! function_exists( 'iscp_output_language_alternates' ) ) {
 	 * Output hreflang alternates for international discovery.
 	 */
 	function iscp_output_language_alternates() {
+		// Alternate languages need real translated content. Preserve the homepage.
+		if ( ! is_front_page() ) {
+			return;
+		}
 		if ( is_admin() || iscp_is_major_seo_plugin_active() ) {
 			return;
 		}
@@ -218,6 +222,12 @@ if ( ! function_exists( 'iscp_get_seo_context' ) ) {
 	 * @return array
 	 */
 	function iscp_get_seo_context() {
+		if ( ! is_front_page() && function_exists( 'iscp_get_internal_software_seo_context' ) ) {
+			$internal_context = iscp_get_internal_software_seo_context();
+			if ( $internal_context ) {
+				return apply_filters( 'iscp_internal_seo_context', $internal_context );
+			}
+		}
 		$site_name = get_bloginfo( 'name' ) ? get_bloginfo( 'name' ) : __( 'Indian Servers', 'iscp' );
 		$group     = get_query_var( 'iscp_offering_group' );
 		$slug      = get_query_var( 'iscp_offering_slug' );
@@ -336,6 +346,10 @@ if ( ! function_exists( 'iscp_output_basic_seo_meta' ) ) {
 	 * Output core SEO tags when no dedicated SEO plugin is active.
 	 */
 	function iscp_output_basic_seo_meta() {
+		if ( ! is_front_page() ) {
+			iscp_output_internal_software_meta();
+			return;
+		}
 		if ( is_admin() || iscp_is_major_seo_plugin_active() ) {
 			return;
 		}
@@ -371,7 +385,7 @@ if ( ! function_exists( 'iscp_filter_document_title_parts' ) ) {
 	 * @return array
 	 */
 	function iscp_filter_document_title_parts( $parts ) {
-		if ( is_admin() || iscp_is_major_seo_plugin_active() ) {
+		if ( is_admin() || is_404() || is_search() || is_feed() || iscp_is_major_seo_plugin_active() ) {
 			return $parts;
 		}
 
@@ -525,6 +539,10 @@ if ( ! function_exists( 'iscp_output_schema' ) ) {
 	 * Output schema graph.
 	 */
 	function iscp_output_schema() {
+		if ( ! is_front_page() ) {
+			iscp_output_internal_software_schema();
+			return;
+		}
 		if ( is_admin() || ! iscp_get_theme_mod( 'iscp_schema_enabled', true ) || iscp_is_major_seo_plugin_active() ) {
 			return;
 		}
@@ -741,19 +759,6 @@ if ( ! function_exists( 'iscp_output_schema' ) ) {
 				if ( $is_product ) {
 					$offering_schema['applicationCategory'] = 'BusinessApplication';
 					$offering_schema['operatingSystem']     = 'Web, Cloud, Mobile';
-					$offering_schema['aggregateRating']     = array(
-						'@type'       => 'AggregateRating',
-						'ratingValue' => '4.8',
-						'reviewCount' => '124',
-						'bestRating'  => '5',
-						'worstRating' => '1',
-					);
-					$offering_schema['offers']              = array(
-						'@type'         => 'Offer',
-						'priceCurrency' => 'INR',
-						'availability'  => 'https://schema.org/OnlineOnly',
-					);
-
 					if ( ! empty( $offering['features'] ) && is_array( $offering['features'] ) ) {
 						$offering_schema['featureList'] = array_values( $offering['features'] );
 					}
@@ -796,6 +801,10 @@ if ( ! function_exists( 'iscp_output_open_graph' ) ) {
 	 * Output Open Graph and Twitter tags.
 	 */
 	function iscp_output_open_graph() {
+		if ( ! is_front_page() ) {
+			iscp_output_internal_software_open_graph();
+			return;
+		}
 		if ( is_admin() || ! iscp_get_theme_mod( 'iscp_open_graph_enabled', true ) || iscp_is_major_seo_plugin_active() ) {
 			return;
 		}

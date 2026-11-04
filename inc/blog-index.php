@@ -13,6 +13,7 @@ if ( ! function_exists( 'iscp_register_blog_index_rewrite' ) ) {
 	 */
 	function iscp_register_blog_index_rewrite() {
 		add_rewrite_rule( '^blog/?$', 'index.php?iscp_blog_index=1', 'top' );
+		add_rewrite_rule( '^blog/page/([0-9]+)/?$', 'index.php?iscp_blog_index=1&paged=$matches[1]', 'top' );
 	}
 }
 add_action( 'init', 'iscp_register_blog_index_rewrite' );
@@ -58,7 +59,7 @@ if ( ! function_exists( 'iscp_include_blog_index_template' ) ) {
 	 * @return string
 	 */
 	function iscp_include_blog_index_template( $template ) {
-		if ( iscp_is_blog_index_request() ) {
+		if ( iscp_is_blog_index_request() && ! is_404() ) {
 			status_header( 200 );
 			return get_template_directory() . '/template-blog-index.php';
 		}
@@ -78,6 +79,12 @@ if ( ! function_exists( 'iscp_prevent_blog_index_404' ) ) {
 	 */
 	function iscp_prevent_blog_index_404( $preempt, $wp_query ) {
 		if ( iscp_is_blog_index_request() ) {
+			$page = max( 1, absint( get_query_var( 'paged' ) ) );
+			if ( $page > 1 && ! get_posts( array( 'post_type' => 'post', 'post_status' => 'publish', 'posts_per_page' => 1, 'offset' => ( $page - 1 ) * 15, 'fields' => 'ids', 'ignore_sticky_posts' => true ) ) ) {
+				$wp_query->set_404();
+				status_header( 404 );
+				return true;
+			}
 			$wp_query->is_404 = false;
 			status_header( 200 );
 
@@ -94,7 +101,7 @@ if ( ! function_exists( 'iscp_maybe_flush_blog_index_rewrite' ) ) {
 	 * Flush once after theme update so /blog/ works on existing installs.
 	 */
 	function iscp_maybe_flush_blog_index_rewrite() {
-		$version = '2026-05-23-blog-index-v2';
+		$version = '2026-11-04-blog-index-pagination';
 
 		if ( get_option( 'iscp_blog_index_rewrite_version' ) === $version ) {
 			return;
@@ -115,8 +122,9 @@ if ( ! function_exists( 'iscp_blog_index_document_title' ) ) {
 	 * @return string
 	 */
 	function iscp_blog_index_document_title( $title ) {
-		if ( iscp_is_blog_index_request() ) {
-			return __( 'Indian Servers Blog | Software, AI, Cloud and Cyber Security Insights', 'iscp' );
+		if ( iscp_is_blog_index_request() && ! is_404() && ! iscp_is_major_seo_plugin_active() ) {
+			$context = iscp_get_internal_software_seo_context();
+			return $context['title'];
 		}
 
 		return $title;

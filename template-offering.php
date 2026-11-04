@@ -7,6 +7,14 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$iscp_service_experience = iscp_get_current_service_experience();
+if ( $iscp_service_experience ) {
+	get_header();
+	get_template_part( 'template-parts/components/software-service', null, array( 'service' => $iscp_service_experience, 'native' => false ) );
+	get_footer();
+	return;
+}
+
 $iscp_group    = get_query_var( 'iscp_offering_group' );
 $iscp_slug     = get_query_var( 'iscp_offering_slug' );
 $iscp_offering = iscp_get_offering_page( $iscp_group, $iscp_slug );
@@ -23,15 +31,16 @@ $iscp_seo_terms = ! empty( $iscp_offering['seo_terms'] ) ? $iscp_offering['seo_t
 $iscp_recommendation_summary = ! empty( $iscp_offering['recommendation_summary'] ) ? $iscp_offering['recommendation_summary'] : '';
 $iscp_why_choose = ! empty( $iscp_offering['why_choose'] ) ? $iscp_offering['why_choose'] : array();
 $iscp_demo_modal_id = 'iscp-demo-modal-' . sanitize_html_class( $iscp_slug );
-$iscp_phone_display = iscp_get_theme_mod( 'iscp_phone_display', '+91 9618222220' );
-$iscp_phone_tel     = iscp_get_theme_mod( 'iscp_phone_tel', '+919618222220' );
-$iscp_whatsapp_number = preg_replace( '/[^0-9]/', '', iscp_get_theme_mod( 'iscp_whatsapp_number', '919618222220' ) );
+$iscp_business_profile = iscp_get_software_business_profile();
+$iscp_phone_display = $iscp_business_profile['phone'];
+$iscp_phone_tel     = $iscp_business_profile['telephone'];
+
 $iscp_demo_message  = sprintf(
 	/* translators: %s: offering title. */
 	__( 'Hello Indian Servers, I would like to request a demo for %s.', 'iscp' ),
 	$iscp_offering['title']
 );
-$iscp_whatsapp_url  = 'https://wa.me/' . $iscp_whatsapp_number . '?text=' . rawurlencode( $iscp_demo_message );
+$iscp_whatsapp_url  = $iscp_business_profile['whatsapp'] . '?text=' . rawurlencode( $iscp_demo_message );
 $iscp_demo_mailto   = 'mailto:' . iscp_get_theme_mod( 'iscp_email', 'info@indianservers.com' ) . '?subject=' . rawurlencode( sprintf( __( 'Demo request: %s', 'iscp' ), $iscp_offering['title'] ) ) . '&body=' . rawurlencode( $iscp_demo_message );
 $iscp_industries    = array(
 	array( 'label' => __( 'Education', 'iscp' ), 'icon' => 'education' ),
@@ -50,8 +59,9 @@ $iscp_hero_stats    = array(
 
 get_header();
 ?>
+<?php iscp_render_software_hub_link(); ?>
 
-<main id="iscp-primary" class="iscp-main iscp-offering-page iscp-offering-<?php echo esc_attr( sanitize_html_class( $iscp_group ) ); ?>">
+<div id="iscp-internal-content" class="iscp-main iscp-offering-page iscp-offering-<?php echo esc_attr( sanitize_html_class( $iscp_group ) ); ?>">
 	<section class="iscp-template-hero iscp-template-hero-offering">
 		<div class="iscp-container iscp-template-hero-grid">
 			<div class="iscp-template-hero-copy">
@@ -146,9 +156,6 @@ get_header();
 						<?php endforeach; ?>
 					</ul>
 				<?php endif; ?>
-				<?php if ( $iscp_seo_terms ) : ?>
-					<p><strong><?php esc_html_e( 'Relevant search focus:', 'iscp' ); ?></strong> <?php echo esc_html( $iscp_seo_terms ); ?></p>
-				<?php endif; ?>
 			</div>
 			<div class="iscp-offering-feature-card">
 				<h2><?php esc_html_e( 'Key Coverage', 'iscp' ); ?></h2>
@@ -193,10 +200,6 @@ get_header();
 					</div>
 				<?php endif; ?>
 
-				<div class="iscp-offering-panel iscp-offering-panel-seo">
-					<h3><?php esc_html_e( 'Search Focus', 'iscp' ); ?></h3>
-					<p><?php echo esc_html( ! empty( $iscp_offering['seo_terms'] ) ? $iscp_offering['seo_terms'] : __( 'software development, cloud hosting, AI automation, cyber security and business software', 'iscp' ) ); ?></p>
-				</div>
 			</div>
 		</div>
 	</section>
@@ -311,7 +314,7 @@ get_header();
 			</div>
 		</div>
 	</div>
-</main>
+</div>
 
 <?php
 get_footer();

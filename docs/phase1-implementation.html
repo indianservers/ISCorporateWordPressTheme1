@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indian Servers — Phase 1 Implementation</title>
+<style>
+body{font:16px/1.65 system-ui,sans-serif;max-width:1000px;margin:40px auto;padding:0 20px;color:#142238;background:#fff}h1,h2{line-height:1.25}h2{margin-top:2em}table{border-collapse:collapse;width:100%;margin:1em 0}th,td{border:1px solid #dce4ef;padding:10px;text-align:left;vertical-align:top}code{overflow-wrap:anywhere}a{color:#165bbd}.note{padding:16px;background:#f0f6ff;border-left:4px solid #2563eb}
+</style>
+</head>
+<body>
+<h1>Phase 1: software search and discovery foundations</h1>
+<p>Indian Servers Corp Pro 1.0.39 · 4 November 2026</p>
+<p class="note">Implemented in the theme source and tested in an isolated local WordPress installation. Production deployment, installed production plugins and hosting policies were not accessible. Homepage presentation and primary navigation were preserved. Phase 2 has not started.</p>
+
+<h2>Existing functionality reused</h2>
+<ul>
+<li>Classic PHP theme templates, design tokens, existing product/service catalog and virtual URLs.</li>
+<li>Native WordPress pages, page editor, excerpts, existing Contact Customizer section and demo-request dialog.</li>
+<li>Existing SEO-plugin detection for Yoast, Rank Math and AIOSEO. No SEO plugin was installed.</li>
+<li>Existing SEO entry points now use a factual internal-page graph and yield to supported SEO plugins.</li>
+<li>WordPress's native paginated XML sitemap, extended with public virtual routes.</li>
+</ul>
+
+<h2>Page map</h2>
+<p>Starter pages are created on the first authorized administrator dashboard visit after the updated theme is installed. Existing matching root or nested pages and common aliases are reused. Existing drafts stay drafts; owner content is never overwritten. If an existing page is private or unpublished, its link is omitted from the hub. Actual URLs on an existing installation may therefore differ from the defaults below.</p>
+<table>
+<thead><tr><th>New editable topic</th><th>Default URL</th></tr></thead>
+<tbody>
+<tr><td>Software development in Andhra Pradesh — central hub</td><td><code>/software-solutions/</code></td></tr>
+<tr><td>College management</td><td><code>/college-management-software/</code></td></tr>
+<tr><td>Fee management</td><td><code>/fee-management-software/</code></td></tr>
+<tr><td>School marks management</td><td><code>/marks-management-software/</code></td></tr>
+<tr><td>Student attendance</td><td><code>/student-attendance-management-software/</code></td></tr>
+<tr><td>Examinations and results</td><td><code>/examination-results-management-software/</code></td></tr>
+<tr><td>Accounts and accounting</td><td><code>/accounts-software/</code></td></tr>
+<tr><td>Sales and retail POS</td><td><code>/sales-pos-software/</code></td></tr>
+<tr><td>Task management</td><td><code>/task-management-software/</code></td></tr>
+<tr><td>WhatsApp API integration</td><td><code>/whatsapp-api-integration/</code></td></tr>
+</tbody></table>
+<p>School software, inventory, CRM, restaurant POS, Vyapara ERP, project management, custom software, web applications and API integrations retain their established product/service URLs. ERP and custom management needs are explained on the hub and linked to the existing offerings, rather than given competing keyword pages.</p>
+<p>The hub contains one Andhra Pradesh service-area section covering all 26 requested cities. These are explicitly service locations, not claimed offices. It distinguishes education, retail/distribution and SME workflows.</p>
+
+<h2>Changes</h2>
+<ul>
+<li><code>inc/software-solutions.php</code>: shared business/contact profile, native-page setup, reuse/locking, page descriptions, internal metadata and structured data, route-status handling, page-specific asset loading and internal hub link.</li>
+<li><code>inc/software-solutions-content.php</code>: distinct starter content for nine missing topics, including scope questions, examples, implementation planning, limitations and related links.</li>
+<li><code>assets/css/software-solutions.css</code>: responsive grid and contact layout loaded only on the new topic pages. It inherits the existing theme's compact typography.</li>
+<li><code>inc/seo-schema.php</code>: internal-page dispatch, removal of unsupported product ratings/offers, suppression of untranslated internal hreflang tags and error/search title safeguards. Homepage SEO output is retained.</li>
+<li><code>inc/sitemap.php</code>: native provider, pagination, local/public route validation, protected-post exclusion and a legacy endpoint redirect. No arbitrary 500-post limit or fabricated modification dates.</li>
+<li><code>inc/offering-pages.php</code>: known-slug rewrites, correct error handling and SEO-plugin title handoff. Existing catalog items and their order are unchanged.</li>
+<li><code>inc/blog-index.php</code> and <code>template-blog-index.php</code>: 15-post server pagination, crawlable numbered links, valid pagination status, H1 and a single main landmark.</li>
+<li><code>template-offering.php</code>, <code>template-offering-index.php</code>, <code>page-services.php</code>, <code>page-solutions.php</code>, <code>archive-iscp_service.php</code> and <code>template-contact.php</code>: internal links/contact reuse, affected landmark fixes and removal of visitor-facing keyword panels.</li>
+<li><code>functions.php</code>, <code>style.css</code>, README and changelog: bootstrap, release version and documentation. New files live in <code>tests/</code> for reproducible local checks.</li>
+</ul>
+<p>The internal graph connects Organization, WebSite, WebPage, BreadcrumbList and the relevant Service or SoftwareApplication. It uses the shared telephone and the owner-provided Andhra Pradesh service area. It does not invent an address, legal name, employee count, review, rating or price. LocalBusiness and automatic FAQ markup are omitted where verified supporting details are unavailable. SoftwareApplication markup does not imply Google software rich-result eligibility.</p>
+<p>New topic pages discuss workflows to scope with the business; they do not promise every listed integration or module is already included in a ready-made product. WhatsApp copy makes no Meta-partner claim or account-approval/delivery guarantee.</p>
+
+<h2>Homepage preservation</h2>
+<p>No changes to <code>front-page.php</code>, homepage section/card templates, <code>header.php</code>, <code>footer.php</code>, shared <code>assets/css/main.css</code> or existing JavaScript. No menu, homepage assignment or global design setting is modified by setup.</p>
+<p>Desktop and mobile baseline/after screenshots were captured at requested 1440×1000 and 390×844 viewports. The rendered document sizes matched. The complete server-rendered homepage HTML matched after normalizing the two test-theme directory names, asset-version query values and randomized WordPress email entity encoding. Screenshots are not pixel-identical because existing animation/loading state changes between captures; exact pixel equality is not claimed.</p>
+
+<h2>Testing</h2>
+<ul>
+<li>Isolated test runtime: WordPress 7.1.4, PHP 8.4.21 and the official WordPress Performance Team SQLite integration. These test dependencies were not added to the theme or a production installation.</li>
+<li>56 WordPress integration assertions passed: setup, cross-links, duplicate prevention, owner-draft/content preservation, contact URLs, sitemap exclusion, page protection, noindex, subdirectory URL construction and simulated supported SEO-plugin handoff.</li>
+<li>360 read-only HTTP assertions passed across 31 offering/hub pages: 200 responses, expected URLs, single H1/main/canonical/JSON-LD, unique IDs, organization telephone and no unsupported ratings. Also checked index routes, invalid URLs, sitemap XML, legacy redirect and robots endpoint.</li>
+<li>Desktop/mobile inspection confirmed readable copy and no horizontal overflow on the hub. Mobile menu opening/closing and the existing product demo dialog were exercised. Demo contact links retained the primary telephone. No enquiries were submitted.</li>
+<li>PHP, existing JavaScript and JSON syntax checks were run. No new browser console errors were observed in the exercised flows.</li>
+<li>The existing theme produces an early-translation-loading notice on current WordPress, including in the backup baseline. This unrelated issue was retained to avoid changing theme startup behavior.</li>
+</ul>
+<p>Run <code>php tests/phase1-integration.php WORDPRESS_ROOT</code> only against a disposable installation with a <code>.iscp-phase1-test-environment</code> marker and WordPress environment type <code>local</code>. Run <code>python tests/phase1-http.py http://127.0.0.1:8765</code> for the read-only route checks. On the test host, the PHP command also enabled <code>pdo_sqlite</code> and <code>sqlite3</code>. The theme still declares PHP 7.4 compatibility; a PHP 7.4 runtime was not available for execution testing.</p>
+
+<h2>Deployment and live checks</h2>
+<ol>
+<li>Back up the production database and theme, then install the updated theme. A source backup for this session is at <code>%TEMP%/iscp-phase1-20261104/iscp-before-phase1.zip</code>, with a baseline SHA-256 manifest beside it. No production database was available to back up.</li>
+<li>Visit the dashboard as an administrator. Review the ten created/reused pages in Pages. Edit the native title, content and excerpt as required; the setup will not overwrite later edits.</li>
+<li>Review the existing Contact settings. Supplied defaults are +91 9618222220, <code>tel:+919618222220</code> and the existing WhatsApp number. Existing owner-saved values remain authoritative.</li>
+<li>Verify the actual active theme/child theme, installed SEO/security/cache plugins, Reading settings, permalink structure, redirects and indexability. Their production configuration is not part of this repository.</li>
+<li>If a supported SEO plugin is active, inspect its virtual-route titles, canonicals, schema and sitemap coverage. The theme yields to it; these integrations were guard-tested, not tested against a configured production SEO plugin.</li>
+<li>Verify <code>/wp-sitemap.xml</code> and the legacy sitemap URL. A static server-root <code>sitemap.xml</code> exists in the parent project; a web server may serve it before WordPress. Review that separately rather than silently deleting it.</li>
+<li>Validate deployed pages with Google's Rich Results Test and Schema.org validator, and use Search Console URL Inspection. Local JSON parsing and structural checks are not a claim of external rich-result approval.</li>
+<li>Confirm crawler access in live robots.txt, CDN/firewall/security policies and server logs. The public production robots and native sitemap could not be retrieved through the web tool in this session. No production crawler-access conclusion is inferred from that failure.</li>
+<li>Clear the existing site cache through its normal workflow, compare the production homepage at desktop/mobile sizes, and verify real forms, call links and enquiry handoff without sending unsolicited test messages.</li>
+</ol>
+<p>Rollback: restore the source backup. Native pages created by this release remain ordinary WordPress pages; inspect the <code>iscp_software_page_ids</code> option or page list and move only unwanted newly created pages to Trash. Never delete reused owner pages. Resetting the theme does not erase content or contact settings.</p>
+
+<h2>Crawler policy and sources</h2>
+<p>No robots.txt, CDN rule, model-training permission or llms.txt was changed. Search and training access are treated separately. Official references reviewed:</p>
+<ul>
+<li><a href="https://developers.google.com/search/docs/appearance/ai-features">Google: AI features and your website</a> — ordinary search eligibility, useful visible content and accurate structured data.</li>
+<li><a href="https://developers.openai.com/api/docs/bots">OpenAI crawler documentation</a> — OAI-SearchBot is distinct from training-oriented access.</li>
+<li><a href="https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler">Anthropic crawler documentation</a> — Claude-SearchBot, Claude-User and ClaudeBot have different roles.</li>
+<li><a href="https://developers.google.com/search/docs/appearance/structured-data/software-app">Google: SoftwareApplication structured data</a> — supported rich-result requirements must not be met with fabricated ratings or prices.</li>
+</ul>
+
+<h2>Phase 2 and owner verification</h2>
+<p>Confirm exact product availability, included modules, deployment/training/support terms and city-specific on-site arrangements. Verify legal name, office addresses, social accounts, logo and hours before expanding business schema. Existing homepage claims and its language selector were preserved; actual translations and shared body-class cleanup remain outside this phase.</p>
+<p>Future work: verified case studies/customer evidence, approved product demonstrations, genuinely useful local pages where warranted, Search Console/Bing Webmaster monitoring and Google Business Profile verification for eligible real locations. No search ranking, AI recommendation, indexing or rich-result outcome is guaranteed.</p>
+</body>
+</html>
