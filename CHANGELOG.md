@@ -1,5 +1,18 @@
 # Changelog
 
+## Version 1.0.42
+
+- Fixed native sitemap HTTP 501 errors on hosts without SimpleXML by adding an escaped XML serializer for the existing WordPress sitemap renderer.
+- Retained native sitemap URLs, providers, pagination, stylesheet filters, visibility settings, and the legacy sitemap redirect.
+- Kept SEO-plugin/custom-renderer ownership and the normal renderer when SimpleXML is available.
+- No homepage, header/footer, menus, content setup, CSS or JavaScript changes.
+
+## Version 1.0.41
+
+- Packaged the cumulative Phase 1 and Phase 2 theme for live-site updating.
+- Added live update, page initialization, homepage preservation and rollback instructions.
+- Release metadata and documentation only; frontend templates, assets and page setup behavior are unchanged from 1.0.40.
+
 ## Version 1.0.40
 
 - Enhanced 16 existing service destinations with one reusable service experience, preserving their URLs and saved content.

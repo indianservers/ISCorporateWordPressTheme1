@@ -1,5 +1,7 @@
 # Indian Servers Corp Pro
 
+Current packaged release: **1.0.42**. See [the live-site update guide](docs/live-update.html) before replacing the installed theme. This release contains Phase 1 and Phase 2 plus a SimpleXML-free fallback for the native XML sitemap. Homepage presentation and page setup are unchanged.
+
 Indian Servers Corp Pro is the WordPress website theme prepared for Indian Servers Pvt. Ltd. It presents the company as a professional software development, ERP, CRM, cloud hosting, AI automation, cyber security and managed digital solutions provider.
 
 ## Installation

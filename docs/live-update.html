@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ISCP 1.0.42 — Live Update Guide</title><style>body{font:16px/1.7 system-ui,sans-serif;max-width:900px;margin:40px auto;padding:0 20px;color:#142238}h1,h2{line-height:1.3}li{margin-block:.7rem}code{overflow-wrap:anywhere}.note{padding:16px;background:#eff6ff;border-left:4px solid #2563eb}a{color:#165bbd}</style></head><body>
+<h1>Update Indian Servers Corp Pro to 1.0.42</h1>
+<p>4 November 2026. This package contains the cumulative Phase 1 and Phase 2 implementation. Version 1.0.42 fixes native sitemap HTTP 501 errors on hosts without SimpleXML. It uses the existing WordPress providers and sitemap routes with a safe XML serializer when the normal serializer cannot run. Homepage presentation and page setup remain unchanged.</p>
+<p class="note">Update the existing <code>iscp</code> theme in place. Keep the current homepage assignment, active child theme (if any), menus and Customizer settings. Do not run Demo Import, reset theme settings or assign Software Solutions as the homepage.</p>
+<h2>Before updating</h2>
+<ol>
+<li>Confirm the live parent theme is Indian Servers Corp Pro, folder <code>iscp</code>. If a child theme is active, keep it active. This ZIP is an update for ISCP, not a migration from a different live theme.</li>
+<li>Back up the live database and the complete installed theme folder using the existing hosting/backup system. Confirm how to restore that backup. The local development backup is not a backup of the live database.</li>
+<li>Record desktop/mobile homepage screenshots, the active theme, menu assignments and current Settings → Reading values. Save the homepage and posts-page selections without changing them. Record existing Customizer settings if the hosting backup does not include them.</li>
+<li>If files inside the live parent theme were edited directly, compare and preserve those edits before replacement. A theme upload replaces files. The packaged homepage/shared files were verified unchanged in this project, but uninspected live-only edits cannot be guaranteed to match.</li>
+<li>Use a staging copy first when available. Review the generated pages and enquiry behavior there before applying the same update live.</li>
+</ol>
+<h2>Upload the ZIP</h2>
+<ol>
+<li>Log in as an administrator. Open Appearance → Themes → Add New Theme (or Add New) → Upload Theme.</li>
+<li>Select <code>iscp-1.0.42.zip</code> and click Install Now. The ZIP contains one <code>iscp/</code> folder; do not unzip and upload individual files through the theme editor.</li>
+<li>When WordPress detects the installed theme, select <strong>Replace current with uploaded</strong>. Confirm the uploaded theme/version is Indian Servers Corp Pro 1.0.42. Do not delete the active theme first.</li>
+<li>Keep the existing theme or child theme active. Updating the active parent does not require switching to another theme or activating the parent over an active child.</li>
+</ol>
+<p>The replacement action is described in <a href="https://wordpress.com/support/themes/uploading-setting-up-custom-themes/">WordPress's theme-upload instructions</a>. <a href="https://wordpress.org/documentation/article/settings-reading-screen/">Reading settings determine homepage/posts-page assignments</a>; leave the live site's current values intact.</p>
+<h2>Initialize and review the pages</h2>
+<ol>
+<li>Visit Dashboard → Home once as an administrator with permission to publish pages. The theme runs the Phase 1 and Phase 2 page setup automatically, once per setup version.</li>
+<li>Open Pages → All Pages. Review <code>/software-solutions/</code>, <code>/locations/</code>, <code>/locations/andhra-pradesh/</code> and the missing software topics created during Phase 1. Check the earlier implementation reports for the full page map.</li>
+<li>Setup publishes newly created starter pages, reuses matching existing pages and leaves owner drafts/private content unchanged. Review and publish a reused draft manually only if it should be public. Existing aliases can retain different URLs.</li>
+<li>No separate template activation is needed for newly created pages: their default WordPress template and the existing offering routes load the enhanced components. Existing product/service URLs remain in place.</li>
+<li>Open Appearance → Indian Servers Corp Pro → SEO &amp; Enquiries to inspect the actual service destinations and location status. A protected/unpublished existing Locations parent can block regional setup; resolve it only according to the intended privacy/publication policy.</li>
+<li>If setup already ran in 1.0.39/1.0.40, updating to 1.0.42 does not recreate pages deliberately removed later or overwrite edited content. Do not reset setup options or run Demo Import to recreate them. Investigate the page list/status before requesting a targeted repair.</li>
+</ol>
+<h2>Verify without changing the homepage</h2>
+<ol>
+<li>Open the homepage in a private browser window at desktop and mobile widths and compare it with the saved screenshots. Check navigation, hero, footer and contact shortcuts. Keep Settings → Reading, menus and global design settings unchanged.</li>
+<li>Check the software directory, one school/college page, one business-software page and the Andhra Pradesh page. Verify the primary call link is <code>tel:+919618222220</code> and review the existing saved Contact settings if the displayed phone differs.</li>
+<li>If a new URL returns 404, open Settings → Permalinks and click Save Changes without changing the permalink structure. Existing rewrite rules also refresh automatically for the theme's route version.</li>
+<li>Clear the existing WordPress/hosting/CDN cache through its normal controls, then check again. Do not disable working plugins or install a duplicate SEO plugin.</li>
+<li>Check <code>/wp-sitemap.xml</code>, or the configured SEO plugin's sitemap, and the legacy sitemap URL. A physical server-root sitemap can override WordPress; its production handling needs a hosting check.</li>
+<li>Confirm titles, canonicals and schema with the actual SEO plugin, and check that public pages are indexable. Noindex settings are not automatically removed by setup.</li>
+<li>Test enquiry preparation using non-sensitive example data. Consent and validation are required. Preparing a message opens no submission: the visitor reviews and sends it through WhatsApp/email. Use the established inbox to confirm receipt of a deliberately authorized real test if needed.</li>
+</ol>
+<h2>Verify the SimpleXML-free sitemap fix</h2><p>After installing 1.0.42, clear the existing site/CDN cache and open <code>/wp-sitemap.xml</code>. It should return XML with HTTP 200, including links to child sitemaps. Open at least one native pages sitemap and the <code>iscpofferings</code> sitemap. The old <code>/sitemap.xml</code> URL still redirects to the native index. No PHP extension installation or robots.txt change is required for this fallback. Supported SEO plugins and custom sitemap renderers keep ownership of their output.</p><p>Local validation covered 15 assertions with normal SimpleXML and 15 with SimpleXML classes/functions disabled, plus 49 HTTP/XML checks across the index, five child sitemaps, XSL stylesheets, invalid routes, the legacy redirect, robots reference and unchanged homepage HTML. Live results require uploading this release first.</p><h2>Rollback</h2>
+<p>If the live homepage or functionality changes unexpectedly, restore the backed-up theme and, when appropriate, the database through the established backup workflow. Do not try to restore the old homepage by assigning Software Solutions or changing Reading settings. Newly created native pages may remain after a file-only rollback; review them individually and never delete reused owner pages.</p>
+<p>Source checks confirmed that the homepage template, header/footer, homepage sections/cards, shared main stylesheet and pre-existing JavaScript are unchanged. Production installation, cache behavior, live-only edits and external account configuration still require the checks above.</p>
+<p>Detailed references: <a href="phase1-implementation.html">Phase 1 report</a> · <a href="phase2-implementation.html">Phase 2 report</a>.</p>
+</body></html>

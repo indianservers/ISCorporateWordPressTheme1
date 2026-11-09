@@ -7,6 +7,17 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/** Replace only the core serializer when its SimpleXML dependency is unavailable. */
+function iscp_install_portable_sitemap_renderer( $server ) {
+	$has_simplexml = class_exists( 'SimpleXMLElement' ) && method_exists( 'SimpleXMLElement', 'addChild' );
+	if ( $has_simplexml || iscp_is_major_seo_plugin_active() || ! $server->sitemaps_enabled() || 'WP_Sitemaps_Renderer' !== get_class( $server->renderer ) ) {
+		return;
+	}
+	require_once __DIR__ . '/class-iscp-sitemap-renderer.php';
+	$server->renderer = new ISCP_Portable_Sitemap_Renderer();
+}
+add_action( 'wp_sitemaps_init', 'iscp_install_portable_sitemap_renderer', 20 );
+
 /** Local public routes absent from core's pages provider; no fabricated lastmod. */
 function iscp_get_virtual_sitemap_urls() {
 	$urls = array();
@@ -41,6 +52,8 @@ function iscp_register_virtual_sitemap_provider() {
 	if ( iscp_is_major_seo_plugin_active() || ! class_exists( 'WP_Sitemaps_Provider' ) || ! wp_sitemaps_get_server()->sitemaps_enabled() ) {
 		return;
 	}
+	// Also cover a sitemap server initialized by a plugin before the theme loaded.
+	iscp_install_portable_sitemap_renderer( wp_sitemaps_get_server() );
 	if ( ! class_exists( 'ISCP_Offering_Sitemap_Provider' ) ) {
 		class ISCP_Offering_Sitemap_Provider extends WP_Sitemaps_Provider {
 			public function __construct() {
