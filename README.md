@@ -1,6 +1,6 @@
 # Indian Servers Corp Pro
 
-Current release: **1.0.44**. See [the live-site update guide](docs/live-update.html) before replacing the installed theme. This release adds mobile-first Partner Signup layout integration while retaining the larger shared-header logo. The partner application requires Indian Servers Forms 1.2.2; see [Partner Signup delivery notes](docs/partner-signup.html).
+Current release: **1.0.45**. See [the live-site update guide](docs/live-update.html) before replacing the installed theme. This release adds mobile-first Partner Signup layout integration while retaining the larger shared-header logo. The partner application requires Indian Servers Forms 1.2.2; see [Partner Signup delivery notes](docs/partner-signup.html).
 
 Indian Servers Corp Pro is the WordPress website theme prepared for Indian Servers Pvt. Ltd. It presents the company as a professional software development, ERP, CRM, cloud hosting, AI automation, cyber security and managed digital solutions provider.
 

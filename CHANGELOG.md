@@ -1,5 +1,12 @@
 # Changelog
 
+## Version 1.0.45
+
+- Moved the highlighted partner signup action directly below the partner-page title.
+- Added a responsive floating “Submit your details” link to the existing Partner Signup page.
+- Prevented competing floating controls on this landing page and reserved bottom space for the action.
+
+
 ## Version 1.0.44
 
 - Added scoped mobile-first Partner Signup page spacing and a compact shared header on the application page.

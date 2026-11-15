@@ -62,6 +62,11 @@ $iscp_partner_focus = array(
 	__( 'Regional business developers', 'iscp' ),
 );
 
+add_filter( 'body_class', static function ( $classes ) {
+	$classes[] = 'iscp-partner-landing';
+	return $classes;
+} );
+wp_enqueue_style( 'iscp-partner-cta', get_template_directory_uri() . '/assets/css/partner-cta.css', array( 'iscp-main' ), iscp_asset_version( 'assets/css/partner-cta.css' ) );
 get_header();
 ?>
 
@@ -71,9 +76,13 @@ get_header();
 			<div class="iscp-partner-hero-copy">
 				<p class="iscp-eyebrow"><?php esc_html_e( 'Indian Servers Partner Program', 'iscp' ); ?></p>
 				<h1><?php esc_html_e( 'Become Our Partner', 'iscp' ); ?></h1>
+				<div class="iscp-partner-apply-intro">
+					<a class="iscp-btn iscp-partner-apply" href="<?php echo esc_url( $iscp_signup_url ); ?>"><?php esc_html_e( 'Submit your details', 'iscp' ); ?><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+					<span><?php esc_html_e( 'Start your partner application', 'iscp' ); ?></span>
+				</div>
 				<p><?php esc_html_e( 'Partner with Indian Servers Private Limited to take proven software products, custom development, cloud infrastructure, AI automation and cyber security services to more businesses across India and global markets.', 'iscp' ); ?></p>
 				<div class="iscp-action-row">
-					<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( $iscp_partner_whatsapp ); ?>"><?php esc_html_e( 'Start Partner Discussion', 'iscp' ); ?></a>
+					<a class="iscp-btn iscp-btn-ghost" href="<?php echo esc_url( $iscp_partner_whatsapp ); ?>"><?php esc_html_e( 'Start Partner Discussion', 'iscp' ); ?></a>
 					<a class="iscp-btn iscp-btn-ghost" href="<?php echo esc_url( $iscp_partner_email ); ?>"><?php esc_html_e( 'Email Partnership Team', 'iscp' ); ?></a>
 				</div>
 			</div>
@@ -158,11 +167,15 @@ get_header();
 			<div class="iscp-partner-fit-card">
 				<h3><?php esc_html_e( 'Ready to discuss partnership?', 'iscp' ); ?></h3>
 				<p><?php esc_html_e( 'Share your city, business profile, customer segment and the solutions you want to promote. Our team will review fit and suggest the next step.', 'iscp' ); ?></p>
-				<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( $iscp_signup_url ); ?>"><?php esc_html_e( 'Submit your details', 'iscp' ); ?></a>
+				<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( $iscp_partner_whatsapp ); ?>"><?php esc_html_e( 'Contact on WhatsApp', 'iscp' ); ?></a>
 			</div>
 		</div>
 	</section>
 </main>
+
+<aside class="iscp-partner-floating-apply" aria-label="<?php esc_attr_e( 'Partner application', 'iscp' ); ?>">
+	<a class="iscp-btn iscp-partner-apply" href="<?php echo esc_url( $iscp_signup_url ); ?>"><?php esc_html_e( 'Submit your details', 'iscp' ); ?><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</aside>
 
 <?php
 get_footer();

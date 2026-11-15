@@ -1,0 +1,18 @@
+/* Partner landing page only: one clear application action at the top and while scrolling. */
+.iscp-partner-landing {padding-bottom:calc(92px + env(safe-area-inset-bottom,0px));scroll-padding-bottom:110px;}
+.iscp-partner-apply-intro {display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin:22px 0;}
+.iscp-partner-apply-intro>span {font-size:13px;color:#e0eaff;}
+.iscp-partner-landing .iscp-partner-apply {display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:56px;padding:14px 24px;border:2px solid #ffda68;border-radius:12px;background:#ffce46;color:#101c32;font-size:16px;font-weight:700;line-height:1.4;text-decoration:none;box-shadow:0 8px 28px #ffce462e;transition:background-color .15s,transform .15s;}
+.iscp-partner-landing .iscp-partner-apply:hover {background:#ffe08a;transform:translateY(-2px);color:#101c32;}
+.iscp-partner-landing .iscp-partner-apply:focus-visible {outline:3px solid #fff;outline-offset:4px;box-shadow:0 0 0 7px #075de8;}
+.iscp-partner-apply svg {flex:0 0 auto;}
+.iscp-partner-floating-apply {position:fixed;z-index:45;bottom:calc(12px + env(safe-area-inset-bottom,0px));left:12px;right:12px;padding:6px;border:1px solid #ffffff38;border-radius:16px;background:#101c32;box-shadow:0 8px 32px #07101f40;}
+.iscp-partner-floating-apply .iscp-partner-apply {width:100%;}
+.iscp-partner-landing .iscp-floating-socials,.iscp-partner-landing .iscp-sticky-cta {display:none;}
+.iscp-partner-landing .iscp-back-to-top {bottom:calc(104px + env(safe-area-inset-bottom,0px));}
+@media(min-width:720px) {
+ .iscp-partner-apply-intro {flex-direction:row;align-items:center;gap:16px;}
+ .iscp-partner-floating-apply {left:auto;right:24px;bottom:24px;width:auto;}
+ .iscp-partner-floating-apply .iscp-partner-apply {min-width:240px;}
+}
+@media(prefers-reduced-motion:reduce) {.iscp-partner-landing .iscp-partner-apply {transition:none;}.iscp-partner-landing .iscp-partner-apply:hover {transform:none;}}
