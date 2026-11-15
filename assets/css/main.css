@@ -629,9 +629,9 @@ input[type="submit"] {
 
 .custom-logo,
 .iscp-brand-logo {
-	max-width: 154px;
-	max-height: 42px;
-	width: auto;
+	max-width: 100%;
+	max-height: 60px;
+	width: 240px;
 	height: auto;
 	display: block;
 }
@@ -1339,7 +1339,7 @@ input[type="submit"] {
 
 	.custom-logo,
 	.iscp-brand-logo {
-		max-width: 132px;
+		width: 220px;
 	}
 
 	.iscp-primary-menu {
@@ -1386,7 +1386,7 @@ input[type="submit"] {
 
 	.custom-logo,
 	.iscp-brand-logo {
-		max-width: 116px;
+		width: 200px;
 	}
 
 	.iscp-primary-menu {
@@ -1450,7 +1450,7 @@ input[type="submit"] {
 
 	.custom-logo,
 	.iscp-brand-logo {
-		max-width: 104px;
+		width: 180px;
 	}
 
 	.iscp-primary-menu a {
@@ -1459,6 +1459,11 @@ input[type="submit"] {
 }
 
 @media (max-width: 1020px) {
+	.custom-logo,
+	.iscp-brand-logo {
+		width: 220px;
+	}
+
 	.iscp-header-inner {
 		flex-wrap: wrap;
 		justify-content: space-between;

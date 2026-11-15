@@ -10,6 +10,8 @@ defined( 'ABSPATH' ) || exit;
 $iscp_partner_whatsapp = 'https://wa.me/919618222220?text=' . rawurlencode( __( 'Hello Indian Servers, I am interested in becoming a partner.', 'iscp' ) );
 $iscp_partner_email    = 'mailto:info@indianservers.com?subject=' . rawurlencode( __( 'Partnership Enquiry', 'iscp' ) );
 $iscp_partner_image    = get_template_directory_uri() . '/assets/images/indianservers-global-cloud.png';
+$iscp_signup_page      = get_page_by_path( 'partner-signup', OBJECT, 'page' );
+$iscp_signup_url       = $iscp_signup_page && 'publish' === $iscp_signup_page->post_status ? get_permalink( $iscp_signup_page ) : home_url( '/partner-signup/' );
 
 $iscp_partner_stats = array(
 	array( 'value' => '2200+', 'label' => __( 'customers served across business verticals', 'iscp' ) ),
@@ -156,7 +158,7 @@ get_header();
 			<div class="iscp-partner-fit-card">
 				<h3><?php esc_html_e( 'Ready to discuss partnership?', 'iscp' ); ?></h3>
 				<p><?php esc_html_e( 'Share your city, business profile, customer segment and the solutions you want to promote. Our team will review fit and suggest the next step.', 'iscp' ); ?></p>
-				<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( $iscp_partner_whatsapp ); ?>"><?php esc_html_e( 'Contact on WhatsApp', 'iscp' ); ?></a>
+				<a class="iscp-btn iscp-btn-gold" href="<?php echo esc_url( $iscp_signup_url ); ?>"><?php esc_html_e( 'Submit your details', 'iscp' ); ?></a>
 			</div>
 		</div>
 	</section>

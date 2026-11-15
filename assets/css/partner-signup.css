@@ -1,0 +1,10 @@
+/* Application-page integration; other theme pages retain their existing layout. */
+.iscp-partner-signup-page {overflow-x:clip;overflow-y:visible;}
+html:has(body.iscp-partner-signup-page) {overflow-x:clip;overflow-y:visible;}
+.iscp-partner-signup {padding:12px;max-width:1700px;margin-inline:auto;}
+.iscp-partner-signup-page .iscp-site-tagline {display:none;}
+.iscp-partner-signup-page:not(.iscp-mobile-menu-open) .iscp-header-inner {flex-wrap:nowrap;}
+.iscp-partner-signup-page .iscp-site-branding {min-width:0;}
+.iscp-partner-signup-page .iscp-brand-logo-link {max-width:100%;}
+@media(min-width:720px) {.iscp-partner-signup {padding:24px;}}
+@media(min-width:1100px) {.iscp-partner-signup {padding:40px;}}

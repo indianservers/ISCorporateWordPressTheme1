@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="297" height="74" viewBox="0 0 297 74" role="img" aria-labelledby="title desc">
+  <title id="title">Indian Servers</title>
+  <desc id="desc">White Indian Servers lettering on navy with a saffron line above and a green line below.</desc>
+  <rect width="297" height="74" fill="#06265f"/>
+  <path d="M21 26H281" stroke="#ffbf00" stroke-width="3"/>
+  <text x="18" y="52" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="28" letter-spacing="2" textLength="264" lengthAdjust="spacingAndGlyphs">Indian Servers</text>
+  <path d="M18 58H284" stroke="#00ed40" stroke-width="3"/>
+</svg>

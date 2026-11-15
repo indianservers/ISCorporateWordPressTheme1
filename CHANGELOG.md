@@ -1,5 +1,19 @@
 # Changelog
 
+## Version 1.0.44
+
+- Added scoped mobile-first Partner Signup page spacing and a compact shared header on the application page.
+- Enabled the application action bar to follow viewport scrolling without covering focused inputs.
+- Retained other pages and header branding; requires Indian Servers Forms 1.2.2 for the latest form UI.
+
+## Version 1.0.43
+
+- Added the Partner Signup page template, rendered by the existing IS-Forms plugin.
+- Connected the partner-page application card to `/partner-signup/` with “Submit your details”.
+- Kept floating conversion controls clear of the partner application.
+- Added the supplied-reference logo recreation and increased its size in the shared header across all pages.
+- Partner Signup requires Indian Servers Forms 1.2.0, which owns the form, entry storage, validation and administration.
+
 ## Version 1.0.42
 
 - Fixed native sitemap HTTP 501 errors on hosts without SimpleXML by adding an escaped XML serializer for the existing WordPress sitemap renderer.

@@ -99,7 +99,7 @@ if ( ! function_exists( 'iscp_get_brand_logo_url' ) ) {
 	 * @return string
 	 */
 	function iscp_get_brand_logo_url() {
-		return get_template_directory_uri() . '/assets/images/indianservers-logo.svg';
+		return get_template_directory_uri() . '/assets/images/indianservers-main-logo.svg';
 	}
 }
 
@@ -164,7 +164,7 @@ if ( ! function_exists( 'iscp_render_brand_logo' ) ) {
 	 */
 	function iscp_render_brand_logo() {
 		printf(
-			'<a class="iscp-brand-logo-link" href="%1$s" rel="home" aria-label="%2$s"><img class="iscp-brand-logo" src="%3$s" width="300" height="72" alt="%2$s"></a>',
+			'<a class="iscp-brand-logo-link" href="%1$s" rel="home" aria-label="%2$s"><img class="iscp-brand-logo" src="%3$s" width="297" height="74" alt="%2$s" loading="eager" decoding="async"></a>',
 			esc_url( home_url( '/' ) ),
 			esc_attr( get_bloginfo( 'name' ) ? get_bloginfo( 'name' ) : __( 'Indian Servers', 'iscp' ) ),
 			esc_url( iscp_get_brand_logo_url() )
@@ -955,6 +955,12 @@ if ( ! function_exists( 'iscp_render_conversion_tools' ) ) {
 	 * Render optional conversion tools.
 	 */
 	function iscp_render_conversion_tools() {
+		global $post;
+		// Keep floating contact controls and popups clear of the application fields.
+		if ( is_page( 'partner-signup' ) || ( $post && has_shortcode( $post->post_content, 'isf_partner_signup' ) ) ) {
+			return;
+		}
+
 		if ( iscp_get_theme_mod( 'iscp_scroll_progress_enabled', true ) ) {
 			echo '<div class="iscp-scroll-progress" aria-hidden="true"><span></span></div>';
 		}
