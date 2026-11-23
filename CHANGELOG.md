@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 1.0.46
+
+- Made “Fill Partner Signup Form” the first highlighted action in the partner-page top button group, above discussion/email links.
+- Added explicit form-completion instructions and matching floating signup wording.
+
+
 ## Version 1.0.45
 
 - Moved the highlighted partner signup action directly below the partner-page title.

@@ -76,15 +76,13 @@ get_header();
 			<div class="iscp-partner-hero-copy">
 				<p class="iscp-eyebrow"><?php esc_html_e( 'Indian Servers Partner Program', 'iscp' ); ?></p>
 				<h1><?php esc_html_e( 'Become Our Partner', 'iscp' ); ?></h1>
-				<div class="iscp-partner-apply-intro">
-					<a class="iscp-btn iscp-partner-apply" href="<?php echo esc_url( $iscp_signup_url ); ?>"><?php esc_html_e( 'Submit your details', 'iscp' ); ?><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-					<span><?php esc_html_e( 'Start your partner application', 'iscp' ); ?></span>
-				</div>
-				<p><?php esc_html_e( 'Partner with Indian Servers Private Limited to take proven software products, custom development, cloud infrastructure, AI automation and cyber security services to more businesses across India and global markets.', 'iscp' ); ?></p>
-				<div class="iscp-action-row">
+				<p id="iscp-partner-form-instruction" class="iscp-partner-form-instruction"><?php esc_html_e( 'Want to become a partner? Please fill out the Partner Signup form so our team can review your details.', 'iscp' ); ?></p>
+				<div class="iscp-action-row iscp-partner-top-actions">
+					<a class="iscp-btn iscp-partner-apply" aria-describedby="iscp-partner-form-instruction" href="<?php echo esc_url( $iscp_signup_url ); ?>"><?php esc_html_e( 'Fill Partner Signup Form', 'iscp' ); ?><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 					<a class="iscp-btn iscp-btn-ghost" href="<?php echo esc_url( $iscp_partner_whatsapp ); ?>"><?php esc_html_e( 'Start Partner Discussion', 'iscp' ); ?></a>
 					<a class="iscp-btn iscp-btn-ghost" href="<?php echo esc_url( $iscp_partner_email ); ?>"><?php esc_html_e( 'Email Partnership Team', 'iscp' ); ?></a>
 				</div>
+				<p><?php esc_html_e( 'Partner with Indian Servers Private Limited to take proven software products, custom development, cloud infrastructure, AI automation and cyber security services to more businesses across India and global markets.', 'iscp' ); ?></p>
 			</div>
 			<div class="iscp-partner-hero-panel" aria-label="<?php esc_attr_e( 'Indian Servers partnership strengths', 'iscp' ); ?>">
 				<img src="<?php echo esc_url( $iscp_partner_image ); ?>" alt="<?php esc_attr_e( 'Indian Servers global technology and cloud partnership network', 'iscp' ); ?>" loading="eager" decoding="async">
@@ -174,7 +172,7 @@ get_header();
 </main>
 
 <aside class="iscp-partner-floating-apply" aria-label="<?php esc_attr_e( 'Partner application', 'iscp' ); ?>">
-	<a class="iscp-btn iscp-partner-apply" href="<?php echo esc_url( $iscp_signup_url ); ?>"><?php esc_html_e( 'Submit your details', 'iscp' ); ?><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+	<a class="iscp-btn iscp-partner-apply" href="<?php echo esc_url( $iscp_signup_url ); ?>"><?php esc_html_e( 'Fill Partner Signup Form', 'iscp' ); ?><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </aside>
 
 <?php
